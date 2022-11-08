@@ -1,0 +1,42 @@
+{%  extends 'authentication/base.html' %}
+{% block Title %}Registration{% endblock %}
+{% block Body %}
+    <form method="post" action="">
+        <fieldset>
+            <legend>Register</legend>
+            {% csrf_token %}
+            {% if form.errors %}
+                <p style="color: orangered">Got errors! {{ form.errors }}</p>
+            {% endif %}
+            {% for message in messages %}
+                <p style="color: turquoise">{{ message }}</p>
+            {% endfor %}
+            <div class="form-group row">
+                 <label for="inputPassword" class="col-sm-2 col-form-label">{{ form.username.label }}</label>
+                 <div class="col-sm-10">
+            <p> {{ form.username }} </p></div>
+            </div>
+            <div class="form-group row">
+                 <label for="inputPassword" class="col-sm-2 col-form-label">{{ form.email.label }}</label>
+                 <div class="col-sm-10">
+            <p> {{ form.email }} </p></div>
+            </div>
+            <div class="form-group row">
+                 <label for="inputPassword" class="col-sm-2 col-form-label">{{ form.password1.label }}</label>
+                 <div class="col-sm-10">
+            <p> {{ form.password1 }} </p></div>
+            </div>
+            <div class="form-group row">
+                 <label for="inputPassword" class="col-sm-2 col-form-label">{{ form.password2.label }}</label>
+                 <div class="col-sm-10">
+            <p> {{ form.password2 }} </p></div>
+            </div>
+           <div class="form-group row">
+               <div class="col-sm-3"></div>
+               <div class="col-sm-4">
+            <input type="submit" class="btn btn-warning" value="Register">
+            </div>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

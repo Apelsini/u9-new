@@ -1,0 +1,27 @@
+{% extends 'polls/base.html' %}
+{% block Title %}{{ urlentry.url_short }}{% endblock %}
+{% block Body %}
+<style>
+   .colortext {
+     color: red; /* Красный цвет выделения */
+   }
+  </style>
+    <form action="" method="post" >
+        {% csrf_token %}
+        <fieldset>
+            <legend>Are you sure?</legend>
+            <p><b>Are you sure you want to delete link: </b>
+                <br>
+                <a href="{{ urlentry.url_text }}">{{ urlentry.url_text }}</a>
+                <br>
+                <b>Author: </b>{{ urlentry.author }} {% if urlentry.author.is_staff %} <span class="colortext">(customer)</span> {% endif%}
+                <br>
+                <b>Date created / last updated: </b>{{ urlentry.create_date }}
+                <br>
+                <b>Short link: </b><a href="http://localhost:8000/{{ urlentry.url_short }}">http://localhost:8000/{{ urlentry.url_short }}</a>
+            </p>
+            <input type="submit" class="btn btn-danger" value="Delete">
+            <input type="button" class="btn btn-danger" onclick="location.href='{% url 'polls:index' %}'" value="Cancel">
+        </fieldset>
+    </form>
+{% endblock %}

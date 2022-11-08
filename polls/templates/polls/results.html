@@ -1,0 +1,39 @@
+{% extends 'polls/base.html' %}
+{% block Title %}{{ urlentry.url_short }} Statistics{% endblock %}
+{% block Body %}
+
+    <h1><a href="https://preclass.u9.by/{{ urlentry.url_short }}">
+            https://preclass.u9.by/{{ urlentry.url_short }}
+                       </a>
+        </h1>
+    {% if urlentry.leads_set.all %}
+    <legend>
+{% with total=urlentry.leads_set.all.count %}
+    {{ total }} click{{ total|pluralize }}
+{% endwith %}
+    </legend>
+<br>  {{ leads_list }}
+<br>  {{ count }}
+
+
+    {% endif %}
+<ul>
+    {% for leads in urlentry.leads_set.all %}
+        <li>
+            <b>datetime:</b>{{ leads.follow_date }}
+            <b>  from website:</b>{{ leads.follower_info }}
+            <b>  IP:</b> {{ leads.follower_fromwhere }} <br>
+            <b>user device config:</b> {{ leads.follower_os_info }}{{ leads.follower_os_info|pluralize }}
+        </li>
+    {% endfor %}
+    {% if not urlentry.leads_set.all %}
+    <b>no clicks on the link </b>
+    {% endif %}
+    <br>
+
+</ul>
+
+<a href="{% url 'polls:index' %}">Back to Links</a>
+ <br>
+...
+{% endblock %}

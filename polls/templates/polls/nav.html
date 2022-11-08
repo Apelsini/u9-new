@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-md navbar-light" style="background-color: #34ebd2;">
+   <div class="container container-fluid">
+      <img src="https://u9.by/uby/U9logob.png" width="222" height="80"></img>
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+           {% if request.user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'polls:index' %}" aria-current="page"><b>List</b></a>
+        </li>
+       
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'polls:new' %}"><b>New Link</b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'auth:profile' request.user.profile.id %}">Profile [{{ user.username }}]</a>
+            </li>
+          {% if request.user.is_superuser %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'auth:users' %}">Users</a>
+            </li>
+        {% endif %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'auth:logout' %}">Logout</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'auth:login' %}">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'auth:reg' %}">Register</a>
+            </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+      <input type="button" class="btn btn-info" onclick="location.href='https://a.u9.by'" value="Freeware soft & music">
+      </div>
+</nav>

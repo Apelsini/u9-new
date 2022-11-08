@@ -1,0 +1,25 @@
+{% extends 'polls/base.html' %}
+{% block Title %}User Profile{% endblock %}
+{% block Body %}
+    <strong>User Name:</strong>{{ profile.user.username }}
+    <br>
+    <strong>User Email:</strong>{{ profile.user.email }}
+    <br>
+    <!-- statistics -->
+    <strong>Customer: </strong>{{ profile.user.is_staff }}
+    <br>
+    {% if request.user.is_superuser %}
+    <strong>Superuser: </strong>{{ profile.user.is_superuser }}
+    <br>
+    {% endif %}
+
+    {% if not profile.user.is_staff and not request.user.is_superuser %}
+    <a class="btn btn-warning" href="authentication/customer" role="button">Upgrade to our Customer</a>
+    {% endif %}
+    {% if request.user.is_superuser and not profile.user.is_staff %}
+    <a class="btn btn-danger" href="authentication/customer" role="button">Add Customer privileges</a>
+    {% endif %}
+    {% if request.user.is_superuser and profile.user.is_staff %}
+    <a class="btn btn-danger" href="authentication/customer" role="button">Remove Customer privileges</a>
+    {% endif %}
+{% endblock %}

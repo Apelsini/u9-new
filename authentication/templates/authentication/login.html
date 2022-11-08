@@ -1,0 +1,19 @@
+{%  extends 'authentication/base.html' %}
+{% block Title %}Log-in{% endblock %}
+{% block Body %}
+    <form method="post" action="">
+        <fieldset>
+            <legend>Login</legend>
+            {% csrf_token %}
+            {% for message in messages %}
+                <p style="color: turquoise">{{ message }}</p>
+            {% endfor %}
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username">
+            <br>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password">
+            <input type="submit" class="btn btn-danger" value="LogIn">
+        </fieldset>
+    </form>
+{% endblock %}

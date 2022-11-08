@@ -1,0 +1,32 @@
+{% extends 'polls/base.html' %}
+{% block Title %}Customer registration{% endblock %}
+{% block Body %}
+    <br>
+    <strong>User Name:</strong>{{ profile.user.username }}
+    <br>
+    <!-- statistics -->
+    <strong>Customer: </strong>{{ profile.user.is_staff }}
+    <br>
+{% if not request.user.is_staff %}
+     <br>
+    <form action="" method="post">
+        <fieldset>
+            <legend>Upgrade your profile to Customer</legend>
+            {% csrf_token %}
+            {% if form.errors %}
+                <p style="color: orangered">Got errors! {{ form.errors }}</p>
+            {% endif %}
+            {% for message in messages %}
+                <p style="color: turquoise">{{ message }}</p>
+            {% endfor %}
+            <p>{{ form.codeword.label }} {{ form.codeword }} </p>
+            <input type="submit" class="btn btn-warning" value="Check codeword">
+        </fieldset>
+    </form>
+{% endif %}
+
+{% if request.user.is_superuser %}
+<a class="btn btn-warning" onclick="location.href='{% url 'auth:profile' profile.user.id %}'" role="button">Go back</a>
+{% endif %}
+
+{% endblock %}

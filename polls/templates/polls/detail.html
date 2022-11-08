@@ -1,0 +1,178 @@
+{% extends 'polls/base.html' %}
+{% block Title %}{{ urlentry.url_short }} Detail{% endblock %}
+{% block Body %}
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+  <!-- XDSoft DateTimePicker -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+
+    
+<h1><a href="https://u9.by/{{ urlentry.url_short }}">
+            u9.by/{{ urlentry.url_short }}
+                       </a>
+        </h1>
+<div id="qrcode"></div>
+<script type="text/javascript">
+var qrcode = new QRCode(document.getElementById("qrcode"), {
+	text: "u9.by/{{ urlentry.url_short }}",
+	width: 100,
+	height: 100,
+	colorDark : "#5868bf",
+	colorLight : "#ffffff",
+	correctLevel : QRCode.CorrectLevel.L
+});
+</script>
+<br>
+{% if urlentry.author == request.user %}
+<button type="button" onclick="location.href='{% url 'polls:results' urlentry.id %}'" class="btn btn-danger">
+See statistics of following this link
+   </button>
+{% endif %}
+
+            {% if form.errors %}
+                <p style="color: orangered">Got errors! {{ form.errors }}</p>
+            {% endif %}
+            {% for message in messages %}
+                <p style="color: turquoise">{{ message }}</p>
+            {% endfor %}
+
+    <form action="{% url 'polls:update' urlentry.id %}" method="post">
+        {% csrf_token %}
+        <br>
+        <fieldset>
+            <legend><h2>Link content</h2></legend>
+            <label><strong>Author: </strong>{{ urlentry.author }}</label> <br>
+            <label><strong>Create date: </strong>{{ urlentry.create_date }}</label> <br>
+            <label><strong>URL: </strong>
+                {% if urlentry.author == request.user %}
+                <input type="text" name="url_text" id="url_text" value="{{ urlentry.url_text }}">
+                {% endif %}
+                <a href="{{ urlentry.url_text }}">Go original Link!</a></label>
+            <br>
+             <label><strong>QR code to original link: </strong> <a href={{ urlentry.qr_code }}>generate</a></label> <br>
+            <img src="{{ urlentry.qr_code }}" width="100" height="100" alt="qr"><br>
+            {% if urlentry.author == request.user %}
+                {% if request.user.is_staff %}
+                       <br>
+                        <legend><h2>Customer section</h2></legend>
+                        <label><strong>Snapshot: </strong> <a href={{ urlentry.snapshot }}>take</a></label> <br>
+                        <img src="{{ urlentry.snapshot }}" width="204" height="152" alt="snapshot"><br>
+                        <label><strong>Partner ads: </strong>
+                            <input type="text" name="partner_ads" id="partner_ads" value="{{ urlentry.partner_ads }}">
+                        </label>
+                        <br>
+                        <label><strong>Link available </strong>
+                            <div class="container">
+   <div class='col-md-5'>
+      <div class="form-group">
+          from:
+         <div class='input-group' id='datetimepicker06'>
+            <input id="datetimepicker6" type='datetime-local' class="form-control" name="datetime_available_from" id="datetime_available_from" value="{{ urlentry.datetime_available_from|date:'dd.mm.YYYYTHH:ii' }}" />
+
+         </div>
+      </div>
+   </div>
+   <div class='col-md-5'>
+      <div class="form-group">
+          to:
+         <div class='input-group' id='datetimepicker7'>
+            <input type='datetime-local' class="form-control" name="datetime_available_to" id="datetime_available_to" value="{{ urlentry.datetime_available_to }}"/>
+            
+         </div>
+      </div>
+   </div>
+</div>
+<script type="text/javascript">
+   $(document).ready(function () {
+       $('#datetimepicker6').datetimepicker({
+                 defaultDate: "{{ urlentry.datetime_available_from }}"
+             });
+       $('#datetimepicker7').datetimepicker({
+   useCurrent: false //Important! See issue #1075
+   });
+       $("#datetimepicker6").on("dp.change", function (e) {
+           $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+       });
+       $("#datetimepicker7").on("dp.change", function (e) {
+           $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+       });
+   });
+</script>
+                    </fieldset>
+                {% endif %}  {% endif %}
+        {% if urlentry.author == request.user and request.user.is_staff %}
+        <br><input type="submit" class="btn btn-danger" value="Update Link">
+        {% endif %}
+        {% if urlentry.author == request.user %}
+                        <br> <br>
+        <legend><h2>Widgets</h2></legend>
+<!-- Bootstrap 5 -->
+<div class="accordion" id="menu">
+  <!-- item-1 -->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+  <button class="accordion-button collapsed bg-warning text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#item-1">
+     <h4>Clicks counter</h4>
+      </button>
+    </h2>
+    <!-- класс show делает пункт открытым -->
+    <div id="item-1" class="accordion-collapse collapse" data-bs-parent="#menu">
+      <div class="accordion-body">
+         <b> Direct link: </b> <a href="https://preclass.u9.by/polls/{{ urlentry.pk }}/results/get">https://preclass.u9.by/polls/{{ urlentry.pk }}/results/get</a>
+       <br><b> PHP: </b> <br>
+          &lt;?php echo file_get_contents(&quot;https://preclass.u9.by/polls/{{ urlentry.pk }}/results/get&quot;); ?&gt;
+          <br><b> JavaScript: </b>
+           <br>
+&lt;div id=&quot;raz1&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+(function(){
+  var http = new XMLHttpRequest();
+  http.open('GET', 'https://preclass.u9.by/polls/{{ urlentry.pk }}/results/get');
+  http.onreadystatechange = function () {
+    if (this.readyState == 4 &amp;&amp; this.status == 200) {
+      document.getElementById('raz1').innerHTML = this.responseText;
+    }
+  }
+  http.send(null);
+})()
+&lt;/script&gt;
+        <br> <br>
+      </div>
+    </div>
+  </div>
+      {% endif %}
+{% if urlentry.author == request.user and request.user.is_staff %}
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed bg-warning text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#item-2">
+       <h4>Short link with snapshot</h4>
+      </button>
+    </h2>
+    <div id="item-2" class="accordion-collapse collapse" data-bs-parent="#menu">
+      <div class="accordion-body">
+          <b> HTML code: </b> <br>
+          &lt;a href="https://preclass.u9.by/{{ urlentry.url_short }}">&lt;img src="{{ urlentry.snapshot }}" width="204" height="152" alt="snapshot">&lt;/a>
+         <br> <br><b> Result: </b> <br>
+        <a href="https://preclass.u9.by/{{ urlentry.url_short }}">
+               <img src="{{ urlentry.snapshot }}" width="204" height="152" alt="snapshot">
+        </a>
+      </div>
+    </div>
+  </div>
+{% endif %}
+</div>
+
+
+    </form>
+<br>
+<br>
+...
+{% endblock %}
+

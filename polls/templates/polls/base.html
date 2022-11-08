@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block Title %}Links{% endblock %}</title>
+    <style type="text/css">
+
+    </style>
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" />
+    
+    <style type="text/css">
+  BODY {
+  background: "https://u9.by/uby/bg.jpg"; /* Фоновый рисунок */
+  }
+  
+  </style>
+
+</head>
+<body>
+    {% include 'polls/nav.html' %}
+    <div class="container">
+        {% block Body %}{% endblock %}
+    </div>
+
+    <script src="{% static 'js/bootstrap.bundle.js' %}" type="text/javascript"></script>
+
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Optional theme --> <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    
+
+website4 polls.u9.by
+</body>
+</html>

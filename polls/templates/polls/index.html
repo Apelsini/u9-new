@@ -1,0 +1,80 @@
+{% extends 'polls/base.html' %}
+{% block Title %}Links List{% endblock %}
+{% block Body %}
+
+<style>
+   .colortext {
+     color: red; /* Красный цвет выделения */
+   }
+  </style>
+
+{% if links_list %}
+  
+      {% if request.user.is_superuser %}
+<legend>Links of all authors:</legend>
+
+    {% for links in links_list %}
+       
+        <a href="{% url 'polls:detail' links.id %}">
+          {{ links.url_text|slice:':75' }}
+        </a><br> 
+           <b>author:</b>[{{ links.author }}] {% if links.author.is_staff %} <span class="colortext">(customer)</span> {% endif%}
+            <b>date:</b>[{{ links.create_date }}]
+        <a href="{% url 'polls:delete' links.id %}" type="button" class="btn btn-danger btn-sm">
+                  Delete
+        </a><br> <br> 
+            {% endfor %}
+      <br><legend>Your links, [{{ request.user.username }}]</legend>
+        {% endif %}
+
+        {% if links.author == request.user %}
+        <legend>Your links as an author:</legend>
+      {% endif %}
+       {% for links in links_list %}
+      {% if links.author == request.user %}
+
+        <a href="{% url 'polls:detail' links.id %}">
+          {{ links.url_text|slice:':75' }}
+        </a>
+           <b>date:</b>[{{ links.create_date }}]
+        <a href="{% url 'polls:delete' links.id %}" type="button" class="btn btn-danger btn-sm">
+                  Delete
+        </a> <br>
+        {% endif %}
+      {% endfor %}
+
+
+
+{% else %}
+  <p>No links avaliable.</p>
+{% endif %}
+    {% if request.user.is_authenticated %}
+        <a href="{% url 'polls:new' %}"  type="button" class="btn btn-danger">Add New Link</a>
+    {% endif %}
+   {% if not request.user.is_authenticated %} 
+  <span class="colortext"> <b>Please login or register to shorten links </b></span>  <br>  <br> 
+  <b>  Advantages </b> <br>
+- Short link format <b>u9.by/aBc7D</b><br> 
+- From 4 to 5 characters in a shortened link after / <br> 
+- The shortened link uses only human-readable characters (a-z, A-Z, and the numbers 2 to 9)<br> 
+- 0 and 1 are not used, so as not to confuse them with Latin O and I<br> 
+- When you click on a shortened link, statistics are collected that are visible in your personal account<br> 
+- QR code generator<br> 
+- Embeddable link click count (in PHP and JavaScript)<br> 
+<br> 
+<b>Advanced users (by subscription*)</b><br> 
+- Short link format <b>u9.by/aB7</b> up to 3 characters<br> 
+- Browser and OS Information<br> 
+- What site or account did the user come from<br> 
+- Embeddable screenshot of the site that the user goes to via the link<br> 
+- Setting the date and time of the beginning / end of the availability of the link <br> 
+- The ability to link ads to click on the link<br>
+<i>*subscription can be paid for a short number via SMS, <br> the cost is approximately two cups of coffee.<br>  One payment - registration forever.</i><br> <br> 
+<b>Future plans (by subscription*)</b><br> 
+- The ability to indicate human-readable words <b>u9.by/Firma</b><br> 
+- Customize the look of the page on which the image is displayed, add advertising.<br> 
+- Adjust its frequency (for example, every third click will cause ads to be displayed on the affiliate link you have built in)<br> 
+- Embeddable countdown counter before the start / until the end of the availability of the link<br> 
+- Extended statistics in a personal account, the set of which is constantly updated, namely, brief country click-through statistics<br> 
+    {% endif %}
+{% endblock %}

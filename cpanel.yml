@@ -1,6 +1,6 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYFROM=/home/uby/website4_git/
+    - export DEPLOYFROM=/home/uby/website4-git/
     - export DEPLOYTO=/home/uby/website4/
     - /bin/cp -R * $DEPLOYTO

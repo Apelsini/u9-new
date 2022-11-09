@@ -1,6 +1,6 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/uby/website4_git/
-    - export BOTTO=/home/uby/website4/
-    - /bin/cp -R * $DEPLOYPATH
+    - export DEPLOYFROM=/home/uby/website4_git/
+    - export DEPLOYTO=/home/uby/website4/
+    - /bin/cp -R * $DEPLOYTO

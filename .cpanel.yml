@@ -1,11 +1,6 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYFROM=/home/uby/website4_git/
-    - export DEPLOYTO=/home/uby/website4/
-    # root folder
-    - /bin/cp /home/uby/website4_git/__init__.py $DEPLOYTO
-    - /bin/cp /home/uby/website4_git/manage.py $DEPLOYTO
-    - /bin/cp /home/uby/website4_git/passenger_wsgi.py $DEPLOYTO
-    - /bin/cp /home/uby/website4_git/testfile $DEPLOYTO
-    # authentication folder
+    - export DEPLOYPATH=/home/uby/website4_git/
+    - export BOTTO=/home/uby/website4/
+    - /bin/cp -r /home/uby/website4_git/* /home/uby/website4/

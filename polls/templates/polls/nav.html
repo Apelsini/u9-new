@@ -6,6 +6,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="d-flex flex-column bd-highlight mb-3">
+            <div class="p-2 bd-highlight">
         <div class="d-flex flex-row bd-highlight mb-3">
         <div class="navbar-nav">
            {% if request.user.is_authenticated %}
@@ -39,11 +41,15 @@
            </div>
           </div>
         </div>
+        </div>
+        </div>
         {% endif %}
 
 
             {% if request.user.is_authenticated %}
             <div class="d-flex flex-row bd-highlight mb-3">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                 <div class="d-flex flex-column bd-highlight mb-3">
                 <div class="navbar-nav">
                         <div class="p-2 bd-highlight">
                             <div class="nav-item">
@@ -57,6 +63,8 @@
                         </div>
                 </div>
             </div>
+              </div>
+                </div>
             {% endif %}
     </div>
   </div>

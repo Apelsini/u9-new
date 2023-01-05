@@ -8,8 +8,9 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <div class="navbar-nav">
             <div class="d-flex flex-column bd-highlight mb-3">
-                <div class="p-2 bd-highlight" style="background-color: #34abf2;">
+                <div class="p-2 bd-highlight">
                     <div class="d-inline-flex flex-row bd-highlight mb-3">
+                        <div class="p-2 bd-highlight" style="background-color: #34abf2;">
                       {% if request.user.is_authenticated %}
                         <div class="p-2 bd-highlight">
                         <div class="nav-item">
@@ -41,10 +42,7 @@
                         </div>
                         </div>
                 </div>
-                <div class="p-2 bd-highlight">
-                    <a class="navbar-brand" href="#">URLs</a>
-                   </div>
-
+                </div>
 
         {% endif %}
 

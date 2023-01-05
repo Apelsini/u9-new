@@ -26,18 +26,21 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'auth:reg' %}">Register</a>
             </li>
+          </ul>
         {% endif %}
 
 
             {% if request.user.is_authenticated %}
+            <ul class="navbar-nav">
             <li class="nav-item">
             <a class="nav-link" href="{% url 'polls:index' %}" aria-current="page"><b> <span class = "glyphicon glyphicon-list"></span> List</b></a>
             </li>
             <li class="nav-item">
             <a class="nav-link" href="{% url 'polls:new' %}"><b> <span class = "glyphicon glyphicon-link"></span> New Link</b></a>
             </li>
+            </ul>
             {% endif %}
-        </ul>
+
     </div>
   </div>
   <div class="container">

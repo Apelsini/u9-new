@@ -27,23 +27,18 @@
                 <a class="nav-link" href="{% url 'auth:reg' %}">Register</a>
             </li>
         {% endif %}
-      </ul>
-    </div>
+
+
             {% if request.user.is_authenticated %}
-            <br>
-            <div class="collapse navbar-collapse" id="navbarNav2">
-            <ul class="navbar-nav">
-                <a class="navbar-brand" href="#">URLs:</a>
             <li class="nav-item">
             <a class="nav-link" href="{% url 'polls:index' %}" aria-current="page"><b> <span class = "glyphicon glyphicon-list"></span> List</b></a>
             </li>
             <li class="nav-item">
             <a class="nav-link" href="{% url 'polls:new' %}"><b> <span class = "glyphicon glyphicon-link"></span> New Link</b></a>
             </li>
-            </ul>
-            </div>
             {% endif %}
-
+        </ul>
+    </div>
   </div>
   <div class="container">
       <input type="button" class="btn btn-info" onclick="location.href='https://a.u9.by'" value="Freeware soft & music">

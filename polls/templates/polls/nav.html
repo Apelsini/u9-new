@@ -7,9 +7,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <div class="navbar-nav">
-            <div class="d-inline-flex flex-column bd-highlight mb-3">
+            <div class="d-flex flex-column bd-highlight mb-3">
                 <div class="p-2 bd-highlight">
-                    <div class="d-flex flex-row bd-highlight mb-3">
+
                       {% if request.user.is_authenticated %}
                         <div class="p-2 bd-highlight">
                         <div class="nav-item">
@@ -39,7 +39,7 @@
                         <a class="nav-link" href="{% url 'auth:reg' %}">Register</a>
                         </div>
                         </div>
-                        </div>
+
                 </div>
             </div>
 

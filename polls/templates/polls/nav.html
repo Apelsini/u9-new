@@ -8,13 +8,6 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
            {% if request.user.is_authenticated %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'polls:index' %}" aria-current="page"><b>List</b></a>
-        </li>
-       
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'polls:new' %}"><b>New Link</b></a>
-            </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'auth:profile' request.user.profile.id %}">Profile [{{ user.username }}]</a>
             </li>
@@ -26,6 +19,16 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'auth:logout' %}">Logout</a>
             </li>
+                     {% if request.user.is_authenticated %}
+                    <br>
+                     <li class="nav-item">
+                         <a class="nav-link" href="{% url 'polls:index' %}" aria-current="page"><b>List</b></a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'polls:new' %}"><b>New Link</b></a>
+                     </li>
+                    {% endif %}
         {% else %}
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'auth:login' %}">Login</a>

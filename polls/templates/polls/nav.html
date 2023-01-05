@@ -28,8 +28,9 @@
             </li>
         {% endif %}
       </ul>
+    </div>
             {% if request.user.is_authenticated %}
-            <br>
+            <div class="collapse navbar-collapse" id="navbarNav2">
             <ul class="navbar-nav">
             <li class="nav-item">
             <a class="nav-link" href="{% url 'polls:index' %}" aria-current="page"><b>List</b></a>
@@ -38,8 +39,9 @@
             <a class="nav-link" href="{% url 'polls:new' %}"><b>New Link</b></a>
             </li>
             </ul>
+            </div>
             {% endif %}
-    </div>
+
   </div>
   <div class="container">
       <input type="button" class="btn btn-info" onclick="location.href='https://a.u9.by'" value="Freeware soft & music">

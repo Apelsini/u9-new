@@ -8,6 +8,7 @@
    }
 
 
+
 </style>
 
 {% if links_list %}
@@ -22,8 +23,6 @@
             <a href="{% url 'polls:detail' links.id %}">
                 {{ links.url_text|slice:':75' }}
             </a></td>
-    </tr>
-    <tr>
         <td>
             <b>author:</b>[{{ links.author }}] {% if links.author.is_staff %} <span class="colortext">(customer)</span>
             {% endif %}
@@ -38,26 +37,36 @@
         </td>
     </tr>
     {% endfor %}
-    <br>
-    <legend>Your links, [{{ request.user.username }}]</legend>
-    {% endif %}
+    </tbody>
+</table>
+<br>
+<legend>Your links, [{{ request.user.username }}]</legend>
+{% endif %}
 
-    {% if links.author == request.user %}
-    <legend>Your links as an author:</legend>
-    {% endif %}
+{% if links.author == request.user %}
+<legend>Your links as an author:</legend>
+{% endif %}
+
+<table class="table">
+    <tbody>
     {% for links in links_list %}
     {% if links.author == request.user %}
-
-    <a href="{% url 'polls:detail' links.id %}">
-        {{ links.url_text|slice:':75' }}
-    </a>
-    <b>date:</b>[{{ links.create_date }}]
-    <a href="{% url 'polls:delete' links.id %}" type="button" class="btn btn-danger btn-sm">
-        Delete
-    </a> <br>
+    <tr>
+        <td><a href="{% url 'polls:detail' links.id %}">
+            {{ links.url_text|slice:':75' }}
+        </a>
+        </td>
+        <td>
+            <b>date:</b>[{{ links.create_date }}]
+        </td>
+        <td>
+            <a href="{% url 'polls:delete' links.id %}" type="button" class="btn btn-danger btn-sm">
+                Delete
+            </a> <br>
+        </td>
+    </tr>
     {% endif %}
     {% endfor %}
-
     </tbody>
 </table>
 

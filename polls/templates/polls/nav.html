@@ -11,13 +11,13 @@
 
             </div>
 
-            {% endif %}
+
 
 
             <div class="p-2 bd-highlight" style="background-color: #34abc2;">
 
                 <div class="d-flex flex-row bd-highlight mb-3" style="background-color: #34aba2;">
- <div class="collapse navbar-collapse" id="navbarNav">
+<div class="collapse navbar-collapse" id="navbarNav">
                     <div class="navbar-nav">
 
                         {% if request.user.is_authenticated %}
@@ -50,6 +50,7 @@
                                 <a class="nav-link" href="{% url 'auth:reg' %}">Register</a>
                             </div>
                         </div>
+                        {% endif %}
                     </div>
                 </div>
                     {% if request.user.is_authenticated %}

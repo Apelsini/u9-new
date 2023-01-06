@@ -16,6 +16,14 @@
 {% if request.user.is_superuser %}
 <legend>Links of all authors:</legend>
 <table class="table-condensed">
+    <thead>
+    <tr>
+      <th scope="col">URL (click to edit)</th>
+      <th scope="col">Author</th>
+      <th scope="col">Date</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
     <tbody>
     {% for links in links_list %}
     <tr>
@@ -24,11 +32,11 @@
                 {{ links.url_text|slice:':50' }}
             </a></td>
         <td>
-            <b>author:</b>[{{ links.author }}] {% if links.author.is_staff %} <span class="colortext">(customer)</span>
+           {{ links.author }} {% if links.author.is_staff %} <span class="colortext">(customer)</span>
             {% endif %}
         </td>
         <td>
-            <b>date:</b>[{{ links.create_date }}]
+            {{ links.create_date }}
         </td>
         <td>
             <a href="{% url 'polls:delete' links.id %}" type="button" class="btn btn-danger btn-sm">
@@ -57,7 +65,7 @@
         </a>
         </td>
         <td>
-            <b>date:</b>[{{ links.create_date }}]
+            {{ links.create_date }}
         </td>
         <td>
             <a href="{% url 'polls:delete' links.id %}" type="button" class="btn btn-danger btn-sm">

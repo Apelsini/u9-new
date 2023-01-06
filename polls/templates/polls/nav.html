@@ -8,14 +8,22 @@
         </button>
         <div class="d-flex flex-row bd-highlight mb-3">
             <div class="p-2 bd-highlight" style="background-color: #34fba2;">
-                <div class="collapse navbar-collapse" id="navbarNav">
+
+            </div>
+
+            {% endif %}
+
+
+            <div class="p-2 bd-highlight" style="background-color: #34abc2;">
+
+                <div class="d-flex flex-row bd-highlight mb-3" style="background-color: #34aba2;">
+ <div class="collapse navbar-collapse" id="navbarNav">
                     <div class="navbar-nav">
 
                         {% if request.user.is_authenticated %}
                         <div class="p-2 bd-highlight">
                             <div class="nav-item">
-                                <a class="nav-link" href="{% url 'auth:profile' request.user.profile.id %}">Profile [{{
-                                    user.username }}]</a>
+                                <a class="nav-link" href="{% url 'auth:profile' request.user.profile.id %}">Profile [{{ user.username }}]</a>
                             </div>
                         </div>
                         {% if request.user.is_superuser %}
@@ -44,15 +52,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            {% endif %}
-
-
-            <div class="p-2 bd-highlight" style="background-color: #34abc2;">
-
-                <div class="d-flex flex-row bd-highlight mb-3" style="background-color: #34aba2;">
-
                     {% if request.user.is_authenticated %}
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <div class="navbar-nav">

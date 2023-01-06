@@ -19,7 +19,7 @@
     <tr>
               <th><b>{{ profile.user.username }}</b>   {% if profile.user.is_staff %} <span class="colortext">(customer)</span>  {% endif %}</th>
         <th>{{ profile.user.email }}</th>
-            <th><button type="button" class="btn btn-warning" onclick="location.href='{{ profile.get_absolute_url }}'">Open</button> </th>
+            <th><button type="button" class="btn btn-danger" onclick="location.href='{{ profile.get_absolute_url }}'">Open</button> </th>
         </tr>
             {% endfor %}
 

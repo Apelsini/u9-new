@@ -14,8 +14,7 @@
                         {% if request.user.is_authenticated %}
                         <div class="p-2 bd-highlight">
                             <div class="nav-item">
-                                <a class="nav-link" href="{% url 'auth:profile' request.user.profile.id %}">Profile [{{
-                                    user.username }}]</a>
+                                <a class="nav-link" href="{% url 'auth:profile' request.user.profile.id %}">Profile [{{ user.username }}]</a>
                             </div>
                         </div>
                         {% if request.user.is_superuser %}

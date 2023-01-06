@@ -8,50 +8,50 @@
         </button>
         <div class="d-flex flex-row bd-highlight mb-3">
             <div class="p-2 bd-highlight" style="background-color: #34fba2;">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="navbar-nav">
 
+                        {% if request.user.is_authenticated %}
+                        <div class="p-2 bd-highlight">
+                            <div class="nav-item">
+                                <a class="nav-link" href="{% url 'auth:profile' request.user.profile.id %}">Profile [{{ user.username }}]</a>
+                            </div>
+                        </div>
+                        {% if request.user.is_superuser %}
+                        <div class="p-2 bd-highlight">
+                            <div class="nav-item">
+                                <a class="nav-link" href="{% url 'auth:users' %}"><span
+                                        class="glyphicon glyphicon-sunglasses"></span>Users</a>
+                            </div>
+                        </div>
+                        {% endif %}
+                        <div class="p-2 bd-highlight">
+                            <div class="nav-item">
+                                <a class="nav-link" href="{% url 'auth:logout' %}">Logout</a>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="p-2 bd-highlight">
+                            <div class="nav-item">
+                                <a class="nav-link" href="{% url 'auth:login' %}">Login</a>
+                            </div>
+                        </div>
+                        <div class="p-2 bd-highlight">
+                            <div class="nav-item">
+                                <a class="nav-link" href="{% url 'auth:reg' %}">Register</a>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
+
+
 
 
             <div class="p-2 bd-highlight" style="background-color: #34abc2;">
 
                 <div class="d-flex flex-row bd-highlight mb-3" style="background-color: #34aba2;">
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <div class="navbar-nav">
-                            <div class="p-2 bd-highlight">
-                                {% if request.user.is_authenticated %}
-                                <div class="p-2 bd-highlight">
-                                    <div class="nav-item">
-                                        <a class="nav-link" href="{% url 'auth:profile' request.user.profile.id %}">Profile [{{ user.username }}]</a>
-                                    </div>
-                                </div>
-                                {% if request.user.is_superuser %}
-                                <div class="p-2 bd-highlight">
-                                    <div class="nav-item">
-                                        <a class="nav-link" href="{% url 'auth:users' %}"><span
-                                                class="glyphicon glyphicon-sunglasses"></span>Users</a>
-                                    </div>
-                                </div>
-                                {% endif %}
-                                <div class="p-2 bd-highlight">
-                                    <div class="nav-item">
-                                        <a class="nav-link" href="{% url 'auth:logout' %}">Logout</a>
-                                    </div>
-                                </div>
-                                {% else %}
-                                <div class="p-2 bd-highlight">
-                                    <div class="nav-item">
-                                        <a class="nav-link" href="{% url 'auth:login' %}">Login</a>
-                                    </div>
-                                </div>
-                                <div class="p-2 bd-highlight">
-                                    <div class="nav-item">
-                                        <a class="nav-link" href="{% url 'auth:reg' %}">Register</a>
-                                    </div>
-                                </div>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
 
                     {% if request.user.is_authenticated %}
                     <div class="collapse navbar-collapse" id="navbarNav">

@@ -125,16 +125,16 @@ See statistics of following this link
     <!-- класс show делает пункт открытым -->
     <div id="item-1" class="accordion-collapse collapse" data-bs-parent="#menu">
       <div class="accordion-body">
-         <b> Direct link: </b> <a href="https://preclass.u9.by/polls/{{ urlentry.pk }}/results/get">https://preclass.u9.by/polls/{{ urlentry.pk }}/results/get</a>
+         <b> Direct link: </b> <a href="https://u9.by/polls/{{ urlentry.pk }}/results/get">https://u9.by/polls/{{ urlentry.pk }}/results/get</a>
        <br><b> PHP: </b> <br>
-          &lt;?php echo file_get_contents(&quot;https://preclass.u9.by/polls/{{ urlentry.pk }}/results/get&quot;); ?&gt;
+          &lt;?php echo file_get_contents(&quot;https://u9.by/polls/{{ urlentry.pk }}/results/get&quot;); ?&gt;
           <br><b> JavaScript: </b>
            <br>
 &lt;div id=&quot;raz1&quot;&gt;&lt;/div&gt;
 &lt;script&gt;
 (function(){
   var http = new XMLHttpRequest();
-  http.open('GET', 'https://preclass.u9.by/polls/{{ urlentry.pk }}/results/get');
+  http.open('GET', 'https://u9.by/polls/{{ urlentry.pk }}/results/get');
   http.onreadystatechange = function () {
     if (this.readyState == 4 &amp;&amp; this.status == 200) {
       document.getElementById('raz1').innerHTML = this.responseText;
@@ -158,9 +158,9 @@ See statistics of following this link
     <div id="item-2" class="accordion-collapse collapse" data-bs-parent="#menu">
       <div class="accordion-body">
           <b> HTML code: </b> <br>
-          &lt;a href="https://preclass.u9.by/{{ urlentry.url_short }}">&lt;img src="{{ urlentry.snapshot }}" width="204" height="152" alt="snapshot">&lt;/a>
+          &lt;a href="https://u9.by/{{ urlentry.url_short }}">&lt;img src="{{ urlentry.snapshot }}" width="204" height="152" alt="snapshot">&lt;/a>
          <br> <br><b> Result: </b> <br>
-        <a href="https://preclass.u9.by/{{ urlentry.url_short }}">
+        <a href="https://u9.by/{{ urlentry.url_short }}">
                <img src="{{ urlentry.snapshot }}" width="204" height="152" alt="snapshot">
         </a>
       </div>

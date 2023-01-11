@@ -6,8 +6,16 @@
         {% csrf_token %}
         <fieldset>
             <legend>Link</legend>
-            {{ form|as_p }}
-            <input type="submit" class="btn btn-danger" value="Submit Link">
+            <table>
+                <tr>
+                    <td>
+                    {{ form|as_p }}
+                    </td>
+                    <td>
+                        <input type="submit" class="btn btn-danger" value="Submit Link">
+                    </td>
+                </tr>
+            </table>
         </fieldset>
     </form>
 {% endblock %}

@@ -18,6 +18,7 @@ class UrlentryForm(ModelForm):
             self.fields['author'].widget = HiddenInput()
             self.fields['url_id'].widget = HiddenInput()
             self.fields['url_id'].required = False
+            self.fields['url_text'].widget = TextInput()
             self.fields['datetime_available_from'].widget = HiddenInput()
             self.fields['datetime_available_from'].required = False
             self.fields['datetime_available_to'].widget = HiddenInput()

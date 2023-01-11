@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from django.forms.widgets import HiddenInput
+from django.forms.widgets import HiddenInput, TextInput
 from .models import Urlentry, Leads
 
 # class DateToFromForm(ModelForm):

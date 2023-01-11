@@ -1,21 +1,16 @@
-
 {% extends 'polls/base.html' %}
 {% block Title %}Link{% endblock %}
 {% block Body %}
-    <form action="" method="post" >
+    <form class="form-inline" action="" method="post" >
         {% csrf_token %}
         <fieldset>
             <legend>Link</legend>
-            <table>
-                <tr>
-                    <td>
-                    {{ form|as_p }}
-                    </td>
-                    <td>
-                        <input type="submit" class="btn btn-danger" value="Submit Link">
-                    </td>
-                </tr>
-            </table>
+                    <div class="form-group row">
+                            <div class="col-xs-5">
+                                {{ form|as_p }}
+                            </div>
+                    </div>
+                    <input type="submit" class="btn btn-danger" value="Submit Link">
         </fieldset>
     </form>
 {% endblock %}

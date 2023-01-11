@@ -10,14 +10,16 @@
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" />
     
     <style type="text/css">
-  BODY {
-  background: "https://u9.by/uby/bg.jpg"; /* Фоновый рисунок */
-  }
+
   
   </style>
 
 </head>
 <body>
+<div class="bg-image"
+     style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/76.jpg');
+            height: 100vh">
+</div>
     {% include 'polls/nav.html' %}
     <div class="container">
         {% block Body %}{% endblock %}

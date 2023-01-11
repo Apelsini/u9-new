@@ -8,12 +8,16 @@
             {% for message in messages %}
                 <p style="color: turquoise">{{ message }}</p>
             {% endfor %}
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username">
-            <br>
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password">
-            <input type="submit" class="btn btn-danger" value="LogIn">
+            <table>
+            <tr>
+                <td><label for="username">Username</label></td>
+            <td><input type="text" name="username" id="username"></td>
+                <td></td>
+            </tr>
+            <td><label for="password">Password</label></td>
+            <td><input type="password" name="password" id="password"></td>
+            <td><input type="submit" class="btn btn-danger" value="Login"></td>
+            </table>
         </fieldset>
     </form>
 {% endblock %}

@@ -39,6 +39,9 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
 });
 
 
+
+
+
             </script>
             <br>
             {% if urlentry.author == request.user %}
@@ -74,8 +77,9 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
                     <img src="{{ urlentry.qr_code }}" width="100" height="100" alt="qr"><br>
             </div>
     </div>
-            {% if urlentry.author == request.user %}
-        <div class="d-flex flex-row bd-highlight mb-3">
+    {% if urlentry.author == request.user %}
+    <div class="p-2 bd-highlight">
+        <div class="container">
             <legend><h2>Widgets</h2></legend>
             <!-- Bootstrap 5 -->
             <div class="accordion" id="menu">
@@ -135,10 +139,12 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
                         </div>
                     </div>
                 </div>
+
                 {% endif %}
             </div>
-
         </div>
+
+    </div>
     {% if urlentry.author == request.user %}
     {% if request.user.is_staff %}
     <legend><h2>Customer section</h2></legend>
@@ -189,6 +195,9 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
    });
 
 
+
+
+
         </script>
         </fieldset>
         {% endif %} {% endif %}
@@ -197,9 +206,9 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
         {% endif %}
 
 
-            </form>
-            <br>
-            <br>
-            ...
-            {% endblock %}
+        </form>
+        <br>
+        <br>
+        ...
+        {% endblock %}
 

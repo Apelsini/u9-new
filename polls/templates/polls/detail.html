@@ -22,7 +22,7 @@
             integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
 
     <div class="d-flex flex-row bd-highlight mb-3">
-        <div class="p-2 bd-highlight" style="--bs-bg-opacity: .8;">
+        <div class="p-2 bd-highlight" style="background-color: #E4FAF7;">
             <h1><a href="https://u9.by/{{ urlentry.url_short }}">
                 u9.by/{{ urlentry.url_short }}
             </a>
@@ -61,7 +61,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
 
         <form action="{% url 'polls:update' urlentry.id %}" method="post">
             {% csrf_token %}
-            <div class="p-2 bd-highlight" style="--bs-bg-opacity: .8;>
+            <div class="p-2 bd-highlight" style="background-color: #E4FAF7;">
                 <fieldset>
                     <legend><h2>Link content</h2></legend>
                     <label><strong>Author: </strong>{{ urlentry.author }}</label> <br>

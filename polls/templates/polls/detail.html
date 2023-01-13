@@ -144,7 +144,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
     </div>
     {% if urlentry.author == request.user %}
     {% if request.user.is_staff %}
-             <div class="col-md-12 mx-2 my-2 my-sm-3 my-lg-4 rounded bd-highlight" style="background-color: #EEF2F2;">
+             <div class="col-md-11 mx-2 my-2 my-sm-3 my-lg-4 rounded bd-highlight" style="background-color: #EEF2F2;">
     <legend><h2>Customer section</h2></legend>
     <label><strong>Snapshot: </strong> <a href={{ urlentry.snapshot }}>take</a></label> <br>
     <img src="{{ urlentry.snapshot }}" width="204" height="152" alt="snapshot"><br>

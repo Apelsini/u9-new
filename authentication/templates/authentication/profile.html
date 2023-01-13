@@ -1,26 +1,38 @@
 {% extends 'polls/base.html' %}
 {% block Title %}User Profile{% endblock %}
 {% block Body %}
-    <strong>User Name:</strong>{{ profile.user.username }}
-    <br>
-    <strong>User Email:</strong>{{ profile.user.email }}
-    <br>
+<legend>User profile</legend>
+<table>
+    <tr>
+        <td><strong>User Name:</strong></td>
+        <td>{{ profile.user.username }}</td>
+    </tr>
+    <tr>
+        <td><strong>User Email:</strong></td>
+        <td> {{ profile.user.email }}</td>
+    </tr>
     <!-- statistics -->
-    <strong>Customer: </strong>{{ profile.user.is_staff }}
-    <br>
+    <tr>
+        <td>
+            <strong>Customer: </strong></td>
+        <td> {{ profile.user.is_staff }}</td>
+    </tr>
     {% if request.user.is_superuser %}
-    <strong>Superuser: </strong>{{ profile.user.is_superuser }}
-    <br>
+    <tr>
+        <td><strong>Superuser: </strong></td>
+        <td>{{ profile.user.is_superuser }}
+        </td>
+    </tr>
     {% endif %}
-
-    {% if not profile.user.is_staff and not request.user.is_superuser %}
-    <a class="btn btn-warning" href="authentication/customer" role="button">Upgrade to our Customer</a>
-    {% endif %}
-    {% if request.user.is_superuser and not profile.user.is_staff %}
-    <a class="btn btn-danger" href="authentication/customer" role="button">Add Customer privileges</a>
-    {% endif %}
-    {% if request.user.is_superuser and profile.user.is_staff %}
-    <a class="btn btn-danger" href="authentication/customer" role="button">Remove Customer privileges</a>
-    {% endif %}
+</table>
+{% if not profile.user.is_staff and not request.user.is_superuser %}
+<a class="btn btn-warning" href="authentication/customer" role="button">Upgrade to our Customer</a>
+{% endif %}
+{% if request.user.is_superuser and not profile.user.is_staff %}
+<a class="btn btn-danger" href="authentication/customer" role="button">Add Customer privileges</a>
+{% endif %}
+{% if request.user.is_superuser and profile.user.is_staff %}
+<a class="btn btn-danger" href="authentication/customer" role="button">Remove Customer privileges</a>
+{% endif %}
 <br>
 {% endblock %}

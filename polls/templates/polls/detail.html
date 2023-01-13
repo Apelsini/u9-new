@@ -46,6 +46,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
 });
 
 
+
             </script>
             <br>
             {% if urlentry.author == request.user %}
@@ -72,107 +73,108 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
                                                                           }}>generate</a></label> <br>
                     <img src="{{ urlentry.qr_code }}" width="100" height="100" alt="qr"><br>
             </div>
+</div>
+            {% if urlentry.author == request.user %}
+            <div class="p-2 bd-highlight" style="background-color: #EEF2F2;">
+                <legend>Widgets</legend>
 
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Clicks counter
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                             data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <b> Direct link: </b> <a href="https://u9.by/polls/{{ urlentry.pk }}/results/get">https://u9.by/polls/{{
+                                urlentry.pk }}/results/get</a>
+                                <br><b> PHP: </b> <br>
+                                &lt;?php echo file_get_contents(&quot;https://u9.by/polls/{{ urlentry.pk }}/results/get&quot;);
+                                ?&gt;
+                                <br><b> JavaScript: </b>
+                                <br>
+                                &lt;div id=&quot;raz1&quot;&gt;&lt;/div&gt;
+                                &lt;script&gt;
+                                (function(){
+                                var http = new XMLHttpRequest();
+                                http.open('GET', 'https://u9.by/polls/{{ urlentry.pk }}/results/get');
+                                http.onreadystatechange = function () {
+                                if (this.readyState == 4 &amp;&amp; this.status == 200) {
+                                document.getElementById('raz1').innerHTML = this.responseText;
+                                }
+                                }
+                                http.send(null);
+                                })()
+                                &lt;/script&gt;
+                                <br> <br>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% if urlentry.author == request.user and request.user.is_staff %}
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Short link with snapshot
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                             data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <b> HTML code: </b> <br>
+                                &lt;a href="https://u9.by/{{ urlentry.url_short }}">&lt;img src="{{ urlentry.snapshot
+                                }}"
+                                width="204" height="152" alt="snapshot">&lt;/a>
+                                <br> <br><b> Result: </b> <br>
+                                <a href="https://u9.by/{{ urlentry.url_short }}">
+                                    <img src="{{ urlentry.snapshot }}" width="204" height="152" alt="snapshot">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+    </div>
     {% if urlentry.author == request.user %}
-    <div class="p-2 bd-highlight" style="background-color: #EEF2F2;">
-        <legend>Widgets</legend>
+    {% if request.user.is_staff %}
+    <legend><h2>Customer section</h2></legend>
+    <label><strong>Snapshot: </strong> <a href={{ urlentry.snapshot }}>take</a></label> <br>
+    <img src="{{ urlentry.snapshot }}" width="204" height="152" alt="snapshot"><br>
+    <label><strong>Partner ads: </strong>
+        <input type="text" name="partner_ads" id="partner_ads" value="{{ urlentry.partner_ads }}">
+    </label>
+    <br>
+    <label><strong>Link available </strong>
+        <div class="container">
+            <div class='col-md-5'>
+                <div class="form-group">
+                    from:
+                    <div class='input-group' id='datetimepicker06'>
+                        <input id="datetimepicker6" type='datetime-local' class="form-control"
+                               name="datetime_available_from" id="datetime_available_from"
+                               value="{{ urlentry.datetime_available_from|date:'dd.mm.YYYYTHH:ii' }}"/>
 
-        <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Clicks counter
-                    </button>
-                </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                     data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <b> Direct link: </b> <a href="https://u9.by/polls/{{ urlentry.pk }}/results/get">https://u9.by/polls/{{
-                        urlentry.pk }}/results/get</a>
-                        <br><b> PHP: </b> <br>
-                        &lt;?php echo file_get_contents(&quot;https://u9.by/polls/{{ urlentry.pk }}/results/get&quot;);
-                        ?&gt;
-                        <br><b> JavaScript: </b>
-                        <br>
-                        &lt;div id=&quot;raz1&quot;&gt;&lt;/div&gt;
-                        &lt;script&gt;
-                        (function(){
-                        var http = new XMLHttpRequest();
-                        http.open('GET', 'https://u9.by/polls/{{ urlentry.pk }}/results/get');
-                        http.onreadystatechange = function () {
-                        if (this.readyState == 4 &amp;&amp; this.status == 200) {
-                        document.getElementById('raz1').innerHTML = this.responseText;
-                        }
-                        }
-                        http.send(null);
-                        })()
-                        &lt;/script&gt;
-                        <br> <br>
                     </div>
                 </div>
             </div>
-            {% endif %}
-            {% if urlentry.author == request.user and request.user.is_staff %}
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Short link with snapshot
-                    </button>
-                </h2>
-                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                     data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <b> HTML code: </b> <br>
-                        &lt;a href="https://u9.by/{{ urlentry.url_short }}">&lt;img src="{{ urlentry.snapshot }}"
-                        width="204" height="152" alt="snapshot">&lt;/a>
-                        <br> <br><b> Result: </b> <br>
-                        <a href="https://u9.by/{{ urlentry.url_short }}">
-                            <img src="{{ urlentry.snapshot }}" width="204" height="152" alt="snapshot">
-                        </a>
+            <div class='col-md-5'>
+                <div class="form-group">
+                    to:
+                    <div class='input-group' id='datetimepicker7'>
+                        <input type='datetime-local' class="form-control" name="datetime_available_to"
+                               id="datetime_available_to" value="{{ urlentry.datetime_available_to }}"/>
+
                     </div>
                 </div>
             </div>
         </div>
-        {% endif %}
-
-    </div>
-   </div>
-{% if urlentry.author == request.user %}
-{% if request.user.is_staff %}
-<legend><h2>Customer section</h2></legend>
-<label><strong>Snapshot: </strong> <a href={{ urlentry.snapshot }}>take</a></label> <br>
-<img src="{{ urlentry.snapshot }}" width="204" height="152" alt="snapshot"><br>
-<label><strong>Partner ads: </strong>
-    <input type="text" name="partner_ads" id="partner_ads" value="{{ urlentry.partner_ads }}">
-</label>
-<br>
-<label><strong>Link available </strong>
-    <div class="container">
-        <div class='col-md-5'>
-            <div class="form-group">
-                from:
-                <div class='input-group' id='datetimepicker06'>
-                    <input id="datetimepicker6" type='datetime-local' class="form-control"
-                           name="datetime_available_from" id="datetime_available_from"
-                           value="{{ urlentry.datetime_available_from|date:'dd.mm.YYYYTHH:ii' }}"/>
-
-                </div>
-            </div>
-        </div>
-        <div class='col-md-5'>
-            <div class="form-group">
-                to:
-                <div class='input-group' id='datetimepicker7'>
-                    <input type='datetime-local' class="form-control" name="datetime_available_to"
-                           id="datetime_available_to" value="{{ urlentry.datetime_available_to }}"/>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <script type="text/javascript">
+        <script type="text/javascript">
    $(document).ready(function () {
        $('#datetimepicker6').datetimepicker({
                  defaultDate: "{{ urlentry.datetime_available_from }}"
@@ -187,17 +189,18 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
        });
    });
-    </script>
-    </fieldset>
-    {% endif %} {% endif %}
 
-    {% if urlentry.author == request.user and request.user.is_staff %}
-    <br><input type="submit" class="btn btn-danger" value="Update Link">
-    {% endif %}
+        </script>
+        </fieldset>
+        {% endif %} {% endif %}
+
+        {% if urlentry.author == request.user and request.user.is_staff %}
+        <br><input type="submit" class="btn btn-danger" value="Update Link">
+        {% endif %}
 
 
-    </form>
-    <br>
-    <br>
-    ...
-    {% endblock %}
+        </form>
+        <br>
+        <br>
+        ...
+        {% endblock %}

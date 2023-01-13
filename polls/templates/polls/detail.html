@@ -21,7 +21,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"
             integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
 
-    <div class="d-flex flex-row bd-highlight mb-3 justify-content-between">
+    <div class="d-flex flex-row bd-highlight mb-3 justify-content-around">
         <div class="p-2 bd-highlight rounded" style="background-color: #E4FAF7;">
             <h1><a href="https://u9.by/{{ urlentry.url_short }}">
                 u9.by/{{ urlentry.url_short }}
@@ -37,11 +37,6 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
 	colorLight : "#ffffff",
 	correctLevel : QRCode.CorrectLevel.L
 });
-
-
-
-
-
             </script>
             <br>
             {% if urlentry.author == request.user %}

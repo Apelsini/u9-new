@@ -30,8 +30,8 @@
         <form action="{% url 'polls:update' urlentry.id %}" method="post">
             {% csrf_token %}
 
-    <div class="d-flex flex-row align-content-start flex-wrap bd-highlight mb-3 justify-content-space-between">
-        <div class="p-2 col-md-2 bd-highlight rounded" style="background-color: #EEF2F2;">
+    <div class="d-flex flex-row align-content-start flex-wrap bd-highlight mb-3 justify-content-space-around">
+        <div class="p-2 col-md-3 mx-auto my-2 my-sm-3 my-lg-4 bd-highlight rounded" style="background-color: #EEF2F2;">
             <h1><a href="https://u9.by/{{ urlentry.url_short }}">
                 u9.by/{{ urlentry.url_short }}
             </a>
@@ -58,7 +58,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
             </button>
             {% endif %}
         </div>
-            <div class="p-2 col-md-3 bd-highlight rounded" style="background-color: #EEF2F2;">
+            <div class="p-2 col-md-3 mx-auto my-2 my-sm-3 my-lg-4 bd-highlight rounded" style="background-color: #EEF2F2;">
                 <fieldset>
                     <label><strong>Author: </strong></label>{{ urlentry.author }} <br>
                     <label><strong>Create date: </strong></label>{{ urlentry.create_date }} <br>
@@ -74,7 +74,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
             </div>
 
             {% if urlentry.author == request.user %}
-            <div class="p-2 col-md-6 rounded bd-highlight" style="background-color: #EEF2F2;">
+            <div class="p-2 col-md-6 mx-auto my-2 my-sm-3 my-lg-4 rounded bd-highlight" style="background-color: #EEF2F2;">
 
                 <legend>Widgets</legend>
 

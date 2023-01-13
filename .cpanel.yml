@@ -4,4 +4,4 @@ deployment:
     - export DEPLOYPATH=/home/uby/website4_git/
     - export BOTTO=/home/uby/website4/
     - /bin/cp -r /home/uby/website4_git/* /home/uby/website4/
-    - /bin/cp -r /home/uby/website4_git/assets/* /home/uby/publc_html/assets
+    - /bin/cp -r /home/uby/website4_git/assets/* /home/uby/publc_html/assets/

@@ -1,7 +1,10 @@
 {%  extends 'authentication/base.html' %}
 {% block Title %}Log-in{% endblock %}
 {% block Body %}
-    <form method="post" action="">
+<div class="container-sm bg-light text-dark bg-opacity-60">
+     <div class="row">
+         <div class="col-md-auto">
+            <form method="post" action="">
         <fieldset>
             <legend>Login</legend>
             {% csrf_token %}
@@ -19,5 +22,8 @@
             <td><input type="submit" class="btn btn-danger" value="Login"></td>
             </table>
         </fieldset>
-    </form>
+            </form>
+        </div>
+     </div>
+</div>
 {% endblock %}

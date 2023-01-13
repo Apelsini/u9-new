@@ -79,7 +79,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
                 <legend>Widgets</legend>
 
                 <div class="accordion" id="accordionExample">
-                    <div class="accordion-item">
+                    <div class="accordion-item bg-info">
                         <h2 class="accordion-header" id="headingOne" style="background-color: #34fbc2;">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -115,7 +115,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
                     </div>
                     {% endif %}
                     {% if urlentry.author == request.user and request.user.is_staff %}
-                    <div class="accordion-item">
+                    <div class="accordion-item bg-info">
                         <h2 class="accordion-header" id="headingTwo" style="background-color: #34fbc2;">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">

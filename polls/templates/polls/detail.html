@@ -29,7 +29,7 @@
         {% endfor %}
 
     <div class="d-flex flex-row bd-highlight mb-3 justify-content-around">
-        <div class="p-2 bd-highlight rounded" style="background-color: #A6D1CE;">
+        <div class="p-2 bd-highlight rounded" style="background-color: #34fbc2;">
             <h1><a href="https://u9.by/{{ urlentry.url_short }}">
                 u9.by/{{ urlentry.url_short }}
             </a>
@@ -56,7 +56,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
 
         <form action="{% url 'polls:update' urlentry.id %}" method="post">
             {% csrf_token %}
-            <div class="p-2 bd-highlight rounded" style="background-color: #A6D1CE;">
+            <div class="p-2 bd-highlight rounded" style="background-color: #34fbc2;">
                 <fieldset>
                     <label><strong>Author: </strong></label>{{ urlentry.author }} <br>
                     <label><strong>Create date: </strong></label>{{ urlentry.create_date }} <br>
@@ -72,9 +72,9 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
             </div>
     </div>
     {% if urlentry.author == request.user %}
-    <div class="p-2 bd-highlight" style="--bs-bg-opacity: .8;">
-        <div class="container">
-            <legend><h2>Widgets</h2></legend>
+    <div class="p-2 bd-highlight" style="background-color: #34fbc2;">
+
+            <legend>Widgets</legend>
             <!-- Bootstrap 5 -->
             <div class="accordion" id="menu">
                 <!-- item-1 -->
@@ -135,7 +135,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
                 </div>
 
                 {% endif %}
-            </div>
+
         </div>
 
     </div>

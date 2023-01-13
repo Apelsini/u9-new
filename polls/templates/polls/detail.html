@@ -72,7 +72,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
                                                                           }}>generate</a></label> <br>
                     <img src="{{ urlentry.qr_code }}" width="100" height="100" alt="qr"><br>
             </div>
-    </div>
+
     {% if urlentry.author == request.user %}
     <div class="p-2 bd-highlight" style="background-color: #EEF2F2;">
         <legend>Widgets</legend>
@@ -134,30 +134,11 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
                     </div>
                 </div>
             </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingThree">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Accordion Item #3
-                    </button>
-                </h2>
-                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                     data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
-                        collapse plugin adds the appropriate classes that we use to style each element. These classes
-                        control the overall appearance, as well as the showing and hiding via CSS transitions. You can
-                        modify any of this with custom CSS or overriding our default variables. It's also worth noting
-                        that just about any HTML can go within the <code>.accordion-body</code>, though the transition
-                        does limit overflow.
-                    </div>
-                </div>
-            </div>
         </div>
         {% endif %}
 
     </div>
-
+   </div>
 {% if urlentry.author == request.user %}
 {% if request.user.is_staff %}
 <legend><h2>Customer section</h2></legend>

@@ -29,5 +29,5 @@
 {% if request.user.is_superuser %}
 <a class="btn btn-warning" onclick="location.href='{% url 'auth:profile' profile.user.id %}'" role="button">Go back</a>
 {% endif %}
-
+<br>
 {% endblock %}

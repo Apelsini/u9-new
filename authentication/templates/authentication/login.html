@@ -2,32 +2,27 @@
 {% block Title %}Log-in{% endblock %}
 {% block Body %}
 <div class="d-inline-flex p-2 bd-highlight text-dark bg-light rounded bg-opacity-60">
-<div class="container rounded text-dark bg-light bg-opacity-60">
-     <div class="row justify-content-md-left">
-         <div class="col-md-4">
-             <div class="container">
-            <form method="post" action="">
-        <fieldset>
-            <legend>Login</legend>
-            {% csrf_token %}
-            {% for message in messages %}
+    <div class="container">
+        <form method="post" action="">
+            <fieldset>
+                <legend>Login</legend>
+                {% csrf_token %}
+                {% for message in messages %}
                 <p style="color: turquoise">{{ message }}</p>
-            {% endfor %}
-            <table>
-            <tr>
-                <td><label for="username">Username: </label></td>
-            <td><input type="text" name="username" id="username"></td>
-                <td></td>
-            </tr>
-            <td><label for="password">Password: </label></td>
-            <td><input type="password" name="password" id="password"></td>
-            <td><input type="submit" class="btn btn-danger" value="Login"></td>
-            </table>
-        </fieldset>
-            </form>
-              </div>
-        </div>
-     </div>
-</div>
+                {% endfor %}
+                <table>
+                    <tr>
+                        <td><label for="username">Username: </label></td>
+                        <td><input type="text" name="username" id="username"></td>
+                        <td></td>
+                    </tr>
+                    <td><label for="password">Password: </label></td>
+                    <td><input type="password" name="password" id="password"></td>
+                    <td><input type="submit" class="btn btn-danger" value="Login"></td>
+                </table>
+            </fieldset>
+        </form>
+
+    </div>
 </div>
 {% endblock %}

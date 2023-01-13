@@ -28,7 +28,7 @@
         {% endfor %}
 
     <div class="d-flex flex-row bd-highlight mb-3 justify-content-around">
-        <div class="p-2 bd-highlight rounded" style="--bs-bg-opacity: .9;">
+        <div class="p-2 bd-highlight rounded" style="background-color: #A6D1CE;">
             <h1><a href="https://u9.by/{{ urlentry.url_short }}">
                 u9.by/{{ urlentry.url_short }}
             </a>
@@ -55,16 +55,15 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
 
         <form action="{% url 'polls:update' urlentry.id %}" method="post">
             {% csrf_token %}
-            <div class="p-2 bd-highlight rounded" style="--bs-bg-opacity: .9;">
+            <div class="p-2 bd-highlight rounded" style="background-color: #A6D1CE;">
                 <fieldset>
-                    <legend><h2>Link content</h2></legend>
-                    <label><strong>Author: </strong>{{ urlentry.author }}</label> <br>
-                    <label><strong>Create date: </strong>{{ urlentry.create_date }}</label> <br>
+                    <label><strong>Author: </strong></label>{{ urlentry.author }} <br>
+                    <label><strong>Create date: </strong></label>{{ urlentry.create_date }} <br>
                     <label><strong>URL: </strong>
                         {% if urlentry.author == request.user %}
                         <input type="text" name="url_text" id="url_text" value="{{ urlentry.url_text }}">
                         {% endif %}
-                        <a href="{{ urlentry.url_text }}">Go original Link!</a></label>
+                        <a href="{{ urlentry.url_text }}">Go!</a></label>
                     <br>
                     <label><strong>QR code to original link: </strong> <a href={{ urlentry.qr_code
                                                                           }}>generate</a></label> <br>

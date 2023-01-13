@@ -20,9 +20,15 @@
           integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"
             integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+ {% if form.errors %}
+        <p style="color: orangered">Got errors! {{ form.errors }}</p>
+        {% endif %}
+        {% for message in messages %}
+        <p style="color: turquoise">{{ message }}</p>
+        {% endfor %}
 
     <div class="d-flex flex-row bd-highlight mb-3 justify-content-around">
-        <div class="p-2 bd-highlight rounded" style="background-color: #E4FAF7;">
+        <div class="p-2 bd-highlight rounded" style="--bs-bg-opacity: .9;">
             <h1><a href="https://u9.by/{{ urlentry.url_short }}">
                 u9.by/{{ urlentry.url_short }}
             </a>
@@ -47,16 +53,9 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
             {% endif %}
         </div>
 
-        {% if form.errors %}
-        <p style="color: orangered">Got errors! {{ form.errors }}</p>
-        {% endif %}
-        {% for message in messages %}
-        <p style="color: turquoise">{{ message }}</p>
-        {% endfor %}
-
         <form action="{% url 'polls:update' urlentry.id %}" method="post">
             {% csrf_token %}
-            <div class="p-2 bd-highlight rounded" style="background-color: #E4FAF7;">
+            <div class="p-2 bd-highlight rounded" style="--bs-bg-opacity: .9;">
                 <fieldset>
                     <legend><h2>Link content</h2></legend>
                     <label><strong>Author: </strong>{{ urlentry.author }}</label> <br>

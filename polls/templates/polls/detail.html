@@ -1,6 +1,6 @@
 {% extends 'polls/base.html' %}
 {% block Title %}{{ urlentry.url_short }} Detail{% endblock %}
-{% block Background %}<div class="vh-100" style="background-image: url('https://u9.by/assets/mainback.jpg'); background-size: cover;">{% endblock %}
+{% block Background %}<div class="h-100" style="background-image: url('https://u9.by/assets/mainback.jpg'); background-size: cover;">{% endblock %}
 {% block Body %}
 <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -14,7 +14,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
 
-    
+<div class="d-flex flex-row bd-highlight mb-3">
+  <div class="p-2 bd-highlight">
 <h1><a href="https://u9.by/{{ urlentry.url_short }}">
             u9.by/{{ urlentry.url_short }}
                        </a>
@@ -36,6 +37,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
 See statistics of following this link
    </button>
 {% endif %}
+  </div>
 
             {% if form.errors %}
                 <p style="color: orangered">Got errors! {{ form.errors }}</p>
@@ -46,7 +48,7 @@ See statistics of following this link
 
     <form action="{% url 'polls:update' urlentry.id %}" method="post">
         {% csrf_token %}
-        <br>
+ <div class="p-2 bd-highlight">
         <fieldset>
             <legend><h2>Link content</h2></legend>
             <label><strong>Author: </strong>{{ urlentry.author }}</label> <br>
@@ -59,6 +61,8 @@ See statistics of following this link
             <br>
              <label><strong>QR code to original link: </strong> <a href={{ urlentry.qr_code }}>generate</a></label> <br>
             <img src="{{ urlentry.qr_code }}" width="100" height="100" alt="qr"><br>
+ </div>
+</div>
             {% if urlentry.author == request.user %}
                 {% if request.user.is_staff %}
                        <br>

@@ -10,7 +10,9 @@
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" />
 </head>
 <body>
+   <div class="vh-100" style="background-image: url('assets/mainback.jpg'); background-size: cover;">
     {% include 'authentication/nav.html' %}
+
     <div class="container">
         {% block Body %}{% endblock %}
     </div>

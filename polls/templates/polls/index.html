@@ -75,6 +75,7 @@
 {% endif %}
 {% if request.user.is_authenticated %}
 <a href="{% url 'polls:new' %}" type="button" class="btn btn-danger">Add New Link</a>
+<br><br>
 {% endif %}
 {% if not request.user.is_authenticated %}
 <span class="colortext"> <b>Please login or register to shorten links </b></span>  <br>  <br>

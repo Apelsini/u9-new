@@ -94,8 +94,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <b> Direct link: </b>
-                                <a href="{% url 'polls:get' urlentry.pk %}">https://u9.by/polls/{{
-                                urlentry.pk }}/results/get</a>
+                                <a href="{% url 'polls:get' urlentry.pk %}">"{% url 'polls:get' urlentry.pk %}"</a>
                                 <br><b> PHP: </b> <br>
                                 &lt;?php echo file_get_contents(&quot;https://u9.by/polls/{{ urlentry.pk }}/results/get&quot;);
                                 ?&gt;

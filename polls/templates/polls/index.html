@@ -53,7 +53,7 @@
     {% if links.author == request.user %}
     <tr>
         <td><a href="{% url 'polls:detail' links.id %}">
-            {{ links.url_text|slice:':50' }}
+            {{ links.url_text|slice:':45' }}
         </a>
         </td>
         <td>

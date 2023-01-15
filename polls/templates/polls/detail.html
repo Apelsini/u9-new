@@ -37,7 +37,7 @@
             </a>
             </legend>
             </p>
-            <div class="container align-content-center">
+
             <p align="center"><div id="qrcode" ></div>
             <script type="text/javascript">
 var qrcode = new QRCode(document.getElementById("qrcode"), {
@@ -50,7 +50,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
 });
             </script>
             </p>
-            </div>
+            
             <br>
             {% if urlentry.author == request.user %}
             <p align="center"><button type="button" onclick="location.href='{% url 'polls:results' urlentry.id %}'"

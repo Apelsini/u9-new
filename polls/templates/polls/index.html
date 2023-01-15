@@ -60,10 +60,9 @@
             {{ links.create_date }}
         </td>
         <td>
-            <button type="button" onclick="location.href='{% url 'polls:results' links.id %}'"
-                    class="btn btn-danger">
+            <a href="{% url 'polls:results' links.id %}" type="button" class="btn btn-danger btn-sm">
                 Click stats
-            </button>
+            </a> <br>
             <a href="{% url 'polls:delete' links.id %}" type="button" class="btn btn-danger btn-sm">
                 Delete
             </a> <br>

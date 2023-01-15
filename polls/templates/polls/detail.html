@@ -133,9 +133,8 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <b> HTML code: </b> <br>
-                                &lt;a href="https://u9.by/{{ urlentry.url_short }}">&lt;img src="{{ urlentry.snapshot
-                                }}"
-                                width="204" height="152" alt="snapshot">&lt;/a>
+                                &lt;a href="https://u9.by/{{ urlentry.url_short }}">
+                                &lt;img src="{{ urlentry.snapshot }}" width="204" height="152" alt="snapshot">&lt;/a>
                                 <br> <br><b> Result: </b> <br>
                                 <a href="https://u9.by/{{ urlentry.url_short }}">
                                     <img src="{{ urlentry.snapshot }}" width="204" height="152" alt="snapshot">

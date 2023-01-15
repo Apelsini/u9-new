@@ -36,8 +36,8 @@
                 u9.by/{{ urlentry.url_short }}
             </a>
             </legend>
-
-            <div id="qrcode"></div>
+            </p>
+            <p align="center"><div id="qrcode"></div> </p>
             <script type="text/javascript">
 var qrcode = new QRCode(document.getElementById("qrcode"), {
 	text: "u9.by/{{ urlentry.url_short }}",
@@ -53,12 +53,12 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
             </script>
             <br>
             {% if urlentry.author == request.user %}
-            <button type="button" onclick="location.href='{% url 'polls:results' urlentry.id %}'"
+            <p align="center"><button type="button" onclick="location.href='{% url 'polls:results' urlentry.id %}'"
                     class="btn btn-danger">
                 Get clicks statistics
-            </button>
+            </button></p>
             {% endif %}
-            </p>
+
         </div>
             <div class="p-2 col-md-3 mx-2 my-2 my-sm-3 my-lg-4 bd-highlight rounded" style="background-color: #EEF2F2;">
                 <fieldset>
@@ -93,7 +93,8 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
                         <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <b> Direct link: </b> <a href="https://u9.by/polls/"&{{ urlentry.pk }}&"/results/get">https://u9.by/polls/{{
+                                <b> Direct link: </b>
+                                <a href="{% url 'polls:get' urlentry.pk %}">https://u9.by/polls/{{
                                 urlentry.pk }}/results/get</a>
                                 <br><b> PHP: </b> <br>
                                 &lt;?php echo file_get_contents(&quot;https://u9.by/polls/{{ urlentry.pk }}/results/get&quot;);

@@ -38,7 +38,10 @@
             </legend>
             </p>
 
-            <p align="center"><div id="qrcode" ></div>
+            <p align="center">
+            <div class="row">
+            <div class="col-md-8 offset-md-2" id="qrcode"></div>
+            </div>
             <script type="text/javascript">
 var qrcode = new QRCode(document.getElementById("qrcode"), {
 	text: "u9.by/{{ urlentry.url_short }}",
@@ -50,7 +53,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
 });
             </script>
             </p>
-            
+
             <br>
             {% if urlentry.author == request.user %}
             <p align="center"><button type="button" onclick="location.href='{% url 'polls:results' urlentry.id %}'"

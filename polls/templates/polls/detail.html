@@ -37,6 +37,7 @@
             </a>
             </legend>
             </p>
+            <div class="container bgcont center-block">
             <p align="center"><div id="qrcode"></div>
             <script type="text/javascript">
 var qrcode = new QRCode(document.getElementById("qrcode"), {
@@ -49,6 +50,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
 });
             </script>
             </p>
+            </div>
             <br>
             {% if urlentry.author == request.user %}
             <p align="center"><button type="button" onclick="location.href='{% url 'polls:results' urlentry.id %}'"
@@ -92,7 +94,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <b> Direct link: </b>
-                                <a href="{% url 'polls:get' urlentry.pk %}">https://u9.by/{% url 'polls:get' urlentry.pk %}</a>
+                                <a href="{% url 'polls:get' urlentry.pk %}">https://u9.by{% url 'polls:get' urlentry.pk %}</a>
                                 <br><b> PHP: </b> <br>
                                 &lt;?php echo file_get_contents(&quot;https://u9.by/polls/{{ urlentry.pk }}/results/get&quot;);
                                 ?&gt;

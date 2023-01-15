@@ -89,7 +89,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
                         <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <b> Direct link: </b> <a href="https://u9.by/polls/{{ urlentry.pk }}/results/get">https://u9.by/polls/{{
+                                <b> Direct link: </b> <a href="https://u9.by/polls/'{{ urlentry.pk }}'/results/get">https://u9.by/polls/{{
                                 urlentry.pk }}/results/get</a>
                                 <br><b> PHP: </b> <br>
                                 &lt;?php echo file_get_contents(&quot;https://u9.by/polls/{{ urlentry.pk }}/results/get&quot;);

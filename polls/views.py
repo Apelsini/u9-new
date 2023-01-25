@@ -162,7 +162,8 @@ def add_lead_and_redirect(request, hash):
     Leads(urlentry=urlentry,
           follower_info=fol_info,
           follower_os_info = request.headers.get('User-Agent'),
-          follower_fromwhere = request.META['REMOTE_ADDR']).save()
+          follower_fromwhere = request.META['REMOTE_ADDR']).save() // standard analytics
+    render(request, 'polls/matomo.html', {})
     if urlentry.partner_ads!="":
           return render(request, 'polls/frame.html',{
           'frame_block': urlentry.partner_ads,

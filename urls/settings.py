@@ -47,7 +47,11 @@ INSTALLED_APPS = [
    # 'urls.polls',   # Django 1.8
     'polls.apps.PollsConfig',
     'authentication.apps.AuthenticationConfig',
+    'matomo',  #matomo analytics https://pypi.org/project/django-matomo/
 ]
+
+MATOMO_SITE_ID = 1
+MATOMO_URL = 'http://apps.u9.by/Matomo/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

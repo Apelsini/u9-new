@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'matomo',  #matomo analytics https://pypi.org/project/django-matomo/
 ]
 
-MATOMO_SITE_ID = 2
+MATOMO_SITE_ID = 1
 MATOMO_URL = 'http://apps.u9.by/Matomo/'
 
 MIDDLEWARE = [

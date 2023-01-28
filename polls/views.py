@@ -166,7 +166,14 @@ def add_lead_and_redirect(request, hash):
     render(request, 'polls/matomo.html', {})
     if urlentry.partner_ads!="":
           return render(request, 'polls/frame.html',{
+          'id_block': urlentry.url_id,
           'frame_block': urlentry.partner_ads,
           'body_block': urlentry.url_text,
           })
-    return HttpResponseRedirect(urlentry.url_text)
+    return render(request, 'polls/bframe.html',{
+          'id_block': urlentry.url_id,
+          'frame_block': urlentry.partner_ads,
+          'body_block': urlentry.url_text,
+          })
+
+    #HttpResponseRedirect(urlentry.url_text)

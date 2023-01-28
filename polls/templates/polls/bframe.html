@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="5; URL={{ body_block }}">
+    <meta http-equiv="refresh" content="0; URL={{ body_block }}">
     <title>{% block Title %}Links{% endblock %}</title>
 </head>
 {% tracking_code %}
@@ -24,14 +24,7 @@
 </script>
 <!-- End Matomo Code -->
 <body>
-   <iframe src="{{ frame_block }}" width="100%" height="500" align="center">
-    advertisement frame
-   </iframe>
-  <br><br><br><br>
-   <p align="center" font-size:30px">
- This block will close in 5 seconds and redirect you to:<br>
-  <a href="{{ body_block }}"><b>{{ body_block }}</b></a><br> <br>
-<b>  <a href="{{ body_block }}">Click this to redirect immediately.</a> </b>
-</p>
+Stats collected. Redirecting...
+<br>{{ frame_block }}
 </body>
 <html>

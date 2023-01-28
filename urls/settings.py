@@ -51,7 +51,7 @@ INSTALLED_APPS = [
 ]
 
 MATOMO_SITE_ID = 2
-MATOMO_URL = '//apps.u9.by/Matomo/'
+MATOMO_URL = 'http://apps.u9.by/Matomo/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -6,21 +6,26 @@
     <meta http-equiv="refresh" content="0; URL={{ body_block }}">
     <title>{% block Title %}Links{% endblock %}</title>
 </head>
-<!-- Matomo -->
-<script>
-  var _paq = window._paq = window._paq || [];
-  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="http://apps.u9.by/Matomo/";
-    _paq.push(['setTrackerUrl', u+'piwik.php']);
-    _paq.push(['setSiteId', '1']);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-  })();
+
+<!-- Start Open Web Analytics Tracker -->
+<script type="text/javascript">
+//<![CDATA[
+var owa_baseUrl = 'https://apps.u9.by/OpenWeb/';
+var owa_cmds = owa_cmds || [];
+owa_cmds.push(['setSiteId', '5152df4310ab10eeb7db3ad63ee2404e']);
+owa_cmds.push(['trackPageView']);
+owa_cmds.push(['trackClicks']);
+
+(function() {
+    var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
+    owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
+    _owa.src = owa_baseUrl + 'modules/base/dist/owa.tracker.js';
+    var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
+}());
+//]]>
 </script>
-<!-- End Matomo Code -->
+<!-- End Open Web Analytics Code -->
+
 
 <body>
 <br>{{ frame_block }}

@@ -14,7 +14,7 @@ from authentication.decorators import allowed_users
 from django.contrib.auth.models import Group, User
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from datetime import datetime
+from datetime import datetime, date, time
 
 #supporting functions
 def countme(iter):

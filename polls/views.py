@@ -38,10 +38,9 @@ class IndexView(generic.ListView):    #Class-Based View
         filter_datefrom = self.request.GET.get('filter_datefrom', '')
         filter_dateto = self.request.GET.get('filter_dateto', timezone.now())
         order = self.request.GET.get('orderby', '-create_date')
-        new_context = Urlentry.objects.contains(
-            url_text=filter_url
-            ).filter(
-            author=filter_author,
+        new_context = Urlentry.objects.filter(
+            url_text__contains=filter_url,
+            author__contains=filter_author,
             create_date__gte=filter_datefrom,
             create_date__lte=filter_dateto,
             ).order_by(order)

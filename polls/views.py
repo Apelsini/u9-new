@@ -30,8 +30,30 @@ class IndexView(generic.ListView):    #Class-Based View
     #     return Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
     context_object_name = 'links_list'
     paginate_by = 15
+    #def get_queryset(self):
+    #    return Urlentry.objects.filter(create_date__lte=timezone.now()).order_by('-create_date') #[:10]
     def get_queryset(self):
-        return Urlentry.objects.filter(create_date__lte=timezone.now()).order_by('-create_date') #[:10]
+        filter_url = self.request.GET.get('filter_url', '')
+        filter_author = self.request.GET.get('filter_author', self.request.user)
+        filter_datefrom = self.request.GET.get('filter_datefrom', '')
+        filter_dateto = self.request.GET.get('filter_dateto', timezone.now())
+        order = self.request.GET.get('orderby', '-create_date')
+        new_context = Urlentry.objects.filter(
+            author=filter_author,
+            create_date__gte>=filter_datefrom,
+            create_date__lte<=filter_dateto,
+            ).contains(
+            url_text=filter_url
+            ).order_by(order)
+        return new_context
+    def get_context_data(self, **kwargs):
+        context = super(IndexView, self).get_context_data(**kwargs)
+        context['filter_url'] = self.request.GET.get('filter_url', '')
+        context['filter_author'] = self.request.GET.get('filter_author', self.request.user)
+        context['filter_datefrom'] = self.request.GET.get('filter_datefrom', '')
+        context['filter_dateto'] = self.request.GET.get('filter_dateto', timezone.now())
+        context['orderby'] = self.request.GET.get('orderby', '-create_date')
+        return context
 
 @method_decorator(allowed_users(allowed_roles=['customer','admin']), name='dispatch')
 class CreateUrlentry(generic.CreateView):

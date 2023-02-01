@@ -40,11 +40,11 @@ class IndexView(generic.ListView):    #Class-Based View
         filter_dateto = self.request.GET.get('filter_dateto', timezone.now())
         order = self.request.GET.get('orderby', '-create_date')
         new_context = Urlentry.objects.filter(
-            author=filter_author,
+            author__contains=filter_author,
+            url_text__contains=filter_url,   #__contains lookup
             create_date__gte=filter_datefrom,
             create_date__lte=filter_dateto,
-            ).contains(url_text=filter_url, author=filter_author).order_by(order)
-        #__contains lookup
+            ).order_by(order)
         return new_context
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)

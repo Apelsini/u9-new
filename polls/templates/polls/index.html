@@ -15,6 +15,52 @@
 
 {% if request.user.is_superuser %}
 <legend>Links of all authors (click to edit):</legend>
+
+{% if is_paginated %}
+<table class="table-condensed">
+    <tbody>
+ {% for links in page_obj.links_list %}
+    <tr>
+        <td colspan="3">
+            <a href="{% url 'polls:detail' links.id %}">
+                {{ links.url_text|slice:':50' }}
+            </a></td>
+        <td>
+           <b>Author:</b>[{{ links.author }}] {% if links.author.is_staff %} <span class="colortext">(customer)</span>
+            {% endif %}
+        </td>
+        <td>
+            {{ links.create_date }}
+        </td>
+        <td>
+            <a href="{% url 'polls:delete' links.id %}" type="button" class="btn btn-danger btn-sm">
+                Delete
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+  <ul class="pagination">
+    {% if page_obj.has_previous %}
+      <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in paginator.page_range %}
+      {% if page_obj.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% else %}
 <table class="table-condensed">
     <tbody>
     {% for links in links_list %}
@@ -39,6 +85,7 @@
     {% endfor %}
     </tbody>
 </table>
+{% endif %}
 <br>
 <legend>Your links, [{{ request.user.username }}]</legend>
 {% endif %}

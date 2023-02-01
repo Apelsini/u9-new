@@ -13,6 +13,7 @@ from django.utils.decorators import method_decorator
 from authentication.decorators import allowed_users
 from django.contrib.auth.models import Group, User
 from django.contrib import messages
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 #supporting functions
 def countme(iter):
@@ -22,14 +23,15 @@ def countme(iter):
     return count
 
 # Create your views here.
-class IndexView(generic.ListView):
+class IndexView(generic.ListView):    #Class-Based View
     template_name = 'polls/index.html'
     # context_object_name = 'questions_list'
     # def get_queryset(self):
     #     return Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
     context_object_name = 'links_list'
+    paginate_by = 15
     def get_queryset(self):
-        return Urlentry.objects.filter(create_date__lte=timezone.now()).order_by('-create_date')[:10]
+        return Urlentry.objects.filter(create_date__lte=timezone.now()).order_by('-create_date') #[:10]
 
 @method_decorator(allowed_users(allowed_roles=['customer','admin']), name='dispatch')
 class CreateUrlentry(generic.CreateView):

@@ -19,7 +19,7 @@
 {% if is_paginated %}
 <table class="table-condensed">
     <tbody>
- {% for links in page_obj.links_list %}
+ {% for links in links_list %}
     <tr>
         <td colspan="3">
             <a href="{% url 'polls:detail' links.id %}">

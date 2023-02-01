@@ -19,7 +19,7 @@
 {% if is_paginated %}
 <table class="table-condensed">
     <tbody>
-    <form method="get" action="{% url 'polls/index' %}">
+    <form method="get" action="{% url 'polls:index' %}">
         <tr>
             <td colspan="3">
                 <p>Url contains: <input type="text" value={{filter_url}} name="filter_url"/></p>

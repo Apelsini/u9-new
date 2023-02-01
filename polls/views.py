@@ -40,8 +40,8 @@ class IndexView(generic.ListView):    #Class-Based View
         order = self.request.GET.get('orderby', '-create_date')
         new_context = Urlentry.objects.filter(
             author=filter_author,
-            create_date__gte>=filter_datefrom,
-            create_date__lte<=filter_dateto,
+            create_date__gte=filter_datefrom,
+            create_date__lte=filter_dateto,
             ).contains(
             url_text=filter_url
             ).order_by(order)

@@ -35,7 +35,7 @@ class IndexView(generic.ListView):    #Class-Based View
     def get_queryset(self):
         filter_url = self.request.GET.get('filter_url', '')
         filter_author = self.request.GET.get('filter_author', self.request.user)
-        filter_datefrom = self.request.GET.get('filter_datefrom', '')
+        filter_datefrom = self.request.GET.get('filter_datefrom', datetime.date(2022, 1, 30))
         filter_dateto = self.request.GET.get('filter_dateto', timezone.now())
         order = self.request.GET.get('orderby', '-create_date')
         new_context = Urlentry.objects.filter(
@@ -49,7 +49,7 @@ class IndexView(generic.ListView):    #Class-Based View
         context = super(IndexView, self).get_context_data(**kwargs)
         context['filter_url'] = self.request.GET.get('filter_url', '')
         context['filter_author'] = self.request.GET.get('filter_author', self.request.user)
-        context['filter_datefrom'] = self.request.GET.get('filter_datefrom', '')
+        context['filter_datefrom'] = self.request.GET.get('filter_datefrom', datetime.date(2022, 1, 30))
         context['filter_dateto'] = self.request.GET.get('filter_dateto', timezone.now())
         context['orderby'] = self.request.GET.get('orderby', '-create_date')
         return context

@@ -100,7 +100,7 @@
     {% if links.author == request.user %}
     <tr>
         <td><a href="{% url 'polls:detail' links.id %}">
-            {{ links.url_text|slice:':45' }}
+            {{ links.url_text|slice:':55' }}
         </a>
         </td>
         <td>
@@ -117,6 +117,27 @@
     </tr>
     {% endif %}
     {% endfor %}
+    {% if is_paginated %}
+     <ul class="pagination">
+    {% if page_obj.has_previous %}
+      <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in paginator.page_range %}
+      {% if page_obj.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+    {% endif %}
     </tbody>
 </table>
 

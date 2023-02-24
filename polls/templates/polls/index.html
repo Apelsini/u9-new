@@ -28,8 +28,14 @@
                 <p>Author: </p> <br> <input type="text" value={{ filter_author }} name="filter_author"/>
             </td>
             <td>
-                <p>from: <input type="text" value={{ filter_datefrom }} name="filter_datefrom"/></p><br>
-                <p>to: <input type="text" value={{ filter_dateto }} name="filter_dateto"/></p>
+                <p>from: </p><br>
+                <div class="input-group date">
+                <input type="text" class="form-control" value={{ filter_datefrom }} name="filter_datefrom"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                </div>
+                <p>to: </p>
+                <div class="input-group date">
+                <input type="text" class="form-control" value={{ filter_dateto }} name="filter_dateto"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                </div>
                 <p><input type="submit" name="submit" value="Filter"/></p>
             </td>
         </tr>

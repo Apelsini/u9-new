@@ -39,18 +39,48 @@
 
             </td>
             <td>
-                <p>Author: </p> <br> <input type="text" value={{ filter_author }} name="filter_author"/>
+
+                <div class="row">
+        <div class="form-group col-xs-12">
+            <div class="control-group required">
+                <label class="control-label" for="filter_author">Author: </label>
+                <div class="controls">
+                    <input class="form-control" id="filter_author" maxlength="30" name="filter_author" type="text" value={{ filter_author }} />
+                </div>
+            </div>
+        </div>
+    </div>
+
             </td>
             <td>
-                <p>from: </p><br>
-                <div class="input-group date">
-                    <input type="text" value={{ filter_datefrom }} name="filter_datefrom" />
+
+                <div class="row">
+        <div class="form-group col-xs-12">
+            <div class="control-group required">
+                <label class="control-label" for="filter_datefrom">from: </label>
+                <div class="controls">
+                    <input class="form-control" id="filter_datefrom" maxlength="30" name="filter_datefrom"  type="text" value={{ filter_datefrom }} />
                 </div>
+            </div>
+        </div>
+    </div>
+
                 <p>to: </p>
                 <div class="input-group date">
                     <input type="text" value={{ filter_dateto }} name="filter_dateto" />
                 </div>
-                <p><input type="submit" name="submit" value="Filter"/></p>
+
+                                <div class="row">
+        <div class="form-group col-xs-12">
+            <div class="control-group required">
+                <label class="control-label" for="filter_dateto">from: </label>
+                <div class="controls">
+                    <input class="form-control" id="filter_dateto" maxlength="30" name="filter_dateto"  type="text" value={{ filter_dateto }} />
+                </div>
+            </div>
+        </div>
+    </div>
+                <p><input class="btn btn-default" type="submit" class="button" name="submit" value="Filter"/></p>
             </td>
         </tr>
     </form>

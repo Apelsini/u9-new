@@ -19,10 +19,24 @@
 {% if is_paginated %}
 <table class="table-condensed">
     <tbody>
-    <form method="get" action="{% url 'polls:index' %}">
+
+</form>
+
+    <form id="filter-form" role="form" method="get" action="{% url 'polls:index' %}">
         <tr>
             <td colspan="3">
-                <p>Url contains: </p> <br> <input type="text" value={{ filter_url }} name="filter_url"/>
+             
+    <div class="row">
+        <div class="form-group col-xs-3">
+            <div class="control-group required">
+                <label class="control-label" for="filter_url">Url contains:</label>
+                <div class="controls">
+                    <input class="form-control" id="filter_url" maxlength="30" name="filter_url" type="text" value={{ filter_url }} />
+                </div>
+            </div>
+        </div>
+    </div>
+
             </td>
             <td>
                 <p>Author: </p> <br> <input type="text" value={{ filter_author }} name="filter_author"/>

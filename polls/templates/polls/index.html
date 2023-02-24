@@ -20,8 +20,6 @@
 <table class="table-condensed">
     <tbody>
 
-</form>
-
     <form id="filter-form" class="form-horizontal" role="form" method="get" action="{% url 'polls:index' %}">
         <tr>
             <td colspan="3">
@@ -29,7 +27,7 @@
     <div class="row">
         <div class="form-group col-xs-6">
             <div class="control-group required">
-                <label class="control-label" for="filter_url">Url contains:</label>
+                <label class="sr-only" for="filter_url">Url contains:</label>
                 <div class="controls">
                     <input class="form-control" id="filter_url" maxlength="30" name="filter_url" type="text" value={{ filter_url }} />
                 </div>
@@ -45,7 +43,7 @@
             <div class="control-group required">
                 <label class="control-label" for="filter_author">Author: </label>
                 <div class="controls">
-                  auth:  <input class="form-control" id="filter_author" maxlength="30" name="filter_author" type="text" value={{ filter_author }} />
+                 <input class="form-control" id="filter_author" maxlength="30" name="filter_author" type="text" value={{ filter_author }} />
                 </div>
             </div>
         </div>

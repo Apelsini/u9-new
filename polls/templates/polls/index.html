@@ -22,14 +22,14 @@
     <form method="get" action="{% url 'polls:index' %}">
         <tr>
             <td colspan="3">
-                <p>Url contains: <input type="text" value={{ filter_url }} name="filter_url"/></p>
+                <p>Url contains: </p> <br> <input type="text" value={{ filter_url }} name="filter_url"/>
             </td>
             <td>
-                <p>Author: <input type="text" value={{ filter_author }} name="filter_author"/></p>
+                <p>Author: </p> <br> <input type="text" value={{ filter_author }} name="filter_author"/>
             </td>
             <td>
                 <p>from: <input type="text" value={{ filter_datefrom }} name="filter_datefrom"/></p><br>
-                <p>to: <input type="text" value={{ filter_dateto }} name="filter_dateto"/></p><br>
+                <p>to: <input type="text" value={{ filter_dateto }} name="filter_dateto"/></p>
                 <p><input type="submit" name="submit" value="Filter"/></p>
             </td>
         </tr>

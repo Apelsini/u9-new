@@ -19,6 +19,13 @@
 {% if is_paginated %}
 <table class="table-condensed">
     <tbody>
+<tr>
+    <td colspan="3"> URL contains:</td>
+    <td> Author: </td>
+    <td> Date From: / To:</td>
+    <td> </td>
+</tr>
+
 
     <form id="filter-form" class="form-inline" role="form" method="get" action="{% url 'polls:index' %}">
         <tr>
@@ -27,7 +34,6 @@
     <div class="row">
         <div class="form-group col-xs-6">
             <div class="control-group required">
-                <label class="sr-only" for="filter_url">Url contains:</label>
                 <div class="controls" class="col-sm-6">
                     <input class="form-control"  id="filter_url" maxlength="30" name="filter_url" type="text" value={{ filter_url }} />
                 </div>
@@ -41,7 +47,6 @@
                 <div class="row">
         <div class="form-group col-xs-6">
             <div class="control-group required">
-                <label class="control-label" for="filter_author">Author: </label>
                 <div class="controls">
                  <input class="form-control" id="filter_author" maxlength="30" name="filter_author" type="text" value={{ filter_author }} />
                 </div>
@@ -55,16 +60,12 @@
                 <div class="row">
         <div class="form-group col-xs-3">
             <div class="control-group required">
-                <label class="control-label" for="filter_datefrom">from: </label>
                 <div class="controls">
                     <input class="form-control" id="filter_datefrom" maxlength="30" name="filter_datefrom"  type="text" value={{ filter_datefrom }} />
                 </div>
             </div>
         </div>
-    </div>
-
-                                <div class="row">
-        <div class="form-group col-xs-3">
+                    <div class="form-group col-xs-3">
             <div class="control-group required">
                 <label class="control-label" for="filter_dateto">to: </label>
                 <div class="controls">
@@ -73,6 +74,8 @@
             </div>
         </div>
     </div>
+
+                              
             </td>
             <td>
                 <p><input class="btn btn-default" type="submit" class="button" name="submit" value="Filter"/></p>

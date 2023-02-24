@@ -15,7 +15,6 @@
 
 {% if request.user.is_superuser %}
 <legend>Links of all authors (click to edit):</legend>
-
 {% if is_paginated %}
 <table class="table-condensed">
     <tbody>
@@ -25,8 +24,6 @@
     <td> Date From: / To:</td>
     <td> </td>
 </tr>
-
-
     <form id="filter-form" class="form-inline" role="form" method="get" action="{% url 'polls:index' %}">
         <tr>
             <td colspan="3">

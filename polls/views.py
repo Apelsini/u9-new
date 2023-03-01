@@ -40,7 +40,7 @@ class IndexView(generic.ListView):    #Class-Based View
         filter_dateto = self.request.GET.get('filter_dateto', timezone.now())
         order = self.request.GET.get('orderby', '-create_date')
         new_context = Urlentry.objects.filter(
-           # author=filter_author,
+           author=filter_author,
            # url_text=filter_url,   #__contains lookup
             create_date__gte=filter_datefrom,
             create_date__lte=filter_dateto,

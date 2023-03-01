@@ -99,26 +99,29 @@
     </tr>
     {% endfor %}
   </tbody>
+
 </table>
+    {% if not is_filtered %}
   <ul class="pagination">
-    {% if page_obj.has_previous %}
-      <li><a href="?filter_url={{ filter_url }}?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
-    {% else %}
+        {% if page_obj.has_previous %}
+      <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+        {% else %}
       <li class="disabled"><span>&laquo;</span></li>
-    {% endif %}
-    {% for i in paginator.page_range %}
-      {% if page_obj.number == i %}
+        {% endif %}
+        {% for i in paginator.page_range %}
+        {% if page_obj.number == i %}
         <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-      {% else %}
-        <li><a href="?filter_url={{ filter_url }}?page={{ i }}">{{ i }}</a></li>
-      {% endif %}
-    {% endfor %}
-    {% if page_obj.has_next %}
-      <li><a href="?filter_url={{ filter_url }}?page={{ page_obj.next_page_number }}">&raquo;</a></li>
-    {% else %}
+        {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+      <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+        {% else %}
       <li class="disabled"><span>&raquo;</span></li>
-    {% endif %}
+        {% endif %}
   </ul>
+        {% endif %}
 {% else %}
 <table class="table-condensed">
     <tbody>

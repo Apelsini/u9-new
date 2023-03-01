@@ -35,13 +35,13 @@ class IndexView(generic.ListView):    #Class-Based View
     #    return Urlentry.objects.filter(create_date__lte=timezone.now()).order_by('-create_date') #[:10]
     def get_queryset(self):
         filter_url = self.request.GET.get('filter_url', '')
-        filter_author = self.request.GET.get('filter_author', User.get_username(self.request.user))
+        filter_author = self.request.GET.get('filter_author', self.request.user)
         filter_datefrom = self.request.GET.get('filter_datefrom', timezone.now().replace(year=2021))
         filter_dateto = self.request.GET.get('filter_dateto', timezone.now())
         order = self.request.GET.get('orderby', '-create_date')
         page = self.request.GET.get('page', 1)
         new_context = Urlentry.objects.filter(
-            author__contains=filter_author,
+            author=filter_author,
             url_text__contains=filter_url,   #__contains lookup
             #create_date__gte=filter_datefrom,
             #create_date__lte=filter_dateto,
@@ -50,7 +50,7 @@ class IndexView(generic.ListView):    #Class-Based View
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['filter_url'] = self.request.GET.get('filter_url', '')
-        context['filter_author'] = self.request.GET.get('filter_author', User.get_username(self.request.user))
+        context['filter_author'] = self.request.GET.get('filter_author', self.request.user)
         context['filter_datefrom'] = self.request.GET.get('filter_datefrom', timezone.now().replace(year=2021).date())
         context['filter_dateto'] = self.request.GET.get('filter_dateto', timezone.now().date())
         context['orderby'] = self.request.GET.get('orderby', '-create_date')

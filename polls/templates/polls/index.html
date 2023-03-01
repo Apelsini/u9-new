@@ -84,7 +84,7 @@
             <a href="{% url 'polls:detail' links.id %}">
                 {{ links.url_text|slice:':50' }}
             </a></td>
-        <td class="col-sm-3 col-xs-3">
+        <td >
            <b></b>[{{ links.author }}] {% if links.author.is_staff %} <span class="colortext">(customer)</span>
             {% endif %}
         </td>

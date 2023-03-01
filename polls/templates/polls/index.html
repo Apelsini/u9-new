@@ -80,18 +80,18 @@
     </form>
  {% for links in links_list %}
     <tr>
-        <td colspan="6">
+        <td colspan="4">
             <a href="{% url 'polls:detail' links.id %}">
                 {{ links.url_text|slice:':50' }}
             </a></td>
-        <td>
+        <td colspan="3">
            <b></b>[{{ links.author }}] {% if links.author.is_staff %} <span class="colortext">(customer)</span>
             {% endif %}
         </td>
         <td colspan="3">
             {{ links.create_date }}
         </td>
-        <td colspan="3" align="right">
+        <td colspan="2" align="right">
                 {% if links.author == request.user %}
             <a href="{% url 'polls:results' links.id %}" type="button" class="btn btn-danger btn-sm">
                 Stats

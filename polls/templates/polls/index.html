@@ -91,7 +91,7 @@
         <td>
             {{ links.create_date }}
         </td>
-        <td align="right">
+        <td colspan="2" align="right">
                 {% if links.author == request.user %}
             <a href="{% url 'polls:results' links.id %}" type="button" class="btn btn-danger btn-sm">
                 Stats

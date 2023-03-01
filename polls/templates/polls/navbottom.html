@@ -1,5 +1,57 @@
 <nav class="navbar navbar-expand-md navbar-light" style="background-color: #34ebd2;">
     <div class="container container-fluid">
-        <img src="https://u9.by/assets/u9l_sm.png" width="270" height="140">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-flex flex-column bd-highlight mb-6">
+            <div class="p-2 bd-highlight">
+
+                <div class="d-flex flex-row bd-highlight mb-3" style="background-color: #34fbc2;">
+
+                    {% if request.user.is_authenticated %}
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <div class="navbar-nav">
+                            <div class="p-2 bd-highlight">
+                                <div class="nav-item">
+                                    <a class="nav-link" href="{% url 'polls:index' %}" aria-current="page"><b> <span
+                                            class="glyphicon glyphicon-list"></span> List</b></a>
+                                </div>
+                            </div>
+                            <div class="p-2 bd-highlight">
+                                <div class="nav-item">
+                                    <a class="nav-link" href="{% url 'polls:new' %}"><b> <span
+                                            class="glyphicon glyphicon-link"></span> New Link</b></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="d-flex flex-row bd-highlight mb-3" style="background-color: #34fad7;">
+
+                    {% if request.user.is_authenticated %}
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <div class="navbar-nav">
+                            <div class="p-2 bd-highlight">
+                                <div class="nav-item">
+                                    <a class="nav-link" href="" aria-current="page"><b> <span
+                                            class="glyphicon glyphicon-cloud"></span> Downloader</b></a>
+                                </div>
+                            </div>
+                            <div class="p-2 bd-highlight">
+                                <div class="nav-item">
+                                    <a class="nav-link" href="https://a.u9.by"><b> <span
+                                            class="glyphicon glyphicon-download"></span> Software</b></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
     </div>
 </nav>

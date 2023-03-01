@@ -80,7 +80,7 @@
     </form>
  {% for links in links_list %}
     <tr>
-        <td colspan="3">
+        <td colspan="6">
             <a href="{% url 'polls:detail' links.id %}">
                 {{ links.url_text|slice:':50' }}
             </a></td>
@@ -88,7 +88,7 @@
            <b></b>[{{ links.author }}] {% if links.author.is_staff %} <span class="colortext">(customer)</span>
             {% endif %}
         </td>
-        <td>
+        <td colspan="3">
             {{ links.create_date }}
         </td>
         <td colspan="3" align="right">

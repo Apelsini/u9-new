@@ -180,19 +180,6 @@
             <td>
 
                 <div class="row">
-        <div class="form-group col-xs-6">
-            <div class="control-group required">
-                <div class="controls">
-                 <input class="form-control invisible form-control-sm" id="filter_author" maxlength="30" name="filter_author" type="text" value={{ filter_author }} />
-                </div>
-            </div>
-        </div>
-    </div>
-
-            </td>
-            <td>
-
-                <div class="row">
         <div class="form-group col-xs-4">
             <div class="control-group required">
                 <div class="controls">
@@ -246,7 +233,7 @@
 </table>
   <ul class="pagination">
         {% if page_obj.has_previous %}
-      <li><a href="?filter_url={{ filter_url }}&filter_author={{ filter_author }}&filter_datefrom={{ filter_datefrom }}&filter_dateto={{ filter_dateto }}&submit=Filter&page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+      <li><a href="?filter_url={{ filter_url }}&filter_datefrom={{ filter_datefrom }}&filter_dateto={{ filter_dateto }}&submit=Filter&page={{ page_obj.previous_page_number }}">&laquo;</a></li>
         {% else %}
       <li class="disabled"><span>&laquo;</span></li>
         {% endif %}
@@ -254,11 +241,11 @@
         {% if page_obj.number == i %}
         <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
         {% else %}
-        <li><a href="?filter_url={{ filter_url }}&filter_author={{ filter_author }}&filter_datefrom={{ filter_datefrom }}&filter_dateto={{ filter_dateto }}&submit=Filter&page={{ i }}">{{ i }}</a></li>
+        <li><a href="?filter_url={{ filter_url }}&filter_datefrom={{ filter_datefrom }}&filter_dateto={{ filter_dateto }}&submit=Filter&page={{ i }}">{{ i }}</a></li>
         {% endif %}
         {% endfor %}
         {% if page_obj.has_next %}
-      <li><a href="?filter_url={{ filter_url }}&filter_author={{ filter_author }}&filter_datefrom={{ filter_datefrom }}&filter_dateto={{ filter_dateto }}&submit=Filter&page={{ page_obj.next_page_number }}">&raquo;</a></li>
+      <li><a href="?filter_url={{ filter_url }}&filter_datefrom={{ filter_datefrom }}&filter_dateto={{ filter_dateto }}&submit=Filter&page={{ page_obj.next_page_number }}">&raquo;</a></li>
         {% else %}
       <li class="disabled"><span>&raquo;</span></li>
         {% endif %}
@@ -281,7 +268,7 @@
         </td>
         <td>
             <a href="{% url 'polls:delete' links.id %}" type="button" class="btn btn-danger btn-sm">
-                Deletesecond
+                Delete
             </a>
         </td>
     </tr>

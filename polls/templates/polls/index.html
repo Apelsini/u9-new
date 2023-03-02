@@ -13,7 +13,7 @@
 
 {% if links_list %}
 
-
+{% if request.user.is_superuser %}
 <legend>Links (click to edit):</legend>
 {% if is_paginated %}
 <table class="table-condensed">
@@ -151,6 +151,145 @@
     {% endfor %}
     </tbody>
 </table>
+{% else %}
+<legend>Your Links (click to edit):</legend>
+{% if is_paginated %}
+<table class="table-condensed">
+    <tbody>
+<tr>
+    <td colspan="3"> URL contains:</td>
+    <td> Date From: / To:</td>
+    <td> </td>
+</tr>
+    <form id="filter-form" class="form-inline" role="form" method="get" action="{% url 'polls:index' %}">
+        <tr>
+            <td colspan="3">
+
+    <div class="row">
+        <div class="form-group col-xs-12">
+            <div class="control-group required">
+                <div class="controls" class="col-sm-12">
+                    <input class="form-control form-control-sm"  id="filter_url" maxlength="30" name="filter_url" type="text" value={{ filter_url }} />
+                </div>
+            </div>
+        </div>
+    </div>
+
+            </td>
+            <td>
+
+                <div class="row">
+        <div class="form-group col-xs-6">
+            <div class="control-group required">
+                <div class="controls">
+                 <input class="form-control invisible form-control-sm" id="filter_author" maxlength="30" name="filter_author" type="text" value={{ filter_author }} />
+                </div>
+            </div>
+        </div>
+    </div>
+
+            </td>
+            <td>
+
+                <div class="row">
+        <div class="form-group col-xs-4">
+            <div class="control-group required">
+                <div class="controls">
+                    <input class="form-control form-control-sm" id="filter_datefrom" maxlength="30" name="filter_datefrom"  type="text" value={{ filter_datefrom }} />
+                </div>
+            </div>
+        </div>
+                    <div class="form-group col-xs-4">
+            <div class="control-group required">
+                <div class="controls">
+                    <input class="form-control form-control-sm" id="filter_dateto" maxlength="30" name="filter_dateto"  type="text" value={{ filter_dateto }} />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+            </td>
+            <td align="right">
+                <p><input class="btn btn-default" type="submit" class="button" name="submit" value="Filter"/></p>
+            </td>
+        </tr>
+    </form>
+ {% for links in links_list %}
+ {% if links.author == request.user %}
+    <tr>
+        <td colspan="3">
+            <a href="{% url 'polls:detail' links.id %}">
+                {{ links.url_text|slice:':50' }}
+            </a></td>
+        <td >
+           <b></b>[{{ links.author }}] {% if links.author.is_staff %} <span class="colortext">(customer)</span>
+            {% endif %}
+        </td>
+        <td>
+            {{ links.create_date }}
+        </td>
+        <td class="col-xs-2 col-sm-2" align="right">
+            <a href="{% url 'polls:results' links.id %}" type="button" class="btn btn-danger btn-sm">
+                Stats
+            </a>
+            <a href="{% url 'polls:delete' links.id %}" type="button" class="btn btn-danger btn-sm">
+                Delete
+            </a>
+        </td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+  </tbody>
+
+</table>
+  <ul class="pagination">
+        {% if page_obj.has_previous %}
+      <li><a href="?filter_url={{ filter_url }}&filter_author={{ filter_author }}&filter_datefrom={{ filter_datefrom }}&filter_dateto={{ filter_dateto }}&submit=Filter&page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+        {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+        {% endif %}
+        {% for i in paginator.page_range %}
+        {% if page_obj.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+        {% else %}
+        <li><a href="?filter_url={{ filter_url }}&filter_author={{ filter_author }}&filter_datefrom={{ filter_datefrom }}&filter_dateto={{ filter_dateto }}&submit=Filter&page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+      <li><a href="?filter_url={{ filter_url }}&filter_author={{ filter_author }}&filter_datefrom={{ filter_datefrom }}&filter_dateto={{ filter_dateto }}&submit=Filter&page={{ page_obj.next_page_number }}">&raquo;</a></li>
+        {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+        {% endif %}
+  </ul>
+
+{% else %}
+<table class="table-condensed">
+    <tbody>
+    {% for links in links_list %}
+    <tr>
+        <td colspan="3">
+            <a href="{% url 'polls:detail' links.id %}">
+                {{ links.url_text|slice:':50' }}
+            </a></td>
+        <td>
+           <b></b>[{{ links.author }}] {% if links.author.is_staff %} <span class="colortext">(customer)</span>
+            {% endif %}
+        </td>
+        <td>
+            {{ links.create_date }}
+        </td>
+        <td>
+            <a href="{% url 'polls:delete' links.id %}" type="button" class="btn btn-danger btn-sm">
+                Delete
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
 
 <br>
 {% endif %}
@@ -161,7 +300,7 @@
 {% if request.user.is_authenticated %}
 <br>
 <a href="{% url 'polls:new' %}" type="button" class="btn btn-danger">Add New Link</a>
-<br>
+<br><br>
 {% endif %}
 {% if not request.user.is_authenticated %}
 <span class="colortext"> <b>Please login or register to shorten links </b></span>  <br>  <br>

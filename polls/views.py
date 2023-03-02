@@ -101,6 +101,7 @@ class ClicksView(generic.DetailView):
     template_name = 'polls/clicks.html'
 
 class AppsView(generic.ListView):    #Class-Based View
+    model = Urlentry
     template_name = 'polls/apps.html'
 
 class DeleteUrlentry(generic.DeleteView):

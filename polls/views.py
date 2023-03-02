@@ -100,6 +100,10 @@ class ClicksView(generic.DetailView):
     model = Urlentry
     template_name = 'polls/clicks.html'
 
+class AppsView(generic.DetailView):
+    model = Urlentry
+    template_name = 'polls/apps.html'
+
 class DeleteUrlentry(generic.DeleteView):
     model = Urlentry
     template_name = 'polls/delete_question.html'

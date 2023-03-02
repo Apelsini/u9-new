@@ -13,5 +13,6 @@ urlpatterns = [
     path('details/<int:pk>/', view=login_required(views.DetailView.as_view(), login_url=reverse_lazy('auth:login')), name='detail'),
     path('polls/<int:pk>/results/', view=login_required(views.ResultsView.as_view(), login_url=reverse_lazy('auth:login')), name='results'),
     path('polls/<int:pk>/results/get', view=views.ClicksView.as_view(), name='get'),
+    path('polls/apps', view=views.AppsView.as_view(), name='apps'),
     path('<str:hash>/', view=views.add_lead_and_redirect, name='short'),
 ]

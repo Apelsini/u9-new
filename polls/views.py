@@ -41,7 +41,7 @@ class IndexView(generic.ListView):    #Class-Based View
         order = self.request.GET.get('orderby', '-create_date')
         page = self.request.GET.get('page', 1)
         new_context = Urlentry.objects.filter(
-            #author=filter_author,
+            author=filter_author,
             url_text__contains=filter_url,   #__contains lookup
             #create_date__gte=filter_datefrom,
             #create_date__lte=filter_dateto,
@@ -90,7 +90,6 @@ def detailview_urlentry(request, pk):
     leads_list = [i for i in Leads.objects.all()]
     return      render(request, 'polls/results.html',{
     })
-
 
 class ResultsView(generic.DetailView):
     model = Urlentry

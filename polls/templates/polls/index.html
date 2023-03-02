@@ -259,6 +259,9 @@
             {{ links.create_date }}
         </td>
         <td>
+            <a href="{% url 'polls:results' links.id %}" type="button" class="btn btn-danger btn-sm">
+                Stats
+            </a>
             <a href="{% url 'polls:delete' links.id %}" type="button" class="btn btn-danger btn-sm">
                 Delete
             </a>

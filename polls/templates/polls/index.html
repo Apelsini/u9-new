@@ -22,7 +22,7 @@
     <td colspan="3"> URL contains:</td>
     <td> Author: </td>
     <td> Date From: / To:</td>
-    <td> Filter </td>
+    <td> </td>
 
 </tr>
     <form id="filter-form" class="form-inline" role="form" method="get" action="{% url 'polls:index' %}">
@@ -55,7 +55,7 @@
             </td>
             <td>
 
-        <div class="form-group col-xs-6">
+        <div class="form-group col-xs-5">
             <div class="control-group required">
                 <div class="controls">
                     <div class="input-group date" id="filter_datefrom" data-target-input="nearest">
@@ -74,7 +74,7 @@
                 </div>
             </div>
         </div>
-                    <div class="form-group col-xs-6">
+                    <div class="form-group col-xs-5">
                      <div class="control-group required">
                 <div class="controls">
                      <div class="input-group date" id="filter_dateto" data-target-input="nearest">
@@ -93,12 +93,10 @@
                 </div>
             </div>
         </div>
-
-            </td>
-            <td align="left">
-                <p><input class="btn btn-default" type="submit" class="button" name="submit" value="Filter"/></p>
-            </td>
-
+                <div class="form-group col-xs-2">
+                    <p><input class="btn btn-default" type="submit" class="button" name="submit" value="Filter"/></p>
+                </div>
+          
         </tr>
     </form>
  {% for links in links_list %}

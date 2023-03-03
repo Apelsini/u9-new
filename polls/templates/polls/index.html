@@ -74,11 +74,7 @@
                 </div>
             </div>
         </div>
-
-
-            </td>
-            <td align="left">
-                                   <div class="form-group col-xs-6">
+                    <div class="form-group col-xs-6">
                      <div class="control-group required">
                 <div class="controls">
                      <div class="input-group date" id="filter_dateto" data-target-input="nearest">
@@ -97,9 +93,13 @@
                 </div>
             </div>
         </div>
+
+            </td>
+            <td align="left">
+                <p><input class="btn btn-default" type="submit" class="button" name="submit" value="Filter"/></p>
             </td>
              <td align="left">
-                <p><input class="btn btn-default" type="submit" class="button" name="submit" value="Filter"/></p>
+
             </td>
         </tr>
     </form>
@@ -125,6 +125,9 @@
             <a href="{% url 'polls:delete' links.id %}" type="button" class="btn btn-danger btn-sm">
                 Delete
             </a>
+        </td>
+        <td>
+            
         </td>
     </tr>
     {% endfor %}

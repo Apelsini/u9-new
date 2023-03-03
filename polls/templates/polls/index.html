@@ -76,18 +76,18 @@
                     <div class="form-group col-xs-4">
                      <div class="control-group required">
                 <div class="controls">
-                    <div class="input-group date" id="filter_dateto" data-target-input="filter_dateto">
+                     <div class="input-group date" id="filter_dateto" data-target-input="nearest">
                     <input type="text" class="form-control datetimepicker-input" data-target="#filter_dateto" value="{{ filter_dateto }}"/>
                       <div class="input-group-append" data-target="#filter_dateto" data-toggle="datetimepicker">
                      <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
                     </div>
                     <script>
-                     $(function () {
-                     $("input[name='filter_dateto']").datetimepicker({
-                     format: 'DD/MM/YYYY HH:mm',
-                         });
-                     });
+                    $(function () {
+                    $("#filter_dateto").datetimepicker({
+                    format: 'DD/MM/YYYY HH:mm',
+                        });
+                    });
                     </script>
                 </div>
             </div>

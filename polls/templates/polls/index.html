@@ -11,14 +11,6 @@
 
 </style>
 
- <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-
-  <!-- XDSoft DateTimePicker -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
-
-
 {% if links_list %}
 
 {% if request.user.is_superuser %}
@@ -66,19 +58,25 @@
         <div class="form-group col-xs-4">
             <div class="control-group required">
                 <div class="controls">
-                    <input class="form-control form-control-sm" id="filter_datefrom" maxlength="30" name="filter_datefrom"  type="text" value={{ filter_datefrom }} />
-                    <script>
-                        $(function () {
-                        $("#filter_datefrom").datetimepicker();
-                        });
-                    </script>
+                    <div class="input-group date" id="filter_datefrom" data-target-input="nearest">
+      <input type="text" class="form-control datetimepicker-input" data-target="#filter_datefrom"/>
+      <div class="input-group-append" data-target="#filter_datefrom" data-toggle="datetimepicker">
+        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+      </div>
+    </div>
+
+    <script>
+      $(function () {
+        $("#filter_datefrom").datetimepicker();
+      });
+    </script>
                 </div>
             </div>
         </div>
                     <div class="form-group col-xs-4">
             <div class="control-group required">
                 <div class="controls">
-                    <input  id="filter_dateto" maxlength="30" name="filter_dateto"  type="text" value={{ filter_dateto }} />
+                    <input  id="filter_dateto" class="form-control form-control-sm" maxlength="30" name="filter_dateto"  type="text" value={{ filter_dateto }} />
                     <script>
                         $(function () {
                         $("#filter_dateto").datetimepicker();

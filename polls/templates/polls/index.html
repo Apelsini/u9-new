@@ -111,11 +111,11 @@
            <b></b>[{{ links.author }}] {% if links.author.is_staff %} <span class="colortext">(customer)</span>
             {% endif %}
         </td>
-        <td>
+        <td align="right">
 
 
             {{ links.create_date }}
-            <div class="container">
+
                 {% if links.author == request.user %}
             <a href="{% url 'polls:results' links.id %}" type="button" class="btn btn-danger btn-sm">
                 Stats
@@ -124,7 +124,7 @@
             <a href="{% url 'polls:delete' links.id %}" type="button" class="btn btn-danger btn-sm">
                 Delete
             </a>
-             </div>
+
 
         </td>
 

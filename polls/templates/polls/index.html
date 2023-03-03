@@ -59,13 +59,23 @@
             <div class="control-group required">
                 <div class="controls">
                     <input class="form-control form-control-sm" id="filter_datefrom" maxlength="30" name="filter_datefrom"  type="text" value={{ filter_datefrom }} />
+                    <script>
+                        $(function () {
+                        $("#filter_datefrom").datetimepicker();
+                        });
+                    </script>
                 </div>
             </div>
         </div>
                     <div class="form-group col-xs-4">
             <div class="control-group required">
                 <div class="controls">
-                    <input class="form-control form-control-sm" id="filter_dateto" maxlength="30" name="filter_dateto"  type="text" value={{ filter_dateto }} />
+                    <input  id="filter_dateto" maxlength="30" name="filter_dateto"  type="text" value={{ filter_dateto }} />
+                    <script>
+                        $(function () {
+                        $("#filter_dateto").datetimepicker();
+                        });
+                    </script>
                 </div>
             </div>
         </div>

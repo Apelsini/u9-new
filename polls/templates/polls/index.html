@@ -60,7 +60,14 @@
                 <div class="controls">
 
                     <input type="text" class="form-control datetimepicker-input" id="filter_datefrom"  data-toggle="datetimepicker" data-target="#filter_datefrom" value="{{ filter_datefrom }}"/>
-
+                            <script type="text/javascript">
+        $(function () {
+            $('#filter_datefrom').datetimepicker({
+                viewMode: 'years',
+                format: 'YYYY-MM-DD HH:ss'
+            });
+        });
+    </script>
                     </div>
                 </div>
             </div>
@@ -71,6 +78,14 @@
                     <input type="text" class="form-control datetimepicker-input" id="filter_dateto"  data-toggle="datetimepicker" data-target="#filter_dateto" value="{{ filter_dateto }}"/>
                         </div>
                     </div>
+                            <script type="text/javascript">
+        $(function () {
+            $('#filter_dateto').datetimepicker({
+                viewMode: 'years',
+                format: 'YYYY-MM-DD HH:ss'
+            });
+        });
+    </script>
 <script type="text/javascript">
     $(function () {
      $('#filter_datefrom').datetimepicker({

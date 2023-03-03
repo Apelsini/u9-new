@@ -44,8 +44,8 @@ class IndexView(generic.ListView):    #Class-Based View
             new_context = Urlentry.objects.filter(
                 #author=filter_author,
                 url_text__contains=filter_url,  # __contains lookup
-                # create_date__gte=filter_datefrom,
-                # create_date__lte=filter_dateto,
+                create_date__gte=filter_datefrom,
+                create_date__lte=filter_dateto,
             ).order_by(order)
         else:
             new_context = Urlentry.objects.filter(

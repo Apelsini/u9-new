@@ -43,7 +43,11 @@ class IndexView(generic.ListView):    #Class-Based View
                               "%d/%m/%Y %I:%M %p")
         filter_datfrom = datetime.strptime(filter_dtfrom ,"%d/%m/%Y %I:%M %p").strftime("%Y-%m-%d %H:%M")  #"%d/%m/%Y %H:%M %p"
         filter_datefrom = datetime.strptime(filter_datfrom, "%Y-%m-%d %H:%M")
-        filter_dtto = datetime.strftime(self.request.GET.get('filter_dateto', timezone.now()),"%d/%m/%Y %I:%M %p") #str
+        if type(self.request.GET.get('filter_dateto', timezone.now()))==str:
+            filter_dtto = timezone.now().strftime("%d/%m/%Y %I:%M %p")
+        else:
+            filter_dtto = datetime.strftime(self.request.GET.get('filter_dateto', timezone.now()),
+                              "%d/%m/%Y %I:%M %p")
         filter_datto = datetime.strptime(filter_dtto, "%d/%m/%Y %I:%M %p").strftime("%Y-%m-%d %H:%M") # str to datetime then datetime to str in new format timezone.now().strftime("%Y-%m-%d %H:%M")
         filter_dateto = datetime.strptime(filter_datto, "%Y-%m-%d %H:%M") #str in new format to new datetime
         order = self.request.GET.get('orderby', '-create_date')

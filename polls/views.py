@@ -37,7 +37,7 @@ class IndexView(generic.ListView):    #Class-Based View
         filter_url = self.request.GET.get('filter_url', '')
         filter_author = self.request.GET.get('filter_author', self.request.user) #User.objects.get(username=self.request.GET.get('filter_author', self.request.user))
         if type(self.request.GET.get('filter_datefrom', timezone.now().replace(year=2022)))==str:
-            filter_dtfrom = timezone.now().replace(year=2022)
+            filter_dtfrom = timezone.now().replace(year=2022).strftime("%d/%m/%Y %I:%M %p")
         else:
             filter_dtfrom = datetime.strftime(self.request.GET.get('filter_datefrom', timezone.now().replace(year=2022)),
                               "%d/%m/%Y %I:%M %p")

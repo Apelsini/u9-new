@@ -36,8 +36,8 @@ class IndexView(generic.ListView):    #Class-Based View
     def get_queryset(self):
         filter_url = self.request.GET.get('filter_url', '')
         filter_author = self.request.GET.get('filter_author', self.request.user) #User.objects.get(username=self.request.GET.get('filter_author', self.request.user))
-        filter_datefrom = self.request.GET.get('filter_datefrom', '2022-02-01 11:00')
-        filter_dateto = self.request.GET.get('filter_dateto', timezone.now().strftime("%Y-%m-%d %H:%M"))
+        filter_datefrom = self.request.GET.get('filter_datefrom', '01/02/2022 11:00 AM')
+        filter_dateto = self.request.GET.get('filter_dateto', timezone.now()) # timezone.now().strftime("%Y-%m-%d %H:%M")
         order = self.request.GET.get('orderby', '-create_date')
         page = self.request.GET.get('page', 1)
         if self.request.user.is_superuser:    #is superuser
@@ -59,8 +59,9 @@ class IndexView(generic.ListView):    #Class-Based View
         context = super(IndexView, self).get_context_data(**kwargs)
         context['filter_url'] = self.request.GET.get('filter_url', '')
         context['filter_author'] = self.request.GET.get('filter_author', self.request.user)
-        context['filter_datefrom'] = datetime.strftime(datetime.strptime(self.request.GET.get('filter_datefrom', '0/02/2022 3:00 AM'), "%d/%m/%Y %H:%M %p"),"%Y-%m-%d %H:%M")
-        context['filter_dateto'] = self.request.GET.get('filter_dateto', timezone.now().strftime("%Y-%m-%d %H:%M"))
+        context['filter_datefrom'] = self.request.GET.get('filter_datefrom', '01/02/2022 11:00 AM')
+        #datetime.strftime(datetime.strptime(self.request.GET.get('filter_datefrom', '10/02/2022 3:00 AM'), "%d/%m/%Y %H:%M %p"),"%Y-%m-%d %H:%M")
+        context['filter_dateto'] = self.request.GET.get('filter_dateto', timezone.now())
         context['orderby'] = self.request.GET.get('orderby', '-create_date')
         return context
 

@@ -59,10 +59,10 @@
             <div class="control-group required">
                 <div class="controls">
 
-                    <input type="text" class="form-control datetimepicker-input" date-format="YYYY-MM-DD HH:mm" id="filter_datefrom" name="filter_datefrom" data-toggle="datetimepicker" data-target="#filter_datefrom" value="{{ filter_datefrom }}"/>
+                    <input type="text" class="form-control datetimepicker-input" date-format="YYYY-MM-DD HH:mm" id="filter_datefrom" name="filter_datefrom" data-toggle="datetimepickerfrom" data-target="#filter_datefrom" value="{{ filter_datefrom }}"/>
                             <script type="text/javascript">
         $(function () {
-            $('#filter_datefrom').datetimepicker({
+            $('#datetimepickerfrom').datetimepicker({
                 viewMode: 'years',
                 inline: true,
                 format: 'yyyy-mm-dd hh:mm'
@@ -76,12 +76,12 @@
                     <div class="form-group col-xs-6">
                      <div class="control-group required">
                 <div class="controls">
-                    <input type="text" class="form-control datetimepicker-input" date-format="YYYY-MM-DD HH:mm" id="filter_dateto" name="filter_dateto" data-toggle="datetimepicker" data-target="#filter_dateto" value="{{ filter_dateto }}"/>
+                    <input type="text" class="form-control datetimepicker-input" date-format="YYYY-MM-DD HH:mm" id="filter_dateto" name="filter_dateto" data-toggle="datetimepickerto" data-target="#filter_dateto" value="{{ filter_dateto }}"/>
                         </div>
                     </div>
                             <script type="text/javascript">
         $(function () {
-            $('#filter_dateto').datetimepicker({
+            $('#datetimepickerto').datetimepicker({
                 inline: true,
             format: 'YYYY-MM-DD HH:mm A',
             showTodayButton: true,
@@ -94,15 +94,15 @@
     </script>
 <script type="text/javascript">
     $(function () {
-        $('#filter_datefrom').datetimepicker();
-        $('#filter_dateto').datetimepicker({
+        $('#datetimepickerfrom').datetimepicker();
+        $('#datetimepickerto').datetimepicker({
             useCurrent: false
         });
-        $("#filter_datefrom").on("change.datetimepicker", function (e) {
-            $('#filter_dateto').datetimepicker('minDate', e.date);
+        $("#datetimepickerfrom").on("change.datetimepicker", function (e) {
+            $('#datetimepickerto').datetimepicker('minDate', e.date);
         });
-        $("#filter_dateto").on("change.datetimepicker", function (e) {
-            $('#filter_datefrom').datetimepicker('maxDate', e.date);
+        $("#datetimepickerto").on("change.datetimepicker", function (e) {
+            $('#datetimepickerfrom').datetimepicker('maxDate', e.date);
         });
     });
 </script>

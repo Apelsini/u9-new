@@ -71,9 +71,23 @@ class IndexView(generic.ListView):    #Class-Based View
         context = super(IndexView, self).get_context_data(**kwargs)
         context['filter_url'] = self.request.GET.get('filter_url', '')
         context['filter_author'] = self.request.GET.get('filter_author', self.request.user)
-        dtfrom = datetime.strftime(self.request.GET.get('filter_datefrom', timezone.now().replace(year=2022)), "%Y-%m-%d %H:%M %p")
-        context['filter_datefrom'] = datetime.strptime(dtfrom, "%Y-%m-%d %H:%M %p")
+        if type(self.request.GET.get('filter_datefrom', timezone.now().replace(year=2022)))==str:
+            filter_dtfrom = timezone.now().replace(year=2022).strftime("%d/%m/%Y %I:%M %p")
+        else:
+            filter_dtfrom = datetime.strftime(self.request.GET.get('filter_datefrom', timezone.now().replace(year=2022)),
+                              "%d/%m/%Y %I:%M %p")
+        filter_datfrom = datetime.strptime(filter_dtfrom, "%d/%m/%Y %I:%M %p").strftime(
+            "%Y-%m-%d %H:%M")  # "%d/%m/%Y %H:%M %p"
+        filter_datefrom = datetime.strptime(filter_datfrom, "%Y-%m-%d %H:%M")
+        context['filter_datefrom'] = filter_datefrom
         #datetime.strftime(datetime.strptime(self.request.GET.get('filter_datefrom', '10/02/2022 3:00 AM'), "%d/%m/%Y %H:%M %p"),"%Y-%m-%d %H:%M")
+        if type(self.request.GET.get('filter_dateto', timezone.now()))==str:
+            filter_dtto = timezone.now().strftime("%d/%m/%Y %I:%M %p")
+        else:
+            filter_dtto = datetime.strftime(self.request.GET.get('filter_dateto', timezone.now()),
+                              "%d/%m/%Y %I:%M %p")
+        filter_datto = datetime.strptime(filter_dtto, "%d/%m/%Y %I:%M %p").strftime("%Y-%m-%d %H:%M") # str to datetime then datetime to str in new format timezone.now().strftime("%Y-%m-%d %H:%M")
+        filter_dateto = datetime.strptime(filter_datto, "%Y-%m-%d %H:%M") #str in new format to new datetime
         dtto = datetime.strftime(self.request.GET.get('filter_dateto', timezone.now()),"%Y-%m-%d %H:%M %p")
         context['filter_dateto'] = datetime.strptime(dtto, "%Y-%m-%d %H:%M %p")
         context['orderby'] = self.request.GET.get('orderby', '-create_date')

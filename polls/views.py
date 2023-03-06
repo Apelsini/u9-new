@@ -36,7 +36,7 @@ class IndexView(generic.ListView):    #Class-Based View
     def get_queryset(self):
         filter_url = self.request.GET.get('filter_url', '')
         filter_author = self.request.GET.get('filter_author', self.request.user) #User.objects.get(username=self.request.GET.get('filter_author', self.request.user))
-        if type(self.request.GET.get('filter_datefrom', timezone.now().replace(year=2022))==str:
+        if type(self.request.GET.get('filter_datefrom', timezone.now().replace(year=2022)))==str:
             filter_dtfrom = timezone.now().replace(year=2022)
         else:
             filter_dtfrom = datetime.strftime(self.request.GET.get('filter_datefrom', timezone.now().replace(year=2022)),

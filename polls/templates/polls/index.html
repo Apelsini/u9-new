@@ -83,7 +83,12 @@
         $(function () {
             $('#filter_dateto').datetimepicker({
                 inline: true,
-                format: 'L("yyyy-mm-dd hh:mm")'
+            format: 'YYYY-MM-DD HH:mm A',
+            showTodayButton: true,
+            sideBySide : true,
+            showClose: true,
+            showClear: true,
+            toolbarPlacement: 'top'
             });
         });
     </script>

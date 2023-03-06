@@ -59,7 +59,7 @@ class IndexView(generic.ListView):    #Class-Based View
         context = super(IndexView, self).get_context_data(**kwargs)
         context['filter_url'] = self.request.GET.get('filter_url', '')
         context['filter_author'] = self.request.GET.get('filter_author', self.request.user)
-        context['filter_datefrom'] = self.request.GET.get('filter_datefrom', '2022-02-01 12:00')
+        context['filter_datefrom'] = datetime.strftime(self.request.GET.get('filter_datefrom', '0/02/2022 3:00 AM'),"%Y-%m-%d %H:%M")
         context['filter_dateto'] = self.request.GET.get('filter_dateto', timezone.now().strftime("%Y-%m-%d %H:%M"))
         context['orderby'] = self.request.GET.get('orderby', '-create_date')
         return context

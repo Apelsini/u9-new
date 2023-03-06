@@ -36,8 +36,8 @@ class IndexView(generic.ListView):    #Class-Based View
     def get_queryset(self):
         filter_url = self.request.GET.get('filter_url', '')
         filter_author = self.request.GET.get('filter_author', self.request.user) #User.objects.get(username=self.request.GET.get('filter_author', self.request.user))
-        filter_datefrom = datetime.strptime(datetime.strptime(self.request.GET.get('filter_datefrom', timezone.now().replace(year=2022)),"%d/%m/%Y %H:%M %p"),"%Y-%m-%d %H:%M")  #"%d/%m/%Y %H:%M %p"
-        filter_dateto = datetime.strptime(datetime.strptime(self.request.GET.get('filter_dateto', timezone.now()),"%d/%m/%Y %H:%M %p"), "%Y-%m-%d %H:%M") # timezone.now().strftime("%Y-%m-%d %H:%M")
+        filter_datefrom = datetime.strptime(datetime.strptime(self.request.GET.get('filter_datefrom', timezone.now().replace(year=2022)),"%d/%m/%Y %-I:%M %p"),"%Y-%m-%d %H:%M")  #"%d/%m/%Y %H:%M %p"
+        filter_dateto = datetime.strptime(datetime.strptime(self.request.GET.get('filter_dateto', timezone.now()),"%d/%m/%Y %-I:%M %p"), "%Y-%m-%d %H:%M") # timezone.now().strftime("%Y-%m-%d %H:%M")
         order = self.request.GET.get('orderby', '-create_date')
         page = self.request.GET.get('page', 1)
         if self.request.user.is_superuser:    #is superuser

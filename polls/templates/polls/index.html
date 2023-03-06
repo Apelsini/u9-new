@@ -59,13 +59,10 @@
             <div class="control-group required">
                 <div class="controls">
 
-                    <input type="text" class="form-control datetimepicker-input" date-format="YYYY-MM-DD HH:mm" id="filter_datefrom" name="filter_datefrom" data-toggle="datetimepicker" data-target="#filter_datefrom" value="{{ filter_datefrom }}"/>
+                    <input type="text" class="form-control datetimepicker-input" id="filter_datefrom" name="filter_datefrom" data-toggle="datetimepicker" data-target="#filter_datefrom" value="{{ filter_datefrom }}"/>
                             <script type="text/javascript">
         $(function () {
             $('#filter_datefrom').datetimepicker({
-                viewMode: 'years',
-                inline: true,
-                format: 'yyyy-mm-dd hh:mm'
             });
         });
     </script>
@@ -83,12 +80,6 @@
         $(function () {
             $('#filter_dateto').datetimepicker({
                 inline: true,
-            format: 'YYYY-MM-DD HH:mm A',
-            showTodayButton: true,
-            sideBySide : true,
-            showClose: true,
-            showClear: true,
-            toolbarPlacement: 'top'
             });
         });
     </script>

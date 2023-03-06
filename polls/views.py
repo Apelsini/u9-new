@@ -36,8 +36,8 @@ class IndexView(generic.ListView):    #Class-Based View
     def get_queryset(self):
         filter_url = self.request.GET.get('filter_url', '')
         filter_author = self.request.GET.get('filter_author', self.request.user) #User.objects.get(username=self.request.GET.get('filter_author', self.request.user))
-        filter_datefrom = self.request.GET.get('filter_datefrom', '01/02/2022 11:00 AM')
-        filter_dateto = self.request.GET.get('filter_dateto', timezone.now()) # timezone.now().strftime("%Y-%m-%d %H:%M")
+        filter_datefrom = datetime.strptime(self.request.GET.get('filter_datefrom', '01/02/2022 11:00 AM'),"%Y-%m-%d %h:%m")
+        filter_dateto = datetime.strptime(self.request.GET.get('filter_dateto', timezone.now()), "%Y-%m-%d %h:%m") # timezone.now().strftime("%Y-%m-%d %H:%M")
         order = self.request.GET.get('orderby', '-create_date')
         page = self.request.GET.get('page', 1)
         if self.request.user.is_superuser:    #is superuser

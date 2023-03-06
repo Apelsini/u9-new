@@ -36,11 +36,11 @@ class IndexView(generic.ListView):    #Class-Based View
     def get_queryset(self):
         filter_url = self.request.GET.get('filter_url', '')
         filter_author = self.request.GET.get('filter_author', self.request.user) #User.objects.get(username=self.request.GET.get('filter_author', self.request.user))
-        filter_dtfrom = datetime.strftime(self.request.GET.get('filter_datefrom', timezone.now().replace(year=2022)),"%d/%m/%Y %-I:%M %p")
-        filter_datfrom = datetime.strptime(filter_dtfrom ,"%d/%m/%Y %-I:%M %p").strftime("%Y-%m-%d %H:%M")  #"%d/%m/%Y %H:%M %p"
+        filter_dtfrom = datetime.strftime(self.request.GET.get('filter_datefrom', timezone.now().replace(year=2022)),"%d/%m/%Y %I:%M %p")
+        filter_datfrom = datetime.strptime(filter_dtfrom ,"%d/%m/%Y %I:%M %p").strftime("%Y-%m-%d %H:%M")  #"%d/%m/%Y %H:%M %p"
         filter_datefrom = datetime.strptime(filter_datfrom, "%Y-%m-%d %H:%M")
-        filter_dtto = datetime.strftime(self.request.GET.get('filter_dateto', timezone.now()),"%d/%m/%Y %-I:%M %p") #str
-        filter_datto = datetime.strptime(filter_dtto, "%d/%m/%Y %-I:%M %p").strftime("%Y-%m-%d %H:%M") # str to datetime then datetime to str in new format timezone.now().strftime("%Y-%m-%d %H:%M")
+        filter_dtto = datetime.strftime(self.request.GET.get('filter_dateto', timezone.now()),"%d/%m/%Y %I:%M %p") #str
+        filter_datto = datetime.strptime(filter_dtto, "%d/%m/%Y %I:%M %p").strftime("%Y-%m-%d %H:%M") # str to datetime then datetime to str in new format timezone.now().strftime("%Y-%m-%d %H:%M")
         filter_dateto = datetime.strptime(filter_datto, "%Y-%m-%d %H:%M") #str in new format to new datetime
         order = self.request.GET.get('orderby', '-create_date')
         page = self.request.GET.get('page', 1)

@@ -64,6 +64,7 @@
         $(function () {
             $('#filter_datefrom').datetimepicker({
                 viewMode: 'years',
+                inline: true,
                 format: 'YYYY-MM-DD HH:ss'
             });
         });
@@ -81,19 +82,13 @@
                             <script type="text/javascript">
         $(function () {
             $('#filter_dateto').datetimepicker({
-                viewMode: 'years',
+                inline: true,
                 format: 'YYYY-MM-DD HH:ss'
             });
         });
     </script>
 <script type="text/javascript">
     $(function () {
-     $('#filter_datefrom').datetimepicker({
-                format: 'YYYY-MM-DD HH:mm'
-            });
-            $('#filter_dateto').datetimepicker({
-                format: 'YYYY-MM-DD HH:mm'
-            });
         $('#filter_datefrom').datetimepicker();
         $('#filter_dateto').datetimepicker({
             useCurrent: false

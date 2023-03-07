@@ -75,9 +75,12 @@
         </div>
                     <div class="form-group col-xs-6">
                      <div class="control-group required">
-                <div class="controls">
-                    <input type="text" class="form-control"  data-inputmask="'alias': 'date'" data-format="yyyy-MM-dd" id="filter_dateto" name="filter_dateto" data-toggle="datetimepicker" data-target="#filter_dateto" value="{{ filter_dateto }}"/>
-                        </div>
+                <div class='input-group date' id='filter_dateto'>
+               <input type='text' class="form-control" />
+               <span class="input-group-addon">
+               <span class="glyphicon glyphicon-calendar"></span>
+               </span>
+            </div>
                     </div>
                             <script type="text/javascript">
         $(function () {

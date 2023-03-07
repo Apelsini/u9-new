@@ -58,19 +58,13 @@
         <div class="form-group col-xs-6">
             <div class="control-group required">
                 <div class="controls">
-<input class="form-control" id="date" type="text" placeholder="yyyy-MM-dd" title="format : yyyy-MM-dd" value="{{ filter_dateto }}"/>
+<input class="form-control" id="filter_datefrom" type="text" placeholder="yyyy-MM-dd" title="format : yyyy-MM-dd" value="{{ filter_datefrom }}"/>
 
-<script type="text/javascript" src="js/locales/en.min.js"></script>
-<script type="text/javascript" src="js/datepicker.min.js"></script>
-                            <script type="text/javascript">
-        $(document).ready(function() {
-	$('#date').datepicker({
-		firstDayOfWeek: 1,
-		inputFormat: ["yyyy-MM-dd"],
-		outputFormat: 'yyyy-MM-dd',
-	});
-});
-    </script>
+  <script>
+    $(function () {
+      $("#filter_datefrom").datetimepicker();
+    });
+  </script>
                     </div>
                 </div>
             </div>

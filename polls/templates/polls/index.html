@@ -66,6 +66,7 @@
       $(function () {
         $("#filter_datefrom").datetimepicker();
         format: 'yyyy-MM-dd hh:mm',
+        locale: 'ru',
         inline: true,
         sideBySide: true,
       });
@@ -77,31 +78,19 @@
                     <div class="form-group col-xs-6">
                      <div class="control-group required">
                 <div class="controls">
-                    <input type="text" class="form-control datetimepicker-input input-group-append" data-toggle="datetimepicker" id="filter_dateto"  data-target="#filter_dateto" value="{{ filter_dateto }}"/>
-                        </div>
+                    <div class="input-group date" id="filter_dateto" data-target-input="nearest">
+                   <input type="text" class="form-control datetimepicker-input input-group-append" data-toggle="datetimepicker" id="filter_dateto" data-target="#filter_dateto" value="{{ filter_dateto }}"/>
+       </div>
                     </div>
 <script>
       $(function () {
-        $("#filter_dateto").datetimepicker();
+        $("#filter_dateto").datetimepicker1();
         format: 'yyyy-MM-dd hh:mm',
         inline: true,
         sideBySide: true,
       });
     </script>
-<script type="text/javascript">
-    $(function () {
-        $('#filter_datefrom').datetimepicker();
-        $('#filter_dateto').datetimepicker({
-            useCurrent: false
-        });
-        $("#filter_datefrom").on("change.datetimepicker", function (e) {
-            $('#filter_dateto').datetimepicker('minDate', e.date);
-        });
-        $("#filter_dateto").on("change.datetimepicker", function (e) {
-            $('#filter_datefrom').datetimepicker('maxDate', e.date);
-        });
-    });
-</script>
+
                 </div>
             </div>
         </div>

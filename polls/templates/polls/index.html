@@ -63,10 +63,19 @@
     </div>
 
     <script>
+    $('.datepicker').each(function () {
+    const val = $(this).val();
+    const format = 'YYYY-MM-DD HH:MM'
+    alert(val);
+    $(this).datetimepicker({
+        format: format,
+        userCurrent: false,
+        date: moment(val, format)
+    });
+});
       $(function () {
         $("#filter_datefrom").datetimepicker();
         format: 'yyyy-MM-dd hh:mm',
-        locale: 'ru',
         inline: true,
         sideBySide: true,
       });

@@ -108,10 +108,11 @@ defaultDate: {{ filter_datefrom }},
                     </div>
 <script>
       $(function () {
-        $("#filter_dateto").datetimepicker1();
+        $("#filter_dateto").tempusDominus({
         format: 'yyyy-MM-dd hh:mm',
         inline: true,
         sideBySide: true
+        })
       });
     </script>
 

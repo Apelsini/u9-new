@@ -64,7 +64,7 @@
 
     <script>
       $(function () {
-        $("#filter_datefrom").datetimepicker(
+        $("#filter_datefrom").tempusDominus({
         format: 'YYYY-MM-DD HH:mm',
         inline: true,
         sideBySide: true,
@@ -92,7 +92,7 @@ defaultDate: {{ filter_datefrom }},
       dayViewHeaderFormat: { month:'long', year:'2-digit' },
       locale:'es',
       startOfTheWeek: 0
-);
+});
       });
     </script>
                     </div>

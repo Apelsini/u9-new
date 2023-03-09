@@ -64,35 +64,10 @@
 
     <script>
       $(function () {
-        $("#filter_datefrom").tempusDominus({
+        $("#filter_datefrom").datetimepicker({ sideBySide: true, debug: true });
         format: 'YYYY-MM-DD HH:mm',
         inline: true,
         sideBySide: true,
-keepOpen:false,
- buttons: {
-        today:false,
-        clear:false,
-        close:false
-      },
-components: {
-        calendar:true,
-        date:true,
-        month:true,
-        year:true,
-        decades:true,
-        clock:true,
-        hours:true,
-        minutes:true,
-        seconds:false,
-        useTwentyfourHour:true
-      },
-defaultDate: {{ filter_datefrom }},
-
-         localization: {
-      dayViewHeaderFormat: { month:'long', year:'2-digit' },
-      locale:'es',
-      startOfTheWeek: 0
-});
       });
     </script>
                     </div>
@@ -108,11 +83,10 @@ defaultDate: {{ filter_datefrom }},
                     </div>
 <script>
       $(function () {
-        $("#filter_dateto").tempusDominus({
+        $("#filter_dateto").datetimepicker({ sideBySide: true, debug: true });
         format: 'yyyy-MM-dd hh:mm',
         inline: true,
-        sideBySide: true
-        })
+        sideBySide: true,
       });
     </script>
 

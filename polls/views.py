@@ -38,7 +38,7 @@ class IndexView(generic.ListView):    #Class-Based View
     def get_queryset(self):
         filter_url = self.request.GET.get('filter_url', '')
         all_users = get_user_model().objects.all()
-        filter_authorcheck = self.request.GET.get('filter_author', '')
+        filter_authorcheck = self.request.GET.get('filter_author', self.request.user.username)
         filter_author = self.request.user  #deafult - existing user
 
         #User.objects.get(username=self.request.GET.get('filter_author', self.request.user))
@@ -72,7 +72,7 @@ class IndexView(generic.ListView):    #Class-Based View
         all_users = get_user_model().objects.all()
 
         allusrss = all_users[1].username
-        context['filter_author'] = self.request.GET.get('filter_author', '')
+        context['filter_author'] = self.request.GET.get('filter_author', self.request.user.username)
 
         datfrom = timezone.now().replace(year=2022).strftime("%Y-%m-%d %H:%M")
         context['filter_datefrom'] = self.request.GET.get('filter_datefrom', datfrom)
@@ -80,7 +80,7 @@ class IndexView(generic.ListView):    #Class-Based View
         context['filter_dateto'] = self.request.GET.get('filter_dateto', datto )
         context['orderby'] = self.request.GET.get('orderby', '-create_date')
         if self.request.user.is_superuser:
-            context['userlist'] = allusrss
+            context['userlist'] = ''
         else:
             context['userlist'] = ''
         return context

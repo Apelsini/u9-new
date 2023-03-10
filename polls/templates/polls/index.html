@@ -62,6 +62,14 @@
 <div class="input-group date" id="filter_datefrom" data-target-input="nearest">
       <input type="text" class="form-control datetimepicker-input input-group-append" data-date-format="yyyy-mm-dd" data-toggle="datetimepicker" id="filter_datefrom" data-target="#filter_datefrom" value="{{ filter_datefrom }}"/>
     </div>
+ <script type="text/javascript">
+    new tempusDominus.TempusDominus(document.getElementById("filter_datefrom"), {
+        localization: {
+        locale: "de",
+        startOfTheWeek: 1
+    }
+});
+    </script>
 <script type="text/javascript">
   $(function () {
       $('#filter_datefrom').datetimepicker({

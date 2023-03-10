@@ -16,6 +16,7 @@
 {% if request.user.is_superuser %}
 <legend>Links (click to edit):</legend>
 {% if is_paginated %}
+{% if request.user.is_authenticated %}
 <table class="table-condensed">
     <tbody>
 <tr>
@@ -88,6 +89,7 @@
 
         </tr>
     </form>
+{% endif %}
  {% for links in links_list %}
     <tr>
         <td colspan="3">
@@ -123,6 +125,7 @@
     {% endfor %}
   </tbody>
 
+    {% if request.user.is_authenticated %}
 </table>
   <ul class="pagination">
         {% if page_obj.has_previous %}
@@ -169,9 +172,12 @@
     </tbody>
 </table>
 {% endif %}
+{% endif %}
 
 {% else %}
+{% if request.user.is_authenticated %}
 <legend>Your Links (click to edit):</legend>
+{% endif %}
 {% if is_paginated %}
 <table class="table-condensed">
     <tbody>

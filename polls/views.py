@@ -65,6 +65,7 @@ class IndexView(generic.ListView):    #Class-Based View
         context = super(IndexView, self).get_context_data(**kwargs)
         context['filter_url'] = self.request.GET.get('filter_url', '')
         all_users = get_user_model().objects.all()
+        allusrs = set(usr.id for usr in all_users)
         context['filter_author'] = self.request.GET.get('filter_author', self.request.user)
         datfrom = timezone.now().replace(year=2022).strftime("%Y-%m-%d %H:%M")
         context['filter_datefrom'] = self.request.GET.get('filter_datefrom', datfrom)
@@ -72,7 +73,7 @@ class IndexView(generic.ListView):    #Class-Based View
         context['filter_dateto'] = self.request.GET.get('filter_dateto', datto )
         context['orderby'] = self.request.GET.get('orderby', '-create_date')
         if self.request.user.is_superuser:
-            context['userlist'] = all_users
+            context['userlist'] = allusrs
         else:
             context['userlist'] = ''
         return context

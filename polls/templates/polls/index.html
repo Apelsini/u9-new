@@ -62,29 +62,7 @@
 <div class="input-group date" id="filter_datefrom" data-target-input="nearest">
       <input type="text" class="form-control datetimepicker-input input-group-append" data-date-format="yyyy-mm-dd" data-toggle="datetimepicker" id="filter_datefrom" data-target="#filter_datefrom" value="{{ filter_datefrom }}"/>
     </div>
- <script type="text/javascript">
-    new tempusDominus.TempusDominus(document.getElementById("filter_datefrom"), {
-        localization: {
-        locale: "de",
-        startOfTheWeek: 1
-    }
-});
-    </script>
-<script type="text/javascript">
-  $(function () {
-      $('#filter_datefrom').tempusDominus({
-          format: 'YYYY-MM.DD HH:MM',
-          locale: 'de',
-          todayHighlight: true,
-          maxDate: new Date(),
-          minDate: new Date("11/01/2020"),
-          useCurrent: false,
-          buttons: {showClear: true, showToday:true, showClose: true},
-          tooltips:{today: 'Gehe zu: Heute', clear:'Auswahl löschen', close:'Kalender schließen'},
-      });
-  });
-</script>
-
+ 
                     </div>
                 </div>
             </div>

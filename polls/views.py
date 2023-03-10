@@ -92,7 +92,7 @@ class IndexView(generic.ListView):    #Class-Based View
         # filter_datto = datetime.strptime(filter_dtto, "%d/%m/%Y %I:%M %p").strftime("%Y-%m-%d %H:%M") # str to datetime then datetime to str in new format timezone.now().strftime("%Y-%m-%d %H:%M")
         # filter_dateto = datetime.strptime(filter_datto, "%Y-%m-%d %H:%M").date() #str in new format to new datetime
         datto = timezone.now().strftime("%Y-%m-%d %H:%M")
-        context['filter_dateto'] = self.request.GET.get('filter_dateto', )
+        context['filter_dateto'] = self.request.GET.get('filter_dateto', datto )
         context['orderby'] = self.request.GET.get('orderby', '-create_date')
         return context
 

@@ -60,7 +60,13 @@
             <div class="control-group required">
                 <div class="controls">
       <input type="text" id="filter_datefrom" class="form-control input-datetimepicker" name="filter_datefrom" data-toggle="datetimepicker" data-target="#filter_datefrom" value="{{ filter_datefrom }}"/>
-
+<script type="text/javascript">
+         $(function () {
+             $('#filter_datefrom').datetimepicker({
+                 locale: 'ru'
+             });
+         });
+      </script>
 
                     </div>
                 </div>

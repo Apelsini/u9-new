@@ -38,8 +38,8 @@ class IndexView(generic.ListView):    #Class-Based View
     def get_queryset(self):
         filter_url = self.request.GET.get('filter_url', '')
         all_users = get_user_model().objects.all()
-
-        filter_author = self.request.GET.get('filter_author', self.request.user) #User.objects.get(username=self.request.GET.get('filter_author', self.request.user))
+        filter_author = self.request.GET.get('filter_author', self.request.user)
+        #User.objects.get(username=self.request.GET.get('filter_author', self.request.user))
         datfromm = timezone.now().replace(year=2022).strftime("%Y-%m-%d %H:%M")
         filter_datefrom =datetime.strptime(self.request.GET.get('filter_datefrom', datfromm),"%Y-%m-%d %H:%M")
         dattom = timezone.now().strftime("%Y-%m-%d %H:%M")
@@ -48,7 +48,7 @@ class IndexView(generic.ListView):    #Class-Based View
         page = self.request.GET.get('page', 1)
         if self.request.user.is_superuser:    #is superuser
             new_context = Urlentry.objects.filter(
-                author=filter_author,
+                #author=filter_author,
                 url_text__contains=filter_url,  # __contains lookup
                create_date__gte=filter_datefrom,
                create_date__lte=filter_dateto,
@@ -64,13 +64,17 @@ class IndexView(generic.ListView):    #Class-Based View
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['filter_url'] = self.request.GET.get('filter_url', '')
-        #all_users = get_user_model().objects.all()
+        all_users = get_user_model().objects.all()
         context['filter_author'] = self.request.GET.get('filter_author', self.request.user)
         datfrom = timezone.now().replace(year=2022).strftime("%Y-%m-%d %H:%M")
         context['filter_datefrom'] = self.request.GET.get('filter_datefrom', datfrom)
         datto = timezone.now().strftime("%Y-%m-%d %H:%M")
         context['filter_dateto'] = self.request.GET.get('filter_dateto', datto )
         context['orderby'] = self.request.GET.get('orderby', '-create_date')
+        if self.request.user.is_superuser:
+            context['userlist'] = all_users
+        else:
+            context['userlist'] = ''
         return context
 
 @method_decorator(allowed_users(allowed_roles=['customer','admin']), name='dispatch')

@@ -3,7 +3,6 @@ from .forms import CreateUserForm, CheckCustomerForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from .decorators import unauthenticated_user, allowed_users, staff_only
-from django.contrib.auth.models import User, Group
 from django.views import generic
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required

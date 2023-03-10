@@ -15,6 +15,8 @@ from django.contrib.auth.models import Group, User
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from datetime import datetime, date, time
+from django.shortcuts import render
+from django.contrib.auth import get_user_model
 
 #supporting functions
 def countme(iter):
@@ -35,23 +37,11 @@ class IndexView(generic.ListView):    #Class-Based View
     #    return Urlentry.objects.filter(create_date__lte=timezone.now()).order_by('-create_date') #[:10]
     def get_queryset(self):
         filter_url = self.request.GET.get('filter_url', '')
-        filter_author = self.request.GET.get('filter_author', self.request.user) #User.objects.get(username=self.request.GET.get('filter_author', self.request.user))
-        # if type(self.request.GET.get('filter_datefrom', timezone.now().replace(year=2022)))==str:
-        #     filter_dtfrom = timezone.now().replace(year=2022).strftime("%d/%m/%Y %I:%M %p")
-        # else:
-        #     filter_dtfrom = datetime.strftime(self.request.GET.get('filter_datefrom', timezone.now().replace(year=2022)),
-        #                       "%d/%m/%Y %I:%M %p")
-        # filter_datfrom = datetime.strptime(filter_dtfrom ,"%d/%m/%Y %I:%M %p").strftime("%Y-%m-%d %H:%M")  #"%d/%m/%Y %H:%M %p"
-        # filter_datefrom = datetime.strptime(filter_datfrom, "%Y-%m-%d %H:%M")
+        all_users = get_user_model().objects.all()
+
+        filter_author = self.request.GET.get('filter_author', all_users) #User.objects.get(username=self.request.GET.get('filter_author', self.request.user))
         datfromm = timezone.now().replace(year=2022).strftime("%Y-%m-%d %H:%M")
         filter_datefrom =datetime.strptime(self.request.GET.get('filter_datefrom', datfromm),"%Y-%m-%d %H:%M")
-        # if type(self.request.GET.get('filter_dateto', timezone.now()))==str:
-        #     filter_dtto = timezone.now().strftime("%d/%m/%Y %I:%M %p")
-        # else:
-        #     filter_dtto = datetime.strftime(self.request.GET.get('filter_dateto', timezone.now()),
-        #                       "%d/%m/%Y %I:%M %p")
-        # filter_datto = datetime.strptime(filter_dtto, "%d/%m/%Y %I:%M %p").strftime("%Y-%m-%d %H:%M") # str to datetime then datetime to str in new format timezone.now().strftime("%Y-%m-%d %H:%M")
-        # filter_dateto = datetime.strptime(filter_datto, "%Y-%m-%d %H:%M") #str in new format to new datetime
         dattom = timezone.now().strftime("%Y-%m-%d %H:%M")
         filter_dateto = datetime.strptime(self.request.GET.get('filter_dateto', dattom), "%Y-%m-%d %H:%M")
         order = self.request.GET.get('orderby', '-create_date')
@@ -74,25 +64,10 @@ class IndexView(generic.ListView):    #Class-Based View
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['filter_url'] = self.request.GET.get('filter_url', '')
-        context['filter_author'] = self.request.GET.get('filter_author', self.request.user)
-        # if type(self.request.GET.get('filter_datefrom', timezone.now().replace(year=2022)))==str:
-        #     filter_dtfrom = timezone.now().replace(year=2022).strftime("%d/%m/%Y %I:%M %p")
-        # else:
-        #     filter_dtfrom = datetime.strftime(self.request.GET.get('filter_datefrom', timezone.now().replace(year=2022)),
-        #                       "%d/%m/%Y %I:%M %p")
-        # filter_datfrom = datetime.strptime(filter_dtfrom, "%d/%m/%Y %I:%M %p").strftime(
-        #     "%Y-%m-%d %H:%M")  # "%d/%m/%Y %H:%M %p"
-        # filter_datefrom = datetime.strptime(filter_datfrom, "%Y-%m-%d %H:%M").date()
+        all_users = get_user_model().objects.all()
+        context['filter_author'] = self.request.GET.get('filter_author', all_users)
         datfrom = timezone.now().replace(year=2022).strftime("%Y-%m-%d %H:%M")
         context['filter_datefrom'] = self.request.GET.get('filter_datefrom', datfrom)
-        #datetime.strftime(datetime.strptime(self.request.GET.get('filter_datefrom', '10/02/2022 3:00 AM'), "%d/%m/%Y %H:%M %p"),"%Y-%m-%d %H:%M")
-        # if type(self.request.GET.get('filter_dateto', timezone.now()))==str:
-        #     filter_dtto = timezone.now().strftime("%d/%m/%Y %I:%M %p")
-        # else:
-        #     filter_dtto = datetime.strftime(self.request.GET.get('filter_dateto', timezone.now()),
-        #                       "%d/%m/%Y %I:%M %p")
-        # filter_datto = datetime.strptime(filter_dtto, "%d/%m/%Y %I:%M %p").strftime("%Y-%m-%d %H:%M") # str to datetime then datetime to str in new format timezone.now().strftime("%Y-%m-%d %H:%M")
-        # filter_dateto = datetime.strptime(filter_datto, "%Y-%m-%d %H:%M").date() #str in new format to new datetime
         datto = timezone.now().strftime("%Y-%m-%d %H:%M")
         context['filter_dateto'] = self.request.GET.get('filter_dateto', datto )
         context['orderby'] = self.request.GET.get('orderby', '-create_date')

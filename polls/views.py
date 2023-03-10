@@ -52,14 +52,6 @@ class IndexView(generic.ListView):    #Class-Based View
             for usrr in all_users:
                 if filter_authorcheck in usrr.username:
                     filter_author = usrr  # if there is request for another user - then switch to another user
-            if filter_authorcheck=='':
-                new_context = Urlentry.objects.filter(
-                    #author=filter_author,
-                    url_text__contains=filter_url,  # __contains lookup
-                    create_date__gte=filter_datefrom,
-                    create_date__lte=filter_dateto,
-                ).order_by(order)
-            else:
             new_context = Urlentry.objects.filter(
                 author=filter_author,
                 url_text__contains=filter_url,  # __contains lookup

@@ -63,7 +63,6 @@
 <script type="text/javascript">
          $(function () {
              $('#filter_datefrom').datetimepicker({
-                 locale: 'ru',
                  format:'YYYY-MM-DD HH:mm'
              });
          });
@@ -81,11 +80,24 @@
 <script type="text/javascript">
          $(function () {
              $('#filter_dateto').datetimepicker({
-                 locale: 'ru',
                  format:'YYYY-MM-DD HH:mm'
              });
          });
       </script>
+<script type="text/javascript">
+   $(function () {
+       $('#filter_datefrom').datetimepicker();
+       $('#filter_dateto').datetimepicker({
+   useCurrent: false //Important! See issue #1075
+   });
+       $("#filter_datefrom").on("dp.change", function (e) {
+           $('#filter_dateto').data("DateTimePicker").minDate(e.date);
+       });
+       $("#filter_dateto").on("dp.change", function (e) {
+           $('#filter_datefrom').data("DateTimePicker").maxDate(e.date);
+       });
+   });
+</script>
                 </div>
             </div>
         </div>

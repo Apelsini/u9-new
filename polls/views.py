@@ -81,7 +81,8 @@ class IndexView(generic.ListView):    #Class-Based View
         # filter_datfrom = datetime.strptime(filter_dtfrom, "%d/%m/%Y %I:%M %p").strftime(
         #     "%Y-%m-%d %H:%M")  # "%d/%m/%Y %H:%M %p"
         # filter_datefrom = datetime.strptime(filter_datfrom, "%Y-%m-%d %H:%M").date()
-        context['filter_datefrom'] = self.request.GET.get('filter_datefrom', timezone.now().replace(year=2022))
+        datfrom = timezone.now().replace(year=2022).strftime("%Y-%m-%d %H:%M")
+        context['filter_datefrom'] = self.request.GET.get('filter_datefrom', datfrom)
         #datetime.strftime(datetime.strptime(self.request.GET.get('filter_datefrom', '10/02/2022 3:00 AM'), "%d/%m/%Y %H:%M %p"),"%Y-%m-%d %H:%M")
         # if type(self.request.GET.get('filter_dateto', timezone.now()))==str:
         #     filter_dtto = timezone.now().strftime("%d/%m/%Y %I:%M %p")
@@ -90,7 +91,8 @@ class IndexView(generic.ListView):    #Class-Based View
         #                       "%d/%m/%Y %I:%M %p")
         # filter_datto = datetime.strptime(filter_dtto, "%d/%m/%Y %I:%M %p").strftime("%Y-%m-%d %H:%M") # str to datetime then datetime to str in new format timezone.now().strftime("%Y-%m-%d %H:%M")
         # filter_dateto = datetime.strptime(filter_datto, "%Y-%m-%d %H:%M").date() #str in new format to new datetime
-        context['filter_dateto'] = self.request.GET.get('filter_dateto', timezone.now())
+        datto = timezone.now().strftime("%Y-%m-%d %H:%M")
+        context['filter_dateto'] = self.request.GET.get('filter_dateto', )
         context['orderby'] = self.request.GET.get('orderby', '-create_date')
         return context
 

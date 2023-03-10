@@ -38,7 +38,9 @@ class IndexView(generic.ListView):    #Class-Based View
     def get_queryset(self):
         filter_url = self.request.GET.get('filter_url', '')
         all_users = get_user_model().objects.all()
-        filter_author = self.request.GET.get('filter_author', self.request.user)
+        filter_authorcheck = self.request.GET.get('filter_author', self.request.user.username)
+        filter_author = self.request.user  #deafult - existing user
+
         #User.objects.get(username=self.request.GET.get('filter_author', self.request.user))
         datfromm = timezone.now().replace(year=2022).strftime("%Y-%m-%d %H:%M")
         filter_datefrom =datetime.strptime(self.request.GET.get('filter_datefrom', datfromm),"%Y-%m-%d %H:%M")
@@ -47,15 +49,18 @@ class IndexView(generic.ListView):    #Class-Based View
         order = self.request.GET.get('orderby', '-create_date')
         page = self.request.GET.get('page', 1)
         if self.request.user.is_superuser:    #is superuser
+            for usrr in all_users:
+                if filter_authorcheck in usrr.username:
+                    filter_author = usrr  # if there is request for another user - then switch to another user
             new_context = Urlentry.objects.filter(
-                #author=filter_author,
+                author=filter_author,
                 url_text__contains=filter_url,  # __contains lookup
                create_date__gte=filter_datefrom,
                create_date__lte=filter_dateto,
             ).order_by(order)
         else:
             new_context = Urlentry.objects.filter(
-                #author=filter_author,
+                author=filter_author,
                 url_text__contains=filter_url,   #__contains lookup
                 create_date__gte=filter_datefrom,
                 create_date__lte=filter_dateto,
@@ -65,8 +70,10 @@ class IndexView(generic.ListView):    #Class-Based View
         context = super(IndexView, self).get_context_data(**kwargs)
         context['filter_url'] = self.request.GET.get('filter_url', '')
         all_users = get_user_model().objects.all()
+
         allusrss = all_users[1].username
-        context['filter_author'] = self.request.GET.get('filter_author', self.request.user)
+        context['filter_author'] = self.request.GET.get('filter_author', self.request.user.username)
+
         datfrom = timezone.now().replace(year=2022).strftime("%Y-%m-%d %H:%M")
         context['filter_datefrom'] = self.request.GET.get('filter_datefrom', datfrom)
         datto = timezone.now().strftime("%Y-%m-%d %H:%M")

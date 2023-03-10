@@ -43,7 +43,8 @@ class IndexView(generic.ListView):    #Class-Based View
         #                       "%d/%m/%Y %I:%M %p")
         # filter_datfrom = datetime.strptime(filter_dtfrom ,"%d/%m/%Y %I:%M %p").strftime("%Y-%m-%d %H:%M")  #"%d/%m/%Y %H:%M %p"
         # filter_datefrom = datetime.strptime(filter_datfrom, "%Y-%m-%d %H:%M")
-        filter_datefrom = self.request.GET.get('filter_datefrom', timezone.now().replace(year=2022).date())
+        datfromm = timezone.now().replace(year=2022).strftime("%Y-%m-%d %H:%M")
+        filter_datefrom =datetime.strptime(self.request.GET.get('filter_datefrom', datfromm),"%Y-%m-%d %H:%M")
         # if type(self.request.GET.get('filter_dateto', timezone.now()))==str:
         #     filter_dtto = timezone.now().strftime("%d/%m/%Y %I:%M %p")
         # else:
@@ -51,7 +52,8 @@ class IndexView(generic.ListView):    #Class-Based View
         #                       "%d/%m/%Y %I:%M %p")
         # filter_datto = datetime.strptime(filter_dtto, "%d/%m/%Y %I:%M %p").strftime("%Y-%m-%d %H:%M") # str to datetime then datetime to str in new format timezone.now().strftime("%Y-%m-%d %H:%M")
         # filter_dateto = datetime.strptime(filter_datto, "%Y-%m-%d %H:%M") #str in new format to new datetime
-        filter_dateto = self.request.GET.get('filter_dateto', timezone.now().replace(year=2022).date())
+        dattom = timezone.now().strftime("%Y-%m-%d %H:%M")
+        filter_dateto = datetime.strptime(self.request.GET.get('filter_dateto', dattom), "%Y-%m-%d %H:%M")
         order = self.request.GET.get('orderby', '-create_date')
         page = self.request.GET.get('page', 1)
         if self.request.user.is_superuser:    #is superuser

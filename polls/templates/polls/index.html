@@ -63,7 +63,8 @@
 <script type="text/javascript">
          $(function () {
              $('#filter_datefrom').datetimepicker({
-                 locale: 'ru'
+                 locale: 'ru',
+                 format:'YYYY-MM-DD HH:mm'
              });
          });
       </script>
@@ -77,23 +78,17 @@
                 <div class="controls">
                    <input type="text" id="filter_dateto" class="form-control" name="filter_dateto" data-toggle="datetimepicker" data-target="#filter_dateto" value="{{ filter_dateto }}"/>
                     </div>
-
+<script type="text/javascript">
+         $(function () {
+             $('#filter_dateto').datetimepicker({
+                 locale: 'ru',
+                 format:'YYYY-MM-DD HH:mm'
+             });
+         });
+      </script>
                 </div>
             </div>
         </div>
-
-            <div class='col-sm-4 input-group date' id='dtpickerdemo'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-                 <script type="text/javascript">
-            $(function () {
-                $('#dtpickerdemo').datetimepicker();
-            });
-        </script>
-
             </td>
             <td align="left">
                 <p><input class="btn btn-default" type="submit" class="button"

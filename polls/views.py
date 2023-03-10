@@ -38,7 +38,7 @@ class IndexView(generic.ListView):    #Class-Based View
     def get_queryset(self):
         filter_url = self.request.GET.get('filter_url', '')
         all_users = get_user_model().objects.all()
-        filter_authorcheck = self.request.GET.get('filter_author', self.request.user.username)
+        filter_authorcheck = self.request.GET.get('filter_author', '')
         filter_author = self.request.user  #deafult - existing user
 
         #User.objects.get(username=self.request.GET.get('filter_author', self.request.user))
@@ -52,6 +52,14 @@ class IndexView(generic.ListView):    #Class-Based View
             for usrr in all_users:
                 if filter_authorcheck in usrr.username:
                     filter_author = usrr  # if there is request for another user - then switch to another user
+            if filter_authorcheck=='':
+                new_context = Urlentry.objects.filter(
+                    #author=filter_author,
+                    url_text__contains=filter_url,  # __contains lookup
+                    create_date__gte=filter_datefrom,
+                    create_date__lte=filter_dateto,
+                ).order_by(order)
+            else:
             new_context = Urlentry.objects.filter(
                 author=filter_author,
                 url_text__contains=filter_url,  # __contains lookup
@@ -72,7 +80,7 @@ class IndexView(generic.ListView):    #Class-Based View
         all_users = get_user_model().objects.all()
 
         allusrss = all_users[1].username
-        context['filter_author'] = self.request.GET.get('filter_author', self.request.user.username)
+        context['filter_author'] = self.request.GET.get('filter_author', '')
 
         datfrom = timezone.now().replace(year=2022).strftime("%Y-%m-%d %H:%M")
         context['filter_datefrom'] = self.request.GET.get('filter_datefrom', datfrom)

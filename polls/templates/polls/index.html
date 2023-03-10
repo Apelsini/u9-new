@@ -177,9 +177,7 @@
 {% else %}
 {% if request.user.is_authenticated %}
 <legend>Your Links (click to edit):</legend>
-{% endif %}
 {% if is_paginated %}
-{% if request.user.is_authenticated %}
 <table class="table-condensed">
     <tbody>
 <tr>
@@ -228,7 +226,7 @@
             </td>
         </tr>
     </form>
-{% endif %}
+
  {% for links in links_list %}
  {% if links.author == request.user %}
     <tr>
@@ -249,9 +247,10 @@
         </td>
     </tr>
     {% endif %}
+
     {% endfor %}
   </tbody>
-{% if request.user.is_authenticated %}
+
 </table>
   <ul class="pagination">
         {% if page_obj.has_previous %}

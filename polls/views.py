@@ -66,7 +66,7 @@ class IndexView(generic.ListView):    #Class-Based View
         context['filter_url'] = self.request.GET.get('filter_url', '')
         all_users = get_user_model().objects.all()
         allusrs = list(all_users)
-        allusrss = [i[-1] for i in allusrs]
+        allusrss = [i[5::-1] for i in allusrs]
         context['filter_author'] = self.request.GET.get('filter_author', self.request.user)
         datfrom = timezone.now().replace(year=2022).strftime("%Y-%m-%d %H:%M")
         context['filter_datefrom'] = self.request.GET.get('filter_datefrom', datfrom)

@@ -17,6 +17,90 @@
 <legend>Links (click to edit):</legend>
 {% if is_paginated %}
 {% if request.user.is_authenticated %}
+
+<div class="d-flex flex-row align-content-start flex-wrap bd-highlight mb-3 justify-content-space-around">
+        <div class="p-2 justify-content-center col-md-3 mx-2 my-2 my-sm-3 my-lg-4 bd-highlight rounded" style="background-color: #EEF2F2;">
+        URL contains:<br>
+            <div class="row">
+        <div class="form-group col-xs-12">
+            <div class="control-group required">
+                <div class="controls" class="col-sm-12">
+                    <input class="form-control form-control-sm"  id="filter_url" maxlength="30" name="filter_url" type="text" value={{ filter_url }} />
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+
+     <div class="p-2 justify-content-center col-md-3 mx-2 my-2 my-sm-3 my-lg-4 bd-highlight rounded" style="background-color: #EEF2F2;">
+    Author: <br>
+         <div class="row">
+        <div class="form-group col-xs-12">
+            <div class="control-group required">
+                <div class="controls">
+                 <input class="form-control form-control-sm" id="filter_author" maxlength="30" name="filter_author" type="text" value={{ filter_author }} />
+                </div>
+            </div>
+        </div>
+    </div>
+     </div>
+
+    <div class="p-2 justify-content-center col-md-3 mx-2 my-2 my-sm-3 my-lg-4 bd-highlight rounded" style="background-color: #EEF2F2;">
+           <div class="form-group">
+            <div class="control-group required">
+                <div class="controls">
+      <input type="text" id="filter_datefrom" class="form-control input-datetimepicker" name="filter_datefrom" data-toggle="datetimepicker" data-target="#filter_datefrom" value="{{ filter_datefrom }}"/>
+<script type="text/javascript">
+         $(function () {
+             $('#filter_datefrom').datetimepicker({
+                 format:'YYYY-MM-DD HH:mm'
+             });
+         });
+      </script>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-2 justify-content-center col-md-3 mx-2 my-2 my-sm-3 my-lg-4 bd-highlight rounded" style="background-color: #EEF2F2;">
+     <div class="form-group col-xs-6">
+                     <div class="control-group required">
+                <div class="controls">
+                   <input type="text" id="filter_dateto" class="form-control" name="filter_dateto" data-toggle="datetimepicker" data-target="#filter_dateto" value="{{ filter_dateto }}"/>
+                    </div>
+<script type="text/javascript">
+         $(function () {
+             $('#filter_dateto').datetimepicker({
+                 format:'YYYY-MM-DD HH:mm'
+             });
+         });
+      </script>
+<script type="text/javascript">
+   $(function () {
+       $('#filter_datefrom').datetimepicker();
+       $('#filter_dateto').datetimepicker({
+   useCurrent: false //Important! See issue #1075
+   });
+       $("#filter_datefrom").on("dp.change", function (e) {
+           $('#filter_dateto').data("DateTimePicker").minDate(e.date);
+       });
+       $("#filter_dateto").on("dp.change", function (e) {
+           $('#filter_datefrom').data("DateTimePicker").maxDate(e.date);
+       });
+   });
+</script>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="p-2 justify-content-center col-md-1 mx-1 my-1 my-sm-1 my-lg-1 bd-highlight rounded" style="background-color: #EEF2F2;">
+         <p><input class="btn btn-default" type="submit" class="button"
+                  href="?filter_url={{ filter_url }}&filter_author={{ filter_author }}&filter_datefrom={{ filter_datefrom }}&filter_dateto={{ filter_dateto }}&submit=Filter"
+                          name="submit" value="Filter"/></p>
+        </div>
+</div>
+
 <table class="table-condensed">
     <tbody>
 <tr>

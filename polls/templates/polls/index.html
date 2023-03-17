@@ -17,7 +17,7 @@
 <legend>Links (click to edit):</legend>
 {% if is_paginated %}
 {% if request.user.is_authenticated %}
-
+    <form id="filter-form" class="form-inline" role="form" method="get" action="{% url 'polls:index' %}">
 <div class="d-flex flex-row align-content-start flex-wrap bd-highlight mb-3 justify-content-space-around">
         <div class="p-2 justify-content-center col-md-4 mx-4 my-4 my-sm-4 my-lg-4 bd-highlight rounded" style="background-color: #EEF2F2;">
         URL contains:<br>
@@ -90,7 +90,7 @@
                           name="submit" value="Filter"/></p>
         </div>
 </div>
-
+    </form>
 <table class="table-condensed">
     <tbody>
 <tr>

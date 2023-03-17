@@ -253,13 +253,12 @@
             {{ links.create_date }}
         </td>
         <td class="col-xs-4 col-sm-4" align="right">
-            <div class="row-inline">
+            <div class="row">
                 <div class="col-sm">
+                    <div class="row">
             <a href="{% url 'polls:results' links.id %}" type="button" class="btn btn-danger btn-sm">
                 Stats
             </a>
-                </div>
-                <div class="col-sm">
             <a href="{% url 'polls:delete' links.id %}" type="button" class="btn btn-danger btn-sm">
                 Delete
             </a>

@@ -180,7 +180,7 @@
 {% if is_paginated %}
  <form id="filter-form" class="form" role="form" method="get" action="{% url 'polls:index' %}">
 <div class="d-flex flex-row align-content-start flex-wrap bd-highlight mb-3 justify-content-space-around">
-        <div class="p-2 justify-content-center col-md-4 mx-4 my-4 my-sm-4 my-lg-4 bd-highlight rounded">
+        <div class="p-2 justify-content-center col-md-5 mx-5 my-5 my-sm-5 my-lg-5 bd-highlight rounded">
         URL contains:<br>
             <div class="row">
         <div class="form-group col-sm-12">
@@ -195,20 +195,7 @@
     </div>
         </div>
 
-     <div class="p-2 justify-content-center col-md-2 mx-2 my-2 my-sm-2 my-lg-3 bd-highlight rounded">
-    Author: <br>
-         <div class="row">
-        <div class="form-group col-sm-12">
-            <div class="control-group required">
-                <div class="controls">
-                 <input class="form-control form-control-sm" id="filter_author" maxlength="30" name="filter_author" type="text" value={{ filter_author }} />
-                </div>
-            </div>
-        </div>
-    </div>
-     </div>
-
-    <div class="p-2 justify-content-center col-md-2 mx-2 my-2 my-sm-2 my-lg-2 bd-highlight rounded">
+    <div class="p-2 justify-content-center col-md-3 mx-3 my-3 my-sm-3 my-lg-3 bd-highlight rounded">
          Date from: <br>
            <div class="form-group">
             <div class="control-group required">

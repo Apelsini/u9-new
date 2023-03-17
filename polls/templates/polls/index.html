@@ -246,7 +246,7 @@
  {% for links in links_list %}
  {% if links.author == request.user %}
     <tr>
-        <td colspan="3">
+        <td>
             <a href="{% url 'polls:detail' links.id %}">
                 {{ links.url_text|slice:':50' }}
             </a><br>

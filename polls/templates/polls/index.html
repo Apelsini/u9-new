@@ -248,11 +248,11 @@
     <tr>
         <td>
             <a href="{% url 'polls:detail' links.id %}">
-                {{ links.url_text|slice:':50' }}
+                {{ links.url_text|slice:':70' }}
             </a><br>
             {{ links.create_date }}
         </td>
-        <td class="col-xs-2 col-sm-2" align="right">
+        <td class="col-xs-6 col-sm-6" align="right">
             <a href="{% url 'polls:results' links.id %}" type="button" class="btn btn-danger btn-sm">
                 Stats
             </a>

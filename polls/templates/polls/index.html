@@ -46,6 +46,7 @@
      </div>
 
     <div class="p-2 justify-content-center col-md-3 mx-2 my-2 my-sm-3 my-lg-4 bd-highlight rounded" style="background-color: #EEF2F2;">
+         Date from: <br>
            <div class="form-group">
             <div class="control-group required">
                 <div class="controls">
@@ -62,13 +63,13 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="p-2 justify-content-center col-md-3 mx-2 my-2 my-sm-3 my-lg-4 bd-highlight rounded" style="background-color: #EEF2F2;">
-     <div class="form-group col-xs-6">
-                     <div class="control-group required">
+
+      <div class="p-2 justify-content-center col-md-3 mx-2 my-2 my-sm-3 my-lg-4 bd-highlight rounded" style="background-color: #EEF2F2;">
+         Date to: <br>
+           <div class="form-group">
+            <div class="control-group required">
                 <div class="controls">
-                   <input type="text" id="filter_dateto" class="form-control" name="filter_dateto" data-toggle="datetimepicker" data-target="#filter_dateto" value="{{ filter_dateto }}"/>
-                    </div>
+      <input type="text" id="filter_dateto" class="form-control input-datetimepicker" name="filter_dateto" data-toggle="datetimepicker" data-target="#filter_dateto" value="{{ filter_dateto }}"/>
 <script type="text/javascript">
          $(function () {
              $('#filter_dateto').datetimepicker({
@@ -76,24 +77,12 @@
              });
          });
       </script>
-<script type="text/javascript">
-   $(function () {
-       $('#filter_datefrom').datetimepicker();
-       $('#filter_dateto').datetimepicker({
-   useCurrent: false //Important! See issue #1075
-   });
-       $("#filter_datefrom").on("dp.change", function (e) {
-           $('#filter_dateto').data("DateTimePicker").minDate(e.date);
-       });
-       $("#filter_dateto").on("dp.change", function (e) {
-           $('#filter_datefrom').data("DateTimePicker").maxDate(e.date);
-       });
-   });
-</script>
+
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+
         <div class="p-2 justify-content-center col-md-1 mx-1 my-1 my-sm-1 my-lg-1 bd-highlight rounded" style="background-color: #EEF2F2;">
          <p><input class="btn btn-default" type="submit" class="button"
                   href="?filter_url={{ filter_url }}&filter_author={{ filter_author }}&filter_datefrom={{ filter_datefrom }}&filter_dateto={{ filter_dateto }}&submit=Filter"

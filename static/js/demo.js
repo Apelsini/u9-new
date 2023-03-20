@@ -14,19 +14,19 @@
             "showTodayButton": true,
             "format": "YYYY-MM-DD HH:MM",
         });
-        $('#id_2').datetimepicker({
+        $('#datetime_available_from').datetimepicker({
             "allowInputToggle": true,
             "showClose": true,
             "showClear": true,
             "showTodayButton": true,
-            "format": "hh:mm:ss A",
+            "format": "YYYY-MM-DD HH:MM",
         });
-        $('#id_3').datetimepicker({
+        $('#datetime_available_to').datetimepicker({
             "allowInputToggle": true,
             "showClose": true,
             "showClear": true,
             "showTodayButton": true,
-            "format": "HH:mm:ss",
+            "format": "YYYY-MM-DD HH:MM",
         });
         $('#id_4').datetimepicker({
             "allowInputToggle": true,

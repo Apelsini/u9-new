@@ -246,8 +246,12 @@
         <td>
             <a href="{% url 'polls:detail' links.id %}">
                 {{ links.url_text|slice:':80' }}
-            </a><br>
-            <b>u9.by/{{ links.url_short }}</b> {{ links.create_date }}
+            </a>
+            </td><td>
+            <b>u9.by/{{ links.url_short }}</b>
+        </td>
+        <td>
+            { links.create_date }}
         </td>
         <td class="col-xs-6 col-sm-6" align="right">
 

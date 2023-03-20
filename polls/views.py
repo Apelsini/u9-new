@@ -195,7 +195,7 @@ def create_urls(request):
 @login_required(login_url=reverse_lazy('auth:login'))
 def update_urlentry(request, pk):
     urlentry = get_object_or_404(Urlentry, pk=pk)
-    urlentry_formset=inlineformset_factory(Urlentry, Leads, fields=['partner_ads'], extra=0)
+    urlentry_formset=inlineformset_factory(Urlentry, Leads, fields=[], extra=0)
     #urlentry_formset = formset_factory(Urlentry)
     formset=urlentry_formset(request.POST, instance=urlentry)
     #, fields=['url_text', 'partner_ads', 'qr_code', 'snapshot', 'datetime_available_from', 'datetime_available_to', 'follower_info'],

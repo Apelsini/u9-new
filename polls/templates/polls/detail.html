@@ -208,17 +208,17 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
         </div>
         <script type="text/javascript">
    $(document).ready(function () {
-       $('#datetimepicker6').datetimepicker({
+       $('#datetime_available_from').datetimepicker({
                  defaultDate: "{{ urlentry.datetime_available_from }}"
              });
-       $('#datetimepicker7').datetimepicker({
+       $('#datetime_available_to').datetimepicker({
    useCurrent: false //Important! See issue #1075
    });
-       $("#datetimepicker6").on("dp.change", function (e) {
-           $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+       $("#datetime_available_from").on("dp.change", function (e) {
+           $('#datetime_available_to').data("DateTimePicker").minDate(e.date);
        });
-       $("#datetimepicker7").on("dp.change", function (e) {
-           $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+       $("#datetime_available_to").on("dp.change", function (e) {
+           $('#datetime_available_from').data("DateTimePicker").maxDate(e.date);
        });
    });
 

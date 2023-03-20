@@ -203,7 +203,7 @@ def update_urlentry(request, pk):
    #  'partner_ads', 'qr_code', 'snapshot']
 
     if request.method == "POST":
-        urlentry_form = UrlentryFormShort(request.POST, instance=urlentry)
+        urlentry_form = UrlentryForm(request.POST, instance=urlentry)
         if urlentry_form.is_valid():
             urlentry = urlentry_form.save(commit=False)
             urlentry.save()

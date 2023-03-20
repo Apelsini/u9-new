@@ -2,15 +2,15 @@
     <div class="container container-fluid">
         <a class="navbar-brand" href="#"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav2"
-                aria-controls="navbarNav2" aria-expanded="false" aria-label="Toggle navigation">
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="d-flex bd-highlight mb-12">
             <div class="p-2 bd-highlight">
                 <div class="d-flex bd-highlight mb-3" style="background-color: #34fbc2;">
                     {% if request.user.is_authenticated %}
-                    <div class="collapse navbar-collapse" id="navbarNav2">
-                        <div class="navbar-nav2">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <div class="navbar-nav">
                             <div class="p-2 bd-highlight">
                                 <div class="nav-item">
                                     <a class="nav-link" href="{% url 'polls:index' %}?submit=Filter" aria-current="page"><b> <span
@@ -32,7 +32,7 @@
 
                     {% if request.user.is_authenticated %}
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <div class="navbar-nav2">
+                        <div class="navbar-nav">
                             <div class="p-2 bd-highlight">
                                 <div class="nav-item">
                                     <a class="nav-link" href="" aria-current="page"><b> <span

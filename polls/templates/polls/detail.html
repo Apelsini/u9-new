@@ -163,10 +163,21 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
             <div class='col-md-5'>
                 <div class="form-group">
                     from:
-                    <div class='input-group' id='datetimepicker06'>
-                        <input id="datetimepicker6" type='datetime-local' class="form-control"
-                               name="datetime_available_from" id="datetime_available_from"
-                               value="{{ urlentry.datetime_available_from|date:'dd.mm.YYYYTHH:ii' }}"/>
+           <div class="form-group">
+            <div class="control-group required">
+                <div class="controls">
+      <input type="text" id="datetime_available_from" class="form-control input-datetimepicker" name="datetime_available_from" data-toggle="datetimepicker" data-target="#datetime_available_from" value="{{ urlentry.datetime_available_from }}"/>
+<script type="text/javascript">
+         $(function () {
+             $('#datetime_available_from').datetimepicker({
+                 format:'YYYY-MM-DD HH:mm'
+             });
+         });
+      </script>
+
+                    </div>
+                </div>
+            </div>
 
                     </div>
                 </div>
@@ -174,11 +185,24 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
             <div class='col-md-5'>
                 <div class="form-group">
                     to:
-                    <div class='input-group' id='datetimepicker7'>
-                        <input type='datetime-local' class="form-control" name="datetime_available_to"
-                               id="datetime_available_to" value="{{ urlentry.datetime_available_to }}"/>
+                               <div class="form-group">
+            <div class="control-group required">
+                <div class="controls">
+      <input type="text" id="datetime_available_to" class="form-control input-datetimepicker" name="datetime_available_to" data-toggle="datetimepicker" data-target="#datetime_available_to" value="{{ urlentry.datetime_available_to }}"/>
+<script type="text/javascript">
+         $(function () {
+             $('#datetime_available_to').datetimepicker({
+                 format:'YYYY-MM-DD HH:mm'
+             });
+         });
+      </script>
 
                     </div>
+                </div>
+            </div>
+
+
+
                 </div>
             </div>
         </div>

@@ -99,9 +99,9 @@
         <td colspan="3">
             <a href="{% url 'polls:detail' links.id %}">
                 {{ links.url_text|slice:':50' }}
-            </a></td>
+            </a></td> <br>
         <td >
-           <b></b>[{{ links.author }}] {% if links.author.is_staff %} <span class="colortext">(customer)</span>
+            <b>u9.by/{{ links.url_short }}</b>[{{ links.author }}] {% if links.author.is_staff %} <span class="colortext">(customer)</span>
             {% endif %}
         </td>
         <td>
@@ -120,7 +120,7 @@
             </a>
     </div>
   </div>
-        </td>
+        </td> <br>
     </tr>
     {% endfor %}
 

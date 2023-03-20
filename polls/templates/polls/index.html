@@ -123,11 +123,9 @@
         </td>
     </tr>
     {% endfor %}
-  </tbody>
 
-    {% if request.user.is_authenticated %}
-</table>
-  <ul class="pagination">
+{% if request.user.is_authenticated %}
+<ul class="pagination">
         {% if page_obj.has_previous %}
       <li><a href="?filter_url={{ filter_url }}&filter_author={{ filter_author }}&filter_datefrom={{ filter_datefrom }}&filter_dateto={{ filter_dateto }}&submit=Filter&page={{ page_obj.previous_page_number }}">&laquo;</a></li>
         {% else %}
@@ -241,8 +239,7 @@
         </div>
 </div>
     </form>
-<table class="table-condensed">
-    <tbody>
+
  {% for links in links_list %}
  {% if links.author == request.user %}
     <tr>

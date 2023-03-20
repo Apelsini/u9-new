@@ -15,7 +15,7 @@
     <p style="color: orangered">Got errors! {{ form.errors }}</p>
     {% endif %}
     {% for message in messages %}
-    <p style="color: turquoise">{{ message }}</p>
+    <p style="color: orangered">{{ message }}</p>
     {% endfor %}
         <form action="{% url 'polls:update' urlentry.id %}" method="post">
             {% csrf_token %}

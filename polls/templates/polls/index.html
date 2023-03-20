@@ -254,9 +254,9 @@
         <td>
             {{ links.create_date }}
         </td><br>
-        <td  align="right">
-            <div class="col-xs-6 col-sm-6 pull-right"></div>
-            <div class="col-xs-6 col-sm-6 pull-right">
+        <td align="right">
+            <div class="col-xs-8 col-sm-8"> </div>
+            <div class="col-xs-4 col-sm-4 pull-right">
             <a href="{% url 'polls:results' links.id %}" type="button" class="btn btn-danger btn-sm">
                 Stats
             </a>
@@ -264,9 +264,8 @@
             <a href="{% url 'polls:delete' links.id %}" type="button" class="btn btn-danger btn-sm">
                 Delete
             </a>
-            <br>
                 </div>
-        </td>
+        </td>            <br>
     </tr>
     <br>
     {% endif %}

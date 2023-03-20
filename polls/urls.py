@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 
 app_name = 'polls'
 urlpatterns = [
-    path('', view=login_required(views.IndexView.as_view()), name='index'),
+    path('', view=views.IndexView.as_view(), name='index'),
     path('polls/new/', view=login_required(views.create_urls), name='new'),#views.create_urls
     path('polls/update/<int:pk>/', view=views.update_urlentry, name="update"),
     path('polls/delete/<int:pk>/', view=login_required(views.DeleteUrlentry.as_view(), login_url=reverse_lazy('auth:login')), name='delete'),

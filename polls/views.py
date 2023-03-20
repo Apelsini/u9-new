@@ -208,7 +208,7 @@ def update_urlentry(request, pk):
             urlentry = urlentry_form.save(commit=False)
             urlentry.save()
         else:
-            messages.error(request, urlentry_form.error)
+            messages.error(request, urlentry_form.errors)
         redirect('polls:detail', pk=urlentry.pk)
         #else:
          #   messages.error(request, urlentry_form.error)

@@ -26,6 +26,7 @@ def countme(iter):
     return count
 
 # Create your views here.
+@login_required(login_url=reverse_lazy('auth:login'))
 class IndexView(generic.ListView):    #Class-Based View
     template_name = 'polls/index.html'
     # context_object_name = 'questions_list'

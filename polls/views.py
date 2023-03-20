@@ -67,7 +67,7 @@ class IndexView(generic.ListView):    #Class-Based View
                     create_date__lte=filter_dateto,
                     ).order_by(order)
         else:
-            if self.request.user is not None:
+            if not self.request.user.is_anonymous:
                 new_context = Urlentry.objects.filter(
                         author=filter_author,
                         url_text__contains=filter_url,   #__contains lookup

@@ -38,7 +38,7 @@ class IndexView(generic.ListView):    #Class-Based View
     def get_queryset(self):
         filter_url = self.request.GET.get('filter_url', '')
         all_users = get_user_model().objects.all()
-        filter_authorcheck = self.request.GET.get('filter_author', self.request.user.username)
+        filter_authorcheck = self.request.GET.get('filter_author', '')
         filter_author = self.request.user  #deafult - existing user
 
         #User.objects.get(username=self.request.GET.get('filter_author', self.request.user))
@@ -49,15 +49,23 @@ class IndexView(generic.ListView):    #Class-Based View
         order = self.request.GET.get('orderby', '-create_date')
         page = self.request.GET.get('page', 1)
         if self.request.user.is_superuser:    #is superuser
-            for usrr in all_users:
-                if filter_authorcheck in usrr.username:
-                    filter_author = usrr  # if there is request for another user - then switch to another user
-            new_context = Urlentry.objects.filter(
-                author=filter_author,
-                url_text__contains=filter_url,  # __contains lookup
-               create_date__gte=filter_datefrom,
-               create_date__lte=filter_dateto,
-            ).order_by(order)
+            if filter_authorcheck == '' or filter_authorcheck == ' ' or filter_authorcheck == '/':
+                new_context = Urlentry.objects.filter(
+                   # author=filter_author,
+                    url_text__contains=filter_url,  # __contains lookup
+                    create_date__gte=filter_datefrom,
+                    create_date__lte=filter_dateto,
+                ).order_by(order)
+            else:
+                for usrr in all_users:
+                    if filter_authorcheck in usrr.username:
+                        filter_author = usrr  # if there is request for another user - then switch to another user
+                new_context = Urlentry.objects.filter(
+                    author=filter_author,
+                    url_text__contains=filter_url,  # __contains lookup
+                    create_date__gte=filter_datefrom,
+                    create_date__lte=filter_dateto,
+                    ).order_by(order)
         else:
             if self.request.user is not None:
                 new_context = Urlentry.objects.filter(

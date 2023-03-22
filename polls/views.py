@@ -197,10 +197,11 @@ def update_urlentry(request, pk):
     urlentry = get_object_or_404(Urlentry, pk=pk)
     urlentry_formset=inlineformset_factory(Urlentry, Leads, fields=[], extra=0)
     #urlentry_formset = formset_factory(Urlentry)
-    formset=urlentry_formset(request.POST, instance=urlentry, fields=['url_text', 'partner_ads', 'qr_code', 'snapshot',
-    'datetime_available_from', 'datetime_available_to', 'follower_info',
-    'url_text', 'url_short', 'author', 'url_id', 'create_date', 'datetime_available_to',
-    'partner_ads', 'qr_code', 'snapshot'])
+    formset=urlentry_formset(request.POST, instance=urlentry)
+    #, fields=['url_text', 'partner_ads', 'qr_code', 'snapshot',
+    #'datetime_available_from', 'datetime_available_to', 'follower_info',
+    #'url_text', 'url_short', 'author', 'url_id', 'create_date', 'datetime_available_to',
+    #'partner_ads', 'qr_code', 'snapshot'])
 
     if request.method == "POST":
         urlentry_form = UrlentryForm(request.POST, instance=urlentry)

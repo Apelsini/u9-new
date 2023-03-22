@@ -197,10 +197,9 @@ def update_urlentry(request, pk):
     urlentry = get_object_or_404(Urlentry, pk=pk)
     urlentry_formset=inlineformset_factory(Urlentry, Leads, fields=[], extra=0)
     #urlentry_formset = formset_factory(Urlentry)
-    formset=urlentry_formset(request.POST, instance=urlentry)
-    #, fields=['url_text', 'partner_ads', 'qr_code', 'snapshot', 'datetime_available_from', 'datetime_available_to', 'follower_info'],
-   # ['url_text', 'url_short', 'author', 'url_id', 'create_date', 'datetime_available_to',
-   #  'partner_ads', 'qr_code', 'snapshot']
+    formset=urlentry_formset(request.POST, instance=urlentry, fields=['url_text', 'partner_ads', 'qr_code', 'snapshot', 'datetime_available_from', 'datetime_available_to', 'follower_info'],
+    ['url_text', 'url_short', 'author', 'url_id', 'create_date', 'datetime_available_to',
+    'partner_ads', 'qr_code', 'snapshot'])
 
     if request.method == "POST":
         urlentry_form = UrlentryForm(request.POST, instance=urlentry)
@@ -208,12 +207,12 @@ def update_urlentry(request, pk):
             urlentry = urlentry_form.save(commit=False)
             #urlentry.author = urlentry_form.cleaned_data['author']
             #urlentry.url_id = urlentry_form.cleaned_data['url_id']
-            urlentry.create_date = urlentry_form.cleaned_data['create_date']
-            urlentry.datetime_available_from = urlentry_form.cleaned_data['datetime_available_from']
-            urlentry.datetime_available_to = urlentry_form.cleaned_data['datetime_available_to']
-            urlentry.partner_ads = urlentry_form.cleaned_data['partner_ads']
-            urlentry.qr_code = urlentry_form.cleaned_data['qr_code']
-            urlentry.snapshot = urlentry_form.cleaned_data['snapshot']
+            #urlentry.create_date = urlentry_form.cleaned_data['create_date']
+            #urlentry.datetime_available_from = urlentry_form.cleaned_data['datetime_available_from']
+            #urlentry.datetime_available_to = urlentry_form.cleaned_data['datetime_available_to']
+            #urlentry.partner_ads = urlentry_form.cleaned_data['partner_ads']
+            #urlentry.qr_code = urlentry_form.cleaned_data['qr_code']
+            #urlentry.snapshot = urlentry_form.cleaned_data['snapshot']
             urlentry.save()
         else:
             messages.error(request, urlentry_form.errors)

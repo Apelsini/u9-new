@@ -204,8 +204,8 @@ def update_urlentry(request, pk):
 
     if request.method == "POST":
         urlentry_form = UrlentryForm(request.POST, instance=urlentry)
-        urlentry_form.data['author'] = urlentry.author
-        urlentry_form.data['url_id'] = urlentry.url_id
+        #urlentry_form.data['author'] = urlentry.author
+        #urlentry_form.data['url_id'] = urlentry.url_id
         urlentry_form.data['qr_code'] = urlentry.qr_code
         urlentry_form.data['snapshot'] = urlentry.snapshot
         if urlentry_form.is_valid():

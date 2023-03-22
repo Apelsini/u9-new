@@ -206,8 +206,8 @@ def update_urlentry(request, pk):
         urlentry_form = UrlentryForm(request.POST, instance=urlentry)
         if urlentry_form.is_valid():
             urlentry = urlentry_form.save(commit=False)
-            urlentry.author = urlentry_form.cleaned_data['author']
-            urlentry.url_id = urlentry_form.cleaned_data['url_id']
+            #urlentry.author = urlentry_form.cleaned_data['author']
+            #urlentry.url_id = urlentry_form.cleaned_data['url_id']
             urlentry.create_date = urlentry_form.cleaned_data['create_date']
             urlentry.datetime_available_from = urlentry_form.cleaned_data['datetime_available_from']
             urlentry.datetime_available_to = urlentry_form.cleaned_data['datetime_available_to']

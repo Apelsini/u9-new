@@ -156,11 +156,11 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
         <div class="container">
             <div class='col-md-5'>
                 <div class="form-group">
-                    from: <b>{{ urlentry.datetime_available_from|date:"Y-m-j H:m" }}</b>
+                    from: <b>{{ urlentry.datetime_available_from|date:"Y-m-j G:i" }}</b>
            <div class="form-group">
             <div class="control-group required">
                 <div class="controls">
-      <input type="text" id="datetime_available_from" class="form-control input-datetimepicker" name="datetime_available_from" data-toggle="datetimepicker" data-target="#datetime_available_from" value="{{ urlentry.datetime_available_from|date:"Y-m-j H:m" }}"/>
+      <input type="text" id="datetime_available_from" class="form-control input-datetimepicker" name="datetime_available_from" data-toggle="datetimepicker" data-target="#datetime_available_from" value="{{ urlentry.datetime_available_from|date:"Y-m-j G:i" }}"/>
 <script type="text/javascript">
          $(function () {
              $('#datetime_available_from').datetimepicker({

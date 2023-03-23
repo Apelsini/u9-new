@@ -205,11 +205,11 @@ def update_urlentry(request, pk):
 
     if request.method == "POST":
         urlentry_form = UrlentryForm(request.POST, instance=urlentry, limited_condition=True)
-        #author = request.POST.get('author')
-        #urlentry_form.fields['author'].choices = [(author, author)]
-        #urlentry_form.instance.author = urlentry.author
+        author = request.POST.get('author')
+        urlentry_form.fields['author'].choices = [(author, author)]
+        urlentry_form.instance.author = request.user
         if urlentry_form.is_valid():
-            urlentry = urlentry_form.save_m2m(commit=False)
+            urlentry = urlentry_form.save(commit=False)
             #urlentry.author = urlentry_form.cleaned_data['author']
             #urlentry.url_id = urlentry_form.cleaned_data['url_id']
             #urlentry.create_date = urlentry_form.cleaned_data['create_date']

@@ -233,10 +233,10 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
 
 
         </form>
-        <br>
+
 </div>
         {% if urlentry.author == request.user and request.user.is_staff %}
         <br><input type="submit" class="btn btn-danger" value="Update Link">
         {% endif %}
-
+        <br>        <br>
         {% endblock %}

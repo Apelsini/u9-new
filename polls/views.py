@@ -205,6 +205,8 @@ def update_urlentry(request, pk):
 
     if request.method == "POST":
         urlentry_form = UrlentryForm(request.POST, instance=urlentry)
+        author = request.POST.get('author')
+        urlentry_form.fields['author'].choices = [(author, author)]
         if urlentry_form.is_valid():
             urlentry = urlentry_form.save(commit=False)
             #urlentry.author = urlentry_form.cleaned_data['author']

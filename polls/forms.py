@@ -32,8 +32,9 @@ class UrlentryForm(ModelForm):
             self.fields['snapshot'].required = False
             # or alternately:  del self.fields['fieldname']  to remove it from the form altogether.
         if limited_condition:
-            self.fields['author'].widget = HiddenInput()
-            self.fields['author'].required = False
+            del self.fields['author']
+            #self.fields['author'].widget = HiddenInput()
+            #self.fields['author'].required = False
             self.fields['url_id'].widget = HiddenInput()
             self.fields['url_id'].required = False
             self.fields['qr_code'].widget = HiddenInput()

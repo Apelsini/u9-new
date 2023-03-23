@@ -19,7 +19,6 @@
     {% endfor %}
         <form action="{% url 'polls:update' urlentry.id %}" method="post">
             {% csrf_token %}
-
     <div class="d-flex flex-row align-content-start flex-wrap bd-highlight mb-3 justify-content-space-around">
         <div class="p-2 justify-content-center col-md-3 mx-2 my-2 my-sm-3 my-lg-4 bd-highlight rounded" style="background-color: #EEF2F2;">
             <p align="center"><legend><a href="https://u9.by/{{ urlentry.url_short }}">
@@ -174,11 +173,9 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
              });
          });
       </script>
-
                     </div>
                 </div>
             </div>
-
                     </div>
                 </div>
 
@@ -196,13 +193,9 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
              });
          });
       </script>
-
                     </div>
                 </div>
             </div>
-
-
-
                 </div>
             </div>
         </div>
@@ -229,11 +222,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
 
         {% endif %} {% endif %}
 </fieldset>
-
-
-
         </form>
-
 </div>
         {% if urlentry.author == request.user and request.user.is_staff %}
         <br><input type="submit" class="btn btn-danger" value="Update Link">

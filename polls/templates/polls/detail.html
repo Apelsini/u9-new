@@ -156,7 +156,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
         <div class="container">
             <div class='col-md-5'>
                 <div class="form-group">
-                    from: <b>{{ urlentry.datetime_available_from|datetime:"Y-m-j HH:mm" }}</b>
+                    from: <b>{{ urlentry.datetime_available_from|date:"Y-m-j HH:mm" }}</b>
            <div class="form-group">
             <div class="control-group required">
                 <div class="controls">

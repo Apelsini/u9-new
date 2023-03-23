@@ -160,12 +160,12 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
            <div class="form-group">
             <div class="control-group required">
                 <div class="controls">
-      <input type="text" id="datetime_available_from" class="form-control input-datetimepicker" name="datetime_available_from" data-toggle="datetimepicker" data-target="#datetime_available_from" value="{{ urlentry.datetime_available_from }}"/>
+      <input type="text" id="datetime_available_from" class="form-control input-datetimepicker" name="datetime_available_from" data-toggle="datetimepicker" data-target="#datetime_available_from" value="{{ urlentry.datetime_available_from|'Y-m-d H:i' }}"/>
 <script type="text/javascript">
          $(function () {
              $('#datetime_available_from').datetimepicker({
                  format:'YYYY-MM-DD HH:mm',
-                 defaultDate: {{ urlentry.datetime_available_from|"Y-m-d H:i" }}
+                 defaultDate: {{ urlentry.datetime_available_from }}
              });
          });
       </script>

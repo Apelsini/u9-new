@@ -5,7 +5,6 @@ from django.urls import reverse_lazy, reverse
 from django.views import generic
 from .models import Urlentry, Leads
 from django.utils import timezone
-from django import forms
 from .forms import UrlentryForm, LeadsForm, UrlentryFormShort
 #limiting user view for users not logged in
 from django.contrib.auth.decorators import login_required
@@ -208,9 +207,7 @@ def update_urlentry(request, pk):
         urlentry_form = UrlentryForm(request.POST, instance=urlentry)
         #author = request.POST.get('author')
         #urlentry_form.fields['author'].choices = [(author, author)]
-        iquery = LiveDataFeed.objects.values_list('author', flat=True).distinct()
-        author = forms.ModelChoiceField(queryset=iquery, empty_label='None',
-                                         required=False, widget=forms.Select(), to_field_name="author")
+        urlentry_form.instance.author = urlentry.author
         if urlentry_form.is_valid():
             urlentry = urlentry_form.save(commit=False)
             #urlentry.author = urlentry_form.cleaned_data['author']

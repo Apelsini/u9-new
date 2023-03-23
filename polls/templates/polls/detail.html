@@ -144,7 +144,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
     </div>
     {% if urlentry.author == request.user %}
     {% if request.user.is_staff %}
-             <div class="col-md-6 mx-2 my-2 my-sm-3 my-lg-4 rounded bd-highlight" style="background-color: #EEF2F2;">
+             <div class="col-md-11 mx-2 my-2 my-sm-3 my-lg-4 rounded bd-highlight" style="background-color: #EEF2F2;">
     <legend><h2>Customer section</h2></legend>
                 <div class="row"></div>
                  <div class="col-md-6 mx-2 my-2 my-sm-3 my-lg-4 rounded bd-highlight" >
@@ -229,12 +229,14 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
 
         {% endif %} {% endif %}
 </fieldset>
-        {% if urlentry.author == request.user and request.user.is_staff %}
-        <br><input type="submit" class="btn btn-danger" value="Update Link">
-        {% endif %}
+
 
 
         </form>
         <br>
+</div>
+        {% if urlentry.author == request.user and request.user.is_staff %}
+        <br><input type="submit" class="btn btn-danger" value="Update Link">
+        {% endif %}
 
         {% endblock %}

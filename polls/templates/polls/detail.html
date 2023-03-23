@@ -156,7 +156,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
         <div class="container">
             <div class='col-md-5'>
                 <div class="form-group">
-                    from:{{ urlentry.datetime_available_from }}
+                    from: <b>{{ urlentry.datetime_available_from|date:"j E Y" }}</b>
            <div class="form-group">
             <div class="control-group required">
                 <div class="controls">
@@ -165,7 +165,6 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
          $(function () {
              $('#datetime_available_from').datetimepicker({
                  format:'YYYY-MM-DD HH:mm',
-                defaultDateTime: {{ urlentry.datetime_available_from }}
              });
          });
       </script>
@@ -179,7 +178,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
             </div>
             <div class='col-md-5'>
                 <div class="form-group">
-                    to:{{ urlentry.datetime_available_to }}
+                    to:  <b>{{ urlentry.datetime_available_to }}</b>
                                <div class="form-group">
             <div class="control-group required">
                 <div class="controls">

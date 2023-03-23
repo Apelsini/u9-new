@@ -204,10 +204,6 @@ def update_urlentry(request, pk):
     #'partner_ads', 'qr_code', 'snapshot'])
     if request.method == "POST":
         urlentry_form = UrlentryForm(request.POST, instance=urlentry, limited_condition=True)
-        datfromm = urlentry.datetime_available_from.strftime("%Y-%m-%d %H:%M")
-        urlentry_form.fields['datetime_available_from'] = datetime.strptime(datfromm, "%Y-%m-%d %H:%M")
-        dattomm = urlentry.datetime_available_to.strftime("%Y-%m-%d %H:%M")
-        urlentry_form.fields['datetime_available_to'] = datetime.strptime(dattomm, "%Y-%m-%d %H:%M")
         if urlentry_form.is_valid():
             urlentry = urlentry_form.save(commit=False)
             urlentry.snapshot = 'https://api.screenshotmachine.com?key=7a0150&url=' + str(urlentry_form[

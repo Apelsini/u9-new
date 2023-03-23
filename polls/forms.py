@@ -13,6 +13,7 @@ class UrlentryForm(ModelForm):
         fields = ['url_text', 'author', 'url_id', 'datetime_available_from', 'datetime_available_to', 'partner_ads','qr_code','snapshot']
     def __init__(self, *args, **kwargs):
         hide_condition = kwargs.pop('hide_condition', None)
+        limited_condition = kwargs.pop('limited_condition', None)
         super(UrlentryForm, self).__init__(*args, **kwargs)
         if hide_condition:
             self.fields['author'].widget = HiddenInput()
@@ -30,6 +31,15 @@ class UrlentryForm(ModelForm):
             self.fields['snapshot'].widget = HiddenInput()
             self.fields['snapshot'].required = False
             # or alternately:  del self.fields['fieldname']  to remove it from the form altogether.
+        if limited_condition:
+            self.fields['author'].widget = HiddenInput()
+            self.fields['author'].required = False
+            self.fields['url_id'].widget = HiddenInput()
+            self.fields['url_id'].required = False
+            self.fields['qr_code'].widget = HiddenInput()
+            self.fields['qr_code'].required = False
+            self.fields['snapshot'].widget = HiddenInput()
+            self.fields['snapshot'].required = False
 
 class UrlentryFormShort(ModelForm):
     class Meta:

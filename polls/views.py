@@ -204,10 +204,10 @@ def update_urlentry(request, pk):
     #'partner_ads', 'qr_code', 'snapshot'])
 
     if request.method == "POST":
-        urlentry_form = UrlentryForm(request.POST, instance=urlentry)
+        urlentry_form = UrlentryForm(request.POST, instance=urlentry, limited_condition=True)
         #author = request.POST.get('author')
         #urlentry_form.fields['author'].choices = [(author, author)]
-        urlentry_form.instance.author = urlentry.author
+        #urlentry_form.instance.author = urlentry.author
         if urlentry_form.is_valid():
             urlentry = urlentry_form.save(commit=False)
             #urlentry.author = urlentry_form.cleaned_data['author']
@@ -218,6 +218,10 @@ def update_urlentry(request, pk):
             #urlentry.partner_ads = urlentry_form.cleaned_data['partner_ads']
             #urlentry.qr_code = urlentry_form.cleaned_data['qr_code']
             #urlentry.snapshot = urlentry_form.cleaned_data['snapshot']
+            urlentry.snapshot = 'https://api.screenshotmachine.com?key=7a0150&url=' + str(urlentry_form[
+                'url_text'])[73:].rstrip('</textarea>') + '&dimension=1024x768'
+            urlentry.qr_code = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + str(urlentry_form[
+                'url_text'])[73:].rstrip('</textarea>')
             urlentry.save()
         else:
             messages.error(request, urlentry_form.errors)

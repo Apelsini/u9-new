@@ -202,22 +202,10 @@ def update_urlentry(request, pk):
     #'datetime_available_from', 'datetime_available_to', 'follower_info',
     #'url_text', 'url_short', 'author', 'url_id', 'create_date', 'datetime_available_to',
     #'partner_ads', 'qr_code', 'snapshot'])
-
     if request.method == "POST":
         urlentry_form = UrlentryForm(request.POST, instance=urlentry, limited_condition=True)
-        #author = request.POST.get('author')
-        #urlentry_form.fields['author'].choices = [(author, author)]
-        #urlentry_form.instance.author = request.user
         if urlentry_form.is_valid():
             urlentry = urlentry_form.save(commit=False)
-            #urlentry.author = urlentry_form.cleaned_data['author']
-            #urlentry.url_id = urlentry_form.cleaned_data['url_id']
-            #urlentry.create_date = urlentry_form.cleaned_data['create_date']
-            #urlentry.datetime_available_from = urlentry_form.cleaned_data['datetime_available_from']
-            #urlentry.datetime_available_to = urlentry_form.cleaned_data['datetime_available_to']
-            #urlentry.partner_ads = urlentry_form.cleaned_data['partner_ads']
-            #urlentry.qr_code = urlentry_form.cleaned_data['qr_code']
-            #urlentry.snapshot = urlentry_form.cleaned_data['snapshot']
             urlentry.snapshot = 'https://api.screenshotmachine.com?key=7a0150&url=' + str(urlentry_form[
                 'url_text'])[73:].rstrip('</textarea>') + '&dimension=1024x768'
             urlentry.qr_code = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + str(urlentry_form[
@@ -231,6 +219,10 @@ def update_urlentry(request, pk):
     else:
         urlentry_form = UrlentryForm(instance=urlentry)
         formset = urlentry_formset(instance=urlentry)
+        datfromm = urlentry.datetime_available_from.strftime("%Y-%m-%d %H:%M")
+        urlentry_form.fields['datetime_available_from'] = datetime.strptime(datfromm, "%Y-%m-%d %H:%M")
+        dattomm = urlentry.datetime_available_to.strftime("%Y-%m-%d %H:%M")
+        urlentry_form.fields['datetime_available_to'] = datetime.strptime(dattomm, "%Y-%m-%d %H:%M")
         redirect('polls:detail', pk=urlentry.pk)
     #         render(request, 'polls/question_choices.html',{
     #    'question_form': urlentry_form,

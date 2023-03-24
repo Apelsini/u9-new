@@ -146,8 +146,9 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
     <legend><h2>Customer section</h2></legend>
 
                  <div class="col-md-6 mx-2 my-5 my-sm-5 my-lg-5" >
-    <label><strong>Snapshot of original website: </strong> <a href={{ urlentry.snapshot }}>See in full size</a></label> <br>
+    <label><strong>Snapshot of original website: </strong></label> <br>
     <img src="{{ urlentry.snapshot }}" width="204" height="152" alt="snapshot"><br>
+                     <a href={{ urlentry.snapshot }}>See in full size</a>
                   </div>
                  <div class="col-md-6 mx-2 my-5 my-sm-5 my-lg-5" >
     <label><strong>Partner ads: </strong>

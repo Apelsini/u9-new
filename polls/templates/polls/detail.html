@@ -149,12 +149,15 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
     <label><strong>Snapshot of original website: </strong></label> <br>
     <img src="{{ urlentry.snapshot }}" width="204" height="152" alt="snapshot"><br>
                    <b> <a href={{ urlentry.snapshot }}>See in full size</a></b>
+                     <br> <br>
                   </div>
                  <div class="col-md-6" >
     <label><strong>Partner ads: </strong>
         <input type="text" name="partner_ads" id="partner_ads" value="{{ urlentry.partner_ads }}">
-     </label>   <br> Leave the field blank to delete the partner ads block and switch to direct redirection when clicking the short link
-            </div>
+        <img src="https://api.screenshotmachine.com?key=7a0150&url={{ urlentry.partner_ads }}&dimension=1024x768" width="204" height="152" alt="snapshot">
+            </label>   <br> Leave the field blank to delete the partner ads block and switch to direct redirection when clicking the short link
+            <br> <br>
+                 </div>
                   <div class="col-md-12" >
 
     <div><strong>Link available </strong>

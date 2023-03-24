@@ -155,7 +155,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
         <input type="text" name="partner_ads" id="partner_ads" value="{{ urlentry.partner_ads }}">
      </label>   <br> Leave the field blank to delete the partner ads block and switch to direct redirection when clicking the short link
             </div>
-                  <div class="col-md-12 mx-2 my-2 my-sm-3 my-lg-4" >
+                  <div class="col-md-12" >
 
     <div><strong>Link available </strong>
 <br>
@@ -224,10 +224,11 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
         {% endif %} {% endif %}
 
 </div>
+           <br>        <br>
         {% if urlentry.author == request.user and request.user.is_staff %}
         <br><input type="submit" class="btn btn-danger" value="Update Link">
  </fieldset>
         </form>
         {% endif %}
-        <br>        <br>
+
         {% endblock %}

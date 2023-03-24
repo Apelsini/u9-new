@@ -231,7 +231,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
             </div>
    <br>        <br>
         {% if urlentry.author == request.user and request.user.is_staff %}
-      <div> <br> <br><input type="submit" class="btn btn-danger" value="Update Link">
+      <div class="container"> <br> <br><input type="submit" class="btn btn-danger" value="Update Link">
           </div>
  </fieldset>
         </form>

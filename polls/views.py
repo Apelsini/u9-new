@@ -205,7 +205,7 @@ def update_urlentry(request, pk):
     if request.method == "POST":
         urlentry_form = UrlentryForm(request.POST, instance=urlentry, limited_condition=True)
         if urlentry_form.is_valid():
-            urlentry = urlentry_form.save(commit=False)
+            urlentry = urlentry_form.save(commit=True)
             urlentry.snapshot = 'https://api.screenshotmachine.com?key=7a0150&url=' + str(urlentry_form[
                 'url_text'])[73:].rstrip('</textarea>') + '&dimension=1024x768'
             urlentry.qr_code = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + str(urlentry_form[

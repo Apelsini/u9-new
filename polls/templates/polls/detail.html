@@ -142,15 +142,15 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
     </div>
     {% if urlentry.author == request.user %}
     {% if request.user.is_staff %}
-             <div class="col-md-11 mx-2 my-2 my-sm-3 my-lg-4 rounded bd-highlight" style="background-color: #EEF2F2;">
+             <div class="col-md-11 rounded bd-highlight" style="background-color: #EEF2F2;">
     <legend><h2>Customer section</h2></legend>
 
-                 <div class="col-md-6 mx-2 my-5 my-sm-5 my-lg-5" >
+                 <div class="col-md-6" >
     <label><strong>Snapshot of original website: </strong></label> <br>
     <img src="{{ urlentry.snapshot }}" width="204" height="152" alt="snapshot"><br>
                    <b> <a href={{ urlentry.snapshot }}>See in full size</a></b>
                   </div>
-                 <div class="col-md-6 mx-2 my-5 my-sm-5 my-lg-5" >
+                 <div class="col-md-6" >
     <label><strong>Partner ads: </strong>
         <input type="text" name="partner_ads" id="partner_ads" value="{{ urlentry.partner_ads }}">
      </label>   <br> Leave the field blank to delete the partner ads block and switch to direct redirection when clicking the short link

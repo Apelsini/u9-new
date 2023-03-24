@@ -232,9 +232,13 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
    <br>        <br>
         {% if urlentry.author == request.user and request.user.is_staff %}
       <div class="row">
+          <br>
           <div class="col-md-3">
-          <input type="submit" class="btn btn-danger" value="Update Link">
-         </div>
+            <br>
+              <input type="submit" class="btn btn-danger" value="Update Link">
+            <br>
+          </div>
+          <br>
       </div>
  </fieldset>
         </form>

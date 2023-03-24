@@ -219,10 +219,10 @@ def update_urlentry(request, pk):
     else:
         urlentry_form = UrlentryForm(instance=urlentry)
         formset = urlentry_formset(instance=urlentry)
-        datfromm = urlentry.datetime_available_from.strftime("%Y-%m-%d %H:%M")
-        urlentry_form.fields['datetime_available_from'] = datetime.strptime(datfromm, "%Y-%m-%d %H:%M")
-        dattomm = urlentry.datetime_available_to.strftime("%Y-%m-%d %H:%M")
-        urlentry_form.fields['datetime_available_to'] = datetime.strptime(dattomm, "%Y-%m-%d %H:%M")
+        #datfromm = urlentry.datetime_available_from.strftime("%Y-%m-%d %H:%M")
+        #urlentry_form.fields['datetime_available_from'] = datetime.strptime(datfromm, "%Y-%m-%d %H:%M")
+        #dattomm = urlentry.datetime_available_to.strftime("%Y-%m-%d %H:%M")
+        #urlentry_form.fields['datetime_available_to'] = datetime.strptime(dattomm, "%Y-%m-%d %H:%M")
         redirect('polls:detail', pk=urlentry.pk)
     #         render(request, 'polls/question_choices.html',{
     #    'question_form': urlentry_form,

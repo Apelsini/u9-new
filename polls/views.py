@@ -253,7 +253,7 @@ def add_lead_and_redirect(request, hash):
     render(request, 'polls/matomo.html', {})
     if urlentry.datetime_available_from != urlentry.datetime_available_to:
         #if there is need for redirection to 'premiere.html' or 'deprecated.html'
-        if urlentry.datetime_available_to > timezone.now():
+        if urlentry.datetime_available_to < timezone.now():
             # the urlentry already deprecated
             return render(request, 'polls/deprecated.html', {
                 'dateto': dateto

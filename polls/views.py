@@ -255,12 +255,12 @@ def add_lead_and_redirect(request, hash):
         if urlentry.datetime_available_to > timezone.now():
             # the urlentry already deprecated
             return render(request, 'polls/deprecated.html', {
-                'dateto': urlentry.datetime_available_to,
+                'dateto': urlentry.datetime_available_to
             })
         if urlentry.datetime_available_from > timezone.now():
             # the urlentry has Premiere date
             return render(request, 'polls/premiere.html', {
-                'datefrom': for_js,
+                'datefrom': for_js
             })
     else: #no need - usual redirection
         if urlentry.partner_ads!="" or urlentry.partner_ads!=" ":  #redirection to Customers frame with ads block

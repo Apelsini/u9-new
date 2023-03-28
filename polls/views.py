@@ -236,7 +236,7 @@ def update_urlentry(request, pk):
 def add_lead_and_redirect(request, hash):
     urlentry = get_object_or_404(Urlentry, url_short=hash)
     d = urlentry.datetime_available_from
-    for_js = int(time.mktime(d.timetuple())) * 1000
+    datefromdig = int(time.mktime(d.timetuple())) * 1000
     fol_info=''
     dateto = urlentry.datetime_available_to.strftime("%Y-%m-%d %H:%M")
     try:
@@ -261,7 +261,7 @@ def add_lead_and_redirect(request, hash):
         if urlentry.datetime_available_from > timezone.now():
             # the urlentry has Premiere date
             return render(request, 'polls/premiere.html', {
-                'datefrom': for_js
+                'datefromdig': datefromdig
             })
     else: #no need - usual redirection
         if urlentry.partner_ads!="" or urlentry.partner_ads!=" ":  #redirection to Customers frame with ads block

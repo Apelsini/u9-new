@@ -234,6 +234,8 @@ def update_urlentry(request, pk):
 # view to process short links like  localhost:8000/addb
 def add_lead_and_redirect(request, hash):
     urlentry = get_object_or_404(Urlentry, url_short=hash)
+    d = urlentry.datetime_available_from
+    for_js = int(time.mktime(d.timetuple())) * 1000
     fol_info=''
     try:
         if request.META['HTTP_REFERER']!=None:
@@ -247,13 +249,26 @@ def add_lead_and_redirect(request, hash):
           follower_os_info = request.headers.get('User-Agent'),
           follower_fromwhere = request.META['REMOTE_ADDR']).save() # standard analytics
     render(request, 'polls/matomo.html', {})
-    if urlentry.partner_ads!="" or urlentry.partner_ads!=" ":
-          return render(request, 'polls/frame.html',{
-          'id_block': urlentry.url_id,
-          'frame_block': urlentry.partner_ads,
-          'body_block': urlentry.url_text,
-          })
-    return render(request, 'polls/bframe.html',{
+    if urlentry.datetime_available_from != urlentry.datetime_available_to:
+        #if there is need for redirection to 'premiere.html' or 'deprecated.html'
+        if urlentry.datetime_available_to > timezone.now():
+            # the urlentry already deprecated
+            return render(request, 'polls/deprecated.html', {
+                'dateto': urlentry.datetime_available_to,
+            })
+        if urlentry.datetime_available_from > timezone.now():
+            # the urlentry has Premiere date
+            return render(request, 'polls/premiere.html', {
+                'datefrom': for_js,
+            })
+    else: #no need - usual redirection
+        if urlentry.partner_ads!="" or urlentry.partner_ads!=" ":  #redirection to Customers frame with ads block
+              return render(request, 'polls/frame.html',{
+                'id_block': urlentry.url_id,
+                'frame_block': urlentry.partner_ads,
+                'body_block': urlentry.url_text,
+                })
+    return render(request, 'polls/bframe.html',{     # usual immediate redirection
           'id_block': urlentry.url_id,
           'frame_block': urlentry.partner_ads,
           'body_block': urlentry.url_text,

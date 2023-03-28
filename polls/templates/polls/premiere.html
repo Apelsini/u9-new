@@ -204,7 +204,7 @@ for_js = int(time.mktime(d.timetuple())) * 1000
 				this.minsBlock = this.countDownBlock.find(".mins .num");
 				this.secsBlock = this.countDownBlock.find(".secs .num");
 
-				var timerDate = new Date({% block dateto %}{% endblock %});
+				var timerDate = new Date({% block datefrom %}{% endblock %});
 				var currDate = new Date();
 
 				var diff = timerDate.getTime() - currDate.getTime();

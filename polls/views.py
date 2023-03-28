@@ -14,8 +14,8 @@ from authentication.decorators import allowed_users
 from django.contrib.auth.models import Group, User
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from datetime import datetime, date, time
-import datetime, time
+import time
+from datetime import datetime, date
 from django.shortcuts import render
 from django.contrib.auth import get_user_model
 

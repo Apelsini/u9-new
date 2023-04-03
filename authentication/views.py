@@ -15,7 +15,7 @@ import os
 def get_secret(setting):
     with open('secrets.json') as secrets_file:
         secrets = json.load(secrets_file)
-    """Get secret setting or fail with ImproperlyConfigured"""
+   # """Get secret setting or fail with ImproperlyConfigured"""
     try:
         return secrets[setting]
     except:

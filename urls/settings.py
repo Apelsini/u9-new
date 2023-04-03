@@ -17,6 +17,15 @@ from django.apps import apps
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+#import secrets from secrets.json file
+def get_secret(setting):
+    with open('secrets.json') as secrets_file:
+        secrets = json.load(secrets_file)
+    """Get secret setting or fail with ImproperlyConfigured"""
+    try:
+        return secrets[setting]
+    except:
+        pass
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -96,7 +105,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get('DB_NAME', 'uby_urls'),
         'USER': os.environ.get('DB_USER', 'uby_postgres'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', '$uper001'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', get_secret('DB_PASSWORDDEF')),
         'HOST': os.environ.get('DB_HOST', 'localhost'),
     }
 }
@@ -153,7 +162,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # stmp email configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'mail.u9.by'
-EMAIL_PORT = 26
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'log@u9.by')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'tre21jfk$')
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', get_secret('EMAIL_NOTIFY'))
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', get_secret('EMAIL_PASSWORD')')

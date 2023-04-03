@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 #import secrets from secrets.json file
 def get_secret(setting):
-    with open(BASE_DIR+'secrets.json') as secrets_file:
+    with open('secrets.json') as secrets_file:
         secrets = json.load(secrets_file)
     try:
         return secrets[setting]

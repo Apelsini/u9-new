@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import json
 from django.apps import apps
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.

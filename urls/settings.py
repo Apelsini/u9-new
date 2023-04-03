@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-import os
 import json
+import os
 from django.apps import apps
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 #import secrets from secrets.json file
 def get_secret(setting):
-    with open('secrets.json') as secrets_file:
+    with open(BASE_DIR+'secrets.json') as secrets_file:
         secrets = json.load(secrets_file)
     try:
         return secrets[setting]

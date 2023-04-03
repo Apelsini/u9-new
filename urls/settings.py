@@ -26,7 +26,7 @@ def get_secret(setting):
     try:
         return secrets[setting]
     except:
-        pass
+        return 'key_not_found'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/

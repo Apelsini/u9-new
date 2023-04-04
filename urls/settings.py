@@ -9,14 +9,22 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import json
 import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+#import secrets from secrets.json file
+def get_secret(setting):
+    with open('secrets.json') as secrets_file:
+        secrets = json.load(secrets_file)
+   # """Get secret setting or fail with ImproperlyConfigured"""
+    try:
+        return secrets[setting]
+    except:
+        pass
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -87,6 +95,10 @@ WSGI_APPLICATION = 'urls.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+db_password_secret =  get_secret('DB_PASSWORDDEF')
+email_secret = get_secret('EMAIL_NOTIFY')
+emailpass_secret = get_secret('EMAIL_PASSWORD')
+
 DATABASES = {
     # 'default': {
     #     'ENGINE': 'django.db.backends.sqlite3',
@@ -96,7 +108,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get('DB_NAME', 'uby_urls'),
         'USER': os.environ.get('DB_USER', 'uby_postgres'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', '$uper001'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', db_password_secret),
         'HOST': os.environ.get('DB_HOST', 'localhost'),
     }
 }
@@ -155,5 +167,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'mail.u9.by'
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'support@u9.by')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '$tage2_45172369')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', email_secret)
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', emailpass_secret)

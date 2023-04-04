@@ -163,11 +163,24 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # stmp email configuration
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'mail.u9.by'
-EMAIL_PORT = 465
-EMAIL_USE_TLS = True
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_HOST = 'mail.u9.by'
+#EMAIL_PORT = 465
+#EMAIL_USE_TLS = True
 #EMAIL_USE_SSL = True
-EMAIL_TIMEOUT = 20
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', email_secret)
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', emailpass_secret)
+#EMAIL_TIMEOUT = 20
+#EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', email_secret)
+#EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', emailpass_secret)
+
+# imap email config
+EMAIL_BACKEND = 'django_imap_backend.ImapBackend'
+EMAIL_IMAP_SECRETS = [
+    {
+        'HOST': 'mail.u9.by',
+        'PORT': 143,  # default 143 and for SSL 993
+        'USER': email_secret,
+        'PASSWORD': emailpass_secret,
+        'MAILBOX': 'u9mails',  # Created if not exists
+        'SSL': False  # Default
+    }
+]

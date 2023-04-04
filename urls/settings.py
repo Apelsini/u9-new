@@ -165,7 +165,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # stmp email configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'mail.u9.by'
-EMAIL_PORT = 26
+EMAIL_PORT = 465
 #EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 EMAIL_TIMEOUT = 100

@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
-import secret
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -97,7 +96,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get('DB_NAME', 'uby_urls'),
         'USER': os.environ.get('DB_USER', 'uby_postgres'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', '$uper001'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'v3ry53cr3t'),
         'HOST': os.environ.get('DB_HOST', 'localhost'),
     }
 }
@@ -156,5 +155,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'mail.u9.by'
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', secret.Secret.email_notifyvalue)
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', secret.Secret.email_passwordvalue)
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'support@u9.by')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '$tage2_45172369')

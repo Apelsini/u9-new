@@ -234,6 +234,9 @@ def update_urlentry(request, pk):
 
 # view to process short links like  localhost:8000/addb
 def add_lead_and_redirect(request, hash):
+    if 'reset_password_sent' in hash:
+        return render(request, 'authentication/reset_password_sent.html', { 
+        })
     urlentry = get_object_or_404(Urlentry, url_short=hash)
     d = urlentry.datetime_available_from
     datefromdig = int(time.mktime(d.timetuple())) * 1000

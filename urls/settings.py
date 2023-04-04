@@ -10,10 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-from pathlib import Path
-import secret
 import os
-from django.apps import apps
+import secret
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -98,7 +97,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get('DB_NAME', 'uby_urls'),
         'USER': os.environ.get('DB_USER', 'uby_postgres'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', secret.Secret.dbpassworddef(self)),
+        'PASSWORD': os.environ.get('DB_PASSWORD', secret.Secret.dbpassworddefvalue),
         'HOST': os.environ.get('DB_HOST', 'localhost'),
     }
 }
@@ -157,5 +156,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'mail.u9.by'
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', secret.Secret.email_notify(self))
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', secret.Secret.email_password(self))
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', secret.Secret.email_notifyvalue)
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', secret.Secret.email_passwordvalue)

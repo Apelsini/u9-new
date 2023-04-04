@@ -177,10 +177,10 @@ EMAIL_BACKEND = 'django_imap_backend.ImapBackend'
 EMAIL_IMAP_SECRETS = [
     {
         'HOST': 'mail.u9.by',
-        'PORT': 143,  # default 143 and for SSL 993
+        'PORT': 993,  # default 143 and for SSL 993
         'USER': email_secret,
         'PASSWORD': emailpass_secret,
         'MAILBOX': 'u9mails',  # Created if not exists
-        'SSL': False  # Default
+        'SSL': True  # Default
     }
 ]

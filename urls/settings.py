@@ -97,7 +97,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get('DB_NAME', 'uby_urls'),
         'USER': os.environ.get('DB_USER', 'uby_postgres'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', secret.Secret.db_passwordvalue),
+        'PASSWORD': os.environ.get('DB_PASSWORD', '$uper001'),
         'HOST': os.environ.get('DB_HOST', 'localhost'),
     }
 }

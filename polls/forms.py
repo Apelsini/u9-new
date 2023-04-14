@@ -50,6 +50,7 @@ class UrlentryFormShort(ModelForm):
         super(UrlentryFormShort, self).__init__(*args, **kwargs)
         self.fields['url_text'].widget = HiddenInput()
         self.fields['partner_ads'].widget = HiddenInput()
+        self.fields['partner_ads'].required = False
         #self.fields['datetime_available_from'].required = False
         #self.fields['datetime_available_to'].required = False
 

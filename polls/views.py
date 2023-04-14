@@ -168,7 +168,7 @@ def create_urls(request):
             urlentry.author = request.user
             urlentry.url_id = countme(Urlentry.objects.all())
             urlentry.datetime_available_from = timezone.now()
-            urlentry.datetime_available_to = timezone.now()
+            urlentry.datetime_available_to = urlentry.datetime_available_from
             urlentry.partner_ads = ''
             #urlentry.save()
             urlentry.url_short = Urlentry.num_to_sym_unregistered(urlentry.url_id)

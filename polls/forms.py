@@ -41,6 +41,8 @@ class UrlentryForm(ModelForm):
             self.fields['qr_code'].required = False
             self.fields['snapshot'].widget = HiddenInput()
             self.fields['snapshot'].required = False
+            self.fields['partner_ads'].widget = HiddenInput()
+            self.fields['partner_ads'].required = False
 
 class UrlentryFormShort(ModelForm):
     class Meta:

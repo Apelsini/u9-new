@@ -35,10 +35,10 @@ SECRET_KEY = 'django-insecure-xi8mtgi9r*ty!h%3z(fv6sj%dzovu0kfya)rvmmf%7kh70pj98
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(int(os.environ.get('DEBUG', '1')))
 
-ALLOWED_HOSTS = ['u9.by', '127.0.0.1:8000', '127.0.0.1']
+ALLOWED_HOSTS = ['u9.by', '127.0.0.1:8000', '127.0.0.1', 'www.u9.by']
 #additional config through environmental variables
 ALLOWED_HOSTS_ENV = os.environ.get('ALLOWED_HOSTS', 
-'127.0.0.1,localhost,test.u9.by')
+'127.0.0.1,localhost,test.u9.by, u9.by, www.u9.by')
 if ALLOWED_HOSTS_ENV:
     ALLOWED_HOSTS.extend(ALLOWED_HOSTS_ENV.split(','))
 

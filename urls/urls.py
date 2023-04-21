@@ -31,6 +31,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = [
+    path('admin/polls/urlentry/2/change/', include('authentication.urls')),
     path('admin/', admin.site.urls),
     path('', include('polls.urls')),
     path('reset/<uidb64>/<token>/', view=auth_views.PasswordResetConfirmView.as_view(template_name='authentication/reset_password_done.html'), name='password_reset_confirm'),

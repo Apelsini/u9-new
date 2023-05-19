@@ -40,7 +40,7 @@
         <div class="form-group col-sm-12">
             <div class="control-group required">
                 <div class="controls">
-                 <input class="form-control form-control-sm" id="filter_author" maxlength="30" name="filter_author" type="text" value={% if request.path == '' %}                 <input class="form-control form-control-sm" id="filter_author" maxlength="30" name="filter_author" type="text" value="{{ filter_author|default:'/' }}" />
+                 <input class="form-control form-control-sm" id="filter_author" maxlength="30" name="filter_author" type="text" value="{{ filter_author|default:'/' }}" />
                 </div>
             </div>
         </div>

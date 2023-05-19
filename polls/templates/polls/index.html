@@ -40,7 +40,7 @@
         <div class="form-group col-sm-12">
             <div class="control-group required">
                 <div class="controls">
-                 <input class="form-control form-control-sm" id="filter_author" maxlength="30" name="filter_author" type="text" value="{% if 'submit=Filter' in request.build_absolute_uri %}{{ filter_author }}{% else %}/{% endif %}" />
+                 <input class="form-control form-control-sm" id="filter_author" maxlength="30" name="filter_author" type="text" value="{% if 'submit=Filter' in request.build_absolute_uri %}{{ filter_author }}{% else %}{% endif %}" />
                 </div>
             </div>
         </div>

@@ -1,0 +1,13 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /reset/
+Disallow: /polls/
+Disallow: /auth/
+Disallow: /auth/login/
+Disallow: /auth/reset_password/
+Disallow: /details/
+Disallow: /gallery/
+Disallow: /uby/
+Disallow: /style.php/
+Disallow: /sitemap.xml/
+Disallow: /*.*

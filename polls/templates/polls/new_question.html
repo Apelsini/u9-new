@@ -9,7 +9,7 @@
     <form class="form-inline" action="" method="post" >
         {% csrf_token %}
         <fieldset>
-            <div class="form-group col-md-8">
+            <div class="form-group d-flex flex-row align-content-start flex-wrap bd-highlight mb-3 justify-content-space-around">
                      {{ form|as_p }}
             </div>
                     <input type="submit" class="btn btn-danger" value="Submit Link"><br><br>

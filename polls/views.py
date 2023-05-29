@@ -270,10 +270,10 @@ def add_lead_and_redirect(request, hash):
                 'dateto': dateto
             })
 
-    if urlentry.partner_ads!="" or urlentry.partner_ads!=" ":  #redirection to Customers frame with ads block
-        pattern_html = 'polls/frame.html'  #ads block redirection
-    else:
+    if urlentry.partner_ads="" or urlentry.partner_ads=" ":  #redirection to Customers frame with ads block
         pattern_html = 'polls/bframe.html' #no ads - usual redirection
+    else:
+        pattern_html = 'polls/frame.html'  # ads block redirection
 
     return render(request, pattern_html,{     # usual immediate redirection
           'id_block': urlentry.url_id,

@@ -269,14 +269,13 @@ def add_lead_and_redirect(request, hash):
             return render(request, 'polls/deprecated.html', {
                 'dateto': dateto
             })
-    else: #no need - usual redirection
-        if urlentry.partner_ads!="" or urlentry.partner_ads!=" ":  #redirection to Customers frame with ads block
-              return render(request, 'polls/frame.html',{
-                'id_block': urlentry.url_id,
-                'frame_block': urlentry.partner_ads,
-                'body_block': urlentry.url_text,
-                })
-    return render(request, 'polls/bframe.html',{     # usual immediate redirection
+
+    if urlentry.partner_ads!="" or urlentry.partner_ads!=" ":  #redirection to Customers frame with ads block
+        pattern_html = 'polls/frame.html'  #ads block redirection
+    else:
+        pattern_html = 'polls/bframe.html' #no ads - usual redirection
+
+    return render(request, pattern_html,{     # usual immediate redirection
           'id_block': urlentry.url_id,
           'frame_block': urlentry.partner_ads,
           'body_block': urlentry.url_text,

@@ -278,7 +278,7 @@ def add_lead_and_redirect(request, hash):
     return render(request, pattern_html,{     # usual immediate redirection
           'id_block': urlentry.url_id,
           'frame_block':   urlentry.partner_ads,
-          'body_block':  pattern_html, #urlentry.url_text,
+          'body_block':  urlentry.url_text,
           })
 
     #HttpResponseRedirect(urlentry.url_text)

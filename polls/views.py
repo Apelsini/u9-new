@@ -259,15 +259,15 @@ def add_lead_and_redirect(request, hash):
     render(request, 'polls/matomo.html', {})
     if urlentry.datetime_available_from != urlentry.datetime_available_to:
         #if there is need for redirection to 'premiere.html' or 'deprecated.html'
-        if urlentry.datetime_available_to < timezone.now():
-            # the urlentry already deprecated
-            return render(request, 'polls/deprecated.html', {
-                'dateto': dateto
-            })
-        if urlentry.datetime_available_from > timezone.now():
+        if urlentry.datetime_available_from > timezone.now() and urlentry.datetime_available_to > timezone.now():
             # the urlentry has Premiere date
             return render(request, 'polls/premiere.html', {
                 'datefromdig': datefromdig
+            })
+        if urlentry.datetime_available_from < timezone.now() and urlentry.datetime_available_to < timezone.now():
+            # the urlentry already deprecated
+            return render(request, 'polls/deprecated.html', {
+                'dateto': dateto
             })
     else: #no need - usual redirection
         if urlentry.partner_ads!="" or urlentry.partner_ads!=" ":  #redirection to Customers frame with ads block

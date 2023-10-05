@@ -84,5 +84,3 @@ class Leads(models.Model):
     def __str__(self):
         return self.follower_info
 
-
-

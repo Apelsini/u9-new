@@ -18,6 +18,19 @@
 <legend>Links (click to edit):</legend>
 {% if is_paginated %}
 {% if request.user.is_authenticated %}
+<div class="wrapper center-block"> <!-- collapsible opening -->
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading active" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Filter
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+
     <form id="filter-form" class="form" role="form" method="get" action="{% url 'polls:index' %}">
 <div class="d-flex flex-row align-content-start flex-wrap bd-highlight mb-3 justify-content-space-around">
         <div class="p-2 justify-content-center col-md-4 mx-4 my-4 my-sm-4 my-lg-4 bd-highlight rounded">
@@ -94,6 +107,11 @@
         </div>
 </div>
     </form>
+      </div> <!-- collapsible closing -->
+    </div><!-- collapsible closing -->
+  </div><!-- collapsible closing -->
+</div><!-- collapsible closing -->
+</div>  <!-- collapsible closing -->
 {% endif %}
 
  {% for links in links_list %}

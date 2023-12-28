@@ -57,7 +57,7 @@
 
     <form id="filter-form" class="form" role="form" method="get" action="{% url 'polls:index' %}">
 <div class="container">  <!-- d-flex flex-row align-content-start flex-wrap bd-highlight mb-3 justify-content-space-around -->
-        <div class="p-2 justify-content-center col-md-4 mx-4 my-4 my-sm-4 my-lg-4 bd-highlight rounded">
+        <div class="col-md-4 mx-4 my-4 my-sm-4 my-lg-4 bd-highlight rounded">  <!-- removed p-2 justify-content-center -->
         URL contains:<br>
             <div class="row">
         <div class="form-group col-sm-12">
@@ -72,7 +72,7 @@
     </div>
         </div>
 
-     <div class="p-2 justify-content-center col-md-2 mx-2 my-2 my-sm-2 my-lg-3 bd-highlight rounded">
+     <div class="col-md-2 mx-2 my-2 my-sm-2 my-lg-3 bd-highlight rounded">
     Author: <br>
          <div class="row">
         <div class="form-group col-sm-12">
@@ -85,7 +85,7 @@
     </div>
      </div>
 
-    <div class="p-2 justify-content-center col-md-2 mx-2 my-2 my-sm-2 my-lg-2 bd-highlight rounded">
+    <div class="col-md-2 mx-2 my-2 my-sm-2 my-lg-2 bd-highlight rounded">
          Date from: <br>
            <div class="form-group">
             <div class="control-group required">
@@ -104,7 +104,7 @@
             </div>
         </div>
 
-      <div class="p-2 justify-content-center col-md-2 mx-2 my-2 my-sm-2 my-lg-2 bd-highlight rounded">
+      <div class="col-md-2 mx-2 my-2 my-sm-2 my-lg-2 bd-highlight rounded">
          Date to: <br>
            <div class="form-group">
             <div class="control-group required">
@@ -123,7 +123,7 @@
             </div>
         </div>
 
-        <div class="p-2 justify-content-center col-md-1 mx-1 my-1 my-sm-1 my-lg-1 bd-highlight rounded">
+        <div class="col-md-1 mx-1 my-1 my-sm-1 my-lg-1 bd-highlight rounded">
             <br>
          <p><input class="btn btn-default" type="submit" class="button"
                   href="?filter_url={{ filter_url }}&filter_author={{ filter_author }}&filter_datefrom={{ filter_datefrom }}&filter_dateto={{ filter_dateto }}&submit=Filter"

@@ -18,55 +18,37 @@
 <legend>Links (click to edit):</legend>
 {% if is_paginated %}
 {% if request.user.is_authenticated %}
-    <style>
-        .panel-heading {
-  padding: 0;
-	border:0;
-}
-.panel-title>a, .panel-title>a:active{
-	display:block;
-	padding:15px;
-  color:#555;
-  font-size:16px;
-  font-weight:bold;
-	text-transform:uppercase;
-	letter-spacing:1px;
-  word-spacing:3px;
-	text-decoration:none;
-}
-.panel-heading  a:before {
-   font-family: 'Glyphicons Halflings';
-   content: "\e114";
-   float: right;
-   transition: all 0.5s;
-}
-.panel-heading.active a:before {
-	-webkit-transform: rotate(180deg);
-	-moz-transform: rotate(180deg);
-	transform: rotate(180deg);
-}
-    </style>
     <script>
-         $('.panel-collapse').on('show.bs.collapse', function () {
-    $(this).siblings('.panel-heading').addClass('active');
-  });
+     .panel-heading .collapsed .active {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+    position: absolute;
+}
 
-  $('.panel-collapse').on('hide.bs.collapse', function () {
-    $(this).siblings('.panel-heading').removeClass('active');
-  });
+.panel-heading .active {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+    position: absolute;
+}
     </script>
-<div class="wrapper center-block"> <!-- collapsible opening -->
-  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  <div class="panel panel-default">
-    <div class="panel-heading active" role="tab" id="headingOne">
-      <h4 class="panel-title">
-        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-          Filter
-        </a>
-      </h4>
-    </div>
-    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-      <div class="panel-body">
+<div class="panel-group" id="accordion"> <!-- collapsible opening -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                Click me
+                <span class="active" >▲</span>
+                </a>
+              </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse in">
+            <div class="panel-body collapse-text">
 
     <form id="filter-form" class="form" role="form" method="get" action="{% url 'polls:index' %}">
 <div class="d-flex flex-row align-content-start flex-wrap bd-highlight mb-3 justify-content-space-around">
@@ -144,8 +126,7 @@
         </div>
 </div>
     </form>
-      </div> <!-- collapsible closing -->
-    </div><!-- collapsible closing -->
+
   </div><!-- collapsible closing -->
 </div><!-- collapsible closing -->
 </div>  <!-- collapsible closing -->

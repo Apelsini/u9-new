@@ -45,13 +45,32 @@
 
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    .panel-heading .collapsed .active {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+    position: absolute;
+}
 
+.panel-heading .active {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+    position: absolute;
+}
+</script>
 
     <div class="panel-group">
         <div class="panel panel-default" data-toggle="collapse" data-target="#collapse1">
           <div class="panel-heading">
             <h4 class="panel-title">
               Filter ↕
+                <span class="active" >▲</span>
             </h4>
           </div>
           <div class="collapse in" id="collapse1">

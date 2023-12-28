@@ -18,6 +18,30 @@
 <legend>Links (click to edit):</legend>
 {% if is_paginated %}
 {% if request.user.is_authenticated %}
+    <style>
+        .card-header .title {
+    font-size: 17px;
+    color: #000;
+}
+.card-header .accicon {
+  float: right;
+  font-size: 20px;
+  width: 1.2em;
+}
+.card-header{
+  cursor: pointer;
+  border-bottom: none;
+}
+.card{
+  border: 1px solid #ddd;
+}
+.card-body{
+  border-top: 1px solid #ddd;
+}
+.card-header:not(.collapsed) .rotate-icon {
+  transform: rotate(180deg);
+}
+    </style>
     <script>
      .panel-heading .collapsed .active {
     -webkit-transform: rotate(180deg);

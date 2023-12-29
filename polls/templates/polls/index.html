@@ -95,7 +95,12 @@
          $(function () {
              $('#filter_datefrom').datetimepicker({
                  format:'YYYY-MM-DD HH:mm',
-                 inline:true
+                 inline:true,
+                   onShow:function( ct ){
+   this.setOptions({
+    maxDate:jQuery('#filter_dateto').val()?jQuery('#filter_dateto').val():false
+   })
+  },
              });
          });
       </script>
@@ -115,7 +120,12 @@
          $(function () {
              $('#filter_dateto').datetimepicker({
                  format:'YYYY-MM-DD HH:mm',
-                 inline:true
+                 inline:true,
+                onShow:function( ct ){
+   this.setOptions({
+    minDate:jQuery('#filter_datefrom').val()?jQuery('#filter_datefrom').val():false
+   })
+  },
              });
          });
       </script>

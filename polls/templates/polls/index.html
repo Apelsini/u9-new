@@ -97,7 +97,6 @@
                  format:'YYYY-MM-DD HH:mm',
                  inline:true
              });
-                          $(this).datetimepicker.events.hide;
          });
       </script>
 
@@ -118,9 +117,14 @@
                  format:'YYYY-MM-DD HH:mm',
                  inline:true
              });
-             $(this).datetimepicker('hide');
          });
       </script>
+                    <script>
+                        $(document).ready(function() {
+                        $('#filter_datefrom').datetimepicker.events.hide;
+                        $('#filter_dateto').datetimepicker.events.hide;
+                                                                                        });
+                    </script>
 
                     </div>
                 </div>

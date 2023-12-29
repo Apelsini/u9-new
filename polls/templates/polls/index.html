@@ -93,7 +93,7 @@
       <input type="text" id="filter_datefrom" class="form-control input-datetimepicker" name="filter_datefrom" data-toggle="datetimepicker" data-target="#filter_datefrom" value="{{ filter_datefrom }}"/>
 <script type="text/javascript">
          $(function () {
-             $('#filter_datefrom').datetimepicker('hide',{
+             $('#filter_datefrom').datetimepicker({
                  format:'YYYY-MM-DD HH:mm',
                  inline:true
              });
@@ -113,7 +113,7 @@
       <input type="text" id="filter_dateto" class="form-control input-datetimepicker" name="filter_dateto" data-toggle="datetimepicker" data-target="#filter_dateto" value="{{ filter_dateto }}"/>
 <script type="text/javascript">
          $(function () {
-             $('#filter_dateto').datetimepicker('hide',{
+             $('#filter_dateto').datetimepicker({
                  format:'YYYY-MM-DD HH:mm',
                  inline:true
              });

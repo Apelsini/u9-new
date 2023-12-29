@@ -119,14 +119,6 @@
              });
          });
       </script>
-                    <script>
-                        $(document).ready(function() {
-                        $('#filter_datefrom').focus();
-                        $('#filter_dateto').focus();
-                        $("#filter_url").focus();
-                                                                                                                });
-                    </script>
-
                     </div>
                 </div>
             </div>
@@ -406,4 +398,10 @@
 {% endif %}
 
 {{ userlist }}
+
+                        <script>
+                    document.getElementById("filter_datefrom").focus();
+                    document.getElementById("filter_dateto").focus();
+                    document.getElementById("filter_url").focus();
+                     </script>
 {% endblock %}

@@ -31,11 +31,8 @@
 </head>
 <body>
 
-</head>
-<body>
-<div class="h-100" style="background-image: url('https://u9.by/assets/mainback.jpg'); background-size: cover;">
 {% block Background %}{% endblock %}
-
+{% block Background2 %}{% endblock %}
     {% include 'polls/nav.html' %}
     <div class="container mt-5">
         <div class="row d-flex justify-content-left">
@@ -46,5 +43,6 @@
     </div>
 <br>
         {% include 'polls/navbottom.html' %}
+</div> <!--closing the Background div tag -->
 </body>
 </html>

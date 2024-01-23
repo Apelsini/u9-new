@@ -1,5 +1,6 @@
 {% extends 'polls/base.html' %}
 {% block Title %}U9 links multitools{% endblock %}
+{% block Background %}<div class="h-100" style="background-image: url('https://u9.by/assets/mainback.jpg'); background-size: cover;">{% endblock %}
 {% block Body %}
 
 <style>
@@ -17,9 +18,46 @@
 <legend>Links (click to edit):</legend>
 {% if is_paginated %}
 {% if request.user.is_authenticated %}
+    <style>
+        .card-header .title {
+    font-size: 17px;
+    color: #000;
+}
+.card-header .accicon {
+  float: right;
+  font-size: 20px;
+  width: 1.2em;
+}
+.card-header{
+  cursor: pointer;
+  border-bottom: none;
+}
+.card{
+  border: 1px solid #ddd;
+}
+.card-body{
+  border-top: 1px solid #ddd;
+}
+.card-header:not(.collapsed) .rotate-icon {
+  transform: rotate(180deg);
+}
+    </style>
+
+    <div class="panel-group">
+        <div class="panel panel-default collapsed" data-toggle="collapse" data-target="#collapse1">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              Filter ↕
+            </h4>
+          </div>
+          <div class="collapse" id="collapse1">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col">
+                <span>
     <form id="filter-form" class="form" role="form" method="get" action="{% url 'polls:index' %}">
-<div class="d-flex flex-row align-content-start flex-wrap bd-highlight mb-3 justify-content-space-around">
-        <div class="p-2 justify-content-center col-md-4 mx-4 my-4 my-sm-4 my-lg-4 bd-highlight rounded">
+<div class="container">  <!-- d-flex flex-row align-content-start flex-wrap bd-highlight mb-3 justify-content-space-around -->
+        <div class="col-md-4 mx-4 my-4 my-sm-4 my-lg-4 bd-highlight rounded">  <!-- removed p-2 justify-content-center -->
         URL contains:<br>
             <div class="row">
         <div class="form-group col-sm-12">
@@ -34,7 +72,7 @@
     </div>
         </div>
 
-     <div class="p-2 justify-content-center col-md-2 mx-2 my-2 my-sm-2 my-lg-3 bd-highlight rounded">
+     <div class="col-md-2 mx-2 my-2 my-sm-2 my-lg-3 bd-highlight rounded">
     Author: <br>
          <div class="row">
         <div class="form-group col-sm-12">
@@ -47,16 +85,18 @@
     </div>
      </div>
 
-    <div class="p-2 justify-content-center col-md-2 mx-2 my-2 my-sm-2 my-lg-2 bd-highlight rounded">
+    <div class="col-md-2 mx-2 my-2 my-sm-2 my-lg-2 bd-highlight rounded">
          Date from: <br>
            <div class="form-group">
             <div class="control-group required">
                 <div class="controls">
-      <input type="text" id="filter_datefrom" class="form-control input-datetimepicker" name="filter_datefrom" data-toggle="datetimepicker" data-target="#filter_datefrom" value="{{ filter_datefrom }}"/>
+      <input type="text" id="filter_datefrom" class="form-control input-datetimepicker zindex-modal" name="filter_datefrom" data-toggle="datetimepicker" data-target="#filter_datefrom" value="{{ filter_datefrom }}"/>
 <script type="text/javascript">
          $(function () {
              $('#filter_datefrom').datetimepicker({
-                 format:'YYYY-MM-DD HH:mm'
+                 format:'YYYY-MM-DD HH:mm',
+                 inline:true,
+                 collapse:true
              });
          });
       </script>
@@ -66,26 +106,27 @@
             </div>
         </div>
 
-      <div class="p-2 justify-content-center col-md-2 mx-2 my-2 my-sm-2 my-lg-2 bd-highlight rounded">
+      <div class="col-md-2 mx-2 my-2 my-sm-2 my-lg-2 bd-highlight rounded">
          Date to: <br>
            <div class="form-group">
             <div class="control-group required">
                 <div class="controls">
-      <input type="text" id="filter_dateto" class="form-control input-datetimepicker" name="filter_dateto" data-toggle="datetimepicker" data-target="#filter_dateto" value="{{ filter_dateto }}"/>
+      <input type="text" id="filter_dateto" class="form-control input-datetimepicker zindex-modal" name="filter_dateto" data-toggle="datetimepicker" data-target="#filter_dateto" value="{{ filter_dateto }}"/>
 <script type="text/javascript">
          $(function () {
              $('#filter_dateto').datetimepicker({
-                 format:'YYYY-MM-DD HH:mm'
+                 format:'YYYY-MM-DD HH:mm',
+                 inline:true,
+                 collapse:true
              });
          });
       </script>
-
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="p-2 justify-content-center col-md-1 mx-1 my-1 my-sm-1 my-lg-1 bd-highlight rounded">
+        <div class="col-md-1 mx-1 my-1 my-sm-1 my-lg-1 bd-highlight rounded">
             <br>
          <p><input class="btn btn-default" type="submit" class="button"
                   href="?filter_url={{ filter_url }}&filter_author={{ filter_author }}&filter_datefrom={{ filter_datefrom }}&filter_dateto={{ filter_dateto }}&submit=Filter"
@@ -93,6 +134,15 @@
         </div>
 </div>
     </form>
+
+
+                </span> <!--collapsible closing -->
+                </div> <!--collapsible closing -->
+              </div> <!--collapsible closing -->
+            </div> <!--collapsible closing -->
+          </div> <!--collapsible closing -->
+       </div> <!--collapsible closing -->
+      </div> <!--collapsible closing -->
 {% endif %}
 
  {% for links in links_list %}
@@ -334,4 +384,11 @@
 {% endif %}
 
 {{ userlist }}
+
+<script type="text/javascript">
+         $(function () {
+             $('#filter_datefrom').datetimepicker('hide');
+             $('#filter_dateto').datetimepicker('hide');
+         });
+      </script>
 {% endblock %}

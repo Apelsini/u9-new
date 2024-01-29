@@ -1,4 +1,4 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, Textarea
 from django.forms.widgets import HiddenInput, TextInput
 from .models import Urlentry, Leads
 
@@ -48,6 +48,8 @@ class UrlentryFormShort(ModelForm):
     class Meta:
         model = Urlentry
         fields = ['url_text', 'partner_ads']
+        widgets = {'url_text': Textarea(attrs={'style':'width: 100%; border-color:#d3dce5; border-radius: 20px; border: 2px solid #d3dce5;'})   #, 'cols': 40
+                   }
     def __init__(self, *args, **kwargs):
         super(UrlentryFormShort, self).__init__(*args, **kwargs)
         self.fields['url_text'].widget = HiddenInput()
@@ -55,6 +57,7 @@ class UrlentryFormShort(ModelForm):
         self.fields['partner_ads'].required = False
         #self.fields['datetime_available_from'].required = False
         #self.fields['datetime_available_to'].required = False
+
 
 class LeadsForm(ModelForm):
     class Meta:

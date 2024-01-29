@@ -11,6 +11,8 @@ class UrlentryForm(ModelForm):
     class Meta:
         model = Urlentry
         fields = ['url_text', 'author', 'url_id', 'datetime_available_from', 'datetime_available_to', 'partner_ads','qr_code','snapshot']
+        widgets = {'url_text': Textarea(attrs={'style':'width: 100%; border-color:#d3dce5; border-radius: 20px; border: 2px solid #d3dce5;'})   #, 'cols': 40
+                   }
     def __init__(self, *args, **kwargs):
         hide_condition = kwargs.pop('hide_condition', None)
         limited_condition = kwargs.pop('limited_condition', None)
@@ -48,8 +50,6 @@ class UrlentryFormShort(ModelForm):
     class Meta:
         model = Urlentry
         fields = ['url_text', 'partner_ads']
-        widgets = {'url_text': Textarea(attrs={'style':'width: 100%; border-color:#d3dce5; border-radius: 20px; border: 2px solid #d3dce5;'})   #, 'cols': 40
-                   }
     def __init__(self, *args, **kwargs):
         super(UrlentryFormShort, self).__init__(*args, **kwargs)
         self.fields['url_text'].widget = HiddenInput()

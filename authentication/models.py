@@ -6,10 +6,10 @@ from django.urls import reverse
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
-    email1 = models.TextField()
-    email2 = models.TextField()
-    telegram1 = models.TextField()
-    telegram2 = models.TextField()
+    email1 = models.TextField(default='-')
+    email2 = models.TextField(default='-')
+    telegram1 = models.TextField(default='-')
+    telegram2 = models.TextField(default='-')
     def __str__(self):
         return self.email1+';'+self.email2+';'+self.telegram1+';'+self.telegram2
     def get_absolute_url(self):

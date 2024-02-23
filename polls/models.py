@@ -83,4 +83,3 @@ class Leads(models.Model):
     follower_fromwhere = models.TextField()
     def __str__(self):
         return self.follower_info
-

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import CreateUserForm, CheckCustomerForm
+from .forms import CreateUserForm, CheckCustomerForm, UserNotificationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from .decorators import unauthenticated_user, allowed_users, staff_only
@@ -30,10 +30,25 @@ def profile_page(request, pk):  #shows profile details
     groupstring = 'User'
     if profile.user.is_staff:
         groupstring = 'Customer'
+    if request.method == "POST":
+        form = UserNotificationForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            profile.email1 = cd['email1']
+            profile.email2 = cd['email2']
+            profile.telegram1 = cd['telegram1']
+            profile.telegram2 = cd['telegram2']
+            profile.save()
+            messages.success(request, 'Notification credentials for user '+profile.user+' were successfully puldated.')
+        else:
+            messages.error(request, 'Notification credentials update error, please try again.')
+    else:
+        form = UserNotificationForm(profile)
     return render(request, 'authentication/profile.html', context={
         'profile': Profile.objects.get(pk=pk),
         'group':group,
         'groupstring':groupstring,
+        'form':form,
     })
 
 decorators = [login_required(login_url='auth:login'), staff_only]

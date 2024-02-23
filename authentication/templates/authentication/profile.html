@@ -35,5 +35,8 @@
 {% if request.user.is_superuser and profile.user.is_staff %}
 <a class="btn btn-danger" href="authentication/customer" role="button">Remove Customer privileges</a>
 {% endif %}
-<br><br>
+<br>
+  <legend>Notification methods</legend>
+{{ form|as_p }}
+    <br>
 {% endblock %}

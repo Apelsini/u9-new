@@ -13,6 +13,11 @@ class CheckCustomerForm(forms.Form):  #form for granting access to customer func
 
 
 class UserNotificationForm(forms.Form):
-    class Meta:
-        model = Profile
-        fields = ['email1', 'email2', 'telegram1', 'telegram2']
+        email1 = forms.CharField(max_length=100, label='email1')
+        email1cd = forms.BooleanField(label='email1 enabler')
+        email2 = forms.CharField(max_length=100, label='email2')
+        email2cd = forms.BooleanField(label='email2 enabler')
+        telegram1 = forms.CharField(max_length=250, label='telegram1')
+        telegram1cd = forms.BooleanField(label='telegram1 enabler')
+        telegram2 = forms.CharField(max_length=250, label='telegram2')
+        telegram2cd = forms.BooleanField(label='telegram2 enabler')

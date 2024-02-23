@@ -7,9 +7,13 @@ from django.urls import reverse
 class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     email1 = models.TextField(default='-')
+    email1cb = models.BooleanField(default=False)
     email2 = models.TextField(default='-')
+    email2cb = models.BooleanField(default=False)
     telegram1 = models.TextField(default='-')
+    telegram1cb = models.BooleanField(default=False)
     telegram2 = models.TextField(default='-')
+    telegram2cb = models.BooleanField(default=False)
     def __str__(self):
         return self.email1+';'+self.email2+';'+self.telegram1+';'+self.telegram2
     def get_absolute_url(self):

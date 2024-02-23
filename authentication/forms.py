@@ -14,10 +14,10 @@ class CheckCustomerForm(forms.Form):  #form for granting access to customer func
 
 class UserNotificationForm(forms.Form):
         email1 = forms.CharField(max_length=100, label='email1')
-        email1cb = forms.BooleanField(label='email1 enabler')
+        email1cb = forms.BooleanField(label='notify me by email1')
         email2 = forms.CharField(max_length=100, label='email2')
-        email2cb = forms.BooleanField(label='email2 enabler')
+        email2cb = forms.BooleanField(label='notify me by email2')
         telegram1 = forms.CharField(max_length=250, label='telegram1')
-        telegram1cb = forms.BooleanField(label='telegram1 enabler')
+        telegram1cb = forms.BooleanField(label='notify me by the bot on telegram1')
         telegram2 = forms.CharField(max_length=250, label='telegram2')
-        telegram2cb = forms.BooleanField(label='telegram2 enabler')
+        telegram2cb = forms.BooleanField(label='notify me by the bot on telegram2')

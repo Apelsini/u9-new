@@ -2,6 +2,8 @@
 {% block Title %}User Profile{% endblock %}
 {% block Background %}<div class="vh-100" style="background-image: url('https://u9.by/assets/mainback.jpg'); background-size: cover;">{% endblock %}
 {% block Body %}
+    <div class="d-flex bd-highlight mb-2">
+  <div class="p-2 bd-highlight">
 <legend>User profile</legend>
 <table>
     <tr>
@@ -36,8 +38,12 @@
 <a class="btn btn-danger" href="authentication/customer" role="button">Remove Customer privileges</a>
 {% endif %}
 <br><br>
+/div>
+  <div class="p-2 bd-highlight">
   <legend>Notification methods</legend>
 {{ form.as_p }}
     <input type="submit" class="btn btn-danger" value="Update notification information">
     <br><br>
+</div>
+</div>
 {% endblock %}

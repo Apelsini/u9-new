@@ -10,6 +10,16 @@ from django.contrib.auth.models import Group, User
 from .models import Profile, Custcode
 import json
 import os
+import re
+
+regex = "([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+"
+# email check https://stackabuse.com/python-validate-email-address-with-regular-expressions-regex/
+
+def isValid(email):
+    if re.fullmatch(regex, email):
+      return True
+    else:
+      return False
 
 #import secrets from secrets.json file
 def get_secret(setting):
@@ -35,9 +45,17 @@ def profile_page(request, pk):  #shows profile details
         form = UserNotificationForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
-            profile.email1 = cd['email1']
+            if isValid(cd['email1']):
+                profile.email1 = cd['email1']
+            else:
+                messages.append(
+                    'email1 for user ' + str(profile.user) + ' contains wrong characters and hence is not updated')
             profile.email1cb = cd['email1cb']
-            profile.email2 = cd['email2']
+            if isValid(cd['email2']):
+                profile.email2 = cd['email2']
+            else:
+                messages.append(
+                    'email2 for user ' + str(profile.user) + ' contains wrong characters and hence is not updated')
             profile.email2cb = cd['email2cb']
             profile.telegram1 = cd['telegram1']
             profile.telegram1cb = cd['telegram1cb']

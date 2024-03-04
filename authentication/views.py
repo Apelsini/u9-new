@@ -73,6 +73,7 @@ def profile_page(request, pk):  #shows profile details
         'group':group,
         'groupstring':groupstring,
         'form':form,
+        'messages':messages,
     })
 
 decorators = [login_required(login_url='auth:login'), staff_only]

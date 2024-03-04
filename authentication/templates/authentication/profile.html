@@ -1,7 +1,13 @@
 {% extends 'polls/base.html' %}
 {% block Title %}User Profile{% endblock %}
-{% block Background %}<div class="vh-100" style="background-image: url('https://u9.by/assets/mainback.jpg'); background-size: cover;">{% endblock %}
+{% block Background %}<div class="h-100" style="background-image: url('https://u9.by/assets/mainback.jpg'); background-size: cover;">{% endblock %}
 {% block Body %}
+      {% if form.errors %}
+    <p style="color: orangered">Got errors! {{ form.errors }}</p>
+    {% endif %}
+    {% for message in messages %}
+    <p style="color: orangered">{{ message }}</p>
+    {% endfor %}
     <div class="d-flex flex-wrap bd-highlight mb-2">
   <div class="mr-auto p-2 bd-highlight">
 <legend>User profile</legend>

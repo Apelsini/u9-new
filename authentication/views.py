@@ -58,16 +58,16 @@ def profile_page(request, pk):  #shows profile details
         form = UserNotificationForm()
         form.fields['email1'].initial = profile.email1
         if profile.email1cb:
-            form.fields['email1cb'].initial = 'on'
+            form.fields['email1cb'].initial = profile.email1cb
         form.fields['email2'].initial = profile.email2
         if profile.email2cb:
-            form.fields['email2cb'].initial = 'on'
+            form.fields['email2cb'].initial = profile.email2cb
         form.fields['telegram1'].initial = profile.telegram1
         if profile.telegram1cb:
-            form.fields['telegram1cb'].initial = 'on'
+            form.fields['telegram1cb'].initial = profile.telegram1cb
         form.fields['telegram2'].initial = profile.telegram2
         if profile.telegram2cb:
-            form.fields['telegram2cb'].initial = 'on'
+            form.fields['telegram2cb'].initial = telegram2cb
     return render(request, 'authentication/profile.html', context={
         'profile': Profile.objects.get(pk=pk),
         'group':group,

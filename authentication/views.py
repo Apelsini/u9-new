@@ -36,15 +36,15 @@ def profile_page(request, pk):  #shows profile details
         if form.is_valid():
             cd = form.cleaned_data
             profile.email1 = cd['email1']
-            profile.email1cb = cd['email1cb'] != 'false'
+            profile.email1cb = cd['email1cb'] == 'on'
             profile.email2 = cd['email2']
-            profile.email2cb = cd['email2cb'] != 'false'
+            profile.email2cb = cd['email2cb'] == 'on'
             profile.telegram1 = cd['telegram1']
-            profile.telegram1cb = cd['telegram1cb'] != 'false'
+            profile.telegram1cb = cd['telegram1cb'] == 'on'
             profile.telegram2 = cd['telegram2']
-            profile.telegram2cb = cd['telegram2cb'] != 'false'
+            profile.telegram2cb = cd['telegram2cb'] == 'on'
             profile.save()
-            messages.append('Notification credentials for user '+profile.user+' were successfully updated.')
+            messages.append('Notification credentials for user '+str(profile.user)+' were successfully updated.')
         else:
             messages.append(request, 'Notification credentials update error, please try again.')
         return render(request, 'authentication/profile.html', context={

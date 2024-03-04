@@ -36,13 +36,13 @@ def profile_page(request, pk):  #shows profile details
         if form.is_valid():
             cd = form.cleaned_data
             profile.email1 = cd['email1']
-            profile.email1cb = cd['email1cb'] == 'on'
+            profile.email1cb = cd['email1cb']
             profile.email2 = cd['email2']
-            profile.email2cb = cd['email2cb'] == 'on'
+            profile.email2cb = cd['email2cb']
             profile.telegram1 = cd['telegram1']
-            profile.telegram1cb = cd['telegram1cb'] == 'on'
+            profile.telegram1cb = cd['telegram1cb']
             profile.telegram2 = cd['telegram2']
-            profile.telegram2cb = cd['telegram2cb'] == 'on'
+            profile.telegram2cb = cd['telegram2cb']
             profile.save()
             messages.append('Notification credentials for user '+str(profile.user)+' were successfully updated.')
         else:

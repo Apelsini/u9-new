@@ -44,7 +44,7 @@ def profile_page(request, pk):  #shows profile details
             profile.telegram2 = cd['telegram2']
             profile.telegram2cb = cd['telegram2cb']
             profile.save()
-            messages.append('Notification credentials for user '+str(profile.user)+' were successfully updated.'+cd['email1cb'])
+            messages.append('Notification credentials for user '+str(profile.user)+' were successfully updated.'+str(cd['email1cb']))
         else:
             messages.append(request, 'Notification credentials update error, please try again.')
         return render(request, 'authentication/profile.html', context={

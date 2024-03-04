@@ -47,8 +47,13 @@
 </div>
   <div class="p-2 bd-highlight">
   <legend>Notification methods</legend>
-{{ form.as_p }}
-    <input type="submit" class="btn btn-danger" value="Update notification information">
+      <form action="" method="post">
+          {% csrf_token %}
+            <table>
+            {{ form.as_table }}
+            </table>
+          <input type="submit" class="btn btn-danger" value="Update notification information">
+      </form>
     <br><br>
 </div>
 </div>

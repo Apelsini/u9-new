@@ -44,9 +44,16 @@ def profile_page(request, pk):  #shows profile details
             profile.telegram2 = cd['telegram2']
             profile.telegram2cb = cd['telegram2cb'] != 'false'
             profile.save()
-            messages.append('Notification credentials for user '+profile.user+' were successfully puldated.')
+            messages.append('Notification credentials for user '+profile.user+' were successfully updated.')
         else:
             messages.append(request, 'Notification credentials update error, please try again.')
+        return render(request, 'authentication/profile.html', context={
+                'profile': Profile.objects.get(pk=pk),
+                'group': group,
+                'groupstring': groupstring,
+                'form': form,
+                'messages': messages,
+         })
     else:
         form = UserNotificationForm()
         form.fields['email1'].initial = profile.email1

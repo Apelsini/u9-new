@@ -25,6 +25,7 @@ def get_secret(setting):
 @login_required(login_url='auth:login')
 # @allowed_users(allowed_roles=['customer', 'admin'])
 def profile_page(request, pk):  #shows profile details
+    messages = []
     profile = Profile.objects.get(pk=pk)
     group = Group.objects.filter(id=profile.user.id).all()
     groupstring = 'User'
@@ -43,9 +44,9 @@ def profile_page(request, pk):  #shows profile details
             profile.telegram2 = cd['telegram2']
             profile.telegram2cb = cd['telegram2cb'] != 'false'
             profile.save()
-            messages.success(request, 'Notification credentials for user '+profile.user+' were successfully puldated.')
+            messages.append('Notification credentials for user '+profile.user+' were successfully puldated.')
         else:
-            messages.error(request, 'Notification credentials update error, please try again.')
+            messages.append(request, 'Notification credentials update error, please try again.')
     else:
         form = UserNotificationForm()
         form.fields['email1'].initial = profile.email1

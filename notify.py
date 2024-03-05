@@ -52,12 +52,12 @@ def process_notifications():
             subject = notification['subject']
 
             user = Profile.objects.get(pk=user_id)
-            if (user.email1cb) and (user.email1 != '-') and (user.email1):
+            if (user.email1cb) and (user.email1 != '-') and (isValid(user.email1)):
                 send_email_notification(user.email1, message, subject)
                 print('email sent to email1 of the user with id=',str(user_id),' ',str(user))
             else:
                 print('wrong email1 format of the user with id=', str(user_id), ' ', str(user))
-            if user.email2cb:
+            if (user.email2cb) and (user.email2 != '-') and (isValid(user.email2)):
                 send_email_notification(user.email2, message, subject)
                 print('email sent to email2 of the user with id=', str(user_id), ' ', str(user))
             else:

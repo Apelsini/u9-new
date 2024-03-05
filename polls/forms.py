@@ -74,7 +74,7 @@ POLLING_CHOICES =(
 )
 
 class WebrecordsForm(forms.Form):
-    url = forms.CharField(max_length=1000, placeholder='url', label='')
+    url = forms.CharField(max_length=1000, label='')
     polling_frequency = forms.ChoiceField(choices = POLLING_CHOICES)
     notifycb = forms.BooleanField(label='', required=False)
 

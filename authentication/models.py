@@ -11,11 +11,13 @@ class Profile(models.Model):
     email2 = models.TextField(default='-')
     email2cb = models.BooleanField(default=False)
     telegram1 = models.TextField(default='-')
+    telegram1chat_id = models.TextField(default='-')
     telegram1cb = models.BooleanField(default=False)
     telegram2 = models.TextField(default='-')
+    telegram2chat_id = models.TextField(default='-')
     telegram2cb = models.BooleanField(default=False)
     def __str__(self):
-        return self.email1+';'+self.email2+';'+self.telegram1+';'+self.telegram2
+        return self.email1+';'+self.email2+';'+self.telegram1+';'+self.telegram1chat_id+';'+self.telegram2+';'+self.telegram2chat_id
     def get_absolute_url(self):
         return reverse('auth:profile', args=(self.pk,))
     # def is_my_customer(self):

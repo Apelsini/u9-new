@@ -58,8 +58,10 @@ def profile_page(request, pk):  #shows profile details
                     'email2 for user ' + str(profile.user) + ' contains wrong characters and hence is not updated')
             profile.email2cb = cd['email2cb']
             profile.telegram1 = cd['telegram1']
+            profile.telegram1chat_id = cd['telegram1chat_id']
             profile.telegram1cb = cd['telegram1cb']
             profile.telegram2 = cd['telegram2']
+            profile.telegram2chat_id = cd['telegram2chat_id']
             profile.telegram2cb = cd['telegram2cb']
             profile.save()
             messages.append('Notification credentials for user '+str(profile.user)+' were successfully updated.')
@@ -81,9 +83,11 @@ def profile_page(request, pk):  #shows profile details
         if profile.email2cb:
             form.fields['email2cb'].initial = profile.email2cb
         form.fields['telegram1'].initial = profile.telegram1
+        form.fields['telegram1chat_id'].initial = profile.telegram1chat_id
         if profile.telegram1cb:
             form.fields['telegram1cb'].initial = profile.telegram1cb
         form.fields['telegram2'].initial = profile.telegram2
+        form.fields['telegram2chat_id'].initial = profile.telegram2chat_id
         if profile.telegram2cb:
             form.fields['telegram2cb'].initial = telegram2cb
     return render(request, 'authentication/profile.html', context={

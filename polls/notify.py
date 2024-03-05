@@ -5,8 +5,16 @@ from authentication.models import Profile
 import requests
 import re
 
+#every minute notification robot, messages are taken from the notify.txt file
+
 regex = "([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+"
 # email check https://stackabuse.com/python-validate-email-address-with-regular-expressions-regex/
+
+def isValid(email):
+    if re.fullmatch(regex, email):
+      return True
+    else:
+      return False
 
 def send_telegram_message(chat_id, token, message):
     url = f"https://api.telegram.org/bot{token}/sendMessage"
@@ -63,3 +71,7 @@ def process_notifications():
 # {"user_id": 1, "message": "This is a notification for user 1"}
 # {"user_id": 2, "message": "This is a notification for user 2"}
 # {"user_id": 3, "message": "This is a notification for user 3"}
+
+def run():
+    print('every minute notification robot, messages are taken from the notify.txt file')
+

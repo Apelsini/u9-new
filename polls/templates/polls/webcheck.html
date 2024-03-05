@@ -19,21 +19,30 @@
     <legend>Add new record:</legend>
     <form action="" method="post">
           {% csrf_token %}
-<table class="table table-bordered" style="background-color: #e2e8e5;">
+<table class="table table-bordered" style="background-color: #eaff5;">
     <thead class="thead-dark">
     <tr>
         <td>URL</td>
         <td>Polling frequency</td>
+    </tr>
+    </thead>
+    <tr>
+        <td>{{ form.url }}</td>
+        <td align="center">{{ form.polling_frequency }}</td>
+    </tr>
+</table>
+        <table class="table table-bordered" style="background-color: #eaff5;">
+    <thead class="thead-dark">
+    <tr>
         <td>Notify?</td>
         <td>Codes to notify</td>
         <td></td>
     </tr>
     </thead>
     <tr>
-        <td>{{ form.url }}</td>
-        <td align="center">{{ form.polling_frequency }}</td>
+
         <td align="center">{{ form.notifycb }}</td>
-        <td align="center">{{ form.code100cb }}<br>{{ form.code200cb }}<br>{{ form.code300cb }}<br>{{ form.code400cb }}<br>{{ form.code500cb }}</td>
+        <td align="center">{{ form.code100cb }}{{ form.code100cb.label }}<br>{{ form.code200cb }}{{ form.code200cb.label }}<br>{{ form.code300cb }}{{ form.code300cb.label }}<br>{{ form.code400cb }}{{ form.code400cb.label }}<br>{{ form.code500cb }}{{ form.code500cb.label }}</td>
         <td><input type="submit" class="btn btn-success btn-sm" value="Add record"></td>
     </tr>
 </table>

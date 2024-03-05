@@ -24,7 +24,8 @@
     <tr>
         <td>URL</td>
         <td>Polling frequency</td>
-        <td>Notify you?</td>
+        <td>Notify?</td>
+        <td>Codes to notify</td>
         <td></td>
     </tr>
     </thead>
@@ -32,6 +33,7 @@
         <td>{{ form.url }}</td>
         <td>{{ form.polling_frequency }}</td>
         <td align="center">{{ form.notifycb }}</td>
+        <td align="center">{{ form.code100cb }}<br>{{ form.code200cb }}<br>{{ form.code300cb }}<br>{{ form.code400cb }}<br>{{ form.code500cb }}</td>
         <td><input type="submit" class="btn btn-success btn-sm" value="Add record"></td>
     </tr>
 </table>

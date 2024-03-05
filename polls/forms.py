@@ -77,6 +77,15 @@ class WebrecordsForm(forms.Form):
     url = forms.CharField(max_length=1000, label='')
     polling_frequency = forms.ChoiceField(label='', choices = POLLING_CHOICES)
     notifycb = forms.BooleanField(label='', required=False)
+    code100cb = forms.BooleanField(label='Codes 1xx: 100 Continue, 101 Switching Protocols, 102 Processing (WebDAV), 103 Early Hints', required=False)
+    code200cb = forms.BooleanField(label='Codes 2xx: 200 OK, 201 Created, 202 Accepted, 203 Non-Authoritative Information, etc.', required=False)
+    code300cb = forms.BooleanField(label='Codes of redirection 3xx: 300 Multiple Choices, 301 Moved Permanently, 302 Found, etc.', required=False)
+    code400cb = forms.BooleanField(
+        label='Error Codes 4xx: 400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found, etc.', required=False)
+    code500cb = forms.BooleanField(
+        label='Error Codes 5xx: 500 Internal Server Error, 501 Not Implemented, 502 Bad Gateway, 503 Service Unavailable, etc.', required=False)
+    widgets = {'url': Textarea(attrs={'style': 'width: 100%;'}),
+               }
 
 class LeadsForm(ModelForm):
     class Meta:

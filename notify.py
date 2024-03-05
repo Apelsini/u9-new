@@ -63,10 +63,10 @@ def process_notifications():
             else:
                 print('wrong email1 format of the user with id=', str(user_id), ' ', str(user))
             if user.telegram1cb:
-                send_telegram_message(user.telegram1, '<b>'+subject+'<b><br>'+message)
+                send_telegram_message(user.telegram1, user.telegram1chat_id, '<b>'+subject+'<b><br>'+message)
                 print('telegram message sent to telegram1 of the user with id=', str(user_id), ' ', str(user))
             if user.telegram2cb:
-                send_telegram_message(user.telegram2, '<b>'+subject+'<b><br>'+message)
+                send_telegram_message(user.telegram2, user.telegram2chat_id, '<b>'+subject+'<b><br>'+message)
                 print('telegram message sent to telegram2 of the user with id=', str(user_id), ' ', str(user))
 
             # Do not write this notification back to the file
@@ -89,6 +89,7 @@ def process_notifications():
 # {"user_id": 1, "message": "This is a notification for user 1"}
 # {"user_id": 2, "message": "This is a notification for user 2"}
 # {"user_id": 3, "message": "This is a notification for user 3"}
+# crontab command /home/uby/virtualenv/website4/3.7/bin/python /home/uby/website4/notify.py > /tmp/notify.log 2>&1
 
 def run():
     print('every minute notification robot, messages are taken from the notify.txt file')

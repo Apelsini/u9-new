@@ -1,9 +1,17 @@
 import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "urls.settings")
+
+import django
+django.setup()
+
+from django.core.management import call_command
+
 import json
 from django.core.mail import send_mail
 from authentication.models import Profile
 import requests
 import re
+
 
 #every minute notification robot, messages are taken from the notify.txt file
 

@@ -4,10 +4,10 @@
 <div class="h-100" style="background-image: url('https://u9.by/assets/mainback.jpg'); background-size: cover;">
     {% endblock %}
     {% block Body %}
-        <legend>Check websites availability and response</legend>
+        <legend>Check websites availability and response codes</legend>
     Here you can setup periodical check of websites you're tracking, and sending notification if they're down
     {% if request.user.is_authenticated %}
-    <br>To setup notifications please go to your <a href="{% url 'auth:profile' request.user.profile.id %}">user profile page</a> and don't forget to set checkboxes ON.
+   <br> <br>To setup notification methods please go to your <a href="{% url 'auth:profile' request.user.profile.id %}">user profile page</a> and don't forget to set checkboxes ON.
     {% endif %}
     {% if form.errors %}
     <p style="color: orangered">Got errors! {{ form.errors }}</p>

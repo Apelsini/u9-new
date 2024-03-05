@@ -15,13 +15,26 @@
     {% for message in messages %}
     <p style="color: orangered">{{ message }}</p>
     {% endfor %}
+    <br>
+    <legend>Add new record:</legend>
     <form action="" method="post">
           {% csrf_token %}
-
-            {{ form.as_p }}
-
-          <input type="submit" class="btn btn-success" value="Add record">
+<table>
+    <tr>
+        <td>URL</td>
+        <td>Polling frequency</td>
+        <td>Notify you?</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>{{ form.url }}</td>
+        <td>{{ form.polling_frequency }}</td>
+        <td>{{ form.notifycb }}</td>
+        <td><input type="submit" class="btn btn-success" value="Add record"></td>
+    </tr>
+</table>
       </form>
     <br><br>
+    <legend>Existing records:</legend>
 
     {% endblock %}

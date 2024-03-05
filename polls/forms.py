@@ -84,7 +84,7 @@ class WebrecordsForm(forms.Form):
         label='Error Codes 4xx: 400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found, etc.', required=False)
     code500cb = forms.BooleanField(
         label='Error Codes 5xx: 500 Internal Server Error, 501 Not Implemented, 502 Bad Gateway, 503 Service Unavailable, etc.', required=False)
-    widgets = {'url': Textarea(attrs={'style': 'width: 100%;'}),
+    widgets = {'url': Textarea(attrs={'rows': 3, 'style': 'width: 100%;'}),
                }
 
 class LeadsForm(ModelForm):

@@ -5,7 +5,7 @@ from django.urls import reverse_lazy, reverse
 from django.views import generic
 from .models import Urlentry, Leads
 from django.utils import timezone
-from .forms import UrlentryForm, LeadsForm, UrlentryFormShort
+from .forms import UrlentryForm, LeadsForm, UrlentryFormShort, WebrecordsForm
 #limiting user view for users not logged in
 from django.contrib.auth.decorators import login_required
 from django.forms.models import inlineformset_factory
@@ -286,7 +286,8 @@ def add_lead_and_redirect(request, hash):
 # create Url
 @login_required(login_url=reverse_lazy('auth:login'))
 def webchecker(request):
+    form = WebrecordsForm()
     pattern_html = 'polls/webcheck.html'
     return render(request, pattern_html, {  # usual immediate redirection
-        'id_block': 'test',
+        'form': form,
     })

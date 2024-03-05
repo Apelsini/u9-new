@@ -1,5 +1,5 @@
-from django.forms import ModelForm, Textarea
 from django import forms
+from django.forms import ModelForm, Textarea
 from django.forms.widgets import HiddenInput, TextInput
 from .models import Urlentry, Leads
 
@@ -74,7 +74,7 @@ POLLING_CHOICES =(
 )
 
 class WebrecordsForm(forms.Form):
-    url = forms.TextField(placeholder='url', label='')
+    url = forms.CharField(max_length=1000, placeholder='url', label='')
     polling_frequency = forms.ChoiceField(choices = POLLING_CHOICES)
     notifycb = forms.BooleanField(label='', required=False)
 

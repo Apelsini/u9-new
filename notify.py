@@ -4,7 +4,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "urls.settings")
 import django
 django.setup()
 
-from django.core.management import call_command
+#from django.core.management import call_command
 
 import json
 from django.core.mail import send_mail

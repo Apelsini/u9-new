@@ -29,12 +29,13 @@ def send_telegram_message(chat_id, token, message):
     data = {
         "chat_id": chat_id,
         "text": message
+        "parse_mode" : "HTML"
     }
     response = requests.post(url, data=data)
     return response.json()
 
-def send_email_notification(email, message):
-    subject = 'Notification'
+def send_email_notification(email, message, subject):
+    subject = subject
     email_from = 'adm@u9.by'
     recipient_list = [email,]
     send_mail(subject, message, email_from, recipient_list)
@@ -48,16 +49,25 @@ def process_notifications():
             notification = json.loads(line)
             user_id = notification['user_id']
             message = notification['message']
+            subject = notification['subject']
 
             user = Profile.objects.get(pk=user_id)
             if (user.email1cb) and (user.email1 != '-') and (user.email1):
-                send_email_notification(user.email1, message)
+                send_email_notification(user.email1, message, subject)
+                print('email sent to email1 of the user with id=',str(user_id),' ',str(user))
+            else:
+                print('wrong email1 format of the user with id=', str(user_id), ' ', str(user))
             if user.email2cb:
-                send_email_notification(user.email2, message)
+                send_email_notification(user.email2, message, subject)
+                print('email sent to email2 of the user with id=', str(user_id), ' ', str(user))
+            else:
+                print('wrong email1 format of the user with id=', str(user_id), ' ', str(user))
             if user.telegram1cb:
-                send_telegram_message(user.telegram1, message)
+                send_telegram_message(user.telegram1, '<b>'+subject+'<b><br>'+message)
+                print('telegram message sent to telegram1 of the user with id=', str(user_id), ' ', str(user))
             if user.telegram2cb:
-                send_telegram_message(user.telegram2, message)
+                send_telegram_message(user.telegram2, '<b>'+subject+'<b><br>'+message)
+                print('telegram message sent to telegram2 of the user with id=', str(user_id), ' ', str(user))
 
             # Do not write this notification back to the file
             lines.remove(line)
@@ -82,4 +92,6 @@ def process_notifications():
 
 def run():
     print('every minute notification robot, messages are taken from the notify.txt file')
+    process_notifications()
+
 

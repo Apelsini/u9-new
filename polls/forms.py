@@ -58,8 +58,29 @@ class UrlentryFormShort(ModelForm):
         #self.fields['datetime_available_from'].required = False
         #self.fields['datetime_available_to'].required = False
 
+# iterable
+POLLING_CHOICES =(
+("1", "Every 15 min"),
+("2", "Every 30 min"),
+("3", "Every 60 min"),
+("4", "Every 2 hours"),
+("5", "Every 4 hours"),
+("6", "Every 8 hours"),
+("7", "Every 24 hours"),
+("8", "Every 2 days"),
+("9", "Every 4 days"),
+("10", "Every 7 days"),
+)
+
+class WebrecordsForm(forms.Form):
+    url = forms.TextField(placeholder='url', label='')
+    polling_frequency = forms.ChoiceField(choices = POLLING_CHOICES)
+    notifycb = forms.BooleanField(label='', required=False)
 
 class LeadsForm(ModelForm):
     class Meta:
         model = Leads
         fields = ['follower_info']
+
+
+

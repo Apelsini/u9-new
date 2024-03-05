@@ -15,6 +15,13 @@
     {% for message in messages %}
     <p style="color: orangered">{{ message }}</p>
     {% endfor %}
+    <form action="" method="post">
+          {% csrf_token %}
 
+            {{ form.as_p }}
+
+          <input type="submit" class="btn btn-success" value="Add record">
+      </form>
+    <br><br>
 
     {% endblock %}

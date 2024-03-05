@@ -11,6 +11,10 @@ max_capacity = len(enc_str) ** 5  # maximal address - 5 symbols
 #in 5 symbols we can save 777600000 links daily
 #unregistered users address space from  12960000 to 777600000
 
+class webrecords(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    websites = models.TextField(default=' ')
+
 
 class Urlentry(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)

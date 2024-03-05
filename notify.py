@@ -24,7 +24,7 @@ def isValid(email):
     else:
       return False
 
-def send_telegram_message(chat_id, token, message):
+def send_telegram_message(token, chat_id, message):
     url = f"https://api.telegram.org/bot{token}/sendMessage"
     try:
         response = requests.post(url, json={'chat_id': chat_id, 'text': message, 'parse_mode': 'HTML'})

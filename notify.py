@@ -94,4 +94,7 @@ def run():
     print('every minute notification robot, messages are taken from the notify.txt file')
     process_notifications()
 
+if __name__ == '__main__':
+    run()
+
 

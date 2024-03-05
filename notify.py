@@ -36,7 +36,7 @@ def send_telegram_message(chat_id, token, message):
 
 def send_email_notification(email, message, subject):
     subject = subject
-    email_from = 'adm@u9.by'
+    email_from = 'support@u9.by'
     recipient_list = [email,]
     send_mail(subject, message, email_from, recipient_list)
 

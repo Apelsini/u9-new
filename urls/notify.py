@@ -1,7 +1,7 @@
 import os
 import json
 from django.core.mail import send_mail
-from models import Profile
+from authentication.models import Profile
 import requests
 import re
 

@@ -25,6 +25,7 @@ class Webcheck(models.Model):
     web24hours = models.TextField(default=' ')
     web3days = models.TextField(default=' ')
     web7days = models.TextField(default=' ')
+#model for storing urls
 
 class Urlentry(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)

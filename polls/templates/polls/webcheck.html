@@ -20,12 +20,14 @@
     <form action="" method="post">
           {% csrf_token %}
 <table>
+    <thead class="thead-dark">
     <tr>
         <td>URL</td>
         <td>Polling frequency</td>
         <td>Notify you?</td>
         <td></td>
     </tr>
+    </thead>
     <tr>
         <td>{{ form.url }}</td>
         <td>{{ form.polling_frequency }}</td>

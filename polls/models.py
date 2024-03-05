@@ -12,21 +12,6 @@ max_capacity = len(enc_str) ** 5  # maximal address - 5 symbols
 #unregistered users address space from  12960000 to 777600000
 
 
-# Create your models here.
-class Webcheck(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
-    create_date = models.DateTimeField('date created', auto_now=True)
-    web15min = models.TextField(default=' ')
-    web30min = models.TextField(default=' ')
-    web1hour = models.TextField(default=' ')
-    web2hours = models.TextField(default=' ')
-    web4hours = models.TextField(default=' ')
-    web8hours = models.TextField(default=' ')
-    web24hours = models.TextField(default=' ')
-    web3days = models.TextField(default=' ')
-    web7days = models.TextField(default=' ')
-#model for storing urls
-
 class Urlentry(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     create_date = models.DateTimeField('date created', auto_now=True)

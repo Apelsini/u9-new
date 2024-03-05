@@ -1,4 +1,5 @@
 from django.forms import ModelForm, Textarea
+from django import forms
 from django.forms.widgets import HiddenInput, TextInput
 from .models import Urlentry, Leads
 

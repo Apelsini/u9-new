@@ -13,6 +13,19 @@ max_capacity = len(enc_str) ** 5  # maximal address - 5 symbols
 
 
 # Create your models here.
+class Webcheck(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    create_date = models.DateTimeField('date created', auto_now=True)
+    web15min = models.JSONField()
+    web30min = models.JSONField()
+    web1hour = models.JSONField()
+    web2hours = models.JSONField()
+    web4hours = models.JSONField()
+    web8hours = models.JSONField()
+    web24hours = models.JSONField()
+    web3days = models.JSONField()
+    web7days = models.JSONField()
+
 class Urlentry(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     create_date = models.DateTimeField('date created', auto_now=True)
@@ -83,3 +96,4 @@ class Leads(models.Model):
     follower_fromwhere = models.TextField()
     def __str__(self):
         return self.follower_info
+

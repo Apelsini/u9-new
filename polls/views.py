@@ -282,3 +282,11 @@ def add_lead_and_redirect(request, hash):
           })
 
     #HttpResponseRedirect(urlentry.url_text)
+
+# create Url
+@login_required(login_url=reverse_lazy('auth:login'))
+def webchecker(request):
+    pattern_html = 'polls/webcheck.html'
+    return render(request, pattern_html, {  # usual immediate redirection
+        'id_block': 'test',
+    })

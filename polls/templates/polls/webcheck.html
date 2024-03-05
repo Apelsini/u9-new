@@ -1,0 +1,18 @@
+{% extends 'polls/base.html' %}
+{% block Title %}Webcheck setup{% endblock %}
+{% block Background %}
+<div class="h-100" style="background-image: url('https://u9.by/assets/mainback.jpg'); background-size: cover;">
+    {% endblock %}
+    {% block Body %}
+        <legend>Check websites availability and response</legend>
+    Here you can setup periodical check of websites you're tracking, and sending notification if they're down
+    To setup notofocations please go to your user profile page and don't forget to set checkboxes ON.
+    {% if form.errors %}
+    <p style="color: orangered">Got errors! {{ form.errors }}</p>
+    {% endif %}
+    {% for message in messages %}
+    <p style="color: orangered">{{ message }}</p>
+    {% endfor %}
+
+
+    {% endblock %}

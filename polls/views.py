@@ -331,6 +331,7 @@ def webchecker_editdelete(request, pk):
     if webrecord:
         form = WebrecordsForm(webrecord)
     else:
+        form = WebrecordsForm()
         return redirect('polls:webcheckeradd')
     pattern_html = 'polls/webcheck_editdelete.html'
     return render(request, pattern_html, {  # usual immediate redirection

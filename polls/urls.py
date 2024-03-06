@@ -19,6 +19,9 @@ urlpatterns = [
          name='webcheckeradd'),
     path('polls/webchecker/editdelete/<int:pk>', view=login_required(views.webchecker_editdelete, login_url=reverse_lazy('auth:login')),
          name='webcheckereditdelete'),
+    path('polls/webchecker/delete/<int:pk>',
+         view=login_required(views.webchecker_delete, login_url=reverse_lazy('auth:login')),
+         name='webcheckerdelete'),
     #path('notify/donotify', view=views.NotifyView.as_view(), name='donotify'),
     path('<str:hash>/', view=views.add_lead_and_redirect, name='short'),
 ]

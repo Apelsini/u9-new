@@ -40,12 +40,15 @@
 
         <td align="center">{{ form.notifycb }}<br><br><a href="{% url 'auth:profile' request.user.profile.id %}">setup</a></td>
         <td>{{ form.code100cb }}{{ form.code100cb.label }}<br>{{ form.code200cb }}{{ form.code200cb.label }}<br>{{ form.code300cb }}{{ form.code300cb.label }}<br>{{ form.code400cb }}{{ form.code400cb.label }}<br>{{ form.code500cb }}{{ form.code500cb.label }}</td>
-        <td><input type="submit" class="btn btn-success btn-sm" value="Update record"></td>
+        <td><input type="submit" class="btn btn-success btn-sm" value="Update record">
+        <br><br>
+            <a href="{% url 'polls:webcheckerdelete' webrecord.pk %}" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">&#10006; Delete record</a>
+        </td>
     </tr>
 </table>
       </form>
     <i>Note: in most cases it is sufficient to select only Error codes 4xx and 5xx to notify that a website is down.</i>
     <br><br>
-    <legend>Existing records:</legend>
+
 
     {% endblock %}

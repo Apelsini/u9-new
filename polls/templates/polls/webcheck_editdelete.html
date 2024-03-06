@@ -42,7 +42,7 @@
         <td>{{ form.code100cb }}{{ form.code100cb.label }}<br>{{ form.code200cb }}{{ form.code200cb.label }}<br>{{ form.code300cb }}{{ form.code300cb.label }}<br>{{ form.code400cb }}{{ form.code400cb.label }}<br>{{ form.code500cb }}{{ form.code500cb.label }}</td>
         <td><input type="submit" class="btn btn-success btn-sm" value="Update record">
         <br><br>
-            <a href="{% url 'polls:webcheckerdelete' webrecord.pk %}" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">&#10006; Delete record</a>
+            <a href="{% url 'polls:webcheckerdelete' webrecord.pk %}" class="btn btn-danger btn-sm" role="button" aria-pressed="true">&#10006; Delete record</a>
         </td>
     </tr>
 </table>

@@ -312,10 +312,10 @@ def webchecker_add(request):
             webrecord.code400cb = cd['code400cb']
             webrecord.code500cb = cd['code500cb']
             webrecord.save()
-            redirect('polls:webchecker')
+            return redirect('polls:webchecker')
         else:
             messages.error(request, urlentry_form.errors)
-        redirect('polls:webcheckeradd')
+            return redirect('polls:webcheckeradd')
         #else:
          #   messages.error(request, urlentry_form.error)
     else:

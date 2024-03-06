@@ -329,7 +329,15 @@ def webchecker_add(request):
 def webchecker_editdelete(request, pk):
     webrecord = Webrecords.objects.all().filter(pk=pk)
     if webrecord:
-        form = WebrecordsForm(webrecord)
+        form = WebrecordsForm()
+        form.fields['url'].initial = webrecord.url
+        form.fields['polling_frequency'].initial = webrecord.polling_frequency
+        form.fields['notifycb'].initial = webrecord.notifycb
+        form.fields['code100cb'].initial = webrecord.code100cb
+        form.fields['code200cb'].initial = webrecord.code200cb
+        form.fields['code300cb'].initial = webrecord.code300cb
+        form.fields['code400cb'].initial = webrecord.code400cb
+        form.fields['code500cb'].initial = webrecord.code500cb
     else:
         form = WebrecordsForm()
         return redirect('polls:webcheckeradd')

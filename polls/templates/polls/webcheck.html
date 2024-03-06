@@ -43,11 +43,11 @@
             {% if webrecord.polling_frequency == '10' %}Every 7 days{% endif %}
         </td>
         <td align="center">{% if webrecord.notifycb %}<p style="color: green;">&#10004;</p>{% else %}<p style="color: red;">&#10006;</p>{% endif %}</td>
-        <td align="center">{% if webrecord.code100cb %}<p style="color: green;">&#10003;</p> else %}&#10005;{% endif %}</td>
-        <td align="center">{% if webrecord.code200cb %}<p style="color: green;">&#10003;</p>{% else %}&#10005;{% endif %}</td>
-        <td align="center">{% if webrecord.code300cb %}<p style="color: green;">&#10003;</p>{% else %}&#10005;{% endif %}</td>
-        <td align="center">{% if webrecord.code400cb %}<p style="color: green;">&#10003;</p>{% else %}&#10005;{% endif %}</td>
-        <td align="center">{% if webrecord.code500cb %}<p style="color: green;">&#10003;</p>{% else %}&#10005;{% endif %}</td>
+        <td align="center">{% if webrecord.code100cb %}<p style="color: green;">&#10004;</p>{% else %}<p style="color: red;">&#10006;</p>{% endif %}</td>
+        <td align="center">{% if webrecord.code200cb %}<p style="color: green;">&#10004;</p>{% else %}<p style="color: red;">&#10006;</p>{% endif %}</td>
+        <td align="center">{% if webrecord.code300cb %}<p style="color: green;">&#10004;</p>{% else %}<p style="color: red;">&#10006;</p>{% endif %}</td>
+        <td align="center">{% if webrecord.code400cb %}<p style="color: green;">&#10004;</p>{% else %}<p style="color: red;">&#10006;</p>{% endif %}</td>
+        <td align="center">{% if webrecord.code500cb %}<p style="color: green;">&#10004;</p>{% else %}<p style="color: red;">&#10006;</p>{% endif %}</td>
         <td align="center"> <a href="{% url 'polls:webcheckeradd' %}" class="btn btn-danger active" role="button" aria-pressed="true">&#9998; Edit</a></td>
     </tr>
     {% endfor %}

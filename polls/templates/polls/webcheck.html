@@ -15,8 +15,8 @@
     <br><br>
       <legend>Existing records:</legend>
 {% if webrecords %}
-
-<table class="table table-responsive table-bordered" style="background-color: #eafff5; overflow-x: scroll;">
+<div class="table-responsive">
+<table class="table table-bordered" style="background-color: #eafff5; overflow-x: scroll;">
     <tr>
         <td>URL</td>
         <td>Polling frequency</td>
@@ -52,6 +52,7 @@
     </tr>
     {% endfor %}
 </table>
+</div>
     {% else %}
     No records found
 

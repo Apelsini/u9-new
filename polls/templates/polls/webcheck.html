@@ -48,7 +48,7 @@
         <td align="center">{% if webrecord.code300cb %}<p style="color: green;">&#10004;</p>{% else %}<p style="color: red;">&#10006;</p>{% endif %}</td>
         <td align="center">{% if webrecord.code400cb %}<p style="color: green;">&#10004;</p>{% else %}<p style="color: red;">&#10006;</p>{% endif %}</td>
         <td align="center">{% if webrecord.code500cb %}<p style="color: green;">&#10004;</p>{% else %}<p style="color: red;">&#10006;</p>{% endif %}</td>
-        <td align="center"> <a href="{% url 'polls:webcheckeradd' %}" class="btn btn-danger active" role="button" aria-pressed="true">&#9998; Edit</a></td>
+        <td align="center"> <a href="{% url 'polls:webcheckereditdelete' webrecord.pk %}" class="btn btn-danger active" role="button" aria-pressed="true">&#9998; Edit</a></td>
     </tr>
     {% endfor %}
 </table>
@@ -57,5 +57,5 @@
 
     {% endif %}
     <a href="{% url 'polls:webcheckeradd' %}" class="btn btn-success btn-lg active" role="button" aria-pressed="true">&#10009; Add record</a>
-
+<br><br>
     {% endblock %}

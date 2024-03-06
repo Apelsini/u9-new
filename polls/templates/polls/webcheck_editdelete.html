@@ -4,7 +4,7 @@
 <div class="h-100" style="background-image: url('https://u9.by/assets/mainback.jpg'); background-size: cover;">
     {% endblock %}
     {% block Body %}
-    <legend>Edit or delete a record:</legend>
+    <legend>Edit or delete a record {{ webrecord.pk }}:</legend>
         {% if request.user.is_authenticated %}
    <br> <br>To setup notification methods please go to your <a href="{% url 'auth:profile' request.user.profile.id %}">user profile page</a> and don't forget to set checkboxes ON.
     {% endif %}

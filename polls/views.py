@@ -327,8 +327,11 @@ def webchecker_add(request):
 # edit or delete Webchecker record
 @login_required(login_url=reverse_lazy('auth:login'))
 def webchecker_editdelete(request, pk):
-    webrecord = get_object_or_404(Webrecords, pk=pk)
-    form = WebrecordsForm(webrecord)
+    webrecord = Webrecords.objects.all().filter(pk=pk)
+    if webrecord:
+        form = WebrecordsForm(webrecord)
+    else:
+        return redirect('polls:webcheckeradd')
     pattern_html = 'polls/webcheck_editdelete.html'
     return render(request, pattern_html, {  # usual immediate redirection
         'form': form,

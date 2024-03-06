@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
 from django.views import generic
-from .models import Urlentry, Leads
+from .models import Urlentry, Leads, Webrecords
 from django.utils import timezone
 from .forms import UrlentryForm, LeadsForm, UrlentryFormShort, WebrecordsForm
 #limiting user view for users not logged in
@@ -283,11 +283,30 @@ def add_lead_and_redirect(request, hash):
 
     #HttpResponseRedirect(urlentry.url_text)
 
-# create Url
+# list Webchecker records and log
 @login_required(login_url=reverse_lazy('auth:login'))
 def webchecker(request):
     form = WebrecordsForm()
     pattern_html = 'polls/webcheck.html'
+    return render(request, pattern_html, {  # usual immediate redirection
+        'form': form,
+    })
+
+# add Webchecker record
+@login_required(login_url=reverse_lazy('auth:login'))
+def webchecker_add(request):
+    form = WebrecordsForm()
+    pattern_html = 'polls/webcheck_add.html'
+    return render(request, pattern_html, {  # usual immediate redirection
+        'form': form,
+    })
+
+# edit or delete Webchecker record
+@login_required(login_url=reverse_lazy('auth:login'))
+def webchecker_editdelete(request, pk):
+    webrecord = get_object_or_404(Webrecords, pk=pk)
+    form = WebrecordsForm()
+    pattern_html = 'polls/webcheck_editdelete.html'
     return render(request, pattern_html, {  # usual immediate redirection
         'form': form,
     })

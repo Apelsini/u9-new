@@ -87,6 +87,7 @@ def process_notifications():
 # {"user_id": 1, "message": "This is a notification for user 1"}
 # {"user_id": 2, "message": "This is a notification for user 2"}
 # {"user_id": 3, "message": "This is a notification for user 3"}
+# {"user_id": 1, "message": "Cron job is working every minute. This is a notification for uby with id=1",  "subject": "Test of cron job"}
 # crontab command
 # source /home/uby/virtualenv/website4/3.7/bin/activate && cd /home/uby/website4 && python notify.py > /tmp/notify.log 2>&1
 

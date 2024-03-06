@@ -15,6 +15,10 @@ urlpatterns = [
     path('polls/<int:pk>/results/get', view=views.ClicksView.as_view(), name='get'),
     path('polls/apps', view=views.AppsView.as_view(), name='apps'),
     path('polls/webchecker', view=login_required(views.webchecker, login_url=reverse_lazy('auth:login')), name='webchecker'),
+    path('polls/webchecker/add', view=login_required(views.webchecker_add, login_url=reverse_lazy('auth:login')),
+         name='webcheckeradd'),
+    path('polls/webchecker/editdelete', view=login_required(views.webchecker_editdelete, login_url=reverse_lazy('auth:login')),
+         name='webcheckereditdelete'),
     #path('notify/donotify', view=views.NotifyView.as_view(), name='donotify'),
     path('<str:hash>/', view=views.add_lead_and_redirect, name='short'),
 ]

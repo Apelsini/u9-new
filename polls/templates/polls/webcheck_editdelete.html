@@ -1,0 +1,51 @@
+{% extends 'polls/base.html' %}
+{% block Title %}Webcheck/ edit or delete{% endblock %}
+{% block Background %}
+<div class="h-100" style="background-image: url('https://u9.by/assets/mainback.jpg'); background-size: cover;">
+    {% endblock %}
+    {% block Body %}
+    <legend>Edit or delete a record:</legend>
+        {% if request.user.is_authenticated %}
+   <br> <br>To setup notification methods please go to your <a href="{% url 'auth:profile' request.user.profile.id %}">user profile page</a> and don't forget to set checkboxes ON.
+    {% endif %}
+    {% if form.errors %}
+    <p style="color: orangered">Got errors! {{ form.errors }}</p>
+    {% endif %}
+    {% for message in messages %}
+    <p style="color: orangered">{{ message }}</p>
+    {% endfor %}
+    <form action="" method="post">
+          {% csrf_token %}
+<table class="table table-bordered" style="background-color: #eafff5;">
+    <thead class="thead-dark">
+    <tr>
+        <td><b>URL</b></td>
+        <td><b>Polling frequency</b></td>
+    </tr>
+    </thead>
+    <tr>
+        <td>{{ form.url }}</td>
+        <td align="center">{{ form.polling_frequency }}</td>
+    </tr>
+</table>
+        <table class="table table-bordered" style="background-color: #eafff5;">
+    <thead class="thead-dark">
+    <tr>
+        <td><b>Notify?</b></td>
+        <td><b>Codes to notify </b> <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"><i>more info</i></a></td>
+        <td></td>
+    </tr>
+    </thead>
+    <tr>
+
+        <td align="center">{{ form.notifycb }}<br><br><a href="{% url 'auth:profile' request.user.profile.id %}">setup</a></td>
+        <td>{{ form.code100cb }}{{ form.code100cb.label }}<br>{{ form.code200cb }}{{ form.code200cb.label }}<br>{{ form.code300cb }}{{ form.code300cb.label }}<br>{{ form.code400cb }}{{ form.code400cb.label }}<br>{{ form.code500cb }}{{ form.code500cb.label }}</td>
+        <td><input type="submit" class="btn btn-success btn-sm" value="Update record"></td>
+    </tr>
+</table>
+      </form>
+    <i>Note: in most cases it is sufficient to select only Error codes 4xx and 5xx to notify that a website is down.</i>
+    <br><br>
+    <legend>Existing records:</legend>
+
+    {% endblock %}

@@ -287,7 +287,7 @@ def add_lead_and_redirect(request, hash):
 # list Webchecker records and log
 @login_required(login_url=reverse_lazy('auth:login'))
 def webchecker(request):
-    webrecords = Webrecords.objects.filter(author=request.user).get()
+    webrecords = Webrecords.objects.all().filter(author=request.user)
     pattern_html = 'polls/webcheck.html'
     return render(request, pattern_html, {  # usual immediate redirection
         'webrecords': webrecords,

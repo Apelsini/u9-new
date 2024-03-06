@@ -327,7 +327,7 @@ def webchecker_add(request):
 # edit or delete Webchecker record
 @login_required(login_url=reverse_lazy('auth:login'))
 def webchecker_editdelete(request, pk):
-    webrecord = Webrecords.objects.all().filter(pk=pk)
+    webrecord = Webrecords.objects.all().filter(pk=pk).get()
     if webrecord:
         form = WebrecordsForm()
         form.fields['url'].initial = webrecord.url

@@ -15,7 +15,7 @@
     <br><br>
       <legend>Existing records:</legend>
 {% if webrecords %}
-<table>
+<table class="table table-bordered" style="background-color: #eafff5;">
     <tr>
         <td>URL</td>
         <td>Polling frequency</td>
@@ -30,20 +30,20 @@
    {% for webrecord in webrecords %}
     <tr>
         <td>{{ webrecord.url }}</td>
-        <td>{{ webrecord.polling_frequency }}</td>
-        <td>{% if webrecord.notifycb %}&#10004;{% else %}&#10006;{% endif %}</td>
-        <td>{% if webrecord.code100cb %}&#10003;{% else %}&#10005;{% endif %}</td>
-        <td>{% if webrecord.code200cb %}&#10003;{% else %}&#10005;{% endif %}</td>
-        <td>{% if webrecord.code300cb %}&#10003;{% else %}&#10005;{% endif %}</td>
-        <td>{% if webrecord.code400cb %}&#10003;{% else %}&#10005;{% endif %}</td>
-        <td>{% if webrecord.code500cb %}&#10003;{% else %}&#10005;{% endif %}</td>
-        <td> <a href="{% url 'polls:webcheckeradd' %}" class="btn btn-danger active" role="button" aria-pressed="true">Add record</a></td>
+        <td align="center">{{ webrecord.polling_frequency }}</td>
+        <td align="center">{% if webrecord.notifycb %}&#10004;{% else %}&#10006;{% endif %}</td>
+        <td align="center">{% if webrecord.code100cb %}&#10003;{% else %}&#10005;{% endif %}</td>
+        <td align="center">{% if webrecord.code200cb %}&#10003;{% else %}&#10005;{% endif %}</td>
+        <td align="center">{% if webrecord.code300cb %}&#10003;{% else %}&#10005;{% endif %}</td>
+        <td align="center">{% if webrecord.code400cb %}&#10003;{% else %}&#10005;{% endif %}</td>
+        <td align="center">{% if webrecord.code500cb %}&#10003;{% else %}&#10005;{% endif %}</td>
+        <td align="center"> <a href="{% url 'polls:webcheckeradd' %}" class="btn btn-danger active" role="button" aria-pressed="true">&#9998; Edit</a></td>
     </tr>
     {% endfor %}
 </table>
     {% else %}
     No records found
     {% endif %}
-    <a href="{% url 'polls:webcheckeradd' %}" class="btn btn-success btn-lg active" role="button" aria-pressed="true">&#9998; Edit</a>
+    <a href="{% url 'polls:webcheckeradd' %}" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Add record</a>
 
     {% endblock %}

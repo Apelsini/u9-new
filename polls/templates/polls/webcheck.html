@@ -30,7 +30,17 @@
    {% for webrecord in webrecords %}
     <tr>
         <td>{{ webrecord.url }}</td>
-        <td align="center">{% if webrecord.polling_frequency == '1' %}Every 15 min{% endif %}</td>
+        <td align="center">{% if webrecord.polling_frequency == '1' %}Every 15 min{% endif %}
+            {% if webrecord.polling_frequency == '2' %}Every 30 min{% endif %}
+            {% if webrecord.polling_frequency == '3' %}Every 60 min{% endif %}
+            {% if webrecord.polling_frequency == '4' %}Every 2 hours{% endif %}
+            {% if webrecord.polling_frequency == '5' %}Every 4 hours{% endif %}
+            {% if webrecord.polling_frequency == '6' %}Every 8 hours{% endif %}
+            {% if webrecord.polling_frequency == '7' %}Every 24 hours{% endif %}
+            {% if webrecord.polling_frequency == '8' %}Every 2 days{% endif %}
+            {% if webrecord.polling_frequency == '9' %}Every 4 days{% endif %}
+            {% if webrecord.polling_frequency == '10' %}Every 7 days{% endif %}
+        </td>
         <td align="center">{% if webrecord.notifycb %}&#10004;{% else %}&#10006;{% endif %}</td>
         <td align="center">{% if webrecord.code100cb %}&#10003;{% else %}&#10005;{% endif %}</td>
         <td align="center">{% if webrecord.code200cb %}&#10003;{% else %}&#10005;{% endif %}</td>

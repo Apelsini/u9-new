@@ -1,5 +1,5 @@
 {% extends 'polls/base.html' %}
-{% block Title %}Webcheck records list{% endblock %}
+{% block Title %}U8 Webcheck list{% endblock %}
 {% block Background %}
 <div class="h-100" style="background-image: url('https://u9.by/assets/mainback.jpg'); background-size: cover;">
     {% endblock %}
@@ -15,6 +15,32 @@
     <br><br>
       <legend>Existing records:</legend>
 
-    <a href="{% url 'polls:webcheckeradd' %}" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Add record</a>
+<table>
+    <tr>
+        <td>URL</td>
+        <td>Polling frequency</td>
+        <td>Notify</td>
+        <td>Code 1xx</td>
+        <td>Code 2xx</td>
+        <td>Code 3xx</td>
+        <td>Code 4xx</td>
+        <td>Code 5xx</td>
+        <td></td>
+    </tr>
+   {% for webrecord in webrecords %}
+    <tr>
+        <td>{{ webrecord.url }}</td>
+        <td>{{ webrecord.polling_frequency }}</td>
+        <td>{% if webrecord.notifycb %}&#10004;{% else %}&#10006;{% endif %}</td>
+        <td>{% if webrecord.code100cb %}&#10003;{% else %}&#10005;{% endif %}</td>
+        <td>{% if webrecord.code200cb %}&#10003;{% else %}&#10005;{% endif %}</td>
+        <td>{% if webrecord.code300cb %}&#10003;{% else %}&#10005;{% endif %}</td>
+        <td>{% if webrecord.code400cb %}&#10003;{% else %}&#10005;{% endif %}</td>
+        <td>{% if webrecord.code500cb %}&#10003;{% else %}&#10005;{% endif %}</td>
+        <td> <a href="{% url 'polls:webcheckeradd' %}" class="btn btn-danger active" role="button" aria-pressed="true">Add record</a></td>
+    </tr>
+    {% endfor %}
+</table>
+    <a href="{% url 'polls:webcheckeradd' %}" class="btn btn-success btn-lg active" role="button" aria-pressed="true">&#9998; Edit</a>
 
     {% endblock %}

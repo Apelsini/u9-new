@@ -18,6 +18,7 @@ import time
 from datetime import datetime, date
 from django.shortcuts import render
 from django.contrib.auth import get_user_model
+import json
 
 #supporting functions
 def countme(iter):
@@ -286,18 +287,40 @@ def add_lead_and_redirect(request, hash):
 # list Webchecker records and log
 @login_required(login_url=reverse_lazy('auth:login'))
 def webchecker(request):
-    form = WebrecordsForm()
+    webrecords = Webrecords.objects.filter(user=request.user).get()
     pattern_html = 'polls/webcheck.html'
     return render(request, pattern_html, {  # usual immediate redirection
-        'form': form,
+        'webrecords': webrecords,
     })
 
 # add Webchecker record
 @login_required(login_url=reverse_lazy('auth:login'))
 def webchecker_add(request):
-    form = WebrecordsForm()
     pattern_html = 'polls/webcheck_add.html'
-    return render(request, pattern_html, {  # usual immediate redirection
+    if request.method == "POST":
+        form = WebrecordsForm(request.POST)
+        if form.is_valid():
+            webrecord = Webrecords()
+            cd = form.cleaned_data
+            webrecord.websites = 'U9'
+            webrecord.url = cd['url']
+            webrecord.polling_frequency = cd['polling_frequency'][0:2]
+            webrecord.notifycb = cd['notifycb']
+            webrecord.code100cb = cd['code100cb']
+            webrecord.code200cb = cd['code200cb']
+            webrecord.code300cb = cd['code300cb']
+            webrecord.code400cb = cd['code400cb']
+            webrecord.code500cb = cd['code500cb']
+            webrecord.save()
+            redirect('polls:webchecker')
+        else:
+            messages.error(request, urlentry_form.errors)
+        redirect('polls:webcheckeradd')
+        #else:
+         #   messages.error(request, urlentry_form.error)
+    else:
+        form = WebrecordsForm()
+        return render(request, pattern_html, {  # usual immediate redirection
         'form': form,
     })
 

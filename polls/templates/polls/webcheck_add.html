@@ -1,10 +1,9 @@
 {% extends 'polls/base.html' %}
-{% block Title %}Webcheck/ add{% endblock %}
+{% block Title %}U9 Webcheck add{% endblock %}
 {% block Background %}
 <div class="h-100" style="background-image: url('https://u9.by/assets/mainback.jpg'); background-size: cover;">
     {% endblock %}
     {% block Body %}
-
     <legend>Add new record:</legend>
     {% if request.user.is_authenticated %}
    <br> <br>To setup notification methods please go to your <a href="{% url 'auth:profile' request.user.profile.id %}">user profile page</a> and don't forget to set checkboxes ON.

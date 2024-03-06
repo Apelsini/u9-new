@@ -14,7 +14,14 @@ max_capacity = len(enc_str) ** 5  # maximal address - 5 symbols
 class Webrecords(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     websites = models.TextField(default=' ')
-
+    url = models.TextField(default=' ')
+    polling_frequency = models.CharField(max_length = 2, default='0')
+    notifycb = models.BooleanField(default=False)
+    code100cb = models.BooleanField(default=False)
+    code200cb = models.BooleanField(default=False)
+    code300cb = models.BooleanField(default=False)
+    code400cb = models.BooleanField(default=False)
+    code500cb = models.BooleanField(default=False)
 
 class Urlentry(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)

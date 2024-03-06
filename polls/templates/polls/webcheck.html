@@ -14,7 +14,7 @@
     {% endfor %}
     <br><br>
       <legend>Existing records:</legend>
-
+{% if webrecords %}
 <table>
     <tr>
         <td>URL</td>
@@ -41,6 +41,9 @@
     </tr>
     {% endfor %}
 </table>
+    {% else %}
+    No records found
+    {% endif %}
     <a href="{% url 'polls:webcheckeradd' %}" class="btn btn-success btn-lg active" role="button" aria-pressed="true">&#9998; Edit</a>
 
     {% endblock %}

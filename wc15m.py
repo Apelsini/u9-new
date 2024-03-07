@@ -110,7 +110,9 @@ def process_notifications():
     profiles = Profile.objects.all()
     for profile in profiles:
         webrecordsall = Webrecords.objects.all()
-        webrecords = webrecordsall.filter(author=profile.user).get()
+        print(str(webrecordsall.count()) + ' records found')
+        webrecords = webrecordsall.filter(author=profile.user)
+        print(str(webrecords.count())+' records filtered')
         if webrecords:
             for webrecord in webrecords:
                 if webrecord.polling_frequency == PF:   #polling frequency matches

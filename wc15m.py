@@ -111,30 +111,31 @@ def process_notifications():
     for profile in profiles:
         webrecordsall = Webrecords.objects.all()
         webrecords = webrecordsall.filter(author=profile.user).get()
-        for webrecord in webrecords:
-            if webrecord.polling_frequency == PF:   #polling frequency matches
-                if webrecord.notifycb:      #user asked to notify on response codes - then process
-                    r = requests.get(webrecord.url)
-                    rcode = r.status_code
-                    counter = counter+1
-                    # {"user_id": 1, "message": "Cron job is working every minute. This is a notification for uby with id=1",  "subject": "Test of cron job"}
-                    dict = {"user_id": profile.user.id,
+        if webrecords:
+            for webrecord in webrecords:
+                if webrecord.polling_frequency == PF:   #polling frequency matches
+                    if webrecord.notifycb:      #user asked to notify on response codes - then process
+                        r = requests.get(webrecord.url)
+                        rcode = r.status_code
+                        counter = counter+1
+                        # {"user_id": 1, "message": "Cron job is working every minute. This is a notification for uby with id=1",  "subject": "Test of cron job"}
+                        dict = {"user_id": profile.user.id,
                             "message" : "U9.by Webchecker bot pinging the "+webrecord.url+" "+PFS+
                                         ". The last ping at "+str(starting_datetime)+" returned response code "+
                                         str(rcode)+" "+codedict['rcode']+". The webchecker bot was set up by user "+
                                         str(profile.user.username)+" "+str(profile.user.email)+" "+
                                         "https://u9.by/a/webchecker/editdelete/"+str(webrecord.pk),
                             "subject": "U9 Webchecker found code "+str(rcode)+" for "+webrecord.url}
-                    if rcode[0] =="1" and webrecord.code100cb:
-                        lines.append(json.dumps(dict))
-                    if rcode[0] =="2" and webrecord.code200cb:
-                        lines.append(json.dumps(dict))
-                    if rcode[0] == "3" and webrecord.code300cb:
-                        lines.append(json.dumps(dict))
-                    if rcode[0] == "4" and webrecord.code400cb:
-                        lines.append(json.dumps(dict))
-                    if rcode[0] == "5" and webrecord.code500cb:
-                        lines.append(json.dumps(dict))
+                        if rcode[0] =="1" and webrecord.code100cb:
+                            lines.append(json.dumps(dict))
+                        if rcode[0] =="2" and webrecord.code200cb:
+                            lines.append(json.dumps(dict))
+                        if rcode[0] == "3" and webrecord.code300cb:
+                            lines.append(json.dumps(dict))
+                        if rcode[0] == "4" and webrecord.code400cb:
+                            lines.append(json.dumps(dict))
+                        if rcode[0] == "5" and webrecord.code500cb:
+                            lines.append(json.dumps(dict))
     with open('notify.txt', 'w') as file:
         existinglines = file.readlines()
         existinglines.append(lines)

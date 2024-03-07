@@ -135,12 +135,13 @@ def process_notifications():
                             rcode = 'err'
                         counter = counter+1
                         # {"user_id": 1, "message": "Cron job is working every minute. This is a notification for uby with id=1",  "subject": "Test of cron job"}
-                        dict = {"user_id": profile.user.id,
-                            "message" : "U9.by Webchecker bot pinging the "+webrecord.url+" "+PFS+
+                        msg = "U9.by Webchecker bot pinging the "+webrecord.url+" "+PFS+
                                         ". The last ping at "+str(starting_datetime)+" returned response code "+
-                                        str(rcode)+" "+codedict['rcode']+". The webchecker bot was set up by user "+
+                                        str(rcode)+" "+codedict["rcode"]+". The webchecker bot was set up by user "+
                                         str(profile.user.username)+" "+str(profile.user.email)+" "+
-                                        "https://u9.by/a/webchecker/editdelete/"+str(webrecord.pk),
+                                        "https://u9.by/a/webchecker/editdelete/"+str(webrecord.id)
+                        dict = {"user_id": profile.user.id,
+                            "message" : msg,
                             "subject": "U9 Webchecker found code "+str(rcode)+" for "+webrecord.url}
                         if rcode[0] =="1" and webrecord.code100cb:
                             lines.append(json.dumps(dict))

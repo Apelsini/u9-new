@@ -301,6 +301,7 @@ def webchecker_add(request):
         form = WebrecordsForm(request.POST)
         if form.is_valid():
             webrecord = Webrecords()
+            author = request.user
             cd = form.cleaned_data
             webrecord.websites = 'U9'
             webrecord.url = cd['url']

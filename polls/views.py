@@ -316,7 +316,7 @@ def webchecker_add(request):
                 counter = Webrecords.objects.all().filter(author=request.user).count()
                 if counter > 4:
                     messages.error(request,
-                                   'WARNING! your user status allows only 5 webrecords. Contact the administrator to acquire Customer privileges with unlimited number of websites to check')
+                                   'WARNING! New record was not created. Your user status allows only 5 webrecords. Contact the administrator to acquire Customer privileges with unlimited number of websites to check')
                 else:
                     webrecord.save()
             else:

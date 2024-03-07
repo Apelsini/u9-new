@@ -69,8 +69,7 @@ def process_notifications():
 
             # Do not write this notification back to the file
             lines.remove(line)
-            file.writelines(lines)
-
+        file.writelines(lines)
         # Write the remaining notifications back to the file
 
 

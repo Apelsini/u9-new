@@ -314,7 +314,7 @@ def webchecker_add(request):
             webrecord.code500cb = cd['code500cb']
             if not request.user.is_staff:  # only customers have unlimited webrecords, users have only 5
                 counter = Webrecords.objects.all().filter(author=request.user).count()
-                if counter > 5:
+                if counter > 4:
                     messages.error(request,
                                    'WARNING! your user status allows only 5 webrecords. Contact the administrator to acquire Customer privileges with unlimited number of websites to check')
                 else:

@@ -327,25 +327,43 @@ def webchecker_add(request):
 # edit or delete Webchecker record
 @login_required(login_url=reverse_lazy('auth:login'))
 def webchecker_editdelete(request, pk):
-    webrecord = Webrecords.objects.all().filter(author=request.user,pk=pk).get()
-    if webrecord:
-        form = WebrecordsForm()
-        form.fields['url'].initial = webrecord.url
-        form.fields['polling_frequency'].initial = webrecord.polling_frequency
-        form.fields['notifycb'].initial = webrecord.notifycb
-        form.fields['code100cb'].initial = webrecord.code100cb
-        form.fields['code200cb'].initial = webrecord.code200cb
-        form.fields['code300cb'].initial = webrecord.code300cb
-        form.fields['code400cb'].initial = webrecord.code400cb
-        form.fields['code500cb'].initial = webrecord.code500cb
-    else:
-        form = WebrecordsForm()
-        return redirect('polls:webcheckeradd')
     pattern_html = 'polls/webcheck_editdelete.html'
-    return render(request, pattern_html, {  # usual immediate redirection
+    if request.method == "POST":
+        form = WebrecordsForm(request.POST)
+        if form.is_valid():
+            webrecord = Webrecords.objects.all().filter(author=request.user,pk=pk).get()
+            cd = form.cleaned_data
+            if webrecord:
+                webrecord.websites = 'U9'
+                webrecord.url = cd['url']
+                webrecord.polling_frequency = cd['polling_frequency'][0:2]
+                webrecord.notifycb = cd['notifycb']
+                webrecord.code100cb = cd['code100cb']
+                webrecord.code200cb = cd['code200cb']
+                webrecord.code300cb = cd['code300cb']
+                webrecord.code400cb = cd['code400cb']
+                webrecord.code500cb = cd['code500cb']
+                webrecord.save()
+                return redirect('polls:webchecker')
+    else:
+        webrecord = Webrecords.objects.all().filter(author=request.user,pk=pk).get()
+        if webrecord:
+            form = WebrecordsForm()
+            form.fields['url'].initial = webrecord.url
+            form.fields['polling_frequency'].initial = webrecord.polling_frequency
+            form.fields['notifycb'].initial = webrecord.notifycb
+            form.fields['code100cb'].initial = webrecord.code100cb
+            form.fields['code200cb'].initial = webrecord.code200cb
+            form.fields['code300cb'].initial = webrecord.code300cb
+            form.fields['code400cb'].initial = webrecord.code400cb
+            form.fields['code500cb'].initial = webrecord.code500cb
+        else:
+            form = WebrecordsForm()
+            return redirect('polls:webcheckeradd')
+        return render(request, pattern_html, {  # usual immediate redirection
         'form': form,
         'webrecord' : webrecord,
-    })
+        })
 
 # edit or delete Webchecker record
 @login_required(login_url=reverse_lazy('auth:login'))

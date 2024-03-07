@@ -174,7 +174,7 @@ def process_notifications():
     ending_datetime = datetime.now()
     with open('cronlog.txt', 'r') as file:
         existlines = file.readlines()[1:]
-        existlines = existlines + 'Cron job for '+PFS+' started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' (UTC) pinged '+str(counter)+' webrecords.'
+        existlines = existlines + ['Cron job for '+PFS+' started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' (UTC) pinged '+str(counter)+' webrecords.']
         file.close()
     with open('cronlog.txt', 'w') as file:
         print(existlines)

@@ -109,7 +109,8 @@ def process_notifications():
     lines = []
     profiles = Profile.objects.all()
     for profile in profiles:
-        webrecords = Webrecords.objects.all().filter(author=profile.user).get()
+        webrecordsall = Webrecords.objects.all()
+        webrecords = webrecordsall.filter(author=profile.user).get()
         for webrecord in webrecords:
             if webrecord.polling_frequency == PF:   #polling frequency matches
                 if webrecord.notifycb:      #user asked to notify on response codes - then process

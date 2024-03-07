@@ -69,9 +69,10 @@ def process_notifications():
 
             # Do not write this notification back to the file
             lines.remove(line)
+            file.writelines(lines)
 
         # Write the remaining notifications back to the file
-        file.writelines(lines)
+
 
 # In this script, process_notifications reads each line from notify.txt,
 # parses it as a JSON object, retrieves the user associated with the user_id in the notification,

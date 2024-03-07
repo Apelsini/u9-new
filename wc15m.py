@@ -124,9 +124,11 @@ def process_notifications():
                             r = requests.get('https://'+webrecord.url)
                             rcode = r.status_code
                         except e:
-                            msg = "U9.by Webchecker bot pinging the % %. The last ping at %  caused the EXCEPTION %. The webchecker bot was set up by user % % https://u9.by/a/webchecker/editdelete/% " % (
-                            webrecord.url, PFS, str(starting_datetime), str(e),
+                            msg1 = "U9.by Webchecker bot pinging the % %. " % (webrecord.url, PFS)
+                            msg2 = "The last ping at % returned EXCEPTION %. "(str(starting_datetime), str(e))
+                            msg3 = "The webchecker bot was set up by user % % https://u9.by/a/webchecker/editdelete/% " % (
                             str(profile.user.username), str(profile.user.email), str(webrecord.id))
+                            msg = msg1 + msg2 + msg3
                             dict = {"user_id": profile.user.id,
                                     "message": msg,
                                     "subject": "U9 Webchecker raised EXCEPTION for " + webrecord.url}
@@ -134,10 +136,13 @@ def process_notifications():
                             rcode = 'err'
                         counter = counter+1
                         # {"user_id": 1, "message": "Cron job is working every minute. This is a notification for uby with id=1",  "subject": "Test of cron job"}
-                        msg = "U9.by Webchecker bot pinging the % %. The last ping at %  returned response code % %. The webchecker bot was set up by user % % https://u9.by/a/webchecker/editdelete/% " % (webrecord.url,PFS, str(starting_datetime), str(rcode), codedict[str(rcode)], str(profile.user.username), str(profile.user.email), str(webrecord.id))
+                        msg1 = "U9.by Webchecker bot pinging the % %. " % (webrecord.url, PFS)
+                        msg2 = "The last ping at % returned response code % %. " (str(starting_datetime), str(rcode), codedict[str(rcode)])
+                        msg3 = "The webchecker bot was set up by user % % https://u9.by/a/webchecker/editdelete/% " % (str(profile.user.username), str(profile.user.email), str(webrecord.id))
+                        msg = msg1 + msg2 + msg3
                         dict = {"user_id": profile.user.id,
                             "message" : msg,
-                            "subject": "U9 Webchecker found code "+str(rcode)+" for "+webrecord.url}
+                            "subject": "U9 Webchecker received code "+str(rcode)+" from "+webrecord.url}
                         if rcode[0] =="1" and webrecord.code100cb:
                             lines.append(json.dumps(dict))
                         if rcode[0] =="2" and webrecord.code200cb:

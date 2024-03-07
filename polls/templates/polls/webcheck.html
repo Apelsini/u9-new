@@ -5,7 +5,8 @@
     {% endblock %}
     {% block Body %}
         <legend>Check websites availability and response codes</legend>
-    Here you can setup periodical check of websites you're tracking, and sending notification if they're down
+    Here you can setup periodical check of websites you're tracking, and sending notification if they're down <br>
+    <b>Here is a documentation for Websites HHTP Response Codes </b> <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"><i>more info</i></a>
     {% if form.errors %}
     <p style="color: orangered">Got errors! {{ form.errors }}</p>
     {% endif %}
@@ -54,7 +55,7 @@
 </table>
 </div>
     {% else %}
-    No records found
+    No records found <br><br>
 
     {% endif %}
     <a href="{% url 'polls:webcheckeradd' %}" class="btn btn-success btn-lg active" role="button" aria-pressed="true">&#10009; Add record</a>

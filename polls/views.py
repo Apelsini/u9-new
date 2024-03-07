@@ -353,9 +353,9 @@ def webchecker_delete(request, pk):
     webrecord = Webrecords.objects.all().filter(author=request.user,pk=pk).get()
     if webrecord:
         webrecord.delete()
-        context = {'messages': {'webrecord deleted successfully'},}
+        context = {'messages': 'webrecord deleted successfully',}
         return redirect('polls:webchecker', context)
     else:
-        context = {'messages': {'WARNING! deletion failure'},}
+        context = {'messages': 'WARNING! deletion failure',}
         return redirect('polls:webchecker', context)
     return redirect('polls:webchecker')

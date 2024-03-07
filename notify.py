@@ -61,10 +61,10 @@ def process_notifications():
             else:
                 print('wrong email1 format of the user with id=', str(user_id), ' ', str(user))
             if user.telegram1cb:
-                send_telegram_message(user.telegram1, user.telegram1chat_id, '<b>'+subject+'</b>: '+message)
+                send_telegram_message(user.telegram1, user.telegram1chat_id, '<b>'+subject+'</b>: \n'+message)
                 print('telegram message sent to telegram1 of the user with id=', str(user_id), ' ', str(user))
             if user.telegram2cb:
-                send_telegram_message(user.telegram2, user.telegram2chat_id, '<b>'+subject+'</b>: '+message)
+                send_telegram_message(user.telegram2, user.telegram2chat_id, '<b>'+subject+'</b>: \n'+message)
                 print('telegram message sent to telegram2 of the user with id=', str(user_id), ' ', str(user))
 
             # Do not write this notification back to the file

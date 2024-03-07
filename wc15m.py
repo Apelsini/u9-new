@@ -124,18 +124,17 @@ def process_notifications():
                             r = requests.get('https://'+webrecord.url)
                             rcode = r.status_code
                         except e:
+                            msg = "U9.by Webchecker bot pinging the % %. The last ping at %  caused the EXCEPTION %. The webchecker bot was set up by user % % https://u9.by/a/webchecker/editdelete/% " % (
+                            webrecord.url, PFS, str(starting_datetime), str(e),
+                            str(profile.user.username), str(profile.user.email), str(webrecord.id))
                             dict = {"user_id": profile.user.id,
-                                    "message": "U9.by Webchecker bot pinging the " + webrecord.url + " " + PFS +
-                                               ". The last ping at " + str(
-                                        starting_datetime)+" raised EXCEPTION "+ str(e) + ". The webchecker bot was set up by user " +
-                                               str(profile.user.username) + " " + str(profile.user.email) + " " +
-                                               "https://u9.by/a/webchecker/editdelete/" + str(webrecord.pk),
+                                    "message": msg,
                                     "subject": "U9 Webchecker raised EXCEPTION for " + webrecord.url}
                             lines.append(json.dumps(dict))
                             rcode = 'err'
                         counter = counter+1
                         # {"user_id": 1, "message": "Cron job is working every minute. This is a notification for uby with id=1",  "subject": "Test of cron job"}
-                        msg = "U9.by Webchecker bot pinging the "+webrecord.url+" "+PFS+". The last ping at "+str(starting_datetime)+" returned response code "+str(rcode)+" "+codedict["rcode"]+". The webchecker bot was set up by user "+str(profile.user.username)+" "+str(profile.user.email)+" https://u9.by/a/webchecker/editdelete/"+str(webrecord.id)
+                        msg = "U9.by Webchecker bot pinging the % %. The last ping at %  returned response code % %. The webchecker bot was set up by user % % https://u9.by/a/webchecker/editdelete/% " % (webrecord.url,PFS, str(starting_datetime), str(rcode), codedict["rcode"], str(profile.user.username), str(profile.user.email), str(webrecord.id))
                         dict = {"user_id": profile.user.id,
                             "message" : msg,
                             "subject": "U9 Webchecker found code "+str(rcode)+" for "+webrecord.url}

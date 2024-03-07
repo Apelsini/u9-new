@@ -327,7 +327,7 @@ def webchecker_add(request):
 # edit or delete Webchecker record
 @login_required(login_url=reverse_lazy('auth:login'))
 def webchecker_editdelete(request, pk):
-    webrecord = Webrecords.objects.all().filter(pk=pk).get()
+    webrecord = Webrecords.objects.all().filter(author=request.user,pk=pk).get()
     if webrecord:
         form = WebrecordsForm()
         form.fields['url'].initial = webrecord.url
@@ -350,10 +350,12 @@ def webchecker_editdelete(request, pk):
 # edit or delete Webchecker record
 @login_required(login_url=reverse_lazy('auth:login'))
 def webchecker_delete(request, pk):
-    webrecord = Webrecords.objects.all().filter(pk=pk).get()
+    webrecord = Webrecords.objects.all().filter(author=request.user,pk=pk).get()
     if webrecord:
         webrecord.delete()
-        return redirect('polls:webchecker')
+        context = {'messages': {'webrecord deleted successfully'}}
+        return redirect('polls:webchecker', context)
     else:
-        return redirect('polls:webchecker')
+        context = {'messages': {'WARNING! deletion failure'}}
+        return redirect('polls:webchecker', context)
     return redirect('polls:webchecker')

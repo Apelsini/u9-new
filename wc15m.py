@@ -133,7 +133,7 @@ def process_notifications():
                                     "message": msg,
                                     "subject": "U9 Webchecker raised EXCEPTION for " + webrecord.url}
                             lines.append(json.dumps(dict))
-                            rcode = 'err'
+                            rcode = 0
                         counter = counter+1
                         # {"user_id": 1, "message": "Cron job is working every minute. This is a notification for uby with id=1",  "subject": "Test of cron job"}
                         msg1 = "U9.by Webchecker bot pinging the"+webrecord.url+" "+PFS
@@ -143,15 +143,15 @@ def process_notifications():
                         dict = {"user_id": profile.user.id,
                             "message" : msg,
                             "subject": "U9 Webchecker received code "+str(rcode)+" from "+webrecord.url}
-                        if str(rcode[0]) =="1" and webrecord.code100cb:
+                        if str(rcode)[0] =="1" and webrecord.code100cb:
                             lines.append(json.dumps(dict))
-                        if str(rcode[0]) =="2" and webrecord.code200cb:
+                        if str(rcode)[0] =="2" and webrecord.code200cb:
                             lines.append(json.dumps(dict))
-                        if str(rcode[0]) == "3" and webrecord.code300cb:
+                        if str(rcode)[0] == "3" and webrecord.code300cb:
                             lines.append(json.dumps(dict))
-                        if str(rcode[0]) == "4" and webrecord.code400cb:
+                        if str(rcode)[0] == "4" and webrecord.code400cb:
                             lines.append(json.dumps(dict))
-                        if str(rcode[0]) == "5" and webrecord.code500cb:
+                        if str(rcode)[0] == "5" and webrecord.code500cb:
                             lines.append(json.dumps(dict))
     with open('notify.txt', 'w') as file:
         existinglines = file.readlines()

@@ -120,7 +120,7 @@ def process_notifications():
                         try:
                             r = requests.get(webrecord.url)
                             rcode = r.status_code
-                        except MissingSchema:
+                        except requests.exceptions.MissingSchema:
                             r = requests.get('https://'+webrecord.url)
                             rcode = r.status_code
                         except e:

@@ -124,7 +124,7 @@ def process_notifications():
                         except requests.exceptions.MissingSchema:
                             r = requests.get('https://'+webrecord.url)
                             rcode = r.status_code
-                        except e:
+                        except Exception as e:
                             msg1 = "U9.by Webchecker bot pinging the"+webrecord.url+" "+PFS
                             msg2 = "The last ping at "+str(starting_datetime)+" returned EXCEPTION "+str(e)
                             msg3 = "The webchecker bot was set up by user "+str(profile.user.username)+" "+str(profile.user.email)+" https://u9.by/a/webchecker/editdelete/"+str(webrecord.id)
@@ -162,10 +162,10 @@ def process_notifications():
     ending_datetime = datetime.now()
     with open('cronlog.txt', 'r') as file:
         existinglines = file.readlines()
-        existinglines.extend('Cron job for '+PFS+'started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' pinged '+str(counter)+' webrecords.')
+        existinglines.extend('Cron job for '+PFS+' started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' pinged '+str(counter)+' webrecords.')
     with open('cronlog.txt', 'w') as file:
         file.writelines(existinglines[1:])  #removing zero line
-        print('+++++  cronlog.txt file appended with:'+'Cron job for '+PFS+'started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' pinged '+str(counter)+' webrecords.')
+        print('+++++  cronlog.txt file appended with:'+'Cron job for '+PFS+' started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' pinged '+str(counter)+' webrecords.')
 
 # The notify.txt file is expected to contain one JSON object per line, where each JSON object represents a notification. Each notification should have a user_id and a message. Here’s an example of how the notify.txt file might look:
 #

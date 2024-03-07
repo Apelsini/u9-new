@@ -121,9 +121,21 @@ def process_notifications():
                         try:
                             r = requests.get(webrecord.url)
                             rcode = r.status_code
+                            msg1 = "U9.by Webchecker bot pinging the" + webrecord.url + " " + PFS
+                            msg2 = "The last ping at " + str(starting_datetime) + " returned response code " + str(
+                                rcode) + " " + codedict[str(rcode)]
+                            msg3 = "The webchecker bot was set up by user " + str(profile.user.username) + " " + str(
+                                profile.user.email) + " https://u9.by/a/webchecker/editdelete/" + str(webrecord.id)
+                            msg = msg1 + msg2 + msg3
                         except requests.exceptions.MissingSchema:
                             r = requests.get('https://'+webrecord.url)
                             rcode = r.status_code
+                            msg1 = "U9.by Webchecker bot pinging the" + webrecord.url + " " + PFS
+                            msg2 = "The last ping at " + str(starting_datetime) + " returned response code " + str(
+                                rcode) + " " + codedict[str(rcode)]
+                            msg3 = "The webchecker bot was set up by user " + str(profile.user.username) + " " + str(
+                                profile.user.email) + " https://u9.by/a/webchecker/editdelete/" + str(webrecord.id)
+                            msg = msg1 + msg2 + msg3
                         except Exception as e:
                             msg1 = "U9.by Webchecker bot pinging the"+webrecord.url+" "+PFS
                             msg2 = "The last ping at "+str(starting_datetime)+" returned EXCEPTION "+str(e)
@@ -136,10 +148,6 @@ def process_notifications():
                             rcode = 0
                         counter = counter+1
                         # {"user_id": 1, "message": "Cron job is working every minute. This is a notification for uby with id=1",  "subject": "Test of cron job"}
-                        msg1 = "U9.by Webchecker bot pinging the"+webrecord.url+" "+PFS
-                        msg2 = "The last ping at "+str(starting_datetime)+" returned response code "+str(rcode)+" "+codedict[str(rcode)]
-                        msg3 = "The webchecker bot was set up by user "+str(profile.user.username)+" "+str(profile.user.email)+" https://u9.by/a/webchecker/editdelete/"+str(webrecord.id)
-                        msg = msg1 + msg2 + msg3
                         dict = {"user_id": profile.user.id,
                             "message" : msg,
                             "subject": "U9 Webchecker received code "+str(rcode)+" from "+webrecord.url}

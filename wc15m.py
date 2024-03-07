@@ -163,16 +163,17 @@ def process_notifications():
                             lines.append(json.dumps(dict))
     with open('notify.txt', 'r') as file:
         existinglines = file.readlines()
+        print('++  notify.txt file opened, there are ' + str(existinglines.count()) + ' lines in it. ')
         existinglines.extend(lines)
     with open('notify.txt', 'w') as file:
         file.writelines(existinglines)
-        print('+++++  notify.txt file formed')
+        print('++  notify.txt file formed, now there are '+str(existinglines.count())+' lines in it ')
     ending_datetime = datetime.now()
     with open('cronlog.txt', 'r') as file:
-        existinglines = file.readlines()
-        existinglines.extend('Cron job for '+PFS+' started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' pinged '+str(counter)+' webrecords.')
+        existlines = file.readlines()
+        existlines.extend('Cron job for '+PFS+' started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' pinged '+str(counter)+' webrecords.')
     with open('cronlog.txt', 'w') as file:
-        file.writelines(existinglines[1:])  #removing zero line
+        file.writelines(existlines[1:])  #removing zero line
         print('+++++  cronlog.txt file appended with:'+'Cron job for '+PFS+' started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' pinged '+str(counter)+' webrecords.')
 
 # The notify.txt file is expected to contain one JSON object per line, where each JSON object represents a notification. Each notification should have a user_id and a message. Here’s an example of how the notify.txt file might look:

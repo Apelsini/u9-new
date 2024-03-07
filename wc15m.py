@@ -121,36 +121,36 @@ def process_notifications():
                         try:
                             r = requests.get(webrecord.url)
                             rcode = r.status_code
-                            msg1 = " U9.by Webchecker bot pinging the " + webrecord.url + " " + PFS
+                            msg1 = " U9.by Webchecker bot pinging the " + webrecord.url + " " + PFS + ".\n"
                             msg2 = " The last ping at " + str(starting_datetime) + " (UTC) returned response code " + str(
-                                rcode) + " " + codedict[str(rcode)]
+                                rcode) + " " + codedict[str(rcode)] + "\n"
                             msg3 = " The webchecker bot was set up by user " + str(profile.user.username) + " " + str(
-                                profile.user.email) + " https://u9.by/a/webchecker/editdelete/" + str(webrecord.id)
+                                profile.user.email) + " https://u9.by/a/webchecker/editdelete/" + str(webrecord.id) + "\n"
                             msg = msg1 + msg2 + msg3
                         except requests.exceptions.MissingSchema:
                             r = requests.get('https://'+webrecord.url)
                             rcode = r.status_code
-                            msg1 = " U9.by Webchecker bot pinging the " + webrecord.url + " " + PFS
+                            msg1 = " U9.by Webchecker bot pinging the " + webrecord.url + " " + PFS + ".\n"
                             msg2 = " The last ping at " + str(starting_datetime) + " (UTC) returned response code " + str(
-                                rcode) + " " + codedict[str(rcode)]
+                                rcode) + " " + codedict[str(rcode)] + "\n"
                             msg3 = " The webchecker bot was set up by user " + str(profile.user.username) + " " + str(
-                                profile.user.email) + " https://u9.by/a/webchecker/editdelete/" + str(webrecord.id)
+                                profile.user.email) + " https://u9.by/a/webchecker/editdelete/" + str(webrecord.id) + "\n"
                             msg = msg1 + msg2 + msg3
                         except Exception as e:
-                            msg1 = " U9.by Webchecker bot pinging the "+webrecord.url+" "+PFS
-                            msg2 = " The last ping at "+str(starting_datetime)+" (UTC) returned EXCEPTION "+str(e)
-                            msg3 = " The webchecker bot was set up by user "+str(profile.user.username)+" "+str(profile.user.email)+" https://u9.by/a/webchecker/editdelete/"+str(webrecord.id)
+                            msg1 = " U9.by Webchecker bot pinging the "+webrecord.url+" "+PFS + ".\n"
+                            msg2 = " The last ping at "+str(starting_datetime)+" (UTC) returned EXCEPTION "+str(e) + "\n"
+                            msg3 = " The webchecker bot was set up by user "+str(profile.user.username)+" "+str(profile.user.email)+" https://u9.by/a/webchecker/editdelete/"+str(webrecord.id) + "\n"
                             msg = msg1 + msg2 + msg3
                             dict = {"user_id": profile.user.id,
                                     "message": msg,
-                                    "subject": "U9 Webchecker raised EXCEPTION for " + webrecord.url}
+                                    "subject": "U9 Webchecker raised EXCEPTION for " + webrecord.url + "\n"}
                             lines.append(json.dumps(dict)+"\n")
                             rcode = 0
                         counter = counter+1
                         # {"user_id": 1, "message": "Cron job is working every minute. This is a notification for uby with id=1",  "subject": "Test of cron job"}
                         dict = {"user_id": profile.user.id,
                             "message" : msg,
-                            "subject": "U9 Webchecker received code "+str(rcode)+" from "+webrecord.url}
+                            "subject": "U9 Webchecker received code "+str(rcode)+" from "+webrecord.url + "\n"}
                         if str(rcode)[0] =="1" and webrecord.code100cb:
                             lines.append(json.dumps(dict)+"\n")
                         if str(rcode)[0] =="2" and webrecord.code200cb:

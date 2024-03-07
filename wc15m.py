@@ -117,8 +117,22 @@ def process_notifications():
             for webrecord in webrecords:
                 if webrecord.polling_frequency == PF:   #polling frequency matches
                     if webrecord.notifycb:      #user asked to notify on response codes - then process
-                        r = requests.get(webrecord.url)
-                        rcode = r.status_code
+                        try:
+                            r = requests.get(webrecord.url)
+                            rcode = r.status_code
+                        except MissingSchema:
+                            r = requests.get('https://'+webrecord.url)
+                            rcode = r.status_code
+                        except e:
+                            dict = {"user_id": profile.user.id,
+                                    "message": "U9.by Webchecker bot pinging the " + webrecord.url + " " + PFS +
+                                               ". The last ping at " + str(
+                                        starting_datetime)+" raised EXCEPTION "+ str(e) + ". The webchecker bot was set up by user " +
+                                               str(profile.user.username) + " " + str(profile.user.email) + " " +
+                                               "https://u9.by/a/webchecker/editdelete/" + str(webrecord.pk),
+                                    "subject": "U9 Webchecker raised EXCEPTION for " + webrecord.url}
+                            lines.append(json.dumps(dict))
+                            rcode = 'err'
                         counter = counter+1
                         # {"user_id": 1, "message": "Cron job is working every minute. This is a notification for uby with id=1",  "subject": "Test of cron job"}
                         dict = {"user_id": profile.user.id,
@@ -142,12 +156,14 @@ def process_notifications():
         existinglines = file.readlines()
         existinglines.append(lines)
         file.writelines(existinglines)
+        print('+++++  notify.txt file formed')
     ending_datetime = datetime.now()
     with open('cronlog.txt', 'w') as file:
         existinglines = file.readlines()
         existinglines.remove()
         existinglines.append('Cron job for '+PFS+'started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' pinged '+str(counter)+' webrecords.')
         file.writelines(existinglines[1:])  #removing zero line
+        print('+++++  cronlog.txt file appended with:'+'Cron job for '+PFS+'started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' pinged '+str(counter)+' webrecords.')
 
 # The notify.txt file is expected to contain one JSON object per line, where each JSON object represents a notification. Each notification should have a user_id and a message. Here’s an example of how the notify.txt file might look:
 #

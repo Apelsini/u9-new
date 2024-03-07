@@ -164,7 +164,7 @@ def process_notifications():
     with open('notify.txt', 'r') as file:
         existinglines = file.readlines()
         print('++  notify.txt file opened, there are ' + str(len(existinglines)) + ' lines in it. ')
-        existinglines.extend(lines)
+        existinglines = existinglines + lines
         file.close()
     with open('notify.txt', 'w') as file:
         print(existinglines)
@@ -174,7 +174,7 @@ def process_notifications():
     ending_datetime = datetime.now()
     with open('cronlog.txt', 'r') as file:
         existlines = file.readlines()[1:]
-        existlines.extend('Cron job for '+PFS+' started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' (UTC) pinged '+str(counter)+' webrecords.')
+        existlines = existlines + 'Cron job for '+PFS+' started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' (UTC) pinged '+str(counter)+' webrecords.'
         file.close()
     with open('cronlog.txt', 'w') as file:
         print(existlines)

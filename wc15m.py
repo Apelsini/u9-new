@@ -144,7 +144,7 @@ def process_notifications():
                             dict = {"user_id": profile.user.id,
                                     "message": msg,
                                     "subject": "U9 Webchecker raised EXCEPTION for " + webrecord.url}
-                            lines.append(json.dumps(dict))
+                            lines.append("\n"+json.dumps(dict))
                             rcode = 0
                         counter = counter+1
                         # {"user_id": 1, "message": "Cron job is working every minute. This is a notification for uby with id=1",  "subject": "Test of cron job"}
@@ -152,15 +152,15 @@ def process_notifications():
                             "message" : msg,
                             "subject": "U9 Webchecker received code "+str(rcode)+" from "+webrecord.url}
                         if str(rcode)[0] =="1" and webrecord.code100cb:
-                            lines.append(json.dumps(dict))
+                            lines.append("\n"+json.dumps(dict))
                         if str(rcode)[0] =="2" and webrecord.code200cb:
-                            lines.append(json.dumps(dict))
+                            lines.append("\n"+json.dumps(dict))
                         if str(rcode)[0] == "3" and webrecord.code300cb:
-                            lines.append(json.dumps(dict))
+                            lines.append("\n"+json.dumps(dict))
                         if str(rcode)[0] == "4" and webrecord.code400cb:
-                            lines.append(json.dumps(dict))
+                            lines.append("\n"+json.dumps(dict))
                         if str(rcode)[0] == "5" and webrecord.code500cb:
-                            lines.append(json.dumps(dict))
+                            lines.append("\n"+json.dumps(dict))
     with open('notify.txt', 'r') as file:
         existinglines = file.readlines()
         print('++  notify.txt file opened, there are ' + str(len(existinglines)) + ' lines in it. ')
@@ -174,7 +174,7 @@ def process_notifications():
     ending_datetime = datetime.now()
     with open('cronlog.txt', 'r') as file:
         existlines = file.readlines()[1:]
-        existlines = existlines + ['Cron job for '+PFS+' started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' (UTC) pinged '+str(counter)+' webrecords.']
+        existlines = existlines + ['\nCron job for '+PFS+' started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' (UTC) pinged '+str(counter)+' webrecords.']
         file.close()
     with open('cronlog.txt', 'w') as file:
         print(existlines)

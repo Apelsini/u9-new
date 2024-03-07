@@ -155,14 +155,14 @@ def process_notifications():
                             lines.append(json.dumps(dict))
     with open('notify.txt', 'r') as file:
         existinglines = file.readlines()
-        existinglines.append(lines)
+        existinglines.extend(lines)
     with open('notify.txt', 'w') as file:
         file.writelines(existinglines)
         print('+++++  notify.txt file formed')
     ending_datetime = datetime.now()
     with open('cronlog.txt', 'r') as file:
         existinglines = file.readlines()
-        existinglines.append('Cron job for '+PFS+'started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' pinged '+str(counter)+' webrecords.')
+        existinglines.extend('Cron job for '+PFS+'started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' pinged '+str(counter)+' webrecords.')
     with open('cronlog.txt', 'w') as file:
         file.writelines(existinglines[1:])  #removing zero line
         print('+++++  cronlog.txt file appended with:'+'Cron job for '+PFS+'started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' pinged '+str(counter)+' webrecords.')

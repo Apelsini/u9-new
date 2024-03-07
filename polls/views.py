@@ -298,6 +298,11 @@ def webchecker(request):
 def webchecker_add(request):
     pattern_html = 'polls/webcheck_add.html'
     if request.method == "POST":
+        if not request.user.is_staff:  #only customers have unlimited webrecords, users have only 5
+            counter = Webrecords.objects.all().filter(author=request.user).count()
+            if counter>5:
+                messages.error(request, 'WARNING! your user status allows only 5 webrecords. Contact the administrator to acquire Customer privileges with unlimited number of websites to check')
+                return redirect('polls:webchecker')
         form = WebrecordsForm(request.POST)
         if form.is_valid():
             webrecord = Webrecords()
@@ -314,7 +319,7 @@ def webchecker_add(request):
             webrecord.save()
             return redirect('polls:webchecker')
         else:
-            messages.error(request, urlentry_form.errors)
+            messages.error(request, form.errors)
             return redirect('polls:webcheckeradd')
         #else:
          #   messages.error(request, urlentry_form.error)
@@ -371,7 +376,9 @@ def webchecker_delete(request, pk):
     webrecord = Webrecords.objects.all().filter(author=request.user,pk=pk).get()
     if webrecord:
         webrecord.delete()
+        messages.error(request, 'webrecord deleted successfully')
         return redirect('polls:webchecker')
     else:
+        messages.error(request, 'WARNING! Failure when deleting the webrecord. It may be not existing under your account.')
         return redirect('polls:webchecker')
     return redirect('polls:webchecker')

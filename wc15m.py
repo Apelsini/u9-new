@@ -122,7 +122,7 @@ def process_notifications():
                             r = requests.get(webrecord.url)
                             rcode = r.status_code
                             msg1 = "U9.by Webchecker bot pinging the" + webrecord.url + " " + PFS
-                            msg2 = "The last ping at " + str(starting_datetime) + " returned response code " + str(
+                            msg2 = "The last ping at " + str(starting_datetime) + " (UTC) returned response code " + str(
                                 rcode) + " " + codedict[str(rcode)]
                             msg3 = "The webchecker bot was set up by user " + str(profile.user.username) + " " + str(
                                 profile.user.email) + " https://u9.by/a/webchecker/editdelete/" + str(webrecord.id)
@@ -131,14 +131,14 @@ def process_notifications():
                             r = requests.get('https://'+webrecord.url)
                             rcode = r.status_code
                             msg1 = " U9.by Webchecker bot pinging the" + webrecord.url + " " + PFS
-                            msg2 = " The last ping at " + str(starting_datetime) + " returned response code " + str(
+                            msg2 = " The last ping at " + str(starting_datetime) + " (UTC) returned response code " + str(
                                 rcode) + " " + codedict[str(rcode)]
                             msg3 = " The webchecker bot was set up by user " + str(profile.user.username) + " " + str(
                                 profile.user.email) + " https://u9.by/a/webchecker/editdelete/" + str(webrecord.id)
                             msg = msg1 + msg2 + msg3
                         except Exception as e:
                             msg1 = " U9.by Webchecker bot pinging the"+webrecord.url+" "+PFS
-                            msg2 = " The last ping at "+str(starting_datetime)+" returned EXCEPTION "+str(e)
+                            msg2 = " The last ping at "+str(starting_datetime)+" (UTC) returned EXCEPTION "+str(e)
                             msg3 = " The webchecker bot was set up by user "+str(profile.user.username)+" "+str(profile.user.email)+" https://u9.by/a/webchecker/editdelete/"+str(webrecord.id)
                             msg = msg1 + msg2 + msg3
                             dict = {"user_id": profile.user.id,
@@ -174,13 +174,13 @@ def process_notifications():
     ending_datetime = datetime.now()
     with open('cronlog.txt', 'r') as file:
         existlines = file.readlines()[1:]
-        existlines.extend('Cron job for '+PFS+' started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' pinged '+str(counter)+' webrecords.')
+        existlines.extend('Cron job for '+PFS+' started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' (UTC) pinged '+str(counter)+' webrecords.')
         file.close()
     with open('cronlog.txt', 'w') as file:
         print(existlines)
         file.writelines(existlines)  #removing zero line
         file.close()
-        print('+++++  cronlog.txt file appended with:'+'Cron job for '+PFS+' started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' pinged '+str(counter)+' webrecords.')
+        print('+++++  cronlog.txt file appended with:'+'Cron job for '+PFS+' started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' (UTC) pinged '+str(counter)+' webrecords.')
 
 # The notify.txt file is expected to contain one JSON object per line, where each JSON object represents a notification. Each notification should have a user_id and a message. Here’s an example of how the notify.txt file might look:
 #

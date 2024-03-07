@@ -143,15 +143,15 @@ def process_notifications():
                         dict = {"user_id": profile.user.id,
                             "message" : msg,
                             "subject": "U9 Webchecker received code "+str(rcode)+" from "+webrecord.url}
-                        if rcode[0] =="1" and webrecord.code100cb:
+                        if str(rcode[0]) =="1" and webrecord.code100cb:
                             lines.append(json.dumps(dict))
-                        if rcode[0] =="2" and webrecord.code200cb:
+                        if str(rcode[0]) =="2" and webrecord.code200cb:
                             lines.append(json.dumps(dict))
-                        if rcode[0] == "3" and webrecord.code300cb:
+                        if str(rcode[0]) == "3" and webrecord.code300cb:
                             lines.append(json.dumps(dict))
-                        if rcode[0] == "4" and webrecord.code400cb:
+                        if str(rcode[0]) == "4" and webrecord.code400cb:
                             lines.append(json.dumps(dict))
-                        if rcode[0] == "5" and webrecord.code500cb:
+                        if str(rcode[0]) == "5" and webrecord.code500cb:
                             lines.append(json.dumps(dict))
     with open('notify.txt', 'w') as file:
         existinglines = file.readlines()

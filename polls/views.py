@@ -298,51 +298,36 @@ def webchecker(request):
 def webchecker_add(request):
     pattern_html = 'polls/webcheck_add.html'
     if request.method == "POST":
-        if not request.user.is_staff:  #only customers have unlimited webrecords, users have only 5
-            counter = Webrecords.objects.all().filter(author=request.user).count()
-            messages.error(request,'you are not Customer, number of your records is '+str(counter))
-            if counter>5:
-                messages.error(request, 'WARNING! your user status allows only 5 webrecords. Contact the administrator to acquire Customer privileges with unlimited number of websites to check')
-                return redirect('polls:webchecker')
-            else:  #counter<=5, creating new record for the ordinary user
-                form = WebrecordsForm(request.POST)
-                if form.is_valid():
-                    webrecord = Webrecords()
-                    cd = form.cleaned_data
-                    webrecord.websites = 'U9'
-                    webrecord.url = cd['url']
-                    webrecord.polling_frequency = cd['polling_frequency'][0:2]
-                    webrecord.notifycb = cd['notifycb']
-                    webrecord.code100cb = cd['code100cb']
-                    webrecord.code200cb = cd['code200cb']
-                    webrecord.code300cb = cd['code300cb']
-                    webrecord.code400cb = cd['code400cb']
-                    webrecord.code500cb = cd['code500cb']
-                    webrecord.save()
+        form = WebrecordsForm(request.POST)
+        if form.is_valid():
+            webrecord = Webrecords()
+            cd = form.cleaned_data
+            webrecord.websites = 'U9'
+            webrecord.url = cd['url']
+            webrecord.polling_frequency = cd['polling_frequency'][0:2]
+            webrecord.notifycb = cd['notifycb']
+            webrecord.code100cb = cd['code100cb']
+            webrecord.code200cb = cd['code200cb']
+            webrecord.code300cb = cd['code300cb']
+            webrecord.code400cb = cd['code400cb']
+            webrecord.code500cb = cd['code500cb']
+            if not request.user.is_staff:  # only customers have unlimited webrecords, users have only 5
+                counter = Webrecords.objects.all().filter(author=request.user).count()
+                if counter > 5:
+                    messages.error(request,
+                                   'WARNING! your user status allows only 5 webrecords. Contact the administrator to acquire Customer privileges with unlimited number of websites to check')
                     return redirect('polls:webchecker')
-                else:  # form is not valid
-                    messages.error(request, form.errors)
-                    return redirect('polls:webcheckeradd')
-        else: #user is staff, it means, Customer, creating unlimited records
-            form = WebrecordsForm(request.POST)
-            if form.is_valid():
-                webrecord = Webrecords()
-                cd = form.cleaned_data
-                webrecord.websites = 'U9'
-                webrecord.url = cd['url']
-                webrecord.polling_frequency = cd['polling_frequency'][0:2]
-                webrecord.notifycb = cd['notifycb']
-                webrecord.code100cb = cd['code100cb']
-                webrecord.code200cb = cd['code200cb']
-                webrecord.code300cb = cd['code300cb']
-                webrecord.code400cb = cd['code400cb']
-                webrecord.code500cb = cd['code500cb']
+                else:
+                    webrecord.save()
+            else:
                 webrecord.save()
-                return redirect('polls:webchecker')
-            else: #form is not valid
-                messages.error(request, form.errors)
-                return redirect('polls:webcheckeradd')
-    else:  #request.method is GET, and user just wants to see a clear form
+            return redirect('polls:webchecker')
+        else:
+            messages.error(request, form.errors)
+            return redirect('polls:webcheckeradd')
+        #else:
+         #   messages.error(request, urlentry_form.error)
+    else:
         form = WebrecordsForm()
         return render(request, pattern_html, {  # usual immediate redirection
         'form': form,

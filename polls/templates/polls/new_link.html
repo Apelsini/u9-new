@@ -1,22 +1,24 @@
 {% extends 'polls/base.html' %}
 {% block Title %}U9 New Link{% endblock %}
 {% block Background %}
-<div class="h-100" style="background-image: url('https://u9.by/assets/mainback.jpg'); background-size: cover;">
+<div class="vh-100" style="background-image: url('https://u9.by/assets/mainback.jpg'); background-size: cover;">
     {% endblock %}
 {% block Body %}
     <div class="container mt-5">
         <div class="row d-flex justify-content-left">
             <div class="col-md-12 rounded text-dark bg-light" style="--bs-bg-opacity: .8;">
                 <legend>Add New Link</legend>
-   <form action="" method="post" >
-        {% csrf_token %}
-        <fieldset>
-            <legend>Link</legend>
-            {{ urlentry_form.as_p }}
-            {{ formset.as_p }}
-            <input type="submit" class="btn btn-danger" value="Submit Link">
-        </fieldset>
-    </form>
+                     <form action="" method="post" >
+                    {% csrf_token %}
+                        <fieldset>
+                            {{ urlentry_form.as_p }}
+                            {{ formset.as_p }}
+                            <input type="submit" class="btn btn-danger" value="Submit Link">
+                        </fieldset>
+                    </form>
+            </div>
+        </div>
+    </div>
      <br><br>
 {% endblock %}
 

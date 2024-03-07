@@ -316,7 +316,6 @@ def webchecker_add(request):
                 if counter > 5:
                     messages.error(request,
                                    'WARNING! your user status allows only 5 webrecords. Contact the administrator to acquire Customer privileges with unlimited number of websites to check')
-                    return redirect('polls:webchecker')
                 else:
                     webrecord.save()
             else:

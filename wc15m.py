@@ -167,6 +167,7 @@ def process_notifications():
         existinglines.extend(lines)
         file.close()
     with open('notify.txt', 'w') as file:
+        print(existinglines)
         file.writelines(existinglines)
         print('++  notify.txt file formed, now there are '+str(len(existinglines))+' lines in it ')
         file.close()
@@ -176,6 +177,7 @@ def process_notifications():
         existlines.extend('Cron job for '+PFS+' started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' pinged '+str(counter)+' webrecords.')
         file.close()
     with open('cronlog.txt', 'w') as file:
+        print(existlines[1:])
         file.writelines(existlines[1:])  #removing zero line
         file.close()
         print('+++++  cronlog.txt file appended with:'+'Cron job for '+PFS+' started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' pinged '+str(counter)+' webrecords.')

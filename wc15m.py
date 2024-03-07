@@ -134,7 +134,7 @@ def process_notifications():
                             rcode = 'err'
                         counter = counter+1
                         # {"user_id": 1, "message": "Cron job is working every minute. This is a notification for uby with id=1",  "subject": "Test of cron job"}
-                        msg = "U9.by Webchecker bot pinging the % %. The last ping at %  returned response code % %. The webchecker bot was set up by user % % https://u9.by/a/webchecker/editdelete/% " % (webrecord.url,PFS, str(starting_datetime), str(rcode), codedict["rcode"], str(profile.user.username), str(profile.user.email), str(webrecord.id))
+                        msg = "U9.by Webchecker bot pinging the % %. The last ping at %  returned response code % %. The webchecker bot was set up by user % % https://u9.by/a/webchecker/editdelete/% " % (webrecord.url,PFS, str(starting_datetime), str(rcode), codedict[rcode], str(profile.user.username), str(profile.user.email), str(webrecord.id))
                         dict = {"user_id": profile.user.id,
                             "message" : msg,
                             "subject": "U9 Webchecker found code "+str(rcode)+" for "+webrecord.url}

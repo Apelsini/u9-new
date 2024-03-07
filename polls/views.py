@@ -107,7 +107,7 @@ class IndexView(generic.ListView):    #Class-Based View
 class CreateUrlentry(generic.CreateView):
     model = Urlentry
     fields = ['url_text']
-    template_name = 'polls/new_question.html'
+    template_name = 'polls/new_link.html'
     def form_valid(self, form):
         cd = form.cleaned_data
         form.instance.create_date = timezone.now()

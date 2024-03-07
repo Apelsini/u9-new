@@ -121,23 +121,23 @@ def process_notifications():
                         try:
                             r = requests.get(webrecord.url)
                             rcode = r.status_code
-                            msg1 = "U9.by Webchecker bot pinging the" + webrecord.url + " " + PFS
-                            msg2 = "The last ping at " + str(starting_datetime) + " (UTC) returned response code " + str(
+                            msg1 = " U9.by Webchecker bot pinging the " + webrecord.url + " " + PFS
+                            msg2 = " The last ping at " + str(starting_datetime) + " (UTC) returned response code " + str(
                                 rcode) + " " + codedict[str(rcode)]
-                            msg3 = "The webchecker bot was set up by user " + str(profile.user.username) + " " + str(
+                            msg3 = " The webchecker bot was set up by user " + str(profile.user.username) + " " + str(
                                 profile.user.email) + " https://u9.by/a/webchecker/editdelete/" + str(webrecord.id)
                             msg = msg1 + msg2 + msg3
                         except requests.exceptions.MissingSchema:
                             r = requests.get('https://'+webrecord.url)
                             rcode = r.status_code
-                            msg1 = " U9.by Webchecker bot pinging the" + webrecord.url + " " + PFS
+                            msg1 = " U9.by Webchecker bot pinging the " + webrecord.url + " " + PFS
                             msg2 = " The last ping at " + str(starting_datetime) + " (UTC) returned response code " + str(
                                 rcode) + " " + codedict[str(rcode)]
                             msg3 = " The webchecker bot was set up by user " + str(profile.user.username) + " " + str(
                                 profile.user.email) + " https://u9.by/a/webchecker/editdelete/" + str(webrecord.id)
                             msg = msg1 + msg2 + msg3
                         except Exception as e:
-                            msg1 = " U9.by Webchecker bot pinging the"+webrecord.url+" "+PFS
+                            msg1 = " U9.by Webchecker bot pinging the "+webrecord.url+" "+PFS
                             msg2 = " The last ping at "+str(starting_datetime)+" (UTC) returned EXCEPTION "+str(e)
                             msg3 = " The webchecker bot was set up by user "+str(profile.user.username)+" "+str(profile.user.email)+" https://u9.by/a/webchecker/editdelete/"+str(webrecord.id)
                             msg = msg1 + msg2 + msg3

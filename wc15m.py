@@ -153,16 +153,17 @@ def process_notifications():
                             lines.append(json.dumps(dict))
                         if str(rcode)[0] == "5" and webrecord.code500cb:
                             lines.append(json.dumps(dict))
-    with open('notify.txt', 'w') as file:
+    with open('notify.txt', 'r') as file:
         existinglines = file.readlines()
         existinglines.append(lines)
+    with open('notify.txt', 'w') as file:
         file.writelines(existinglines)
         print('+++++  notify.txt file formed')
     ending_datetime = datetime.now()
-    with open('cronlog.txt', 'w') as file:
+    with open('cronlog.txt', 'r') as file:
         existinglines = file.readlines()
-        existinglines.remove()
         existinglines.append('Cron job for '+PFS+'started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' pinged '+str(counter)+' webrecords.')
+    with open('cronlog.txt', 'w') as file:
         file.writelines(existinglines[1:])  #removing zero line
         print('+++++  cronlog.txt file appended with:'+'Cron job for '+PFS+'started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' pinged '+str(counter)+' webrecords.')
 

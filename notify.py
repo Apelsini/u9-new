@@ -1,4 +1,6 @@
 import os
+import time
+
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "urls.settings")
 
 import django
@@ -41,8 +43,6 @@ def send_email_notification(email, message, subject):
 def process_notifications():
     with open('notify.txt', 'r') as file:
         lines = file.readlines()
-
-    with open('notify.txt', 'w') as file:
         for line in lines:
             notification = json.loads(line)
             user_id = notification['user_id']
@@ -66,13 +66,12 @@ def process_notifications():
             if user.telegram2cb:
                 send_telegram_message(user.telegram2, user.telegram2chat_id, '<b>'+subject+'</b>: \n'+message)
                 print('telegram message sent to telegram2 of the user with id=', str(user_id), ' ', str(user))
-
             # Do not write this notification back to the file
             lines.remove(line)
-            lines.clear()
+
+    with open('notify.txt', 'w') as file:
         file.writelines(lines)
         # Write the remaining notifications back to the file
-
 
 # In this script, process_notifications reads each line from notify.txt,
 # parses it as a JSON object, retrieves the user associated with the user_id in the notification,

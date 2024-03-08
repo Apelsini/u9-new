@@ -290,7 +290,7 @@ def add_lead_and_redirect(request, hash):
 def webchecker(request):
     webrecords = Webrecords.objects.all().filter(author=request.user)
     script_dir = os.path.dirname(os.path.realpath(__file__))  # <-- absolute dir the script is in
-    abs_file_path = os.path.join(script_dir, 'cronlog.txt')
+    abs_file_path = os.path.join(script_dir, '..', 'cronlog.txt')  #going one level up
     with open(abs_file_path, 'r') as file:
         lines = file.readlines()
     pattern_html = 'polls/webcheck.html'

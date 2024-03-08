@@ -288,7 +288,7 @@ def add_lead_and_redirect(request, hash):
 # list Webchecker records and log
 @login_required(login_url=reverse_lazy('auth:login'))
 def webchecker(request):
-    webrecords = Webrecords.objects.all().filter(author=request.user)
+    webrecords = Webrecords.objects.all().filter(author=request.user).orderby(id)
     script_dir = os.path.dirname(os.path.realpath(__file__))  # <-- absolute dir the script is in
     abs_file_path = os.path.join(script_dir, '..', 'cronlog.txt')  #going one level up
     with open(abs_file_path, 'r') as file:

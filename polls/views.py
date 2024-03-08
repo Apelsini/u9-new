@@ -288,7 +288,7 @@ def add_lead_and_redirect(request, hash):
 @login_required(login_url=reverse_lazy('auth:login'))
 def webchecker(request):
     webrecords = Webrecords.objects.all().filter(author=request.user)
-    with open('.cronlog.txt', 'r') as file:
+    with open(os.path+'/cronlog.txt', 'r') as file:
         lines = file.readlines()
     pattern_html = 'polls/webcheck.html'
     return render(request, pattern_html, {  # usual immediate redirection

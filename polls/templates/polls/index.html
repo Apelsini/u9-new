@@ -344,29 +344,34 @@
         {% endif %}
   </ul>
 {% else %}   <!-- customer listing -->
-<table class="table-condensed">
-    <tbody>
-    {% for links in links_list %}
+ {% for links in links_list %}
     <tr>
         <td colspan="3">
             <a href="{% url 'polls:detail' links.id %}">
                 {{ links.url_text|slice:':50' }}
-            </a></td>
-        <td>
-            {{ links.create_date }}
+            </a></td> <br>
+        <td >
+            <b>u9.by/{{ links.url_short }}</b>   [{{ links.author }}] {% if links.author.is_staff %} <span class="colortext">(customer)</span>
+            {% endif %} <i>   {{ links.create_date }}</i>
         </td>
         <td>
+  <div class="row">
+    <div class="col-sm">
+    </div>
+    <div class="col-sm" align="right">
+                {% if links.author == request.user %}
             <a href="{% url 'polls:results' links.id %}" type="button" class="btn btn-danger btn-sm">
                 Stats
             </a>
+                {% endif %}
             <a href="{% url 'polls:delete' links.id %}" type="button" class="btn btn-danger btn-sm">
                 Delete
             </a>
-        </td>
+    </div>
+  </div>
+        </td> <br>
     </tr>
     {% endfor %}
-    </tbody>
-</table>
 {% endif %}
 {% endif %}
 <br>

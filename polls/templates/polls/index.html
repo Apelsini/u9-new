@@ -313,11 +313,9 @@
     </tr>
         </tbody>
     </table>
-    <br>
     {% endif %}
-
     {% endfor %}
-
+    <br>
   <ul class="pagination">
         {% if page_obj.has_previous %}
       <li><a href="?filter_url={{ filter_url }}&filter_datefrom={{ filter_datefrom }}&filter_dateto={{ filter_dateto }}&submit=Filter&page={{ page_obj.previous_page_number }}">&laquo;</a></li>

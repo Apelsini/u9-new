@@ -195,30 +195,36 @@
         {% endif %}
   </ul>
 {% else %}
-<table class="table-condensed">
-    <tbody>
-    {% for links in links_list %}
+
+   {% for links in links_list %}
     <tr>
         <td colspan="3">
             <a href="{% url 'polls:detail' links.id %}">
                 {{ links.url_text|slice:':50' }}
-            </a></td>
-        <td>
-           <b></b>[{{ links.author }}] {% if links.author.is_staff %} <span class="colortext">(customer)</span>
-            {% endif %}
+            </a></td> <br>
+        <td >
+            <b>u9.by/{{ links.url_short }}</b>   [{{ links.author }}] {% if links.author.is_staff %} <span class="colortext">(customer)</span>
+            {% endif %} <i>   {{ links.create_date }}</i>
         </td>
         <td>
-            {{ links.create_date }}
-        </td>
-        <td>
+  <div class="row">
+    <div class="col-sm">
+    </div>
+    <div class="col-sm" align="right">
+                {% if links.author == request.user %}
+            <a href="{% url 'polls:results' links.id %}" type="button" class="btn btn-danger btn-sm">
+                Stats
+            </a>
+                {% endif %}
             <a href="{% url 'polls:delete' links.id %}" type="button" class="btn btn-danger btn-sm">
                 Delete
             </a>
-        </td>
+    </div>
+  </div>
+        </td> <br>
     </tr>
     {% endfor %}
-    </tbody>
-</table>
+
 {% endif %}
 {% endif %}
 
@@ -289,32 +295,35 @@
         </div>
 </div>
     </form>
-    <table class="table table-sm">
-        <tbody>
- {% for links in links_list %}
- {% if links.author == request.user %}
+  {% for links in links_list %}
     <tr>
-        <td>
-            <a href="{% url 'polls:detail' links.id %}"> {{ links.url_text|slice:':80' }} </a>
-            <br>
-            <b>u9.by/{{ links.url_short }}</b> {{ links.create_date }}
+        <td colspan="3">
+            <a href="{% url 'polls:detail' links.id %}">
+                {{ links.url_text|slice:':50' }}
+            </a></td> <br>
+        <td >
+            <b>u9.by/{{ links.url_short }}</b>   [{{ links.author }}] {% if links.author.is_staff %} <span class="colortext">(customer)</span>
+            {% endif %} <i>   {{ links.create_date }}</i>
         </td>
-        <td style="width: 5%">
+        <td>
+  <div class="row">
+    <div class="col-sm">
+    </div>
+    <div class="col-sm" align="right">
+                {% if links.author == request.user %}
             <a href="{% url 'polls:results' links.id %}" type="button" class="btn btn-danger btn-sm">
                 Stats
             </a>
-        </td>
-        <td style="width: 5%">
+                {% endif %}
             <a href="{% url 'polls:delete' links.id %}" type="button" class="btn btn-danger btn-sm">
                 Delete
             </a>
-        </td>
+    </div>
+  </div>
+        </td> <br>
     </tr>
-    {% endif %}
     {% endfor %}
-         </tbody>
-    </table>
-    <br>
+            <br>
   <ul class="pagination">
         {% if page_obj.has_previous %}
       <li><a href="?filter_url={{ filter_url }}&filter_datefrom={{ filter_datefrom }}&filter_dateto={{ filter_dateto }}&submit=Filter&page={{ page_obj.previous_page_number }}">&laquo;</a></li>

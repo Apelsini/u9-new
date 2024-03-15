@@ -1,6 +1,9 @@
 {% extends 'polls/base.html' %}
 {% block Title %}U9 {{ urlentry.url_short }}{% endblock %}
 {% block Body %}
+{% block Background %}
+<div class="h-200" style="background-image: url('https://u9.by/assets/mainback.jpg'); background-size: cover;">
+    {% endblock %}
 <style>
    .colortext {
      color: red; /* Красный цвет выделения */

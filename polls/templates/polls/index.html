@@ -292,31 +292,27 @@
 
  {% for links in links_list %}
  {% if links.author == request.user %}
+    <table class="table table-sm">
+        <tbody>
     <tr>
         <td>
-            <a href="{% url 'polls:detail' links.id %}">
-                {{ links.url_text|slice:':80' }}
-            </a>
-            </td><br>
-        <td>
-            <b>u9.by/{{ links.url_short }}</b>
+            <a href="{% url 'polls:detail' links.id %}"> {{ links.url_text|slice:':80' }} </a>
+            <br>
+            <b>u9.by/{{ links.url_short }}</b> {{ links.create_date }}
         </td>
         <td>
-            {{ links.create_date }}
-        </td><br>
-
-            <div class="col-xs-7 col-sm-7"> </div>
-            <div class="col-xs-5 col-sm-5 pull-right">
             <a href="{% url 'polls:results' links.id %}" type="button" class="btn btn-danger btn-sm">
                 Stats
             </a>
-
+        </td>
+        <td>
             <a href="{% url 'polls:delete' links.id %}" type="button" class="btn btn-danger btn-sm">
                 Delete
             </a>
-                </div>
-             <br>
+        </td>
     </tr>
+        </tbody>
+    </table>
     <br>
     {% endif %}
 
@@ -341,7 +337,7 @@
       <li class="disabled"><span>&raquo;</span></li>
         {% endif %}
   </ul>
-{% else %}
+{% else %}   <!-- customer listing -->
 <table class="table-condensed">
     <tbody>
     {% for links in links_list %}

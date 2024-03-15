@@ -289,11 +289,10 @@
         </div>
 </div>
     </form>
-
- {% for links in links_list %}
- {% if links.author == request.user %}
     <table class="table table-sm">
         <tbody>
+ {% for links in links_list %}
+ {% if links.author == request.user %}
     <tr>
         <td>
             <a href="{% url 'polls:detail' links.id %}"> {{ links.url_text|slice:':40' }} </a>
@@ -311,10 +310,10 @@
             </a>
         </td>
     </tr>
-        </tbody>
-    </table>
     {% endif %}
     {% endfor %}
+         </tbody>
+    </table>
     <br>
   <ul class="pagination">
         {% if page_obj.has_previous %}

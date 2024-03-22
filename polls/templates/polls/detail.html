@@ -207,7 +207,14 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
             </div>
                 </div>
             </div>
+
+
+    </div>
+    <div class='col-md-12'>
+        <div class="alert alert-info">
+                   Select <strong>equal date and time</strong> in 'from:' and 'to:' fields to switch to direct redirection when clicking the short link
         </div>
+    </div>
         <script type="text/javascript">
    $(document).ready(function () {
        $('#datetime_available_from').datetimepicker({
@@ -225,17 +232,15 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
    });
 
         </script>
-
+<br>
     </div>
 
         {% endif %} {% endif %}
-
+<br>
 </div>
 
             </div>
-    <div class="alert alert-info">
-                   Select <strong>equal date and time</strong> in 'from:' and 'to:' fields to switch to direct redirection when clicking the short link
-                 </div>
+
    <br>        <br>
         {% if urlentry.author == request.user and request.user.is_staff %}
       <div class="row">

@@ -3,3 +3,6 @@ urls\secrets.json
 secret.py
 urls/secrets.json
 urls/secrets.json
+usrhash.py
+polls\usrhash.py
+polls/usrhash.py

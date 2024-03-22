@@ -13,6 +13,10 @@ urlpatterns = [
     path('details/<int:pk>/', view=login_required(views.DetailView.as_view(), login_url=reverse_lazy('auth:login')), name='detail'),
     path('a/<int:pk>/results/', view=login_required(views.ResultsView.as_view(), login_url=reverse_lazy('auth:login')), name='results'),
     path('a/<int:pk>/results/get', view=views.ClicksView.as_view(), name='get'),
+    #old links redirects
+    path('polls/<int:pk>/results/', view=login_required(views.ResultsView.as_view(), login_url=reverse_lazy('auth:login')),
+         name='results'),
+    path('polls/<int:pk>/results/get', view=views.ClicksView.as_view(), name='get'),
     path('a/apps', view=views.AppsView.as_view(), name='apps'),
     path('a/webchecker', view=login_required(views.webchecker, login_url=reverse_lazy('auth:login')), name='webchecker'),
     path('a/webchecker/add', view=login_required(views.webchecker_add, login_url=reverse_lazy('auth:login')),
@@ -22,6 +26,8 @@ urlpatterns = [
     path('a/webchecker/delete/<int:pk>',
          view=login_required(views.webchecker_delete, login_url=reverse_lazy('auth:login')),
          name='webcheckerdelete'),
+    #path('n/<str:hash>/<str:hash>/', view=views.add_lead_and_redirect, name='msgnosubj'),
+    #path('n/<str:hash>/<str:hash>/<str:hash>/', view=views.add_lead_and_redirect, name='msgsubj'),
     #path('notify/donotify', view=views.NotifyView.as_view(), name='donotify'),
     path('<str:hash>/', view=views.add_lead_and_redirect, name='short'),
 ]

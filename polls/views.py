@@ -133,11 +133,15 @@ class DetailView(generic.DetailView):
     fields = ['url_text', 'author', 'url_id', 'datetime_available_from', 'datetime_available_to', 'partner_ads','qr_code','snapshot']
     template_name = 'polls/detail.html'
     #adding extra data
+    def get_object(self):
+        obj = super().get_object()
+        return obj
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
+        obj = super().object
         # Add in additional details
-        if len(object.partner_ads)>0:
+        if len(obj.partner_ads)>0:
             context["partner_ads_onoff"] = 'on'
         else:
             context["partner_ads_onoff"] = 'off'

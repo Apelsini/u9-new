@@ -137,7 +137,7 @@ class DetailView(generic.DetailView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in additional details
-        if len(Urlentry.partner_ads)>0:
+        if len(self.partner_ads)>0:
             context["partner_ads_onoff"] = 'on'
         else:
             context["partner_ads_onoff"] = 'off'

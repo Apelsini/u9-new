@@ -218,9 +218,9 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
                 <strong>Partner ads:</strong>{% if partnerads %}on{% else %}off{% endif %}<br>
                 <strong>Link premiere / deprecated function:</strong>{% if datetime_available_from == datetime_available_to %}on{% else %}off{% endif %}<br>
                 {% if datetime_available_from != datetime_available_to %}
-                 <strong>not equal</strong>
+                 <strong>{{ datetime_available_from }} not equal to {{ datetime_available_to }}</strong>
                 {% else %}
-                <strong>not equal</strong>
+                <strong>{{ datetime_available_from }} equal to {{ datetime_available_to }}</strong>
                 {% endif %}
                  <br>
 

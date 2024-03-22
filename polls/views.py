@@ -18,6 +18,7 @@ import time
 from datetime import datetime, date, timedelta
 from django.shortcuts import render
 from django.contrib.auth import get_user_model
+import pytz
 import json
 import os
 
@@ -27,6 +28,8 @@ def countme(iter):
     for i in iter:
         count=count+1
     return count
+
+utc=pytz.UTC
 
 # Create your views here.
 class IndexView(generic.ListView):    #Class-Based View
@@ -148,17 +151,20 @@ class DetailView(generic.DetailView):
         delta =  obj.datetime_available_to-obj.datetime_available_from
         if delta > timedelta(minutes=1):
             context["premiere_outdated_onoff"] = '✅ on'
-            #three options - Premiere, Ongoing, Deprecated
-            now = datetime.now()
-            context["today"] = now.strftime("%d/%m/%Y %H:%M")
+            #three options -
+            # Premiere, Ongoing, Deprecated
+            now = utc.localize(datetime.now())
+            context["today"] =now.strftime("%d/%m/%Y %H:%M")
+            dtfrom = utc.localize(obj.datetime_available_from)
+            dtto = utc.localize(obj.datetime_available_to) #need to avoid TypeError: can't compare offset-naive and offset-aware datetimes
             #premiere
-            if obj.datetime_available_to>now and obj.datetime_available_from>now:
-                context["premiere_outdated_mode"] = '⌛ Premiere is planned on '+obj.datetime_available_from.strftime("%d/%m/%Y %H:%M")
+            if dtto>now and dtfrom>now:
+                context["premiere_outdated_mode"] = '⌛ Premiere is planned on '+dtfrom.strftime("%d/%m/%Y %H:%M")
             # Ongoing
-            if obj.datetime_available_to>now and obj.datetime_available_from<now:
-                context["premiere_outdated_mode"] = '✅ Ongoing link from '+obj.datetime_available_from.strftime("%d/%m/%Y %H:%M")+' to '+obj.datetime_available_to.strftime("%d/%m/%Y %H:%M")
+            if dtto>now and dtfrom<now:
+                context["premiere_outdated_mode"] = '✅ Ongoing link from '+dtfrom.strftime("%d/%m/%Y %H:%M")+' to '+dtto.strftime("%d/%m/%Y %H:%M")
             # Deprecated
-            if obj.datetime_available_to<now and obj.datetime_available_from<now:
+            if dtto<now and dtfrom<now:
                 context["premiere_outdated_mode"] = '⛔ Deprecated link starting from '+obj.datetime_available_to.strftime("%d/%m/%Y %H:%M")
         else:
             context["premiere_outdated_onoff"] = '❌ off'

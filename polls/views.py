@@ -132,6 +132,16 @@ class DetailView(generic.DetailView):
     model = Urlentry
     fields = ['url_text', 'author', 'url_id', 'datetime_available_from', 'datetime_available_to', 'partner_ads','qr_code','snapshot']
     template_name = 'polls/detail.html'
+    #adding extra data
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in additional details
+        if len(Urlentry.partner_ads)>0:
+            context["partner_ads_onoff"] = 'on'
+        else:
+            context["partner_ads_onoff"] = 'off'
+        return context
 
 def detailview_urlentry(request, pk):
     urlentry = get_object_or_404(Urlentry, pk=pk)

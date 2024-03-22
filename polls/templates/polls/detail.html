@@ -215,7 +215,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
                    Select <strong>equal date and time</strong> in 'from:' and 'to:' fields to switch to direct redirection when clicking the short link
         </div>
                 <div class="alert alert-warning">
-                <strong>Partner ads:</strong>{% if partnerads %}on{% else %}off{% endif %}<br>
+                <strong>Partner ads: </strong>{{ partner_ads_onoff }}<br>
                 <strong>Link premiere / deprecated function:</strong>{% if datetime_available_from|date:'d-m-Y H:i' == datetime_available_to|date:'d-m-Y H:i' %}on{% else %}off{% endif %}<br>
                 {% if datetime_available_from|date:'d-m-Y H:i' != datetime_available_to|date:'d-m-Y H:i' %}
                  <strong>{{ datetime_available_from.value|date:'d-m-Y H:i' }} not equal to {{ datetime_available_to.value|date:'d-m-Y H:i' }}</strong>
@@ -268,5 +268,4 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
  </fieldset>
         </form>
         {% endif %}
- <br><br>
         {% endblock %}

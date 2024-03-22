@@ -217,7 +217,13 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
                 <div class="alert alert-warning">
                 <strong>Partner ads:</strong>{% if partnerads %}on{% else %}off{% endif %}<br>
                 <strong>Link premiere / deprecated function:</strong>{% if datetime_available_from == datetime_available_to %}on{% else %}off{% endif %}<br>
-        </div>
+                {% if datetime_available_from == datetime_available_to %}
+          <strong>Link premiere :</strong>
+                {% else %}
+
+                {% endif %}
+
+                </div>
     </div>
         <script type="text/javascript">
    $(document).ready(function () {

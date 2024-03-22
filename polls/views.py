@@ -153,10 +153,10 @@ class DetailView(generic.DetailView):
             context["premiere_outdated_onoff"] = '✅ on'
             #three options -
             # Premiere, Ongoing, Deprecated
-            now = utc.localize(datetime.now())
+            now = datetime.now()
             context["today"] =now.strftime("%d/%m/%Y %H:%M")
-            dtfrom = utc.localize(obj.datetime_available_from)
-            dtto = utc.localize(obj.datetime_available_to) #need to avoid TypeError: can't compare offset-naive and offset-aware datetimes
+            #dtfrom = utc.localize(obj.datetime_available_from)
+            #dtto = utc.localize(obj.datetime_available_to) #need to avoid TypeError: can't compare offset-naive and offset-aware datetimes
             #premiere
             # if dtto>now and dtfrom>now:
             #     context["premiere_outdated_mode"] = '⌛ Premiere is planned on '+dtfrom.strftime("%d/%m/%Y %H:%M")
@@ -166,6 +166,17 @@ class DetailView(generic.DetailView):
             # # Deprecated
             # if dtto<now and dtfrom<now:
             #     context["premiere_outdated_mode"] = '⛔ Deprecated link starting from '+obj.datetime_available_to.strftime("%d/%m/%Y %H:%M")
+            if obj.datetime_available_from != obj.datetime_available_to:
+                # if there is need for redirection to 'premiere.html' or 'deprecated.html'
+                if obj.datetime_available_from > timezone.now() and obj.datetime_available_to > timezone.now():
+                    # the urlentry has Premiere date
+                    context["premiere_outdated_mode"] = '⌛ Premiere is planned on '+dtfrom.strftime("%d/%m/%Y %H:%M")
+                if obj.datetime_available_from < timezone.now() and obj.datetime_available_to < timezone.now():
+                    # the urlentry already deprecated
+                    context["premiere_outdated_mode"] = '⛔ Deprecated link starting from '+obj.datetime_available_to.strftime("%d/%m/%Y %H:%M")
+            else:
+                context["premiere_outdated_mode"] = '✅ Ongoing link from ' + dtfrom.strftime(
+                    "%d/%m/%Y %H:%M") + ' to ' + dtto.strftime("%d/%m/%Y %H:%M")
         else:
             context["premiere_outdated_onoff"] = '❌ off'
 

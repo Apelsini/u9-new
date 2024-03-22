@@ -15,7 +15,7 @@ from django.contrib.auth.models import Group, User
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import time
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 from django.shortcuts import render
 from django.contrib.auth import get_user_model
 import json
@@ -146,7 +146,7 @@ class DetailView(generic.DetailView):
         else:
             context["partner_ads_onoff"] = '❌ off'
         delta =  obj.datetime_available_to-obj.datetime_available_from
-        if delta > 0:
+        if delta > timedelta(minutes=1):
             context["premiere_outdated_onoff"] = '✅ on'
         else:
             context["premiere_outdated_onoff"] = '❌ off'

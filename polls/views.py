@@ -136,9 +136,8 @@ class DetailView(generic.DetailView):
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
-        obj = super.get_object()
         # Add in additional details
-        if len(obj.partner_ads)>0:
+        if len(object.partner_ads)>0:
             context["partner_ads_onoff"] = 'on'
         else:
             context["partner_ads_onoff"] = 'off'

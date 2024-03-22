@@ -20,6 +20,7 @@ from django.urls import include, path, re_path
 from django.conf.urls import url
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import RedirectView
 from django.contrib.auth import views as auth_views
 # from polls import *
 # from polls.views import *
@@ -31,8 +32,8 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = [
-    path('admin/polls/urlentry/2/change/', include('authentication.urls')),
-    path('admin/polls/urlentry/', include('authentication.urls')),
+    path('admin/polls/urlentry/2/change/', RedirectView.as_view(url='admin/'),
+    path('admin/polls/urlentry/', RedirectView.as_view(url='admin/')),
     path('admin/polls/', include('authentication.urls')),
     path('admin/', admin.site.urls),
     path('', include('polls.urls')),

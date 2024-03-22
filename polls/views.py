@@ -149,7 +149,7 @@ class DetailView(generic.DetailView):
         if delta > timedelta(minutes=1):
             context["premiere_outdated_onoff"] = '✅ on'
             #three options - Premiere, Ongoing, Deprecated
-            now = datetime.datetime.now()
+            now = datetime.now()
             context["today"] = now.strftime("%d/%m/%Y %H:%M")
             #premiere
             if obj.datetime_available_to>now and obj.datetime_available_from>now:

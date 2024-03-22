@@ -165,7 +165,8 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
                  </div>
                   <div class="col-md-12" >
 
-    <div><strong>Link available </strong>
+    <div>
+        <strong>Link available </strong>
 <br>
             <div class='col-md-6'>
                 <div class="form-group">
@@ -206,6 +207,10 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
             </div>
                 </div>
             </div>
+
+            <div class="alert alert-info">
+                   Select <strong>equal date and time</strong> in 'from:' and 'to:' fields to switch to direct redirection when clicking the short link
+                 </div>
         </div>
         <script type="text/javascript">
    $(document).ready(function () {
@@ -232,9 +237,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
 </div>
 
             </div>
-    <div class="alert alert-info">
-                   Select <strong>equal date and time</strong> in 'from:' and 'to:' fields to switch to direct redirection when clicking the short link
-                 </div>
+
    <br>        <br>
         {% if urlentry.author == request.user and request.user.is_staff %}
       <div class="row">

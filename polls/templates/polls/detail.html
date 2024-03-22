@@ -155,8 +155,14 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
     <label><strong>Partner ads: </strong>
         <input type="text" name="partner_ads" id="partner_ads" value="{{ urlentry.partner_ads }}">
         <img src="https://api.screenshotmachine.com?key=7a0150&url={{ urlentry.partner_ads }}&dimension=1024x768" width="204" height="152" alt="snapshot">
-    </label>   <br> Leave the 'Partner ads' field blank to delete the partner ads block and switch to direct redirection when clicking the short link. <b> Only links to webpages (https://u9.by/) and links to single pictures (https://u9.by/assets/u9l_sm.png) are allowed. </b> Note that not all websites are ready to be opened inside the frame, so, better use pictures option.
-            <br> <br>
+    </label>
+                     <div class="alert alert-info">
+                        <strong></strong> Leave the 'Partner ads' field blank to delete the partner ads block and switch to direct redirection when clicking the short link.
+                    </div>
+                     <div class="alert alert-info">
+                         <strong>Only links to webpages (https://u9.by/) and links to single pictures (https://u9.by/assets/u9l_sm.png) are allowed.</strong>
+                         <br>Note that not all websites are ready to be opened inside the frame, so, better use pictures option.
+                     </div>
                  </div>
                   <div class="col-md-12" >
 

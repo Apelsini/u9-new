@@ -222,7 +222,25 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
                 {% else %}
                 <strong>not equal</strong>
                 {% endif %}
-
+                    {% set now = moment().format('DD-MM-YYYY hh:mm:ss') %}
+                    <h4>{{moment().format('DD-MM-YYYY HH:mm')}}</h4>
+                 <br>
+                    {% if datetime_available_from < datetime_available_from.now() %}
+                     <p> This will display if the datetime_available_from is before now. </p>
+                    {% endif %}
+                                     <br>
+                    {% if datetime_available_to < datetime_available_to.now() %}
+                      <p> This will display if the datetime_available_to is before now. </p>
+                    {% endif %}
+                                     <br>
+                       {% if datetime_available_from >= datetime_available_from.now() %}
+                     <p> This will display if the datetime_available_from is after now. </p>
+                    {% endif %}
+                                     <br>
+                    {% if datetime_available_to >= datetime_available_to.now() %}
+                      <p> This will display if the datetime_available_to is after now. </p>
+                    {% endif %}
+                                     <br>
                 </div>
     </div>
         <script type="text/javascript">

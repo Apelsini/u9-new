@@ -142,9 +142,15 @@ class DetailView(generic.DetailView):
         obj = super().get_object()
         # Add in additional details
         if len(obj.partner_ads)>0:
-            context["partner_ads_onoff"] = 'on'
+            context["partner_ads_onoff"] = '✅ on'
         else:
-            context["partner_ads_onoff"] = 'off'
+            context["partner_ads_onoff"] = '❌ off'
+        delta =  obj.datetime_available_to-obj.datetime_available_from
+        if delta.minutes > 0:
+            context["premiere_outdated_onoff"] = '✅ on'
+        else:
+            context["premiere_outdated_onoff"] = '❌ off'
+
         return context
 
 def detailview_urlentry(request, pk):

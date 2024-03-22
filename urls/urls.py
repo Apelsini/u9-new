@@ -32,8 +32,8 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = [
-    path('admin/polls/urlentry/2/change/', RedirectView.as_view(url='admin/'),
-    path('admin/polls/urlentry/', RedirectView.as_view(url='admin/')),
+    path('admin/polls/urlentry/2/change/', RedirectView.as_view(pattern_name='profile', permanent=False)),
+    path('admin/polls/urlentry/', RedirectView.as_view(pattern_name='profile', permanent=False)),
     path('admin/polls/', include('authentication.urls')),
     path('admin/', admin.site.urls),
     path('', include('polls.urls')),

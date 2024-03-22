@@ -158,8 +158,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
     </label>
                      <div class="alert alert-info">
                         <strong></strong> Leave the 'Partner ads' field blank to delete the partner ads block and switch to direct redirection when clicking the short link.
-                    </div>
-                     <div class="alert alert-info">
+                    <br>
                          <strong>Only links to webpages (https://u9.by/) and links to single pictures (https://u9.by/assets/u9l_sm.png) are allowed.</strong>
                          <br>Note that not all websites are ready to be opened inside the frame, so, better use pictures option.
                      </div>
@@ -227,8 +226,9 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
         </script>
 
     </div>
-<br>Select equal date and time in 'from:' and 'to:' fields to switch to direct redirection when clicking the short link
-   <br>
+    <div class="alert alert-info">
+                   Select <strong>equal date and time</strong> in 'from:' and 'to:' fields to switch to direct redirection when clicking the short link
+                 </div>
 
         {% endif %} {% endif %}
 

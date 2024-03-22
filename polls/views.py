@@ -148,6 +148,18 @@ class DetailView(generic.DetailView):
         delta =  obj.datetime_available_to-obj.datetime_available_from
         if delta > timedelta(minutes=1):
             context["premiere_outdated_onoff"] = '✅ on'
+            #three options - Premiere, Ongoing, Deprecated
+            now = datetime.datetime.now()
+            context["today"] = now.strftime("%d/%m/%Y %H:%M")
+            #premiere
+            if obj.datetime_available_to>now and obj.datetime_available_from>now:
+                context["premiere_outdated_mode"] = '⌛ Premiere is planned on '+obj.datetime_available_from.strftime("%d/%m/%Y %H:%M")
+            # Ongoing
+            if obj.datetime_available_to>now and obj.datetime_available_from<now:
+                context["premiere_outdated_mode"] = '✅ Ongoing link from '+obj.datetime_available_from.strftime("%d/%m/%Y %H:%M")+' to '+obj.datetime_available_to.strftime("%d/%m/%Y %H:%M")
+            # Deprecated
+            if obj.datetime_available_to<now and obj.datetime_available_from<now:
+                context["premiere_outdated_mode"] = '⛔ Deprecated link starting from '+obj.datetime_available_to.strftime("%d/%m/%Y %H:%M")
         else:
             context["premiere_outdated_onoff"] = '❌ off'
 

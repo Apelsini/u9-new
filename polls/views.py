@@ -146,7 +146,7 @@ class DetailView(generic.DetailView):
         else:
             context["partner_ads_onoff"] = '❌ off'
         delta =  obj.datetime_available_to-obj.datetime_available_from
-        if delta.minutes > 0:
+        if delta > 0:
             context["premiere_outdated_onoff"] = '✅ on'
         else:
             context["premiere_outdated_onoff"] = '❌ off'

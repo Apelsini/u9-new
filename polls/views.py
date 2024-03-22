@@ -158,14 +158,14 @@ class DetailView(generic.DetailView):
             dtfrom = utc.localize(obj.datetime_available_from)
             dtto = utc.localize(obj.datetime_available_to) #need to avoid TypeError: can't compare offset-naive and offset-aware datetimes
             #premiere
-            if dtto>now and dtfrom>now:
-                context["premiere_outdated_mode"] = '⌛ Premiere is planned on '+dtfrom.strftime("%d/%m/%Y %H:%M")
-            # Ongoing
-            if dtto>now and dtfrom<now:
-                context["premiere_outdated_mode"] = '✅ Ongoing link from '+dtfrom.strftime("%d/%m/%Y %H:%M")+' to '+dtto.strftime("%d/%m/%Y %H:%M")
-            # Deprecated
-            if dtto<now and dtfrom<now:
-                context["premiere_outdated_mode"] = '⛔ Deprecated link starting from '+obj.datetime_available_to.strftime("%d/%m/%Y %H:%M")
+            # if dtto>now and dtfrom>now:
+            #     context["premiere_outdated_mode"] = '⌛ Premiere is planned on '+dtfrom.strftime("%d/%m/%Y %H:%M")
+            # # Ongoing
+            # if dtto>now and dtfrom<now:
+            #     context["premiere_outdated_mode"] = '✅ Ongoing link from '+dtfrom.strftime("%d/%m/%Y %H:%M")+' to '+dtto.strftime("%d/%m/%Y %H:%M")
+            # # Deprecated
+            # if dtto<now and dtfrom<now:
+            #     context["premiere_outdated_mode"] = '⛔ Deprecated link starting from '+obj.datetime_available_to.strftime("%d/%m/%Y %H:%M")
         else:
             context["premiere_outdated_onoff"] = '❌ off'
 

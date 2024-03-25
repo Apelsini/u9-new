@@ -148,13 +148,13 @@ class DetailView(generic.DetailView):
             context["partner_ads_onoff"] = '✅ on'
         else:
             context["partner_ads_onoff"] = '❌ off'
+        now = datetime.now()
+        context["today"] = now.strftime("%Y-%m-%d %H:%M")
         delta =  obj.datetime_available_to-obj.datetime_available_from
         if delta > timedelta(minutes=1):
             context["premiere_outdated_onoff"] = '✅ on'
             #three options -
             # Premiere, Ongoing, Deprecated
-            now = datetime.now()
-            context["today"] =now.strftime("%Y-%m-%d %H:%M")
             #dtfrom = utc.localize(obj.datetime_available_from)
             #dtto = utc.localize(obj.datetime_available_to) #need to avoid TypeError: can't compare offset-naive and offset-aware datetimes
             #premiere

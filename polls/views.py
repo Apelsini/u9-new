@@ -179,6 +179,7 @@ class DetailView(generic.DetailView):
                     "%Y-%m-%d %H:%M") + ' to ' + dtto.strftime("%Y-%m-%d %H:%M")
         else:
             context["premiere_outdated_onoff"] = '❌ off'
+            context["premiere_outdated_mode"] = 'link is always online, as the premere / deprecated function is off'
 
         return context
 

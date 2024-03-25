@@ -56,5 +56,23 @@
       </form>
     <br><br>
 </div>
+     <div class="p-2 bd-highlight">
+  <legend>API requests:</legend>
+<i>Note: try to avoid direct calling of API (like https://u9.by/b/12345/?request_param_one&request_param_two) not to allow your Hashcode to be stolen.</i>
+<br><i>Better convert your API calling link into a short link format like u9.by/tdbd</i>
+<br><i>In this case you will:
+         <br> - hide your Hashcode visually,
+         <br> - will get statistics of your API call, and can embed it into webpage or app
+         <br> - can switch on/off your API call with Link Premiere / Deprecated function </i>
+
+            <table>
+                <tr>
+                    <td><b>Hashcode for API requests:</b></td>
+                    <td>{{ hashcode }}</td>
+                </tr>
+            </table>
+
+    <br><br>
+</div>
 </div>
 {% endblock %}

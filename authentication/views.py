@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+import polls.usrhash
 from .forms import CreateUserForm, CheckCustomerForm, UserNotificationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -8,6 +9,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group, User
 from .models import Profile, Custcode
+from polls.usrhash import cypher, uncypher, codeword, uncodeword
 import json
 import os
 import re
@@ -39,6 +41,7 @@ def profile_page(request, pk):  #shows profile details
     profile = Profile.objects.get(pk=pk)
     group = Group.objects.filter(id=profile.user.id).all()
     groupstring = 'User'
+    hashcode=polls.usrhash.cypher(pk)
     if profile.user.is_staff:
         groupstring = 'Customer'
     if request.method == "POST":
@@ -72,6 +75,7 @@ def profile_page(request, pk):  #shows profile details
                 'group': group,
                 'groupstring': groupstring,
                 'form': form,
+                'hashcode':hashcode,
                 'messages': messages,
          })
     else:
@@ -95,6 +99,7 @@ def profile_page(request, pk):  #shows profile details
         'group':group,
         'groupstring':groupstring,
         'form':form,
+        'hashcode': hashcode,
         'messages':messages,
     })
 

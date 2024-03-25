@@ -23,6 +23,88 @@ body {
   background-color: #34ebd2;
   height: 100vh;
   position: relative; }
+
+:root {
+  --smaller: .75;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  align-items: center;
+  background-color: #ffd54f;
+  display: flex;
+  font-family: -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen-Sans,
+    Ubuntu,
+    Cantarell,
+    "Helvetica Neue",
+    sans-serif;
+}
+
+.container {
+  color: #FE0400;
+  background-image: url('https://u9.by/assets/pa3k_premiere.png');
+  background-size: cover;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  font-weight: normal;
+  letter-spacing: .125rem;
+  text-transform: uppercase;
+}
+
+li {
+  display: inline-block;
+  font-size: 1.5em;
+  list-style-type: none;
+  padding: 1em;
+  text-transform: uppercase;
+}
+
+li span {
+  display: block;
+  font-size: 4.5rem;
+}
+
+.emoji {
+  display: none;
+  padding: 1rem;
+}
+
+.emoji span {
+  font-size: 4rem;
+  padding: 0 .5rem;
+}
+
+@media all and (max-width: 768px) {
+  h1 {
+    font-size: calc(1.5rem * var(--smaller));
+  }
+
+  li {
+    font-size: calc(1.125rem * var(--smaller));
+  }
+
+  li span {
+    font-size: calc(3.375rem * var(--smaller));
+  }
+}
+
 </style>
 <div class="vh-100" style="background-image: url('https://u9.by/assets/pa3k_premiere.png'); background-size: cover;">
 <nav class="navbar navbar-expand-md navbar-light" style="background-color: #34ebd2;">
@@ -30,279 +112,66 @@ body {
        <a href="https://u9.by"><img src="https://u9.by/assets/u9l_sm.png" width="270" height="140"></a>
     </div>
 </nav>
-
-</div></div></div></div></div></div><div id="wb_main_11" class="wb_element wb-layout-element" data-plugin="LayoutElement"><div class="wb_content wb-layout-vertical"><div id="wb_element_instance3_11" class="wb_element wb-layout-element" data-plugin="LayoutElement"><div class="wb_content wb-layout-vertical"><div id="wb_element_instance4_11" class="wb_element wb_text_element" data-plugin="TextArea" style=" line-height: normal;"><h4 class="wb-stl-custom10"><span style="color:#ff0000;"><strong>Link will be available in </strong></span></h4>
-</div><div id="wb_element_instance5_11" class="wb_element wb-anim-entry wb-anim wb-anim-zoom-in-none" data-plugin="countdown" data-wb-anim-entry-time="0.6" data-wb-anim-entry-delay="0">
-	<style>
-		#wb_element_instance5_11_countdown_timer {
-		    width: 100%;
-		    height: 100%;
-			font-family: 'DM Serif Display',Arial,serif;
-			font-size: 105.55555555556px;
-			color: #ff0004;
-			text-align: center;
-			line-height: 100%;
-			display: flex;
-			justify-content: space-around;
-			align-items: center;
-			flex-wrap: nowrap;
-			 font-style: normal; 
-			 font-weight: bold; 
-			 text-decoration: none; 
-	   	}
-		@media all and (max-width: 320px) {
-			#wb_element_instance5_11_countdown_timer {
-				font-size: px;
-			}
-			#wb_element_instance5_11_countdown_timer .dlmtr {
-				display: none;
-			}
-		}
-		#wb_element_instance5_11_countdown_timer .dlmtr {
-			display: inline-block;
-			position: relative;
-		    vertical-align: middle;
-				margin-top: calc(15px + 12px);
-	    }
-		#wb_element_instance5_11_countdown_timer .numblock {
-			display: inline-block;
-			position: relative;
-			vertical-align: middle;
-				margin-top: calc(15px + 12px);
-	    }
-		#wb_element_instance5_11_countdown_timer .numblock .num {
-	    	position: absolute;
-	   		display: block;
-			top: 0;
-			left: 50%;
-		    transform: translateX(-50%);
-	    }
-		#wb_element_instance5_11_countdown_timer .numblock .plchldr {
-			color: transparent !important;
-			opacity: 0;
-			 font-style: normal; 
-			 font-weight: bold; 
-			 text-decoration: none; 
-	    }
-		#wb_element_instance5_11_countdown_timer .numblock:after {
-			font-family: Helvetica,Arial,sans-serif;
-			font-size: 12px;
-			color: #34fbc2;
-			text-transform: capitalize;
-			text-align: center;
-			line-height: 100%;
-			position: absolute;
-				top: -15px;
-			left: 50%;
-			transform: translateX(-50%);
-			 font-style: normal; 
-			 font-weight: normal; 
-			 text-decoration: none; 
-		}
-		#wb_element_instance5_11_countdown_timer .numblock.days:after {
-			content: "Days";
-	    }
-		#wb_element_instance5_11_countdown_timer .numblock.hours:after {
-			content: "Hours";
-		}
-		#wb_element_instance5_11_countdown_timer .numblock.mins:after {
-			content: "Minutes";
-		}
-		#wb_element_instance5_11_countdown_timer .numblock.secs:after {
-			content: "Seconds";
-		}
-		#wb_element_instance5_11_wb_caption {
-		    width: 100%;
-		    height: 100%;
-			background-color: transparent !important;
-			display: flex;
-		    justify-content: center;
-			align-items: center;
-	    }
-		#wb_element_instance5_11_wb_caption:before {
-			content: "";
-			display: inline-block;
-			vertical-align: middle;
-			height: auto;
-		}
-	</style>
-	<div class="wb_caption smaller" style="position: relative" id="wb_element_instance5_11_wb_caption">
-		<div id="wb_element_instance5_11_countdown_timer" style="opacity: 0">
-			<div class="numblock days">
-<span class="plchldr">8</span><span class="num"></span>
+<div class="container">
+  <h1 id="headline">Link will be available in </h1>
+  <div id="countdown">
+    <ul>
+      <li><span id="days"></span>Days</li>
+      <li><span id="hours"></span>Hours</li>
+      <li><span id="minutes"></span>Minutes</li>
+      <li><span id="seconds"></span>Seconds</li>
+    </ul>
+  </div>
+  <div id="content" class="emoji">
+    <span>🥳</span>
+    <span>🎉</span>
+    <span>🎂</span>
+  </div>
 </div>
-			<div class="dlmtr">:</div>
-			<div class="numblock hours">
-<span class="plchldr">88</span><span class="num"></span>
-</div>
-			<div class="dlmtr">:</div>
-			<div class="numblock mins">
-<span class="plchldr">88</span><span class="num"></span>
-</div>
-			<div class="dlmtr">:</div>
-			<div class="numblock secs">
-<span class="plchldr">88</span><span class="num"></span>
-</div>
-		</div>
-	</div>
-<!-- https://stackoverflow.com/questions/5022447/converting-date-from-python-to-javascript
-import datetime, time
-d = datetime.datetime.utcnow()
-for_js = int(time.mktime(d.timetuple())) * 1000
--->
-<script type="text/javascript">
-	(function () {
-		var countDown_wb_element_instance5_11 = {
-			start: function() {
-				this.countDownBlock = $("#wb_element_instance5_11_countdown_timer");
-				this.textAfterBlock = $("#wb_element_instance5_11_countdown_text_after");
-				this.daysBlock = this.countDownBlock.find(".days .num");
-				this.hoursBlock = this.countDownBlock.find(".hours .num");
-				this.minsBlock = this.countDownBlock.find(".mins .num");
-				this.secsBlock = this.countDownBlock.find(".secs .num");
+    <script>
+        (function () {
+        const second = 1000,
+        minute = second * 60,
+        hour = minute * 60,
+        day = hour * 24;
 
-				var timerDate = new Date({% block datefromdig %}{{ datefromdig }}{% endblock %});
-				var currDate = new Date();
+  //I'm adding this section so I don't have to keep updating this pen every year :-)
+  //remove this if you don't need it
+  let today = new Date(),
+      dd = String(today.getDate()).padStart(2, "0"),
+      mm = String(today.getMonth() + 1).padStart(2, "0"),
+      yyyy = today.getFullYear(),
+      nextYear = yyyy + 1,
+      dayMonth = "09/30/",
+      birthday = dayMonth + yyyy;
 
-				var diff = timerDate.getTime() - currDate.getTime();
-				this.diffDays = Math.floor(diff / (1000 * 60 * 60 * 24));
-				diff = diff - 1000 * 60 * 60 * 24 * this.diffDays;
-				this.diffHours = Math.floor(diff / (1000 * 60 * 60));
-				diff = diff - 1000 * 60 * 60 * this.diffHours;
-				this.diffMins = Math.floor(diff / (1000 * 60));
-				diff = diff - 1000 * 60 * this.diffMins;
-				this.diffSecs = Math.floor(diff / 1000);
+  today = mm + "/" + dd + "/" + yyyy;
+  if (today > birthday) {
+    birthday = dayMonth + nextYear;
+  }
+  //end
 
-				if (this.diffDays < 0 || this.diffHours < 0 || this.diffMins < 0 || this.diffSecs < 0
-					|| (this.diffDays === 0 && this.diffHours === 0 && this.diffMins === 0 && this.diffSecs === 0))
-				{
-					if (window.countDownInterval_wb_element_instance5_11) clearInterval(window.countDownInterval_wb_element_instance5_11);
-					this.daysBlock.text("0");
-					this.hoursBlock.text("00");
-					this.minsBlock.text("00");
-					this.secsBlock.text("00");
-				}
-				else {
-					this.daysBlock.text(this.diffDays);
-					this.countDownBlock.find('.days .plchldr').text(this.diffDays);
-					this.hoursBlock.text(this.pad(this.diffHours));
-					this.minsBlock.text(this.pad(this.diffMins));
-					this.secsBlock.text(this.pad(this.diffSecs));
-					this.countDownBlock.show();
-					this.textAfterBlock.hide();
+  const countDown = new Date(birthday).getTime(),
+      x = setInterval(function() {
 
-					var self = this;
-					if (window.countDownInterval_wb_element_instance5_11) clearInterval(window.countDownInterval_wb_element_instance5_11);
-					window.countDownInterval_wb_element_instance5_11 = setInterval(function () {
-						var ended = self.tick();
-						if (ended) {
-							clearInterval(window.countDownInterval_wb_element_instance5_11);
-						};
-						self.daysBlock.text(self.diffDays);
-						self.hoursBlock.text(self.pad(self.diffHours));
-						self.minsBlock.text(self.pad(self.diffMins));
-						self.secsBlock.text(self.pad(self.diffSecs));
-					}, 1000);
-				}
-			},
-			pad: function(val) {
-				if (("" + val).length === 1) {
-					return '0' + val;
-				}
-				return val;
-			},
-			tick: function() {
-				if (this.diffDays === 0 && this.diffHours === 0 && this.diffMins === 0 && this.diffSecs === 0) {
-					return true;
-				}
-				else {
-					if (this.diffSecs > 0) {
-						this.diffSecs--;
-					} else {
-						this.diffSecs = 59;
-						if (this.diffMins > 0) {
-							this.diffMins--;
-						} else {
-							this.diffMins = 59;
-							if (this.diffHours > 0) {
-								this.diffHours--;
-							} else {
-								this.diffHours = 23;
-								if (this.diffDays > 0) {
-									this.diffDays--;
-								}
-							}
-						}
-					}
-				}
-				return false;
-			}
-		};
-		countDown_wb_element_instance5_11.start();
+        const now = new Date().getTime(),
+              distance = countDown - now;
 
-		var cBlock = $('#wb_element_instance5_11_countdown_timer');
-		var cChildren = cBlock.children();
+        document.getElementById("days").innerText = Math.floor(distance / (day)),
+          document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+          document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+          document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
 
-		var elem = $('[data-id=wb_element_instance5_11], #wb_element_instance5_11');
-		var isAutoLayout = "190" === 'auto';
-		var height = parseFloat('190');
-		var resizeFn = function (repeat) {
-			cBlock.css('opacity', 0);
-			if (isAutoLayout) {
-				cBlock.css('fontSize', 1);
-
-				var innerWidth;
-				var maxIterations = 100;
-				do {
-					cBlock.css('fontSize', parseInt(cBlock.css('fontSize')) + 1);
-					innerWidth = cChildren.toArray().reduce(function (sum, item) {
-						return sum + item.offsetWidth;
-					}, 0);
-					if (maxIterations > 0) maxIterations--; else break;
-				} while (innerWidth < cBlock.width() * 0.8);
-			} else {
-				var h = cBlock.outerHeight();
-				h -= 15 + 12;
-				cBlock.css('fontSize', h);
-
-				let innerWidth = cChildren.toArray().reduce(function (sum, item) {
-					return sum+item.offsetWidth;
-				}, 0);
-
-				if (innerWidth > cBlock.width()) h *= cBlock.width() / innerWidth;
-
-				cBlock.css('fontSize', h);
-			}
-			cBlock.css('opacity', 1);
-
-			if (!repeat) {
-				setTimeout(function () {
-					resizeFn(true)
-				}, 500);
-			}
-		}
-
-		var timer = null;
-		$(window).resize(function () {
-			if (timer) {
-				clearTimeout(timer);
-				timer = null;
-			}
-			timer = setTimeout(resizeFn, 200);
-		});
-		$(window).resize();
-	})();
-</script></div></div></div></div></div><div id="wb_footer_11" class="wb_element wb-layout-element" data-plugin="LayoutElement"><div class="wb_content wb-layout-vertical"><div id="wb_footer_c_0" class="wb_element" data-plugin="WB_Footer" style="text-align: center; width: 100%;"><div class="wb_footer"></div><script type="text/javascript">
-			$(function() {
-				var footer = $(".wb_footer");
-				var html = (footer.html() + "").replace(/^\s+|\s+$/g, "");
-				if (!html) {
-					footer.parent().remove();
-					footer = $("#wb_footer, #wb_footer .wb_cont_inner");
-					footer.css({height: ""});
-				}
-			});
-			</script></div></div></div></div>
-
+        //do something later when date is reached
+        if (distance < 0) {
+          document.getElementById("headline").innerText = "It's link premiere!";
+          document.getElementById("countdown").style.display = "none";
+          document.getElementById("content").style.display = "block";
+          clearInterval(x);
+        }
+        //seconds
+      }, 0)
+  }());
+    </script>
 </body>
 </html>

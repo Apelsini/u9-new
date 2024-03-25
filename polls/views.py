@@ -174,8 +174,9 @@ class DetailView(generic.DetailView):
                 if obj.datetime_available_from < timezone.now() and obj.datetime_available_to < timezone.now():
                     # the urlentry already deprecated
                     context["premiere_outdated_mode"] = '⛔ Deprecated link starting from '+obj.datetime_available_to.strftime("%Y-%m-%d %H:%M")
-            else:
-                context["premiere_outdated_mode"] = '✅ Ongoing link from ' + dtfrom.strftime(
+                if obj.datetime_available_from < timezone.now() and obj.datetime_available_to > timezone.now():
+                    # the urlentry already deprecated
+                    context["premiere_outdated_mode"] = '✅ Ongoing link from ' + dtfrom.strftime(
                     "%Y-%m-%d %H:%M") + ' to ' + dtto.strftime("%Y-%m-%d %H:%M")
         else:
             context["premiere_outdated_onoff"] = '❌ off'

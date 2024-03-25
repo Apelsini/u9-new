@@ -10,12 +10,9 @@
     {% if form.errors %}
     <p style="color: orangered">Got errors! {{ form.errors }}</p>
     {% endif %}
-        <div class="alert alert-success">
     {% for message in messages %}
-    <p>{{ message }}</p>
+     <div class="alert alert-success"><p>{{ message }}</p></div>
     {% endfor %}
-            </div>
-    <br><br>
       <legend>Existing records:</legend>
 {% if webrecords %}
 <div class="table-responsive">

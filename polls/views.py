@@ -155,8 +155,8 @@ class DetailView(generic.DetailView):
             context["premiere_outdated_onoff"] = '✅ on'
             #three options -
             # Premiere, Ongoing, Deprecated
-            #dtfrom = utc.localize(obj.datetime_available_from)
-            #dtto = utc.localize(obj.datetime_available_to) #need to avoid TypeError: can't compare offset-naive and offset-aware datetimes
+            dtfrom = obj.datetime_available_from
+            dtto = obj.datetime_available_to #need to avoid TypeError: can't compare offset-naive and offset-aware datetimes
             #premiere
             # if dtto>now and dtfrom>now:
             #     context["premiere_outdated_mode"] = '⌛ Premiere is planned on '+dtfrom.strftime("%d/%m/%Y %H:%M")

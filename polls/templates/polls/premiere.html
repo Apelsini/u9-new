@@ -105,7 +105,7 @@ li span {
 <br>
 <div class="container">
 <strong>
-  <h1 id="headline">Link will be available from {{ datefrom }}. <br> It is in: </h1>
+  <h1 id="headline">Link will be available <br> from {{ datefrom }}. <br> It is in: </h1>
   <div id="countdown">
     <ul>
       <li><span id="days"></span>Days</li>
@@ -143,9 +143,10 @@ li span {
   if (today > birthday) {
     birthday = dayMonth + nextYear;
   }
+
   //end
 
-  const countDown = new Date(birthday).getTime(),
+  const countDown = {{ datefromdig }},
       x = setInterval(function() {
 
         const now = new Date().getTime(),

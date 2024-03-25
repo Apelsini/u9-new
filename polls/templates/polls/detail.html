@@ -215,17 +215,21 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
                    Select <strong>equal date and time</strong> in 'from:' and 'to:' fields to switch to direct redirection when clicking the short link
         </div>
                 <div class="alert alert-warning">
-                    <table>
+                    <table class="table">
                         <tr>
                     <td align="right"></td><strong>Partner ads: </strong></td>
                             <td align="left">{{ partner_ads_onoff }}</td>
+                            </tr>
+                        <tr>
                 <td align="right"><strong>Link premiere / deprecated function: </strong></td>
                             <td align="left">{{ premiere_outdated_onoff }}</td>
+                            </tr>
                <td align="right"><strong>Today is: </strong></td>
                             <td align="left">{{ today }}</td>
+                         <tr>
                 <td align="right"><strong>Link premiere / deprecated mode: </strong></td>
                             <td align="left">{{ premiere_outdated_mode }}</td>
-                    </tr>
+                         </tr>
                  </table>
                 </div>
     </div>

@@ -154,7 +154,7 @@ class DetailView(generic.DetailView):
             #three options -
             # Premiere, Ongoing, Deprecated
             now = datetime.now()
-            context["today"] =now.strftime("%d/%m/%Y %H:%M")
+            context["today"] =now.strftime("%Y-%m-%d %H:%M")
             #dtfrom = utc.localize(obj.datetime_available_from)
             #dtto = utc.localize(obj.datetime_available_to) #need to avoid TypeError: can't compare offset-naive and offset-aware datetimes
             #premiere
@@ -170,13 +170,13 @@ class DetailView(generic.DetailView):
                 # if there is need for redirection to 'premiere.html' or 'deprecated.html'
                 if obj.datetime_available_from > timezone.now() and obj.datetime_available_to > timezone.now():
                     # the urlentry has Premiere date
-                    context["premiere_outdated_mode"] = '⌛ Premiere is planned on '+dtfrom.strftime("%d/%m/%Y %H:%M")
+                    context["premiere_outdated_mode"] = '⌛ Premiere is planned on '+dtfrom.strftime("%Y-%m-%d %H:%M")
                 if obj.datetime_available_from < timezone.now() and obj.datetime_available_to < timezone.now():
                     # the urlentry already deprecated
-                    context["premiere_outdated_mode"] = '⛔ Deprecated link starting from '+obj.datetime_available_to.strftime("%d/%m/%Y %H:%M")
+                    context["premiere_outdated_mode"] = '⛔ Deprecated link starting from '+obj.datetime_available_to.strftime("%Y-%m-%d %H:%M")
             else:
                 context["premiere_outdated_mode"] = '✅ Ongoing link from ' + dtfrom.strftime(
-                    "%d/%m/%Y %H:%M") + ' to ' + dtto.strftime("%d/%m/%Y %H:%M")
+                    "%Y-%m-%d %H:%M") + ' to ' + dtto.strftime("%Y-%m-%d %H:%M")
         else:
             context["premiere_outdated_onoff"] = '❌ off'
 

@@ -18,6 +18,7 @@ import time
 from datetime import datetime, date, timedelta
 from django.shortcuts import render
 from django.contrib.auth import get_user_model
+from usrhash import cypher, uncypher, codeword, uncodeword
 import pytz
 import json
 import os

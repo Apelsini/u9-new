@@ -26,8 +26,8 @@ urlpatterns = [
     path('a/webchecker/delete/<int:pk>',
          view=login_required(views.webchecker_delete, login_url=reverse_lazy('auth:login')),
          name='webcheckerdelete'),
-    #path('n/<str:hash>/<str:hash>/', view=views.add_lead_and_redirect, name='msgnosubj'),
-    #path('n/<str:hash>/<str:hash>/<str:hash>/', view=views.add_lead_and_redirect, name='msgsubj'),
+    #path('m/<str:hash>/<str:hash>/', view=views.add_lead_and_redirect, name='msgnosubj'),
+    #path('m/<str:hash>/<str:hash>/<str:hash>/', view=views.add_lead_and_redirect, name='msgsubj'),
     #path('notify/donotify', view=views.NotifyView.as_view(), name='donotify'),
     path('<str:hash>/', view=views.add_lead_and_redirect, name='short'),
 ]

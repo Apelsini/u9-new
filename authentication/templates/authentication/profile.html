@@ -45,7 +45,7 @@
 {% endif %}
 <br><br>
 </div>
-  <div class="p-2 bd-highlight">
+  <div class="mr-auto p-2 bd-highlight">
   <legend>Notification methods</legend>
       <form action="" method="post">
           {% csrf_token %}
@@ -56,18 +56,19 @@
       </form>
     <br><br>
 </div>
-     <div class="p-2 bd-highlight">
+     <div class="mr-auto p-2 bd-highlight">
   <legend>API requests:</legend>
 <i>Note: try to avoid direct calling of API (like https://u9.by/b/12345/?request_param_one&request_param_two) not to allow your Hashcode to be stolen.</i>
 <br><i>Better convert your API calling link into a short link format like u9.by/tdbd</i>
 <br><i>In this case you will:
          <br> - hide your Hashcode visually,
          <br> - will get statistics of your API call, and can embed it into webpage or app
+         <br> - will remember the source from which your API call was invoked (create different short link for different apps and pages you handle)
          <br> - can switch on/off your API call with Link Premiere / Deprecated function </i>
-
+        <br><br>
             <table>
                 <tr>
-                    <td><b>Hashcode for API requests:</b></td>
+                    <td><b>Hashcode for API requests: </b></td>
                     <td>{{ hashcode }}</td>
                 </tr>
             </table>

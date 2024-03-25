@@ -298,6 +298,7 @@ def add_lead_and_redirect(request, hash):
     datefromdig = int(time.mktime(d.timetuple())) * 1000
     fol_info=''
     dateto = urlentry.datetime_available_to.strftime("%Y-%m-%d %H:%M")
+    datefrom = urlentry.datetime_available_from.strftime("%Y-%m-%d %H:%M")
     try:
         if request.META['HTTP_REFERER']!=None:
             fol_info = request.META['HTTP_REFERER']
@@ -315,7 +316,8 @@ def add_lead_and_redirect(request, hash):
         if urlentry.datetime_available_from > timezone.now() and urlentry.datetime_available_to > timezone.now():
             # the urlentry has Premiere date
             return render(request, 'polls/premiere.html', {
-                'datefromdig': datefromdig
+                'datefromdig': datefromdig,
+                'datefrom': datefrom
             })
         if urlentry.datetime_available_from < timezone.now() and urlentry.datetime_available_to < timezone.now():
             # the urlentry already deprecated

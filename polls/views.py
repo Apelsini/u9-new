@@ -203,13 +203,14 @@ class ResultsView(generic.DetailView):
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
-        obj = super().leads.all()
+        obj = super().leads.get_objects()
         # Add in additional details
         country_codes_dict ={}
-        for lead in obj
-            if lead.follower_info not in country_codes_dict:
-                country_code = get_country_code(lead.follower_info)
-                country_codes_dict[lead.follower_info]=country_code
+        if obj:
+            for lead in obj:
+                if lead.follower_info not in country_codes_dict:
+                    country_code = get_country_code(lead.follower_info)
+                    country_codes_dict[lead.follower_info]=country_code
         context["country_codes_dict"] = country_codes_dict
 
 class ClicksView(generic.DetailView):

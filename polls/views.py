@@ -204,7 +204,7 @@ class ResultsView(generic.DetailView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         objj = Leads.objects.all().filter(
-            urlentry_pk=self.object.pk)
+            urlentry_id=self.object.pk)
         # Add in additional details
         country_codes_dict = {}
         if objj:

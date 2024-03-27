@@ -214,7 +214,7 @@ class ResultsView(generic.DetailView):
             for lead in obj:
                 if lead.follower_fromwhere not in country_codes_dict:
                     try:
-                        country_code = get_country_code(lead.follower_fromwhere)
+                        country_code = "unknown" #get_country_code(lead.follower_fromwhere)
                     except:
                         country_code = "unknown"
                     country_codes_dict[lead.follower_fromwhere]=country_code

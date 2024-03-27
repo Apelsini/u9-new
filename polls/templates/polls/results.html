@@ -25,8 +25,10 @@
             <b>  from website:</b>{{ leads.follower_info }}
             <b>  IP:</b> {{ leads.follower_fromwhere }}
             <b>  Location:</b> {% if leads.follower_fromwhere in country_codes_dict %}
-            {{ country_codes_dict[leads.follower_fromwhere] }}
- {% else %} other statement {% endif %}
+               {% for key, value in country_codes_dict.items %}
+                {% if key == leads.follower_fromwhere %}{{value}}{% endif %}
+                {% endfor %}
+            {% else %} other statement {% endif %}
             <br>
             <b>user device config:</b> {{ leads.follower_os_info }}{{ leads.follower_os_info|pluralize }}
         </li>

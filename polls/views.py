@@ -195,24 +195,25 @@ def detailview_urlentry(request, pk):
 class ResultsView(generic.DetailView):
     model = Urlentry
     template_name = 'polls/results.html'
-    # adding extra data
 
-    def get_context_data(self, **kwargs):
-        # Call the base implementation first to get a context
-        context = super().get_context_data(**kwargs)
-        objj = Leads.objects.filter(
-            urlentry_id=self.kwargs.get('pk'))
-        # Add in additional details
-        country_codes_dict = {}
-        if objj:
-            for lead in objj:
-                if lead.follower_fromwhere not in country_codes_dict:
-                    try:
-                        country_code = "somewhere"  # get_country_code(lead.follower_fromwhere)
-                    except:
-                        country_code = "unknown"
-                    country_codes_dict[lead.follower_fromwhere] = country_code
-        context["country_codes_dict"] = country_codes_dict
+
+@login_required(login_url=reverse_lazy('auth:login'))
+def results_urlentry(request, pk):
+    urlentry = get_object_or_404(Urlentry, pk=pk)
+    objj = Leads.objects.filter(urlentry=urlentry)
+    country_codes_dict = {}
+    if objj:
+        for lead in objj:
+            if lead.follower_fromwhere not in country_codes_dict:
+                try:
+                    country_code = "somewhere"  # get_country_code(lead.follower_fromwhere)
+                except:
+                    country_code = "unknown"
+                country_codes_dict[lead.follower_fromwhere] = country_code
+    return render(request, 'polls/results.html', {
+        'urlentry': urlentry,
+        'formset': country_codes_dict
+    })
 
 
 class ClicksView(generic.DetailView):

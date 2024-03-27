@@ -10,7 +10,7 @@ urlpatterns = [
     path('a/new/', view=login_required(views.create_urls, login_url=reverse_lazy('auth:login')), name='new'),#views.create_urls
     path('a/update/<int:pk>/', view=views.update_urlentry, name="update"),
     path('a/delete/<int:pk>/', view=login_required(views.DeleteUrlentry.as_view(), login_url=reverse_lazy('auth:login')), name='delete'),
-    path('details/<int:pk>/', view=login_required(views.DetailView.as_view(), login_url=reverse_lazy('auth:login')), name='detail'),
+    path('details/<int:pk>/', view=login_required(views.results_urlentry, login_url=reverse_lazy('auth:login')), name='detail'),
     path('a/<int:pk>/results/', view=login_required(views.ResultsView.as_view(), login_url=reverse_lazy('auth:login')), name='results'),
     path('a/<int:pk>/results/get', view=views.ClicksView.as_view(), name='get'),
     #old links redirects

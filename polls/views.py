@@ -203,7 +203,7 @@ class ResultsView(generic.DetailView):
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
-        obj = super().leads.get_object()
+        obj = super().leads.all()
         # Add in additional details
         country_codes_dict ={}
         for lead in obj

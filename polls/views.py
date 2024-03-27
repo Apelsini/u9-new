@@ -200,23 +200,7 @@ class ResultsView(generic.DetailView):
         ob = super().get_object()
         return ob
 
-    def get_context_data(self, **kwargs):
-        # Call the base implementation first to get a context
-        context = super().get_context_data(**kwargs)
-        objj = super().get_object()
-        obj = Leads.objects.filter(
-                    urlentry=objj,)
-        # Add in additional details
-        country_codes_dict ={}
-        if obj:
-            for lead in obj:
-                if lead.follower_fromwhere not in country_codes_dict:
-                    try:
-                        country_code = "somewhere" #get_country_code(lead.follower_fromwhere)
-                    except:
-                        country_code = "unknown"
-                    country_codes_dict[lead.follower_fromwhere]=country_code
-        context["country_codes_dict"] = country_codes_dict
+
 
 class ClicksView(generic.DetailView):
     model = Urlentry

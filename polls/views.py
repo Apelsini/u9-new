@@ -203,12 +203,12 @@ class ResultsView(generic.DetailView):
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
-        obj = Leads.objects.filter(
-            urlentry=self.object, )
+        objj = Leads.objects.all().filter(
+            urlentry=self.object)
         # Add in additional details
         country_codes_dict = {}
-        if obj:
-            for lead in obj:
+        if objj:
+            for lead in objj:
                 if lead.follower_fromwhere not in country_codes_dict:
                     try:
                         country_code = "somewhere"  # get_country_code(lead.follower_fromwhere)

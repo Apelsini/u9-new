@@ -207,7 +207,7 @@ class ResultsView(generic.DetailView):
         obj = Leads.objects.filter(
                     #author=filter_author,
                     urlentry=objj,
-                ).order_by('-create_date')
+                ).order_by('-follow_date')
         # Add in additional details
         country_codes_dict ={}
         if obj:

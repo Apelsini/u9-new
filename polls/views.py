@@ -206,7 +206,7 @@ class ResultsView(generic.DetailView):
         obj = super().get_object()
         # Add in additional details
         country_codes_dict ={}
-        for leads in obj.leads.all()
+        for leads in obj.leads_set.all()
             if leads.follower_info not in country_codes_dict:
                 country_code = get_country_code(leads.follower_info)
                 country_codes_dict[leads.follower_info]=country_code

@@ -200,6 +200,10 @@ class ResultsView(generic.DetailView):
         ob = super().get_object()
         return ob
 
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        objj = super().get_object()
 
 
 class ClicksView(generic.DetailView):

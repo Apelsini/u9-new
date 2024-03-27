@@ -197,11 +197,17 @@ class ResultsView(generic.DetailView):
     template_name = 'polls/results.html'
     # adding extra data
 
+    def get_object(self, **kwargs):
+        self.kwargs.get('pk')
+        view_urlentry = Urlentry.objects.get(pk=pk)
+        return view_urlentry
+
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
+        view_urlentry = self.get_object()
         objj = Leads.objects.filter(
-            urlentry_id=self.object.pk)
+            urlentry_id=self.kwargs.get('pk'))
         # Add in additional details
         country_codes_dict = {}
         if objj:

@@ -19,6 +19,7 @@ from datetime import datetime, date, timedelta
 from django.shortcuts import render
 from django.contrib.auth import get_user_model
 from polls.usrhash import cypher, uncypher, codeword, uncodeword
+from iptocc import get_country_code
 import pytz
 import json
 import os
@@ -194,6 +195,23 @@ def detailview_urlentry(request, pk):
 class ResultsView(generic.DetailView):
     model = Urlentry
     template_name = 'polls/results.html'
+    # adding extra data
+    def get_object(self):
+        obj = super().get_object()
+        return obj
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        obj = super().get_object()
+        # Add in additional details
+        country_codes_dict ={}
+        for leads in obj.leads.all()
+            if leads.follower_info not in country_codes_dict:
+                country_code = get_country_code(leads.follower_info)
+                country_codes_dict[leads.follower_info]=country_code
+        context["country_codes_dict"] = country_codes_dict
+
 
 class ClicksView(generic.DetailView):
     model = Urlentry

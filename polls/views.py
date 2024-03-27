@@ -212,9 +212,12 @@ class ResultsView(generic.DetailView):
         country_codes_dict ={}
         if obj:
             for lead in obj:
-                if lead.follower_info not in country_codes_dict:
-                    country_code = get_country_code(lead.follower_info)
-                    country_codes_dict[lead.follower_info]=country_code
+                if lead.follower_fromwhere not in country_codes_dict:
+                    try:
+                        country_code = get_country_code(lead.follower_fromwhere)
+                    except:
+                        country_code = "unknown"
+                    country_codes_dict[lead.follower_fromwhere]=country_code
         context["country_codes_dict"] = country_codes_dict
 
 class ClicksView(generic.DetailView):

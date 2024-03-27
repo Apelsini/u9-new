@@ -212,7 +212,8 @@ def results_urlentry(request, pk):
                 country_codes_dict[lead.follower_fromwhere] = country_code
     return render(request, 'polls/results.html', {
         'urlentry': urlentry,
-        'formset': country_codes_dict
+        'formset': country_codes_dict,
+        'count': objj,
     })
 
 

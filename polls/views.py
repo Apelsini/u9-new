@@ -206,7 +206,7 @@ def results_urlentry(request, pk):
         for lead in objj:
             if lead.follower_fromwhere not in country_codes_dict:
                 try:
-                    country_code = "somewhere"  # get_country_code(lead.follower_fromwhere)
+                    country_code = get_country_code(lead.follower_fromwhere)
                 except:
                     country_code = "unknown"
                 country_codes_dict[lead.follower_fromwhere] = country_code

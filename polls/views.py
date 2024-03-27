@@ -203,7 +203,11 @@ class ResultsView(generic.DetailView):
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
-        obj = super().get_object().leads.get_objects()
+        objj = super().get_object()
+        obj = Leads.objects.filter(
+                    #author=filter_author,
+                    urlentry=objj,
+                ).order_by('-create_date')
         # Add in additional details
         country_codes_dict ={}
         if obj:

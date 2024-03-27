@@ -205,16 +205,14 @@ class ResultsView(generic.DetailView):
         context = super().get_context_data(**kwargs)
         objj = super().get_object()
         obj = Leads.objects.filter(
-                    #author=filter_author,
-                    urlentry=objj,
-                ).order_by('-follow_date')
+                    urlentry=objj,)
         # Add in additional details
         country_codes_dict ={}
         if obj:
             for lead in obj:
                 if lead.follower_fromwhere not in country_codes_dict:
                     try:
-                        country_code = get_country_code(lead.follower_fromwhere)
+                        country_code = "somewhere" #get_country_code(lead.follower_fromwhere)
                     except:
                         country_code = "unknown"
                     country_codes_dict[lead.follower_fromwhere]=country_code

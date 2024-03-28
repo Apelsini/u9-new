@@ -202,7 +202,7 @@ def results_urlentry(request, pk):
     urlentry = get_object_or_404(Urlentry, pk=pk)
     objj = urlentry.leads_set.all()
     country_codes_dict = {}
-    if objj:
+    if len(objj)>0:
         for lead in objj:
             if lead.follower_fromwhere not in country_codes_dict:
                 try:

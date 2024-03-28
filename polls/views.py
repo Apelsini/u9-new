@@ -200,7 +200,7 @@ class ResultsView(generic.DetailView):
 @login_required(login_url=reverse_lazy('auth:login'))
 def results_urlentry(request, pk):
     urlentry = get_object_or_404(Urlentry, pk=pk)
-    objj = Leads.objects.all().filter(urlentry=urlentry).get()
+    objj = urlentry.leads_set.all()
     country_codes_dict = {}
     if objj:
         for lead in objj:

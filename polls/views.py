@@ -31,8 +31,6 @@ def countme(iter):
         count=count+1
     return count
 
-utc=pytz.UTC
-
 # Create your views here.
 class IndexView(generic.ListView):    #Class-Based View
     template_name = 'polls/index.html'
@@ -200,8 +198,9 @@ class ResultsView(generic.DetailView):
 @login_required(login_url=reverse_lazy('auth:login'))
 def results_urlentry(request, pk):
     urlentry = get_object_or_404(Urlentry, pk=pk)
+    objj = urlentry.leads_set.all()
     country_codes_dict = {}
-    for lead in urlentry.leads_set.all():
+    for lead in objj:
         if lead.follower_fromwhere not in country_codes_dict:
             try:
                country_code = get_country_code(lead.follower_fromwhere)
@@ -211,7 +210,7 @@ def results_urlentry(request, pk):
     return render(request, 'polls/results.html', {
         'urlentry': urlentry,
         'formset': country_codes_dict,
-        'count': urlentry.leads_set.all(),
+        'count': objj,
     })
 
 

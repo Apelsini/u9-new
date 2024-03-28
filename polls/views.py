@@ -200,17 +200,19 @@ def results_urlentry(request, pk):
     urlentry = get_object_or_404(Urlentry, pk=pk)
     objj = urlentry.leads_set.all()
     country_codes_dict = {}
+    country_code = ""
     for lead in objj:
         if lead.follower_fromwhere not in country_codes_dict:
+            country_code = "unknown"
             try:
                country_code = get_country_code(lead.follower_fromwhere)
             except:
-                country_code = "unknown"
+                country_code = "exception raised"
             country_codes_dict[lead.follower_fromwhere] = country_code
     return render(request, 'polls/results.html', {
         'urlentry': urlentry,
         'formset': country_codes_dict,
-        'count': objj,
+        'count': len(objj),
     })
 
 

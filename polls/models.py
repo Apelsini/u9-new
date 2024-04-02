@@ -91,6 +91,7 @@ class Leads(models.Model):
     follower_info = models.TextField()
     follower_os_info = models.TextField()
     follower_fromwhere = models.TextField()
+    location = models.TextField(default="unrecognized")
     def __str__(self):
         return self.follower_info
 

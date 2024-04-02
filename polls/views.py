@@ -31,6 +31,28 @@ def countme(iter):
         count=count+1
     return count
 
+
+def setlocation(iptext):
+    #invoke the slow get_country_code function
+    iploc="not found"
+    try:
+        links = Leads.objects.filter(follower_fromwhere=iptext).order_by("-follow_date").get()
+        if links[0].location!="unrecognized":
+            iploc=links[0].location
+    except:
+        iploc=get_country_code(iptext)
+    return iploc
+
+def setlocation_lazy(iptext):
+    #doesn't invoke the slow get_country_code function
+    try:
+        links = Leads.objects.filter(follower_fromwhere=iptext).order_by("-follow_date").get()
+        if links[0].location!="unrecognized":
+            iploc=links[0].location
+    except:
+        iploc = "not found"
+    return iploc
+
 # Create your views here.
 class IndexView(generic.ListView):    #Class-Based View
     template_name = 'polls/index.html'
@@ -205,7 +227,7 @@ def results_urlentry(request, pk):
         if lead.follower_fromwhere not in country_codes_dict:
             country_code = "unknown"
             try:
-               country_code = get_country_code(lead.follower_fromwhere)
+               country_code = setlocation_lazy(lead.follower_fromwhere)
             except:
                 country_code = "exception raised"
             country_codes_dict[lead.follower_fromwhere] = country_code
@@ -331,7 +353,8 @@ def add_lead_and_redirect(request, hash):
     Leads(urlentry=urlentry,
           follower_info=fol_info,
           follower_os_info = request.headers.get('User-Agent'),
-          follower_fromwhere = request.META['REMOTE_ADDR']).save() # standard analytics
+          follower_fromwhere = request.META['REMOTE_ADDR'],
+          location=setlocation_lazy(request.META['REMOTE_ADDR'])).save() # standard analytics
     render(request, 'polls/matomo.html', {})
     if urlentry.datetime_available_from != urlentry.datetime_available_to:
         #if there is need for redirection to 'premiere.html' or 'deprecated.html'

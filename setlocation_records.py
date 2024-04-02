@@ -46,7 +46,7 @@ def process_notifications():
     starting_datetime = datetime.now()
     counter = 0
     lines = []
-    leadsrecordsall = Leads.objects.filter(location="unrecognized").order_by("follow_date")[:110]
+    leadsrecordsall = Leads.objects.filter(location="unrecognized").order_by("follow_date")[:250]
     print("<<    " + str(leadsrecordsall.count()) + ' leads records found, starting processing at    >>'+str(starting_datetime))
     #leadsrecord = leadsrecordsall.get()
     for lead in leadsrecordsall:

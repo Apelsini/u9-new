@@ -57,27 +57,6 @@ def process_notifications():
         print("<  record  "+str(counter) + ' processed at ' + str(datetime.now()))
         counter = counter+1
 
-    with open('locationlog.txt', 'r') as file:
-        existinglines = file.readlines()
-        print('++  notify.txt file opened, there are ' + str(len(existinglines)) + ' lines in it. ')
-        existinglines = existinglines + lines
-        file.close()
-    with open('notify.txt', 'w') as file:
-        print(existinglines)
-        file.writelines(existinglines)
-        print('++  notify.txt file formed, now there are '+str(len(existinglines))+' lines in it ')
-        file.close()
-    ending_datetime = datetime.now()
-    with open('cronlog.txt', 'r') as file:
-        existlines = file.readlines()[1:]
-        existlines = existlines + ['\nCron job for '+PFS+' started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' (UTC) pinged '+str(counter)+' webrecords.']
-        file.close()
-    with open('cronlog.txt', 'w') as file:
-        print(existlines)
-        file.writelines(existlines)  #removing zero line
-        file.close()
-        print('+++++  cronlog.txt file appended with:'+'Cron job for '+PFS+' started at: '+str(starting_datetime)+' ended at: '+str(ending_datetime)+' (UTC) pinged '+str(counter)+' webrecords.')
-
 # The notify.txt file is expected to contain one JSON object per line, where each JSON object represents a notification. Each notification should have a user_id and a message. Here’s an example of how the notify.txt file might look:
 #
 # JSON
@@ -87,7 +66,6 @@ def process_notifications():
 # source /home/uby/virtualenv/website4/3.7/bin/activate && cd /home/uby/website4 && python notify.py > /tmp/notify.log 2>&1
 
 def run():
-    print(PFS+' website checking robot, messages are put into the notify.txt file to form a queue for sending every minute')
     process_notifications()
 
 if __name__ == '__main__':

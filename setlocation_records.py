@@ -17,7 +17,9 @@ from iptocc import get_country_code
 
 #every 2 minutes urlentry updating robot, that invokes the get_country_code to urlentry records
 # that have urlentry.location=="unrecognized"
-# one location record update lasts around 1 second
+# the RIR databases loading time is about 1 minute
+# one location record update lasts around 0,5 second
+# that's why 250 records in 2 minutes is set up
 
 def setlocation(iptext):
     #invoke the slow get_country_code function

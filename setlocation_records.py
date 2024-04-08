@@ -48,6 +48,7 @@ def process_notifications():
     starting_datetime = datetime.now()
     counter = 0
     lines = []
+    leadsrecordsall_count = Leads.objects.filter(location="unrecognized").order_by("follow_date").count()
     leadsrecordsall = Leads.objects.filter(location="unrecognized").order_by("follow_date")[:250]
     print("<<    " + str(leadsrecordsall.count()) + ' leads records found, starting processing at    >>'+str(starting_datetime))
     #leadsrecord = leadsrecordsall.get()
@@ -58,6 +59,17 @@ def process_notifications():
         lead.save()
         print("<  record  "+str(counter) + ' processed at ' + str(datetime.now()))
         counter = counter+1
+    #writing the stats to file
+    lines=[]
+    lines.add("total No of records with unrecognized locations is "+str(leadsrecordsall_count)+". Out of it "+str(leadsrecordsall.count())+" processed from "+str(starting_datetime)+" to "+str(datetime.now()))
+    with open('locationsrobot.txt', 'r') as file:
+        existinglines = file.readlines()[1:50]
+        existinglines = existinglines + lines
+        file.close()
+    with open('locationsrobot.txt', 'w') as file:
+        print(existinglines)
+        file.writelines(existinglines)
+        file.close()
 
 # The notify.txt file is expected to contain one JSON object per line, where each JSON object represents a notification. Each notification should have a user_id and a message. Here’s an example of how the notify.txt file might look:
 #

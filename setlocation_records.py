@@ -60,11 +60,9 @@ def process_notifications():
         print("<  record  "+str(counter) + ' processed at ' + str(datetime.now()))
         counter = counter+1
     #writing the stats to file
-    lines=[]
-    lines.add("total No of records with unrecognized locations is "+str(leadsrecordsall_count)+". Out of it "+str(leadsrecordsall.count())+" processed from "+str(starting_datetime)+" to "+str(datetime.now()))
     with open('locationsrobot.txt', 'r') as file:
         existinglines = file.readlines()[1:50]
-        existinglines = existinglines + lines
+        existinglines = existinglines + l"total No of records with unrecognized locations is "+str(leadsrecordsall_count)+". Out of it "+str(leadsrecordsall.count())+" processed from "+str(starting_datetime)+" to "+str(datetime.now())
         file.close()
     with open('locationsrobot.txt', 'w') as file:
         print(existinglines)

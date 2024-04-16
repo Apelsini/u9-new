@@ -16,12 +16,9 @@
 <br>  {{ country_codes }}
 <br>  {{ count_ }}
 
-
- <div class="container" style="background-color: #f1f2f0; --bs-bg-opacity: .4;">
-
-     {% if dates_dict %}
      <div class="row d-flex justify-content-left">
-            <div class="col-md-6 rounded" >
+     {% if dates_dict %}
+            <div class="col-md-6 rounded" style="background-color: #f1f2f0; --bs-bg-opacity: .4;">
 <legend>Clicks by dates:</legend>
  <p>shows the leads by calendar dates</p>
 {% for follow_date, times in dates_dict.items %}
@@ -32,13 +29,11 @@
         {% endfor %}
          </p>
                 </div>
-        </div>
-    {% endfor %}
+     {% endfor %}
      {% endif %}
 
           {% if location_dict %}
-     <div class="row d-flex justify-content-left">
-            <div class="col-md-6 rounded" >
+            <div class="col-md-6 rounded" style="background-color: #f1f2f0; --bs-bg-opacity: .4;">
 <legend>Clicks by locations:</legend>
  <p>shows the locations by calendar dates</p>
 {% for follow_date, locations in locations_dict.items %}
@@ -49,14 +44,13 @@
         {% endfor %}
          </p>
                 </div>
-        </div>
     {% endfor %}
      {% endif %}
 
  </div>
 
 
-    {% endif %}
+
 <ul>
     {% for leads in urlentry.leads_set.all %}
         <li>

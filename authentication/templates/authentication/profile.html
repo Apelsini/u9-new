@@ -76,4 +76,14 @@
     <br><br>
 </div>
 </div>
+ {% if request.user.is_superuser %}
+        <div class="d-flex flex-wrap bd-highlight mb-2">
+            <div class="mr-auto p-2 bd-highlight">
+                <legend>Locations identifications robot log:</legend>
+    {% for line in locationslog %}
+    {{ line }} <br>
+    {% endfor %}
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}

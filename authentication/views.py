@@ -94,6 +94,11 @@ def profile_page(request, pk):  #shows profile details
         form.fields['telegram2chat_id'].initial = profile.telegram2chat_id
         if profile.telegram2cb:
             form.fields['telegram2cb'].initial = telegram2cb
+        locationslog = []
+        if request.user.is_superuser:
+            with open('locationsrobot.txt', 'r') as file:
+                locationslog = file.readlines()
+                file.close()
     return render(request, 'authentication/profile.html', context={
         'profile': Profile.objects.get(pk=pk),
         'group':group,
@@ -101,6 +106,7 @@ def profile_page(request, pk):  #shows profile details
         'form':form,
         'hashcode': hashcode,
         'messages':messages,
+        'locationslog':locationslog,
     })
 
 decorators = [login_required(login_url='auth:login'), staff_only]

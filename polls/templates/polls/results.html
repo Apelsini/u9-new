@@ -62,6 +62,7 @@
             <b>user device config:</b> {{ leads.follower_os_info }}{{ leads.follower_os_info|pluralize }}
         </li>
     {% endfor %}
+
     {% if not urlentry.leads_set.all %}
     <b>no clicks on the link </b>
     {% endif %}

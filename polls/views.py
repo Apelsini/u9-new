@@ -231,10 +231,30 @@ def results_urlentry(request, pk):
             except:
                 country_code = "exception raised"
             country_codes_dict[lead.follower_fromwhere] = country_code
+    dates_dict = {}
+    os_dict = {}
+    shell_dict = {}
+    browser_dict= {}
+    location_dict = {}
+    obj = objj.order_by('-follow_date').reverse()
+    # dates_dict with time when click was done
+    for ob in obj:
+        follow_date = ob.follow_date.date()
+        if follow_date not in dates_dict:
+                dates_dict[follow_date] = []
+        dates_dict[follow_date].append(str(ob.follow_date.time()))
+    # location_dict with location info
+    for ob in obj:
+        follow_date = ob.follow_date.date()
+        if follow_date not in location_dict:
+                location_dict[follow_date] = []
+        location_dict[follow_date].append(ob.location)
     return render(request, 'polls/results.html', {
         'urlentry': urlentry,
         'country_codes_dict': country_codes_dict,
         'count': len(objj),
+        'dates_dict': dates_dict,
+        'location_dict': location_dict,
     })
 
 

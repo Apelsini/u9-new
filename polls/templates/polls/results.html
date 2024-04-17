@@ -22,8 +22,9 @@
             <div class="col-md-6 rounded" style="background-color: #f1f2f0; --bs-bg-opacity: .4;">
 <legend>Clicks by dates:</legend>
  <p>shows the leads by calendar dates</p>
-                <table class="table table-bordered"><tr>
-                    <td>Date</td><td>Clicks</td>
+                <table class="table table-bordered">
+                    <tr> <td>Date</td><td>Clicks</td> </tr>
+                    <tr>
 {% for follow_date, times in dates_dict.items %}
                         <td>{{ follow_date|date:'d-m-Y' }}</td><td>{{ times|length }}</td>
         {% endfor %}
@@ -35,8 +36,9 @@
             <div class="col-md-6 rounded" style="background-color: #f1f2f0; --bs-bg-opacity: .4;">
 <legend>Clicks by locations:</legend>
  <p>shows the locations by calendar dates</p>
-                                <table class="table table-bordered"><tr>
-                    <td>Date</td><td>Locations</td>
+                                <table class="table table-bordered">
+                  <tr><td>Date</td><td>Locations</td></tr>
+                                    <tr>
 {% for follow_date, locations in location_dict.items %}
          <td>{{ follow_date|date:'d-m-Y' }}</td>
         <td> {% for location in locations %}
@@ -49,14 +51,16 @@
          </tr></table>
 
  </div>
+    <br>
      <div class="row d-flex justify-content-left">
           {% if countries_dict %}
             <div class="col-md-6 rounded" style="background-color: #f1f2f0; --bs-bg-opacity: .4;">
-<legend>Locations by dates:</legend>
+<legend>Locations in general:</legend>
  <p>shows the locations by calendar dates</p>
                 <table class="table table-bordered"><tr>
+                    <tr><td>Location</td><td>Clicks</td></tr>
 {% for country, dates in countries_dict.items %}
-                        <td>{{ country }}</td><td>{{ dates|length }}</td>
+                      <tr>  <td>{{ country }}</td><td>{{ dates|length }}</td> <tr>
         {% endfor %}
                 </tr></table>
                 </div>

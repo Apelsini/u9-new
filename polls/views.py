@@ -251,6 +251,22 @@ def results_urlentry(request, pk):
         if country not in countries_dict:
             countries_dict[country] = []
         countries_dict[country].append(str(ob.follow_date.date()))
+        osinfo = ob.follower_os_info
+        osinfo_st=osinfo.split('(')[1]
+        osinfo_end=osinfo_st.split(')')[0]
+        osinfo_os=osinfo_end.split(';')[0]  #os info like Android 10 or compatible if bot
+        osinfo_shell=osinfo_end.split(';')[1] #shell info like Win64 or Mobile VR or YandexBot/3.0
+        osinfo_browser_st=osinfo_st.split(')')[1]
+        osinfo_browser=osinfo_browser_st.split()[1] #browser info  like Chrome/112.0.0.0
+        if osinfo_os not in os_dict:
+            os_dict[osinfo_os] = []
+        os_dict[osinfo_os].append(str(ob.follow_date.date()))
+        if osinfo_shell not in shell_dict:
+            shell_dict[osinfo_shell] = []
+        shell_dict[osinfo_shell].append(str(ob.follow_date.date()))
+        if osinfo_browser not in browser_dict:
+            browser_dict[osinfo_browser] = []
+        browser_dict[osinfo_browser].append(str(ob.follow_date.date()))
     # location_dict with location info
     return render(request, 'polls/results.html', {
         'urlentry': urlentry,
@@ -259,6 +275,9 @@ def results_urlentry(request, pk):
         'dates_dict': dates_dict,
         'location_dict': location_dict,
         'countries_dict' : countries_dict,
+        'os_dict': os_dict,
+        'shell_dict' : shell_dict,
+        'browser_dict' : browser_dict,
     })
 
 

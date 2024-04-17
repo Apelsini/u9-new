@@ -38,17 +38,18 @@
  <p>shows the locations by calendar dates</p>
                                 <table class="table table-bordered table-dark">
                   <tr><td>Date</td><td>Locations</td></tr>
-                                    <tr>
-{% for follow_date, locations in location_dict.items %}
+
+{% for follow_date, locations in location_dict.items %}<tr>
          <td>{{ follow_date|date:'d-m-Y' }}</td>
         <td> {% for location in locations %}
          <b>{{ location }},</b>
         {% endfor %}</td>
          </p>
-                </div>
-    {% endfor %}
-     {% endif %}
-         </tr></table>
+               </tr>
+    {% endfor %}</table>
+     </div>
+         {% endif %}
+
 
  </div>
     <br>
@@ -60,13 +61,91 @@
                 <table class="table table-bordered table-dark"><tr>
                     <tr><td>Location</td><td>Clicks</td></tr>
 {% for country, dates in countries_dict.items %}
-                      <tr>  <td>{{ country }}</td><td>{{ dates|length }}</td> <tr>
+                      <tr>  <td>{{ country }}</td><td>{{ dates|length }}</td> </tr>
+        {% endfor %}
+                </table>
+
+     {% endif %}
+            </div>
+
+                   {% if os_dict %}
+            <div class="col-md-6 rounded" >
+<legend>Clicks by operation systems:</legend>
+ <p>shows the OS of the browsing devices</p>
+                <table class="table table-bordered table-dark"><tr>
+                    <tr><td>OS</td><td>Clicks</td></tr>
+{% for os, dates in os_dict.items %}
+                      <tr>  <td>{{ os }}</td><td>{{ dates|length }}</td> </tr>
+        {% endfor %}
+                </table>
+                 </div>
+     {% endif %}
+           </div>
+
+         <div class="row d-flex justify-content-left">
+     {% if dates_dict %}
+            <div class="col-md-6 rounded" >
+<legend>Clicks by dates:</legend>
+ <p>shows the leads by calendar dates</p>
+                <table class="table table-bordered table-dark">
+                    <tr> <td>Date</td><td>Clicks</td> </tr>
+                    <tr>
+{% for follow_date, times in dates_dict.items %}
+                        <td>{{ follow_date|date:'d-m-Y' }}</td><td>{{ times|length }}</td>
         {% endfor %}
                 </tr></table>
                 </div>
      {% endif %}
-          </div>
 
+          {% if location_dict %}
+            <div class="col-md-6 rounded">
+<legend>Clicks by locations:</legend>
+ <p>shows the locations by calendar dates</p>
+                                <table class="table table-bordered table-dark">
+                  <tr><td>Date</td><td>Locations</td></tr>
+
+{% for follow_date, locations in location_dict.items %}<tr>
+         <td>{{ follow_date|date:'d-m-Y' }}</td>
+        <td> {% for location in locations %}
+         <b>{{ location }},</b>
+        {% endfor %}</td>
+         </p>
+               </tr>
+    {% endfor %}</table>
+     </div>
+         {% endif %}
+
+
+ </div>
+    <br>
+     <div class="row d-flex justify-content-left">
+          {% if shell_dict %}
+            <div class="col-md-6 rounded" >
+<legend>Clicks by shell core used:</legend>
+ <p>shows the shell type of the device</p>
+                <table class="table table-bordered table-dark"><tr>
+                    <tr><td>Shell</td><td>Clicks</td></tr>
+{% for shell, dates in shell_dict.items %}
+                      <tr>  <td>{{ shell }}</td><td>{{ dates|length }}</td> </tr>
+        {% endfor %}
+                </table>
+
+     {% endif %}
+            </div>
+
+                   {% if browser_dict %}
+            <div class="col-md-6 rounded" >
+<legend>Clicks by browsers used:</legend>
+ <p>shows the browsers of user devices</p>
+                <table class="table table-bordered table-dark"><tr>
+                    <tr><td>Browser</td><td>Clicks</td></tr>
+{% for browser, dates in browser_dict.items %}
+                      <tr>  <td>{{ browser }}</td><td>{{ dates|length }}</td> </tr>
+        {% endfor %}
+                </table>
+                 </div>
+     {% endif %}
+           </div>
 <br> <br>
 <legend>Clicks raw data:</legend>
 <ul>

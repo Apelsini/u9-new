@@ -244,7 +244,7 @@ def results_urlentry(request, pk):
         if follow_date not in dates_dict:
                 dates_dict[follow_date] = []
                 location_dict[follow_date] = []
-        dates_dict[follow_date].append(str(ob.follow_date.time()))
+        dates_dict[follow_date].append(str(ob.follow_date.time().hour))
         location_dict[follow_date].append(str(ob.location))
     # location_dict with location info
     return render(request, 'polls/results.html', {

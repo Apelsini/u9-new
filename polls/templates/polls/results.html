@@ -23,7 +23,7 @@
  <p>shows the leads by calendar dates</p>
 {% for follow_date, times in dates_dict.items %}
         <br>
-                <h4>{{ follow_date|date:'d-m-Y' }}</h4><br>
+                <h4>{{ follow_date|date:'d-m-Y' }}</h4> {{ times.count }}<br>
          <p style="color: black">{% for time in times %}
          <b>{{ time }},</b>
         {% endfor %}

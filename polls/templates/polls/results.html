@@ -24,11 +24,10 @@
  <p>shows the leads by calendar dates</p>
                 <table class="table table-bordered table-dark">
                     <tr> <td>Date</td><td>Clicks</td> </tr>
-                    <tr>
 {% for follow_date, times in dates_dict.items %}
-                        <td>{{ follow_date|date:'d-m-Y' }}</td><td>{{ times|length }}</td>
+                      <tr>  <td>{{ follow_date|date:'d-m-Y' }}</td><td>{{ times|length }}</td></tr>
         {% endfor %}
-                </tr></table>
+                </table>
                 </div>
      {% endif %}
 
@@ -82,41 +81,6 @@
      {% endif %}
            </div>
 
-         <div class="row d-flex justify-content-left">
-     {% if dates_dict %}
-            <div class="col-md-6 rounded" >
-<legend>Clicks by dates:</legend>
- <p>shows the leads by calendar dates</p>
-                <table class="table table-bordered table-dark">
-                    <tr> <td>Date</td><td>Clicks</td> </tr>
-                    <tr>
-{% for follow_date, times in dates_dict.items %}
-                        <td>{{ follow_date|date:'d-m-Y' }}</td><td>{{ times|length }}</td>
-        {% endfor %}
-                </tr></table>
-                </div>
-     {% endif %}
-
-          {% if location_dict %}
-            <div class="col-md-6 rounded">
-<legend>Clicks by locations:</legend>
- <p>shows the locations by calendar dates</p>
-                                <table class="table table-bordered table-dark">
-                  <tr><td>Date</td><td>Locations</td></tr>
-
-{% for follow_date, locations in location_dict.items %}<tr>
-         <td>{{ follow_date|date:'d-m-Y' }}</td>
-        <td> {% for location in locations %}
-         <b>{{ location }},</b>
-        {% endfor %}</td>
-         </p>
-               </tr>
-    {% endfor %}</table>
-     </div>
-         {% endif %}
-
-
- </div>
     <br>
      <div class="row d-flex justify-content-left">
           {% if shell_dict %}

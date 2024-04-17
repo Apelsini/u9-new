@@ -233,6 +233,7 @@ def results_urlentry(request, pk):
             country_codes_dict[lead.follower_fromwhere] = country_code
     dates_dict = {}
     location_dict = {}
+    countries_dict= {}
     os_dict = {}
     shell_dict = {}
     browser_dict= {}
@@ -246,6 +247,10 @@ def results_urlentry(request, pk):
                 location_dict[follow_date] = []
         dates_dict[follow_date].append(str(ob.follow_date.time().hour))
         location_dict[follow_date].append(str(ob.location))
+        country = ob.location
+        if country not in countries_dict:
+            countries_dict[country] = []
+        countries_dict[country] = append(str(ob.follow_date.date()))
     # location_dict with location info
     return render(request, 'polls/results.html', {
         'urlentry': urlentry,
@@ -253,6 +258,7 @@ def results_urlentry(request, pk):
         'count': len(objj),
         'dates_dict': dates_dict,
         'location_dict': location_dict,
+        'countries_dict' : countries_dict,
     })
 
 

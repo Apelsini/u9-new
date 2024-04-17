@@ -22,7 +22,8 @@
             <div class="col-md-6 rounded" style="background-color: #f1f2f0; --bs-bg-opacity: .4;">
 <legend>Clicks by dates:</legend>
  <p>shows the leads by calendar dates</p>
-                <table><tr>
+                <table class="table table-bordered"><tr>
+                    <td>Date</td><td>Clicks</td>
 {% for follow_date, times in dates_dict.items %}
                         <td>{{ follow_date|date:'d-m-Y' }}</td><td>{{ times|length }}</td>
         {% endfor %}
@@ -34,18 +35,33 @@
             <div class="col-md-6 rounded" style="background-color: #f1f2f0; --bs-bg-opacity: .4;">
 <legend>Clicks by locations:</legend>
  <p>shows the locations by calendar dates</p>
+                                <table class="table table-bordered"><tr>
+                    <td>Date</td><td>Locations</td>
 {% for follow_date, locations in location_dict.items %}
-        <br>
-                <h4>{{ follow_date|date:'d-m-Y' }}</h4><br>
-         <p style="color: black">{% for location in locations %}
-         <b>{{ locations }},</b>
-        {% endfor %}
+         <td>{{ follow_date|date:'d-m-Y' }}</td>
+        <td> {% for location in locations %}
+         <b>{{ location }},</b>
+        {% endfor %}</td>
          </p>
                 </div>
     {% endfor %}
      {% endif %}
+         </tr></table>
 
  </div>
+     <div class="row d-flex justify-content-left">
+          {% if countries_dict %}
+            <div class="col-md-6 rounded" style="background-color: #f1f2f0; --bs-bg-opacity: .4;">
+<legend>Locations by dates:</legend>
+ <p>shows the locations by calendar dates</p>
+                <table class="table table-bordered"><tr>
+{% for country, dates in countries_dict.items %}
+                        <td>{{ country }}</td><td>{{ dates|length }}</td>
+        {% endfor %}
+                </tr></table>
+                </div>
+     {% endif %}
+          </div>
 
 <br> <br>
 <legend>Clicks raw data:</legend>

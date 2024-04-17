@@ -14,7 +14,7 @@
 {% endwith %}
     </legend>
 <br>  {{ country_codes }}
-<br>  {{ location_dict }}
+<br>  {{ location_ }}
 
 
      <div class="row d-flex justify-content-left">
@@ -22,7 +22,7 @@
             <div class="col-md-6 rounded" >
 <legend>Clicks by dates:</legend>
  <p>shows the leads by calendar dates</p>
-                <table class="table table-bordered">
+                <table class="table table-bordered table-dark">
                     <tr> <td>Date</td><td>Clicks</td> </tr>
                     <tr>
 {% for follow_date, times in dates_dict.items %}
@@ -36,7 +36,7 @@
             <div class="col-md-6 rounded">
 <legend>Clicks by locations:</legend>
  <p>shows the locations by calendar dates</p>
-                                <table class="table table-bordered">
+                                <table class="table table-bordered table-dark">
                   <tr><td>Date</td><td>Locations</td></tr>
                                     <tr>
 {% for follow_date, locations in location_dict.items %}
@@ -57,7 +57,7 @@
             <div class="col-md-6 rounded" >
 <legend>Locations in general:</legend>
  <p>shows the locations by calendar dates</p>
-                <table class="table table-bordered"><tr>
+                <table class="table table-bordered table-dark"><tr>
                     <tr><td>Location</td><td>Clicks</td></tr>
 {% for country, dates in countries_dict.items %}
                       <tr>  <td>{{ country }}</td><td>{{ dates|length }}</td> <tr>

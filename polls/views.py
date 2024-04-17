@@ -250,7 +250,7 @@ def results_urlentry(request, pk):
         country = ob.location
         if country not in countries_dict:
             countries_dict[country] = []
-        countries_dict[country] = append(str(ob.follow_date.date()))
+        countries_dict[country].append(str(ob.follow_date.date()))
     # location_dict with location info
     return render(request, 'polls/results.html', {
         'urlentry': urlentry,

@@ -252,6 +252,10 @@ def results_urlentry(request, pk):
             countries_dict[country] = []
         countries_dict[country].append(str(ob.follow_date.date()))
         osinfo = ob.follower_os_info
+        if len(osinfo.split('(')) > 1:
+            osinfo_st=osinfo.split('(')[1]
+        else:
+            osinfo_st=osinfo
         osinfo_st=osinfo.split('(')[1]
         osinfo_end=osinfo_st.split(')')[0]
         osinfo_os=osinfo_end.split(';')[0]  #os info like Android 10 or compatible if bot

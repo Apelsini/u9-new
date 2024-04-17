@@ -22,22 +22,19 @@
             <div class="col-md-6 rounded" style="background-color: #f1f2f0; --bs-bg-opacity: .4;">
 <legend>Clicks by dates:</legend>
  <p>shows the leads by calendar dates</p>
+                <table><tr>
 {% for follow_date, times in dates_dict.items %}
-        <br>
-                <h4>{{ follow_date|date:'d-m-Y' }}</h4> {{ times|length }}<br>
-         <p style="color: black">{% for time in times %}
-         <b>{{ time }},</b>
+                        <td>{{ follow_date|date:'d-m-Y' }}</td><td>{{ times|length }}</td>
         {% endfor %}
-         </p>
+                </tr></table>
                 </div>
-     {% endfor %}
      {% endif %}
 
           {% if location_dict %}
             <div class="col-md-6 rounded" style="background-color: #f1f2f0; --bs-bg-opacity: .4;">
 <legend>Clicks by locations:</legend>
  <p>shows the locations by calendar dates</p>
-{% for follow_date, locations in locations_dict.items %}
+{% for follow_date, locations in location_dict.items %}
         <br>
                 <h4>{{ follow_date|date:'d-m-Y' }}</h4><br>
          <p style="color: black">{% for location in locations %}

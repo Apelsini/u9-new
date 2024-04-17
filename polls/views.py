@@ -262,9 +262,8 @@ def results_urlentry(request, pk):
             osinfo_shell=osinfo_end.split(';')[1] #shell info like Win64 or Mobile VR or YandexBot/3.0
         else:
             osinfo_shell = osinfo_end
-        osinfo_browser_st=osinfo_st.split(')')[1]
-        if len(osinfo_browser_st.split())>1:
-            osinfo_browser=osinfo_browser_st.split()[1] #browser info  like Chrome/112.0.0.0
+        if len(osinfo_browser_st.split(')'))>1:
+            osinfo_browser=osinfo_browser_st.split(')')[1] #browser info  like Chrome/112.0.0.0
         else:
             osinfo_browser = osinfo_browser_st
         if osinfo_os not in os_dict:

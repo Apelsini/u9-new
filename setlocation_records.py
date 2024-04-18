@@ -31,7 +31,7 @@ def setlocation(iptext):
         else:
             iploc = get_country_code(iptext)
     except:
-        iploc=get_country_code(iptext)
+        iploc="not found"
     return iploc
 
 def setlocation_lazy(iptext):
@@ -42,6 +42,15 @@ def setlocation_lazy(iptext):
             iploc=links[0].location
     except:
         iploc = "not found"
+    return iploc
+
+def setlocation_hard(iptext):
+    #invoke the slow get_country_code function but doesn't copy by similar records
+    iploc="not found"
+    try:
+        iploc = get_country_code(iptext)
+    except:
+        iploc="not found"
     return iploc
 
 def process_notifications():
@@ -60,10 +69,20 @@ def process_notifications():
         lead.save()
         print("<  record  "+str(counter) + ' processed at ' + str(datetime.now()))
         counter = counter+1
+    #processing records with "not found" once again
+    leadsrec = Leads.objects.filter(location="not found").order_by("follow_date")[:250]
+    nfcounter = 0
+    for lea in leadsrec:
+        iptext = lea.follower_fromwhere
+        iploc = setlocation_hard(iptext)
+        lea.location=iploc
+        lea.save()
+        print("<  'not found' record  "+str(nfcounter) + ' processed one more time at ' + str(datetime.now()))
+        nfcounter = nfcounter+1
     #writing the stats to file
     with open('locationsrobot.txt', 'r') as file:
         existinglines = file.readlines()[1:50]
-        existinglines.append("\ntotal No of records with unrecognized locations is "+str(leadsrecordsall_count)+". Out of it "+str(leadsno)+" processed from "+str(starting_datetime)+" to "+str(datetime.now()))
+        existinglines.append("\nRecords with unrecognized locations: "+str(leadsrecordsall_count)+". Out of it "+str(leadsno)+" processed from "+str(starting_datetime)+" to "+str(datetime.now())+" not recognised locations double checked for "+str(nfcounter)+" records")
         file.close()
     with open('locationsrobot.txt', 'w') as file:
         print(existinglines)

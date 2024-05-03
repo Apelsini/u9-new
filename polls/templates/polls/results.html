@@ -23,7 +23,7 @@
 <legend>Clicks by dates:</legend>
  <p>shows the leads by calendar dates</p>
                 <table class="table table-bordered table-dark">
-                    <tr> <td>Date</td><td>Clicks</td> </tr>
+                    <tr> <td align="center"><b>Date</b></td><td align="center"><b>Clicks</b></td> </tr>
 {% for follow_date, times in dates_dict.items %}
                       <tr>  <td>{{ follow_date|date:'d-m-Y' }}</td><td>{{ times|length }}</td></tr>
         {% endfor %}

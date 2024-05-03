@@ -36,7 +36,7 @@
 <legend>Clicks by locations:</legend>
  <p>shows the locations by calendar dates</p>
                                 <table class="table table-bordered table-dark">
-                  <tr><td>Date</td><td>Locations</td></tr>
+                  <tr><td align="center"><b>Date</b></td><td align="center"><b>Locations</b></td></tr>
 
 {% for follow_date, locations in location_dict.items %}<tr>
          <td>{{ follow_date|date:'d-m-Y' }}</td>
@@ -58,7 +58,7 @@
 <legend>Locations in general:</legend>
  <p>shows the locations by calendar dates</p>
                 <table class="table table-bordered table-dark"><tr>
-                    <tr><td>Location</td><td>Clicks</td></tr>
+                    <tr><td align="center"><b>Location</b></td><td align="center"><b>Clicks</b></td></tr>
 {% for country, dates in countries_dict.items %}
                       <tr>  <td>{{ country }}</td><td>{{ dates|length }}</td> </tr>
         {% endfor %}
@@ -72,7 +72,7 @@
 <legend>Clicks by operation systems:</legend>
  <p>shows the OS of the browsing devices</p>
                 <table class="table table-bordered table-dark"><tr>
-                    <tr><td>OS</td><td>Clicks</td></tr>
+                    <tr><td align="center"><b>OS</b></td><td align="center"><b>Clicks</b></td></tr>
 {% for os, dates in os_dict.items %}
                       <tr>  <td>{{ os }}</td><td>{{ dates|length }}</td> </tr>
         {% endfor %}
@@ -88,7 +88,7 @@
 <legend>Clicks by shell core used:</legend>
  <p>shows the shell type of the device</p>
                 <table class="table table-bordered table-dark"><tr>
-                    <tr><td>Shell</td><td>Clicks</td></tr>
+                    <tr><td align="center"><b>Shell</b></td><td align="center"><b>Clicks</b></td></tr>
 {% for shell, dates in shell_dict.items %}
                       <tr>  <td>{{ shell }}</td><td>{{ dates|length }}</td> </tr>
         {% endfor %}
@@ -102,7 +102,7 @@
 <legend>Clicks by browsers used:</legend>
  <p>shows the browsers of user devices</p>
                 <table class="table table-bordered table-dark"><tr>
-                    <tr><td>Browser</td><td>Clicks</td></tr>
+                    <tr><td align="center"><b>Browser</b></td><td align="center"><b>Clicks</b></td></tr>
 {% for browser, dates in browser_dict.items %}
                       <tr>  <td>{{ browser }}</td><td>{{ dates|length }}</td> </tr>
         {% endfor %}

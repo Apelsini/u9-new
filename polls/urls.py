@@ -18,6 +18,7 @@ urlpatterns = [
     path('polls/<int:pk>/results/', view=login_required(views.results_urlentry, login_url=reverse_lazy('auth:login')),
          name='results'),
     path('polls/<int:pk>/results/get', view=views.ClicksView.as_view(), name='get'),
+    path('polls/<int:pk>/results/get/<str:datefrom>/<str:dateto>/', views.get_urlentry_count, name='get_urlentry_count'),
     path('a/apps', view=views.AppsView.as_view(), name='apps'),
     path('a/webchecker', view=login_required(views.webchecker, login_url=reverse_lazy('auth:login')), name='webchecker'),
     path('a/webchecker/add', view=login_required(views.webchecker_add, login_url=reverse_lazy('auth:login')),

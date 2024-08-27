@@ -318,7 +318,8 @@ def get_urlentry_count(request, pk, datefrom, dateto):
         return HttpResponse('[U9.by error message: <dateto> should be bigger or equal to <datefrom>]')
 
     # Filter UrlEntry objects by date range and primary key, and count their number
-    url_entries = Urlentry.objects.filter(pk=pk, date__range=(date_from, date_to))
+    urlentry = get_object_or_404(Urlentry, pk=pk)
+    url_entries = urlentry.leads_set.objects.filter(create_date__range=(date_from, date_to))
     count = url_entries.count()
 
     # Return the count as a http response

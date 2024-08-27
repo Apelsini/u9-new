@@ -1,6 +1,6 @@
 from django.forms import formset_factory
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse_lazy, reverse
 from django.views import generic
 from .models import Urlentry, Leads, Webrecords
@@ -292,7 +292,7 @@ def results_urlentry(request, pk):
         'browser_dict' : browser_dict,
     })
 
-
+#returns simple number of clicks as HTTP page
 class ClicksView(generic.DetailView):
     model = Urlentry
     template_name = 'polls/clicks.html'
@@ -306,6 +306,23 @@ class DeleteUrlentry(generic.DeleteView):
     template_name = 'polls/delete_question.html'
     def get_success_url(self):
         return reverse('polls:index')
+
+#new function to get urlentries count with datefrom dateto
+def get_urlentry_count(request, pk, datefrom, dateto):
+    # Convert date strings to datetime objects
+    date_from = datetime.strptime(datefrom, '%d-%m-%Y')
+    date_to = datetime.strptime(dateto, '%d-%m-%Y')
+
+    # Check if dateto is greater than or equal to datefrom
+    if date_to < date_from:
+        return HttpResponse('[U9.by error message: <dateto> should be bigger or equal to <datefrom>]')
+
+    # Filter UrlEntry objects by date range and primary key, and count their number
+    url_entries = Urlentry.objects.filter(pk=pk, date__range=(date_from, date_to))
+    count = url_entries.count()
+
+    # Return the count as a http response
+    return HttpResponse(f'{count}')
 
 # create Url
 @login_required(login_url=reverse_lazy('auth:login'))

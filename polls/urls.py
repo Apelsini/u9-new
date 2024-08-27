@@ -13,6 +13,7 @@ urlpatterns = [
     path('details/<int:pk>/', view=login_required(views.DetailView.as_view(), login_url=reverse_lazy('auth:login')), name='detail'),
     path('a/<int:pk>/results/', view=login_required(views.results_urlentry, login_url=reverse_lazy('auth:login')), name='results'),
     path('a/<int:pk>/results/get', view=views.ClicksView.as_view(), name='get'),
+    path('a/<int:pk>/results/get/<str:datefrom>/<str:dateto>/', views.get_urlentry_count, name='get_urlentry_count'),
     #old links redirects
     path('polls/<int:pk>/results/', view=login_required(views.results_urlentry, login_url=reverse_lazy('auth:login')),
          name='results'),

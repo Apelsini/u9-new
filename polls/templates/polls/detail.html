@@ -112,16 +112,50 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
                             </div>
                         </div>
                     </div>
-                    {% endif %}
-                    {% if urlentry.author == request.user and request.user.is_staff %}
                     <div class="accordion-item bg-info">
                         <h2 class="accordion-header" id="headingTwo" style="background-color: #34fbc2;">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Short link with snapshot
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Clicks counter with dates from and to
                             </button>
                         </h2>
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                             data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <b> Direct link: </b>
+                                <a href="{% url 'polls:get' urlentry.pk %}/01-01-2022/01-01-2024/">https://u9.by{% url 'polls:get' urlentry.pk %}/01-01-2022/01-01-2024/</a>
+                                <br><b> PHP: </b> <br>
+                                &lt;?php echo file_get_contents(&quot;https://u9.by/polls/{{ urlentry.pk }}/results/get/01-01-2022/01-01-2024/&quot;);
+                                ?&gt;
+                                <br><b> JavaScript: </b>
+                                <br>
+                                &lt;div id=&quot;raz1&quot;&gt;&lt;/div&gt;
+                                &lt;script&gt;
+                                (function(){
+                                var http = new XMLHttpRequest();
+                                http.open('GET', 'https://u9.by/polls/{{ urlentry.pk }}/results/get/01-01-2022/01-01-2024/');
+                                http.onreadystatechange = function () {
+                                if (this.readyState == 4 &amp;&amp; this.status == 200) {
+                                document.getElementById('raz1').innerHTML = this.responseText;
+                                }
+                                }
+                                http.send(null);
+                                })()
+                                &lt;/script&gt;
+                                <br> <br>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% if urlentry.author == request.user and request.user.is_staff %}
+                    <div class="accordion-item bg-info">
+                        <h2 class="accordion-header" id="headingThree" style="background-color: #34fbc2;">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Short link with snapshot
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <b> HTML code: </b> <br>

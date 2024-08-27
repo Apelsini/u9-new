@@ -315,7 +315,7 @@ def get_urlentry_count(request, pk, datefrom, dateto):
 
     # Check if dateto is greater than or equal to datefrom
     if date_to < date_from:
-        return HttpResponse('[U9.by error message: <dateto> should be bigger or equal to <datefrom>]')
+        return HttpResponse('[U9.by error message: dateto should be bigger or equal to datefrom]')
 
     # Filter UrlEntry objects by date range and primary key, and count their number
     urlentry = get_object_or_404(Urlentry, pk=pk)

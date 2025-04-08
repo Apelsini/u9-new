@@ -96,9 +96,9 @@ def profile_page(request, pk):  #shows profile details
         if profile.telegram2cb:
             form.fields['telegram2cb'].initial = telegram2cb
         webrecordscount = 0
-        webrecordscount = Webrecords.objects.all().filter(author=Profile.objects.get(pk=pk)).count()
+        webrecordscount = Webrecords.objects.all().filter(author=profile).count()
         urlentrycount = 0
-        urlentrycount = Urlentry.objects.all().filter(author=Profile.objects.get(pk=pk)).count()
+        urlentrycount = Urlentry.objects.all().filter(author=profile).count()
         locationslog = []
         if request.user.is_superuser:
             with open('locationsrobot.txt', 'r') as file:

@@ -21,6 +21,15 @@
         <td> {{ profile.user.email }}</td>
     </tr>
     <!-- statistics -->
+        <tr>
+        <td><strong>URL entries entered:</strong></td>
+        <td> {{ urlentrycount }}</td>
+    </tr>
+        <tr>
+        <td><strong>UWebrecords entered:</strong></td>
+        <td> {{ webrecordscount }}</td>
+    </tr>
+      <!-- end of statistics -->
     <tr>
         <td>
             <strong>Customer: </strong></td>
@@ -77,6 +86,7 @@
 </div>
 </div>
  {% if request.user.is_superuser %}
+
         <div class="d-flex flex-wrap bd-highlight mb-2">
             <div class="mr-auto p-2 bd-highlight">
                 <legend>Locations identifications robot log:</legend>

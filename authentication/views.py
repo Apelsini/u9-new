@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group, User
 from .models import Profile, Custcode
 from polls.usrhash import cypher, uncypher, codeword, uncodeword
+from polls.models import Urlentry, Webrecords
 import json
 import os
 import re
@@ -94,6 +95,10 @@ def profile_page(request, pk):  #shows profile details
         form.fields['telegram2chat_id'].initial = profile.telegram2chat_id
         if profile.telegram2cb:
             form.fields['telegram2cb'].initial = telegram2cb
+        webrecordscount = 0
+        webrecordscount = Webrecords.objects.all().filter(author=Profile.objects.get(pk=pk)).count()
+        urlentrycount = 0
+        urlentrycount = Urlentry.objects.all().filter(author=Profile.objects.get(pk=pk)).count()
         locationslog = []
         if request.user.is_superuser:
             with open('locationsrobot.txt', 'r') as file:
@@ -107,6 +112,8 @@ def profile_page(request, pk):  #shows profile details
         'hashcode': hashcode,
         'messages':messages,
         'locationslog':locationslog,
+        'webrecordscount': webrecordscount,
+        'urlentrycount': urlentrycount,
     })
 
 decorators = [login_required(login_url='auth:login'), staff_only]
